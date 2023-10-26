@@ -64,3 +64,19 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Getting started
+
+- **Docker**: Ensure that you have Docker installed on your system. You can download and install Docker from [Docker's official website](https://www.docker.com/get-started).
+
+If you're running the project for the first time or after any changes to the project's dependencies, make sure you install the required PHP dependencies using Composer. Run the following command in your project directory:
+
+```bash
+composer install
+```
+
+You can start the project using the provided start.sh script. Open your terminal, navigate to the project directory, and execute the script with the following command:
+
+```bash
+sh ./start.sh
+```
