@@ -64,3 +64,80 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+<table align="center">
+  <tr>
+    <td><h1>RealEstate SoftUni</h1></td>
+  </tr>
+</table>
+
+## Prerequisites
+
+### 1. Docker: Ensure you have Docker and Docker Compose installed on your machine.
+ -Docker installation instructions can be found [here](https://docs.docker.com/get-docker/).</p>
+ -Docker Compose installation instructions can be found [here](https://docs.docker.com/compose/install/).</p>
+
+### 2. Git (optional, if you're cloning the repository): 
+-Install Git on your machine if you haven't already.</p>
+-Git installation instructions can be found [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git/).</p>
+
+### 3. Operating System Specifics:
+ -Linux: Docker and Sail run natively without additional configurations.</p>
+ -macOS: Docker Desktop for Mac allows you to run Docker containers natively.</p>
+ -Windows: Ensure you have WSL2 set up if you are on Windows.</p>
+ -Windows users need to have WSL2 installed for a smoother experience with Docker and Laravel Sail. Detailed instructions for setting up WSL2 can be found [here](https://learn.microsoft.com/en-us/windows/wsl/install/).</p>
+
+
+## Getting Started
+
+### 1. Clone the Repository:
+
+```
+git clone [repository_url] /path/to/project
+```
+```
+cd /path/to/project
+```
+
+### 2. Install Composer Dependencies:
+
+```
+./vendor/bin/sail composer install
+```
+
+### 3. Copy the .env file:
+If you don't have an .env file, you can create one by copying the example provided by Laravel:
+
+```
+cp.env.example .env
+```
+
+### 4. Generate an Application Key:
+```
+./vendor/bin/sail artisan key:generate
+```
+
+### 5. Start the Project:
+
+To start the project, run:
+
+```
+./start-server.sh
+```
+This will start the Docker containers. By default, the application will be accessible at http://localhost or the port defined in the APP_PORT variable in your .env file.
+
+### 6. Run Migrations:
+```
+./vendor/bin/sail artisan migrate
+```
+
+### 7. Stop the Project:
+To stop the project and the Docker containers, run:
+
+```
+./stop-server.sh
+```
+
+### 8. Additional Notes
+Laravel Sail documentation can be found [here](https://laravel.com/docs/10.x/sail/).
+For more detailed information about the project, refer to other documentation files or inline comments.
