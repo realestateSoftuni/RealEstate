@@ -99,32 +99,26 @@ git clone [repository_url] /path/to/project
 cd /path/to/project
 ```
 
-### 2. Install Composer Dependencies:
-
-```
-./vendor/bin/sail composer install
-```
-
-### 3. Copy the .env file:
+### 2. Copy the .env file:
 If you don't have an .env file, you can create one by copying the example provided by Laravel:
 
 ```
 cp.env.example .env
 ```
 
-### 4. Generate an Application Key:
-```
-./vendor/bin/sail artisan key:generate
-```
-
-### 5. Start the Project:
+### 4. Start the Project:
 
 To start the project, run:
 
 ```
 ./start-server.sh
 ```
-This will start the Docker containers. By default, the application will be accessible at http://localhost or the port defined in the APP_PORT variable in your .env file.
+This will start the Docker containers. By default, the application will be accessible at http://localhost:8000 or the port defined in the APP_PORT variable in your .env file.
+
+### 5. Generate an Application Key:
+```
+./vendor/bin/sail artisan key:generate
+```
 
 ### 6. Run Migrations:
 ```
