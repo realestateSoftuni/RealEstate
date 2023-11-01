@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Check for Windows OS (this might detect WSL environments as well)
-if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" || "$OSTYPE" == "win32" ]]; then
+if [ "$OSTYPE" = "msys" ] || [ "$OSTYPE" = "cygwin" ] || [ "$OSTYPE" = "win32" ]; then
+
     echo "Detected Windows OS. Please ensure Docker Desktop is running and then proceed."
     # Optionally, you can exit or just continue with the rest of your script
     # exit 1
