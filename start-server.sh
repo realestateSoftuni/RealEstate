@@ -31,7 +31,6 @@ fi
 
 docker compose up -d
 # Start the Sail containers
-./vendor/bin/sail up -d
 
 if [ $? -ne 0 ]; then
     echo "Server failed to start."
