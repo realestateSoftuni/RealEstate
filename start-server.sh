@@ -29,6 +29,10 @@ else
     fi
 fi
 
+docker pull composer:latest
+
+docker run --rm -v $(pwd):/app composer install
+
 docker compose up -d
 # Start the Sail containers
 
