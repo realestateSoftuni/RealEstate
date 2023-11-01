@@ -29,6 +29,7 @@ else
     fi
 fi
 
+docker compose up
 # Start the Sail containers
 ./vendor/bin/sail up -d
 
