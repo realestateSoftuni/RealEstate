@@ -55,7 +55,7 @@ class User extends Authenticatable
         static::saving(function ($user) {
             // Increment 'update_count' when any field other than 'update_count' is being updated
             if ($user->isDirty() && !$user->isDirty('update_count')) {  // Check if any field other than 'update_count' is being updated
-                $user->update_count = $user->update_count + 1;
+                $user->update_count += 1;
             }
         });
     }
