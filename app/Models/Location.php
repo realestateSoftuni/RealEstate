@@ -16,12 +16,12 @@ class Location extends Model
         'parent_location_id',
         'update_count',
     ];
-
     protected static function booted()
     {
-        static::saving(function ($location) {
-            if ($location->isDirty() && !$location->isDirty('update_count')) {
-                $location->update_count++;
+        static::saving(function ($user) {
+            // Increment 'update_count' when any field other than 'update_count' is being updated
+            if ($user->isDirty() && !$user->isDirty('update_count')) {  // Check if any field other than 'update_count' is being updated
+                $user->update_count += 1;
             }
         });
     }
