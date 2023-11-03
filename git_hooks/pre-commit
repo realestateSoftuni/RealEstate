@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Pre-commit hook to run Laravel tests before committing
+
+# Run the test script inside Docker via Laravel Sail
+echo "Pre-commit hook: Running tests with Laravel Sail..."
+if ! ./vendor/bin/sail artisan test; then
+  echo "Tests failed, commit aborted."
+  exit 1
+fi
+
+# If tests pass, allow the commit
+exit 0
