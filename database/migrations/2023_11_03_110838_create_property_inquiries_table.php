@@ -23,6 +23,6 @@ class CreatePropertyInquiriesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('inquiries');
+        Schema::dropIfExists('property_inquiries');
     }
 }

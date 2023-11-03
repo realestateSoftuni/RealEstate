@@ -14,7 +14,7 @@ class CreatePropertiesTable extends Migration
             $table->string('address')->unique(); // Assuming addresses are unique
             $table->unsignedBigInteger('location_id');
             $table->unsignedBigInteger('agent_id')->nullable();
-            $table->unsignedBigInteger('property_energy_rating_id');
+            $table->unsignedBigInteger('property_energy_rating_id')->nullable();
             $table->decimal('price', 15, 2); // Assuming 15 digits in total and 2 after the decimal
             $table->integer('bedrooms');
             $table->decimal('square_feet', 15, 2);
@@ -22,7 +22,7 @@ class CreatePropertiesTable extends Migration
             $table->enum('status', [Property::STATUS_AVAILABLE, Property::STATUS_RENTED, Property::STATUS_SOLD])->default(Property::STATUS_AVAILABLE);
             $table->enum('property_type', [Property::TYPE_APARTMENT, Property::TYPE_HOUSE, Property::TYPE_LAND]);
             $table->date('date_listed');
-            $table->integer('n')->default(0);
+            $table->integer('update_count')->default(0);
             $table->softDeletes();
             $table->timestamps();
 

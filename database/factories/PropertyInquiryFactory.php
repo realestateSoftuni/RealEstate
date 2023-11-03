@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Customer;
 use App\Models\Property;
 use App\Models\User;
 use App\Models\PropertyInquiry;
@@ -15,7 +16,7 @@ class PropertyInquiryFactory extends Factory
     {
         return [
             'property_id' => Property::factory(),
-            'customer_id' => User::factory(),
+            'customer_id' => Customer::factory(),
             'inquiry_date' => $this->faker->date(),
             'message' => $this->faker->paragraph,
             'update_count' => $this->faker->randomNumber(),

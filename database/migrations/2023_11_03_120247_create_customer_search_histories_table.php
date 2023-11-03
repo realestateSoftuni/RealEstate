@@ -10,7 +10,7 @@ class CreateCustomerSearchHistoriesTable extends Migration
 {
     public function up()
     {
-        Schema::create('user_search_histories', function (Blueprint $table) {
+        Schema::create('customer_search_histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
             $table->text('search_query'); // Or JSON if you prefer

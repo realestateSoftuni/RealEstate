@@ -14,6 +14,7 @@ class PropertyEnergyRatingFactory extends Factory
     public function definition()
     {
         return [
+
             'rating_value' => $this->faker->randomElement(['A', 'B', 'C', 'D', 'E', 'F', 'G']),
             'update_count' => 0
         ];

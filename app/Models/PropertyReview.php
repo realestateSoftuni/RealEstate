@@ -33,8 +33,8 @@ class PropertyReview extends Model
     {
         static::saving(function ($review) {
             // Increment 'update_count' when any field other than 'update_count' is being updated
-            if ($review->isDirty() && !$review->isDirty('n')) {
-                $review->n += 1;
+            if ($review->isDirty() && !$review->isDirty('update_count')) {
+                $review->update_count += 1;
             }
         });
     }

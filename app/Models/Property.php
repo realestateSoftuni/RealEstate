@@ -71,7 +71,7 @@ class Property extends Model
         return $this->belongsTo(PropertyEnergyRating::class);
     }
 
-    public function inquiries()
+    public function property_inquiries()
     {
         return $this->hasMany(PropertyInquiry::class);
     }

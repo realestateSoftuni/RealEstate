@@ -26,7 +26,7 @@ class PropertyViewingsFactory extends Factory
     {
         return [
             'property_id' => Property::factory(),  // Create a new Property
-            'user_id' => Customer::factory(),      // Create a new Customer
+            'customer_id' => Customer::factory(),      // Create a new Customer
             'agent_id' => Agent::factory(),        // Create a new Agent
             'scheduled_time' => $this->faker->dateTimeBetween('now', '+1 year'),  // Schedule a time in the future
             'update_count' => $this->faker->randomDigit,  // Random update count

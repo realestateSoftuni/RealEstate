@@ -23,7 +23,7 @@ class PropertyFeatureFactory extends Factory
     {
         return [
             'feature_name' => $this->faker->word,
-            'n' => 0, // Defaulting 'n' to 0 initially
+            'update_count' => 0, // Defaulting 'n' to 0 initially
         ];
     }
 }

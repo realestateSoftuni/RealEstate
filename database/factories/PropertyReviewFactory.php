@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Factories;
+
 use App\Models\Customer;
 use App\Models\PropertyReview;
 use App\Models\Property;

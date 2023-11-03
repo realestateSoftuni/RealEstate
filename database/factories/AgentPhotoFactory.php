@@ -13,7 +13,7 @@ class AgentPhotoFactory extends Factory
     public function definition()
     {
         return [
-            'property_id' => Agent::factory(), // Default value. Ideally, this should be dynamically set based on available Property IDs.
+            'agent_id' => Agent::factory(),
             'photo_url' => $this->faker->imageUrl(),
             'update_count' => 0,
         ];

@@ -19,6 +19,6 @@ class CreatePropertyEnergyRatingsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('energy_ratings');
+        Schema::dropIfExists('property_energy_ratings');
     }
 }

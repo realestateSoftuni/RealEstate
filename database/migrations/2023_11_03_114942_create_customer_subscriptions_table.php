@@ -8,7 +8,7 @@ class CreateCustomerSubscriptionsTable extends Migration
 {
     public function up()
     {
-        Schema::create('user_subscriptions', function (Blueprint $table) {
+        Schema::create('customer_subscriptions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
             $table->foreignId('location_id')->constrained()->onDelete('cascade');
@@ -25,6 +25,6 @@ class CreateCustomerSubscriptionsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('user_subscriptions');
+        Schema::dropIfExists('customer_subscriptions');
     }
 }
