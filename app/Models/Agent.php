@@ -40,6 +40,10 @@ class Agent extends Model
         return $this->hasMany(Property::class);
     }
 
+    public function property_viewings()
+    {
+        return $this->hasMany(PropertyViewings::class);
+    }
     protected static function booted()
     {
         static::saving(function ($agent) {

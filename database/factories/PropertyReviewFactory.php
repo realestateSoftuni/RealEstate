@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\Customer;
 use App\Models\PropertyReview;
-use App\Models\User;
 use App\Models\Property;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -13,7 +13,7 @@ class PropertyReviewFactory extends Factory
     {
         return [
             'property_id' => Property::factory(),
-            'user_id' => User::factory(),
+            'customer_id' => Customer::factory(),
             'rating' => $this->faker->numberBetween(1, 5),
             'review_text' => $this->faker->sentence,
             'review_date' => $this->faker->dateTime,

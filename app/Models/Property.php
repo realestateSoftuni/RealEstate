@@ -61,6 +61,11 @@ class Property extends Model
         return $this->hasOne(PropertyMortageDetails::class);
     }
 
+    public function property_viewings()
+    {
+        return $this->hasMany(PropertyViewings::class);
+    }
+
     public function property_energy_rating()
     {
         return $this->belongsTo(PropertyEnergyRating::class);

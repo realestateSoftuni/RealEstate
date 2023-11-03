@@ -1,31 +1,31 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreatePropertyInquiriesTable extends Migration
+class CreatePropertyViewingsTable extends Migration
 {
     public function up()
     {
-        Schema::create('property_inquiries', function (Blueprint $table) {
+        Schema::create('property_viewings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('property_id');
             $table->unsignedBigInteger('customer_id');
-
-            $table->date('inquiry_date');
-            $table->text('message');
+            $table->unsignedBigInteger('agent_id');
+            $table->dateTime('scheduled_time');
+            $table->string('status')->default('scheduled'); // Example status
             $table->integer('update_count')->default(0);
             $table->timestamps();
-            $table->softDeletes();
 
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('inquiries');
+        Schema::dropIfExists('property_viewings');
     }
 }

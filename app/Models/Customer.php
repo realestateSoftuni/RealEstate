@@ -27,11 +27,15 @@ class Customer extends Model
         return $this->belongsToMany(Location::class, 'customer_location');
     }
 
-    public function inquiries()
+    public function property_inquiries()
     {
         return $this->hasMany(PropertyInquiry::class);
     }
 
+    public function property_viewings()
+    {
+        return $this->hasMany(PropertyViewings::class);
+    }
     protected static function booted()
     {
         static::saving(function ($customer) {
