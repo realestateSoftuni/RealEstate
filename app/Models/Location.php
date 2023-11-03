@@ -41,4 +41,9 @@ class Location extends Model
     {
         return $this->belongsToMany(Customer::class, 'customer_location');
     }
+
+    public function customer_subscription()
+    {
+        return $this->hasMany(CustomerSubscription::class);
+    }
 }

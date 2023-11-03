@@ -36,6 +36,12 @@ class Customer extends Model
     {
         return $this->hasMany(PropertyViewings::class);
     }
+
+    public function customer_subscription()
+    {
+        return $this->hasMany(CustomerSubscription::class);
+    }
+
     protected static function booted()
     {
         static::saving(function ($customer) {
