@@ -4,10 +4,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CustomerSubscription extends Model
 {
+    use HasFactory, SoftDeletes;
+
     protected $fillable = [
         'customer_id',
         'location_id', // Assuming location is represented by an ID.

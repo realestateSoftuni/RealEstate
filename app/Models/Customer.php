@@ -42,6 +42,11 @@ class Customer extends Model
         return $this->hasMany(CustomerSubscription::class);
     }
 
+    public function customer_search_history()
+    {
+        return $this->hasMany(CustomerSearchHistory::class);
+    }
+
     protected static function booted()
     {
         static::saving(function ($customer) {
