@@ -32,6 +32,7 @@ class PropertyReview extends Model
     protected static function booted()
     {
         static::saving(function ($review) {
+            // Increment 'update_count' when any field other than 'update_count' is being updated
             if ($review->isDirty() && !$review->isDirty('n')) {
                 $review->n += 1;
             }

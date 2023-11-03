@@ -46,7 +46,7 @@ class Property extends Model
         return $this->belongsToMany(PropertyFeature::class);
     }
 
-    public function reviews()
+    public function property_reviews()
     {
         return $this->hasMany(PropertyReview::class);
     }
@@ -58,13 +58,19 @@ class Property extends Model
 
     public function property_mortgage_details()
     {
-        return $this->hasOne(PropertyMortgageDetails::class);
+        return $this->hasOne(PropertyMortageDetails::class);
     }
 
     public function property_energy_rating()
     {
         return $this->belongsTo(PropertyEnergyRating::class);
     }
+
+    public function inquiries()
+    {
+        return $this->hasMany(PropertyInquiry::class);
+    }
+
     protected static function booted()
     {
         static::saving(function ($property) {

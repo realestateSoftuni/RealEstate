@@ -20,4 +20,13 @@ class AgentPhoto extends Model
     {
         return $this->belongsTo(Agent::class);
     }
+    protected static function booted()
+    {
+        static::saving(function ($photo) {
+            // Increment 'update_count' when any field other than 'update_count' is being updated
+            if ($photo->isDirty() && !$photo->isDirty('update_count')) {  // Check if any field other than 'update_count' is being updated
+                $photo->update_count += 1;
+            }
+        });
+    }
 }

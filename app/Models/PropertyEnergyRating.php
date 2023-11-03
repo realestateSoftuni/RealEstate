@@ -24,6 +24,7 @@ class PropertyEnergyRating extends Model
     protected static function booted()
     {
         static::saving(function ($energyRating) {
+            // Increment 'update_count' when any field other than 'update_count' is being updated
             if ($energyRating->isDirty() && !$energyRating->isDirty('update_count')) {
                 $energyRating->update_count += 1;
             }

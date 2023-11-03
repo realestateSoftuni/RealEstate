@@ -29,6 +29,7 @@ class PropertyMortageDetails extends Model
     protected static function booted()
     {
         static::saving(function ($propertyMortgage) {
+            // Increment 'update_count' when any field other than 'update_count' is being updated
             if ($propertyMortgage->isDirty() && !$propertyMortgage->isDirty('update_count')) {
                 $propertyMortgage->update_count += 1;
             }

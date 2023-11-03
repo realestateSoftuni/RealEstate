@@ -42,10 +42,10 @@ class Agent extends Model
 
     protected static function booted()
     {
-        static::saving(function ($user) {
+        static::saving(function ($agent) {
             // Increment 'update_count' when any field other than 'update_count' is being updated
-            if ($user->isDirty() && !$user->isDirty('update_count')) {  // Check if any field other than 'update_count' is being updated
-                $user->update_count += 1;
+            if ($agent->isDirty() && !$agent->isDirty('update_count')) {  // Check if any field other than 'update_count' is being updated
+                $agent->update_count += 1;
             }
         });
     }

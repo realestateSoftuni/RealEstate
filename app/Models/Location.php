@@ -18,10 +18,11 @@ class Location extends Model
     ];
     protected static function booted()
     {
-        static::saving(function ($user) {
+        static::saving(function ($location) {
             // Increment 'update_count' when any field other than 'update_count' is being updated
-            if ($user->isDirty() && !$user->isDirty('update_count')) {  // Check if any field other than 'update_count' is being updated
-                $user->update_count += 1;
+            // Increment 'update_count' when any field other than 'update_count' is being updated
+            if ($location->isDirty() && !$location->isDirty('update_count')) {  // Check if any field other than 'update_count' is being updated
+                $location->update_count += 1;
             }
         });
     }

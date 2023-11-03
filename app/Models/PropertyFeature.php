@@ -23,6 +23,7 @@ class PropertyFeature extends Model
     protected static function booted()
     {
         static::saving(function ($propertyFeature) {
+            // Increment 'update_count' when any field other than 'update_count' is being updated
             if ($propertyFeature->isDirty() && !$propertyFeature->isDirty('update_count')) {
                 $propertyFeature->update_count += 1;
             }

@@ -27,12 +27,17 @@ class Customer extends Model
         return $this->belongsToMany(Location::class, 'customer_location');
     }
 
+    public function inquiries()
+    {
+        return $this->hasMany(PropertyInquiry::class);
+    }
+
     protected static function booted()
     {
-        static::saving(function ($user) {
+        static::saving(function ($customer) {
             // Increment 'update_count' when any field other than 'update_count' is being updated
-            if ($user->isDirty() && !$user->isDirty('update_count')) {  // Check if any field other than 'update_count' is being updated
-                $user->update_count += 1;
+            if ($customer->isDirty() && !$customer->isDirty('update_count')) {  // Check if any field other than 'update_count' is being updated
+                $customer->update_count += 1;
             }
         });
     }

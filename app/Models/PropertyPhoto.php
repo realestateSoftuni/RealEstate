@@ -23,6 +23,7 @@ class PropertyPhoto extends Model
     protected static function booted()
     {
         static::saving(function ($photo) {
+            // Increment 'update_count' when any field other than 'update_count' is being updated
             if ($photo->isDirty() && !$photo->isDirty('update_count')) {
                 $photo->update_count += 1;
             }
