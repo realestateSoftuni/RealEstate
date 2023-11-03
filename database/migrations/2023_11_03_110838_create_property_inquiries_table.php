@@ -10,17 +10,14 @@ class CreatePropertyInquiriesTable extends Migration
     {
         Schema::create('property_inquiries', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('property_id');
-            $table->unsignedBigInteger('customer_id');
-
+            $table->foreignId('property_id')->constrained()->onDelete('cascade');
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
             $table->date('inquiry_date');
             $table->text('message');
             $table->integer('update_count')->default(0);
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
         });
     }
 

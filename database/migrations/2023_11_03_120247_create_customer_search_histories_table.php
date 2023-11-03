@@ -12,13 +12,13 @@ class CreateCustomerSearchHistoriesTable extends Migration
     {
         Schema::create('user_search_histories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('customer_id');
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
             $table->text('search_query'); // Or JSON if you prefer
             $table->timestamp('search_date')->useCurrent();
-            $table->timestamps();
             $table->integer('update_count');
+            $table->timestamps();
+            $table->softDeletes();
 
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
         });
     }
 

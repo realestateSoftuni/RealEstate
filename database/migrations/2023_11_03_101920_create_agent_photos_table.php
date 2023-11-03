@@ -10,14 +10,13 @@ class CreateAgentPhotosTable extends Migration
     {
         Schema::create('agent_photos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('agent_id');
+            $table->foreignId('agent_id')->constrained()->onDelete('cascade');
+            $table->unique('agent_id'); // Ensures one-to-one relationship
             $table->string('photo_url');
             $table->integer('update_count')->default(0);
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
-            $table->unique('agent_id'); // Ensures one-to-one relationship
         });
     }
 

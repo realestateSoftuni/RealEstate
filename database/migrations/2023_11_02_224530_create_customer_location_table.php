@@ -10,13 +10,10 @@ class CreateCustomerLocationTable extends Migration
     {
         Schema::create('customer_location', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('customer_id');
-            $table->unsignedBigInteger('location_id');
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('location_id')->constrained()->onDelete('cascade');
             $table->timestamps();
-
-            // Foreign keys constraints
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
+            $table->softDeletes();
 
             // Optional: Indexes for faster query performance
             $table->index('customer_id');

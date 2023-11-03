@@ -10,14 +10,11 @@ class CreatePropertyPhotosTable extends Migration
     {
         Schema::create('property_photos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('property_id');
+            $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('photo_url');
             $table->integer('update_count')->default(0);
             $table->timestamps();
             $table->softDeletes();
-
-            // Foreign key constraint
-            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
         });
     }
 

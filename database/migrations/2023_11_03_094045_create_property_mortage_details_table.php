@@ -11,7 +11,7 @@ class CreatePropertyMortageDetailsTable extends Migration
     {
         Schema::create('property_mortage_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('property_id'); // Foreign key for property
+            $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('lender_name');
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
@@ -23,7 +23,7 @@ class CreatePropertyMortageDetailsTable extends Migration
             $table->softDeletes();
 
             // Foreign key constraints
-            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
+
 
         });
     }

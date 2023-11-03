@@ -10,17 +10,16 @@ class CreateCustomerSubscriptionsTable extends Migration
     {
         Schema::create('user_subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('customer_id');
-            $table->unsignedBigInteger('location_id')->nullable(); // Allow null if you want to make location optional
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('location_id')->constrained()->onDelete('cascade');
             $table->decimal('min_price', 10, 2)->nullable();
             $table->decimal('max_price', 10, 2)->nullable();
             $table->integer('min_square_feet')->nullable();
             $table->integer('max_square_feet')->nullable();
             $table->integer('update_count')->default(0);
             $table->timestamps();
+            $table->softDeletes();
 
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-            $table->foreign('location_id')->references('id')->on('locations')->onDelete('set null');
         });
     }
 

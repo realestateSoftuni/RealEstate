@@ -10,17 +10,14 @@ class CreatePropertyViewingsTable extends Migration
     {
         Schema::create('property_viewings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('property_id');
-            $table->unsignedBigInteger('customer_id');
-            $table->unsignedBigInteger('agent_id');
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('agent_id')->constrained()->onDelete('cascade');
+            $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->dateTime('scheduled_time');
             $table->string('status')->default('scheduled'); // Example status
             $table->integer('update_count')->default(0);
             $table->timestamps();
-
-            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 
