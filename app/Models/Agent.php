@@ -28,6 +28,10 @@ class Agent extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function agent_photo()
+    {
+        return $this->hasOne(AgentPhoto::class);
+    }
     /**
      * Get the properties associated with the agent.
      */
