@@ -135,3 +135,19 @@ To stop the project and the Docker containers, run:
 ### 8. Additional Notes
 Laravel Sail documentation can be found [here](https://laravel.com/docs/10.x/sail/).
 For more detailed information about the project, refer to other documentation files or inline comments.
+
+
+## Swagger
+
+### 1. Generate swagger documentation:
+To generate/update the swagger documentation, run:
+
+```
+php artisan l5-swagger:generate
+```
+### 2. Preview Swagger Documentation
+To view the Swagger documentation in your web browser simply navigate to the following URL:
+
+```
+http://your-app-url/api/documentation
+```
