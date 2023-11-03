@@ -8,7 +8,7 @@ class CreatePropertyEnergyRatingsTable extends Migration
 {
     public function up()
     {
-        Schema::create('energy_ratings', function (Blueprint $table) {
+        Schema::create('property_energy_ratings', function (Blueprint $table) {
             $table->id();
             $table->enum('rating_value', ['A', 'B', 'C', 'D', 'E', 'F', 'G']);
             $table->integer('update_count')->default(0);
