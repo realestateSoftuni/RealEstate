@@ -5,11 +5,11 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePropertyMortageDetailsTable extends Migration
+class CreatePropertyMortagageDetailsTable extends Migration
 {
     public function up()
     {
-        Schema::create('property_mortage_details', function (Blueprint $table) {
+        Schema::create('property_mortagage_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('lender_name');
@@ -30,6 +30,6 @@ class CreatePropertyMortageDetailsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('property_mortage_details');
+        Schema::dropIfExists('property_mortagage_details');
     }
 }

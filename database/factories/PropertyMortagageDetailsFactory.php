@@ -3,12 +3,12 @@
 namespace Database\Factories;
 
 use App\Models\Property;
-use App\Models\PropertyMortageDetails;
+use App\Models\PropertyMortagageDetails;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PropertyMortageDetailsFactory extends Factory
+class PropertyMortagageDetailsFactory extends Factory
 {
-    protected $model = PropertyMortageDetails::class;
+    protected $model = PropertyMortagageDetails::class;
 
     public function definition()
     {

@@ -12,7 +12,7 @@ class PropertyReview extends Model
 
     protected $fillable = [
         'property_id',
-        'user_id',
+        'customer_id',
         'rating',
         'review_text',
         'review_date',
@@ -24,9 +24,9 @@ class PropertyReview extends Model
         return $this->belongsTo(Property::class);
     }
 
-    public function user()
+    public function customer()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Customer::class);
     }
 
     protected static function booted()

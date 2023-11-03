@@ -32,9 +32,9 @@ class Location extends Model
         return $this->belongsTo(Location::class, 'parent_location_id');
     }
 
-    public function childLocations()
+    public function properties()
     {
-        return $this->hasMany(Location::class, 'parent_location_id');
+        return $this->hasMany(Property::class, );
     }
 
     public function customers()

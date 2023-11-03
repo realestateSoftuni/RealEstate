@@ -58,7 +58,7 @@ class Property extends Model
 
     public function property_mortgage_details()
     {
-        return $this->hasOne(PropertyMortageDetails::class);
+        return $this->hasOne(PropertyMortagageDetails::class);
     }
 
     public function property_viewings()
