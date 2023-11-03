@@ -9,7 +9,7 @@ class CreatePropertyMortageDetailsTable extends Migration
 {
     public function up()
     {
-        Schema::create('property_mortage', function (Blueprint $table) {
+        Schema::create('property_mortage_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('property_id'); // Foreign key for property
             $table->string('lender_name');
