@@ -51,14 +51,14 @@ class Property extends Model
         return $this->hasMany(PropertyReview::class);
     }
 
-    public function photos()
+    public function property_photos()
     {
         return $this->hasMany(PropertyPhoto::class);
     }
 
-    public function mortgage()
+    public function property_mortgage_details()
     {
-        return $this->hasOne(Mortgage::class);
+        return $this->hasOne(PropertyMortgageDetails::class);
     }
 
     public function property_energy_rating()
