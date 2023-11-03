@@ -20,7 +20,6 @@ class Location extends Model
     {
         static::saving(function ($location) {
             // Increment 'update_count' when any field other than 'update_count' is being updated
-            // Increment 'update_count' when any field other than 'update_count' is being updated
             if ($location->isDirty() && !$location->isDirty('update_count')) {  // Check if any field other than 'update_count' is being updated
                 $location->update_count += 1;
             }
