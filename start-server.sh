@@ -36,6 +36,9 @@ docker run --rm -v $(pwd):/app composer install
 docker compose up -d
 # Start the Sail containers
 
+./vendor/bin/sail npm install
+./vendor/bin/sail npm run build
+
 
 
 if [ $? -ne 0 ]; then
