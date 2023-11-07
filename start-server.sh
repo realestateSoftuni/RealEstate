@@ -48,3 +48,26 @@ else
     # Print a message only if sail command was successful
     echo "Server started successfully. Visit http://localhost:$(grep APP_PORT .env | cut -d '=' -f2) to access the application."
 fi
+
+#!/bin/bash
+
+# Your existing server start-up code...
+
+# Set up the Git pre-commit hook (adjust the paths as necessary)
+HOOK_SRC="git_hooks/pre-commit"
+HOOK_DEST=".git/hooks/pre-commit"
+
+# Check if the hook already exists and is up-to-date
+if [ ! -f "$HOOK_DEST" ] || [ "$(diff "$HOOK_SRC" "$HOOK_DEST")" != "" ]; then
+    echo "Setting up the Git pre-commit hook..."
+
+    # Copy the pre-commit hook into the .git/hooks directory
+    cp "$HOOK_SRC" "$HOOK_DEST"
+
+    # Make the pre-commit hook executable
+    chmod +x "$HOOK_DEST"
+
+    echo "Git pre-commit hook set up successfully."
+fi
+
+# Your existing code to start the server...
