@@ -131,7 +131,14 @@ To stop the project and the Docker containers, run:
 ```
 ./stop-server.sh
 ```
+### 8. Setting up MailTrap for email sending in testing enviroment
+ -Register in [MailTrap](https://mailtrap.io/).</p>
+ -Verify email & login.</p>
+ -Go to [home page](https://mailtrap.io/home) -> Email Testing -> Start Testing </p>
+ -On integrations from the dropdown menu choose PHP -> Laravel 9+ You gonna see example set up for the .env file</p>
+ -Click on 'show credentials' and add them in the .env file</p>
 
-### 8. Additional Notes
+### 9. Additional Notes
 Laravel Sail documentation can be found [here](https://laravel.com/docs/10.x/sail/).
 For more detailed information about the project, refer to other documentation files or inline comments.
+
