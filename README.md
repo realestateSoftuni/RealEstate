@@ -131,14 +131,14 @@ This will start the Docker containers. By default, the application will be acces
 ./vendor/bin/sail artisan migrate
 ```
 
-### . Stop the Project:
+### 7. Stop the Project:
 To stop the project and the Docker containers, run:
 
 ```
 ./stop-server.sh
 ```
 
-### 9. Additional Notes
+### 8. Additional Notes
 Laravel Sail documentation can be found [here](https://laravel.com/docs/10.x/sail/).
 For more detailed information about the project, refer to other documentation files or inline comments.
 
