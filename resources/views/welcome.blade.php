@@ -8,7 +8,7 @@
     <title>React</title>
 </head>
 <body>
-<id id="hello-react"></id>
+<id id="app"></id>
 
 
 @viteReactRefresh

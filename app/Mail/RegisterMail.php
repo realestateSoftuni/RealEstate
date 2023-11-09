@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -38,7 +37,7 @@ class RegisterMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.register',
+            view: 'emails.email_verify',
         );
     }
 
@@ -54,6 +53,6 @@ class RegisterMail extends Mailable
 
     public function build()
     {
-        return $this->markdown('emails.register');
+        return $this->markdown('emails.email_verify');
     }
 }
