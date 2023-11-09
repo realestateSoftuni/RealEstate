@@ -1,9 +1,9 @@
 @component('mail::message')
 
-    <p>Hello{{ $user->name }}</p>
+    <p>Hello {{ $user->name }}</p>
 
-    @component('mail::button', ['url'=> url('verify/'.$user->remember_token)])
+@component('mail::button', ['url'=> url('verify/'.$user->remember_token)])
         Verify
-    @endcomponent
+@endcomponent
     {{ config('app.name') }}
 @endcomponent
