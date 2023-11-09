@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('verify/{token}', [AuthController::class,'verify']);
+
 Route::post('/create_user', [AuthController::class, 'create_user'])->name('create_user');
