@@ -30,7 +30,7 @@ const Register = () => {
         setIsLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:8000/api/create_user', formData);
+            const response = await axios.post(`${window.Laravel.apiUrl}/api/create_user`, formData);
             console.log('Registration successful!', response.data);
             setSuccess(response.data.message || 'Registration successful! Please check your email to verify.'); // Set success message
             setFormData({ // Clear form data
