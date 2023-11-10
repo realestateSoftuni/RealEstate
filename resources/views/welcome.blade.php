@@ -8,6 +8,11 @@
     <title>React</title>
 </head>
 <body>
+    <script>
+    window.Laravel = {
+        apiUrl: "{{ env('APP_URL') }}"
+    };
+</script>
 <id id="app"></id>
 
 
