@@ -16,7 +16,7 @@ class AuthController extends Controller
     public function create_user(Request $request)
     {
         request()->validate([
-            'username'=>'required|unique:users',
+            'username'=>'required|unique:users|max:255',
             'email'=>'required|email|unique:users',
             'password'=> [
                 'required',
@@ -29,7 +29,7 @@ class AuthController extends Controller
         $save->username = trim($request->username);
         $save->email = trim($request->email);
         $save->password = Hash::make($request->password);
-        $save->remember_token = Str::random(40);
+        $save->remember_token = Str::random(20);
         $save->save();
 
         Mail::to($save->email)->send(new RegisterMail($save));
@@ -48,7 +48,7 @@ class AuthController extends Controller
         }
         else
         {
-            abort(404);
+            abort(404, 'Verification failed: Invalid or expired token.');
         }
     }
 }
