@@ -1,25 +1,3 @@
-import '../../../public/css/styles.css'
-import "../../../public/favicon/favicon.ico"
-import '../../../public/css/jquery-ui.css'
-// <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800" rel="stylesheet">
-import '../../../public/css/jquery-ui.css'
-import "../../../public/css/fontawesome-5-all.min.css"
-import "../../../public/css/font-awesome.min.css"
-import "../../../public/css/fontawesome-all.min.css"
-import "../../../public/css/search.css"
-import "../../../public/css/animate.css"
-import "../../../public/css/aos.css"
-import "../../../public/css/aos2.css"
-import "../../../public/css/swiper.min.css"
-import "../../../public/css/magnific-popup.css"
-import "../../../public/css/lightcase.css"
-import "../../../public/css/owl-carousel.css"
-import "../../../public/css/owl.carousel.min.css"
-import "../../../public/css/bootstrap.min.css"
-import "../../../public/css/menu.css"
-import "../../../public/css/slick.css"
-import "../../../public/css/styles.css"
-import "../../../public/css/default.css"
 function InfoSideBar(){
     return (
         <div className="int_infosidebar">

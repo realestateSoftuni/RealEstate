@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800");
 /*------------------------------------------------------------------
 Author       : Code-Theme
 Template Name: Find Houses - HTML5 Template
@@ -5120,12 +5121,12 @@ element.style {
 /*---------------------------------------*/
 .bg-img3 {
   background-attachment: scroll;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.4)), to(rgba(0, 0, 0, 0.4))), url(../images/bg/video-poster2.png) no-repeat center top;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../images/bg/video-poster2.png) no-repeat center top;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.4)), to(rgba(0, 0, 0, 0.4))), url(../images/RE.jpg) no-repeat center top;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../images/RE.jpg) no-repeat center top;
   border-radius: 8px;
   height: 700px;
   position: relative;
-  z-index: 99;
+  z-index: 0;
 }
 
 .m0a {
