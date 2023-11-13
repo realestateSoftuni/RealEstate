@@ -3,7 +3,7 @@ function HeaderSearchBar() {
     return(
         <section className="home17 overlay home-three bg-img3">
             <div className="hero-main">
-                <div className="container" data-aos="zoom-in">
+                <div className="container aos-init aos-animate" data-aos="zoom-in">
                     <div className="row">
                         <div className="col-12">
                             <div className="banner-inner">

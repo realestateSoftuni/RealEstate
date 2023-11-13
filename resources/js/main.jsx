@@ -65,7 +65,7 @@ function Main() {
     return (
         <body className="maxw1600 m0a homepage-2 the-search hd-white">
             <div id="wrapper">
-                < InfoSideBar />
+                {/*< InfoSideBar />*/}
                 < HeaderBar />
 
                 <main className="main">
