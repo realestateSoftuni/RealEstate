@@ -27,22 +27,22 @@ function HeaderBar(){
                                                 </ul>
                                             </li>
                                             <li><a href="#">Home Image</a>
-                                                <ul>
-                                                    <li><a href="index.html">Modern Home</a></li>
-                                                    <li><a href="index-2.html">Home Boxed Image</a></li>
-                                                    <li><a href="index-3.html">Home Modern Image</a></li>
-                                                    <li><a href="index-5.html">Home Minimalist Style</a></li>
-                                                    <li><a href="index-6.html">Home Parallax Image</a></li>
-                                                    <li><a href="index-8.html">Home Search Form</a></li>
-                                                    <li><a href="index-10.html">Modern Full Image</a></li>
-                                                    <li><a href="index-15.html">Home Typed Image</a></li>
-                                                    <li><a href="index-17.html">Modern Parallax Image</a></li>
-                                                    <li><a href="index-18.html">Image Filter Search</a>
-                                                        <li><a href="index-21.html">Parallax Image video</a></li>
-                                                        <li><a href="index-23.html">Home Image</a></li>
-                                                        <li><a href="index-24.html">Image and video</a></li>
-                                                    </li>
-                                                </ul>
+                                                {/*<ul>*/}
+                                                {/*    <li><a href="index.html">Modern Home</a></li>*/}
+                                                {/*    <li><a href="index-2.html">Home Boxed Image</a></li>*/}
+                                                {/*    <li><a href="index-3.html">Home Modern Image</a></li>*/}
+                                                {/*    <li><a href="index-5.html">Home Minimalist Style</a></li>*/}
+                                                {/*    <li><a href="index-6.html">Home Parallax Image</a></li>*/}
+                                                {/*    <li><a href="index-8.html">Home Search Form</a></li>*/}
+                                                {/*    <li><a href="index-10.html">Modern Full Image</a></li>*/}
+                                                {/*    <li><a href="index-15.html">Home Typed Image</a></li>*/}
+                                                {/*    <li><a href="index-17.html">Modern Parallax Image</a></li>*/}
+                                                {/*    <li><a href="index-18.html">Image Filter Search</a>*/}
+                                                {/*        <li><a href="index-21.html">Parallax Image video</a></li>*/}
+                                                {/*        <li><a href="index-23.html">Home Image</a></li>*/}
+                                                {/*        <li><a href="index-24.html">Image and video</a></li>*/}
+                                                {/*    </li>*/}
+                                                {/*</ul>*/}
                                             </li>
                                             <li><a href="#">Home Video</a>
                                                 <ul>

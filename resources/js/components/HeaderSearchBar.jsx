@@ -1,5 +1,24 @@
+import {useState} from "react";
 
 function HeaderSearchBar() {
+    const[advancedSaleIsClicked, setAdvancedSaleIsClicked] = useState(false);
+    const[advancedRentIsClicked, setAdvancedRentIsClicked] = useState(false);
+    const[buttonNumIsClicked, setButtonNumIsClicked] = useState(1);
+
+
+    const clickAdvancedSaleHandler = () => {
+        setAdvancedSaleIsClicked(!advancedSaleIsClicked);
+    };
+
+    const clickAdvancedRentHandler = () => {
+        setAdvancedRentIsClicked(!advancedRentIsClicked);
+    };
+
+    const saleRentButtonHandler = (buttonNumber) => {
+        setButtonNumIsClicked(buttonNumber)
+    };
+
+
     return(
         <section className="home17 overlay home-three bg-img3">
             <div className="hero-main">
@@ -14,15 +33,15 @@ function HeaderSearchBar() {
                         <div className="col-12">
                             <div className="banner-search-wrap">
                                 <ul className="nav nav-tabs rld-banner-tab">
-                                    <li className="nav-item">
-                                        <a className="nav-link active" data-toggle="tab" href="#">For Sale</a>
+                                    <li className="nav-item" onClick={() => saleRentButtonHandler(1)}>
+                                        <a className={`nav-link ${buttonNumIsClicked === 1 ? 'active' : ''}`} data-toggle="tab" href="#">For Sale</a>
                                     </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" data-toggle="tab" href="#">For Rent</a>
+                                    <li className="nav-item" onClick={() => saleRentButtonHandler(2)}>
+                                        <a className={`nav-link ${buttonNumIsClicked === 2 ? 'active' : ''}`} data-toggle="tab" href="#">For Rent</a>
                                     </li>
                                 </ul>
                                 <div className="tab-content">
-                                    <div className="tab-pane fade show active" id="tabs_1">
+                                    <div className={`tab-pane fade ${buttonNumIsClicked === 1 ? 'show active' : ''}`} id="tabs_1">
                                         <div className="rld-main-search">
                                             <div className="row">
                                                 <div className="rld-single-input">
@@ -47,11 +66,11 @@ function HeaderSearchBar() {
                                                         <option value="3">Houston</option>
                                                     </select>
                                                 </div>
-                                                <div className="dropdown-filter"><span>Advanced Search</span></div>
+                                                <div className="dropdown-filter" onClick={clickAdvancedSaleHandler}><span>Advanced Search</span></div>
                                                 <div className="col-xl-2 col-lg-2 col-md-4 pl-0">
                                                     <a className="btn btn-yellow" href="#">Search Now</a>
                                                 </div>
-                                                <div className="explore__form-checkbox-list full-filter">
+                                                <div className={`explore__form-checkbox-list full-filter ${advancedSaleIsClicked ? 'filter-block' : ''}`}>
                                                     <div className="row">
                                                         <div className="col-lg-4 col-md-6 py-1 pr-30 pl-0">
                                                             <div className="form-group categories">
@@ -155,7 +174,7 @@ function HeaderSearchBar() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="tab-pane fade" id="tabs_2">
+                                    <div className={`tab-pane fade ${buttonNumIsClicked === 2 ? 'show active' : ''}`} id="tabs_2">
                                         <div className="rld-main-search">
                                             <div className="row">
                                                 <div className="rld-single-input">
@@ -180,11 +199,11 @@ function HeaderSearchBar() {
                                                         <option value="3">Houston</option>
                                                     </select>
                                                 </div>
-                                                <div className="dropdown-filter"><span>Advanced Search</span></div>
+                                                <div className="dropdown-filter" onClick={clickAdvancedRentHandler}><span>Advanced Search</span></div>
                                                 <div className="col-xl-2 col-lg-2 col-md-4 pl-0">
                                                     <a className="btn btn-yellow" href="#">Search Now</a>
                                                 </div>
-                                                <div className="explore__form-checkbox-list full-filter">
+                                                <div className={`explore__form-checkbox-list full-filter ${advancedRentIsClicked ? 'filter-block' : ''}`}>
                                                     <div className="row">
                                                         <div className="col-lg-4 col-md-6 py-1 pr-30 pl-0">
                                                             <div className="form-group categories">
