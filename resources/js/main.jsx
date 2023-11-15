@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ReactDOM from 'react-dom/client'
 // import InfoSideBar from './components/InfoSideBar.jsx';
 import HeaderBar from "./components/HeaderBar.jsx";
@@ -24,9 +24,13 @@ import "../../public/css/slick.css"
 import "../../public/css/styles.css"
 import '../../public/css/colors/dark-gray.css'
 import HeaderSearchBar from "./components/HeaderSearchBar.jsx";
+import PopularPlaces from "./components/PopularPlaces.jsx";
+import AOS from 'aos'
 
 function Main() {
-
+    useEffect(() => {
+        AOS.init()
+    }, []);
     return (
         <div className="maxw1600 m0a homepage-2 the-search hd-white">
             <div id="wrapper">
@@ -35,6 +39,7 @@ function Main() {
 
                 <main className="main">
                     <HeaderSearchBar/>
+                    <PopularPlaces/>
                 </main>
 
                 <Footer />
