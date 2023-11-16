@@ -1,8 +1,16 @@
 import React, {useEffect} from 'react'
 import ReactDOM from 'react-dom/client'
 // import InfoSideBar from './components/InfoSideBar.jsx';
+import AOS from 'aos'
 import HeaderBar from "./components/HeaderBar.jsx";
 import Footer from "./components/Footer.jsx";
+import HomePage from "./components/HomePage.jsx";
+import {Route, Routes} from "react-router-dom";
+import LogIn from "./components/LogIn.jsx";
+import Register from "./components/Register.jsx";
+import PropertiesCatalogue from "./components/PropertiesCatalogue.jsx";
+import AddProperty from "./components/AddProperty.jsx";
+import User from "./components/UserDetails.jsx";
 import "../../public/favicon.ico"
 import '../../public/css/jquery-ui.css'
 import '../../public/font/flaticon.css'
@@ -23,9 +31,7 @@ import "../../public/css/menu.css"
 import "../../public/css/slick.css"
 import "../../public/css/styles.css"
 import '../../public/css/colors/dark-gray.css'
-import HeaderSearchBar from "./components/HeaderSearchBar.jsx";
-import PopularPlaces from "./components/PopularPlaces.jsx";
-import AOS from 'aos'
+
 
 function Main() {
     useEffect(() => {
@@ -37,10 +43,16 @@ function Main() {
                 {/*< InfoSideBar />*/}
                 < HeaderBar />
 
-                <main className="main">
-                    <HeaderSearchBar/>
-                    <PopularPlaces/>
-                </main>
+                <Routes>
+
+                    <Route path='/' element={<HomePage/>}/>
+                    <Route path='/login' element={<LogIn/>}/>
+                    <Route path='/register' element={<Register/>}/>
+                    <Route path='/properties' element={<PropertiesCatalogue/>}/>
+                    <Route path='/add-property' element={<AddProperty/>}/>
+                    <Route path='/user-details' element={<User/>}/>
+
+                </Routes>
 
                 <Footer />
             </div>

@@ -1,5 +1,6 @@
 import logo from '../../../public/images/FullLogo_Transparent_NoBuffer.png'
 import {useState} from "react";
+import {Link} from "react-router-dom";
 function HeaderBar(){
     const[isLanguageClicked, setIsLanguageClicked] = useState(false)
     const[isProfileClicked, setIsProfileClicked] = useState(false)
@@ -18,7 +19,7 @@ function HeaderBar(){
                     <div className="container container-header">
                         <div className="left-side">
                             <div id="logo">
-                                <a href="#"><img src={logo} alt=""/></a>
+                                <Link to="/"><img src={logo} alt=""/></Link>
                             </div>
                             <div className="mmenu-trigger">
                                 <button className="hamburger hamburger--collapse" type="button">
@@ -197,7 +198,7 @@ function HeaderBar(){
 
                         <div className="right-side d-none d-none d-lg-none d-xl-flex">
                             <div className="header-widget">
-                                <a href="add-property.html" className="button border">Add Listing<i className="fas fa-laptop-house ml-2"></i></a>
+                                <Link to="/add-property" className="button border">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link>
                             </div>
                         </div>
 
@@ -207,7 +208,7 @@ function HeaderBar(){
                             </div>
                             <ul>
                                 <li><a href="#"> Edit profile</a></li>
-                                <li><a href="#"> Add Property</a></li>
+                                <li><Link to="/add-property"> Add Property</Link></li>
                                 <li><a href="#">  Payments</a></li>
                                 <li><a href="#"> Change Password</a></li>
                                 <li><a href="#">Log Out</a></li>
@@ -216,7 +217,7 @@ function HeaderBar(){
 
                         <div className="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
                             <div className="header-widget sign-in">
-                                <div className="show-reg-form modal-open"><a href="#">Sign In</a></div>
+                                <div className="show-reg-form modal-open"><Link to="/login">Sign In</Link></div>
                             </div>
                         </div>
                         <div className={`header-user-menu user-menu add d-none d-lg-none d-xl-flex ${isLanguageClicked ? 'active' : ''}`} onClick={languageHandler}>
