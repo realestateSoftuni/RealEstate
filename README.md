@@ -135,3 +135,5 @@ To stop the project and the Docker containers, run:
 ### 8. Additional Notes
 Laravel Sail documentation can be found [here](https://laravel.com/docs/10.x/sail/).
 For more detailed information about the project, refer to other documentation files or inline comments.
+
+
