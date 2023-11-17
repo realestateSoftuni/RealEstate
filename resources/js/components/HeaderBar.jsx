@@ -18,7 +18,7 @@ function HeaderBar(){
                     <div className="container container-header">
                         <div className="left-side">
                             <div id="logo">
-                                <a href="#"><img src={logo} alt=""/></a>
+                               <Link to='/'><img src={logo} alt=""/></Link>
                             </div>
                             <div className="mmenu-trigger">
                                 <button className="hamburger hamburger--collapse" type="button">
