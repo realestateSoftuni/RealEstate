@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 function NotFound404() {
     return (
+        <div className="inner-pages hd-white">
         <div id="wrapper">
             <section className="notfound pt-0">
                 <div className="container">
@@ -16,6 +17,7 @@ function NotFound404() {
                     </div>
                 </div>
             </section>
+        </div>
         </div>
     );
 }

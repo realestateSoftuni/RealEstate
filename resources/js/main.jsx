@@ -31,6 +31,7 @@ import '../../public/css/colors/dark-gray.css'
 
 
 import AOS from 'aos'
+import NotFound404 from "./components/NotFound404.jsx";
 
 
 function Main() {
@@ -51,6 +52,7 @@ function Main() {
                             </main>}/>
                         <Route path="/register" element={<Register/>}/>
                         <Route path="/verify/:token" element={<EmailVerify />}/>
+                        <Route path="*" element={<NotFound404 />} />
                     </Routes>
                     <Footer/>
                 </div>
