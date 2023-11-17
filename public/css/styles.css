@@ -5459,7 +5459,7 @@ element.style {
   height: 100%;
   z-index: 99999;
   overflow: auto;
-  display: none;
+  display: block;
   -webkit-transform: translate3d(0, 0, 0);
   background: rgba(0, 0, 0, 0.81);
 }
@@ -5509,21 +5509,22 @@ element.style {
 
 .login-and-register-form .close-reg {
   position: absolute;
-  background: #FF385C;
+  background: #c18847;
   top: 14px;
   right: 30px;
   border-radius: 100%;
   color: #fff;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
   cursor: pointer;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
 }
 
 .login-and-register-form .fa.fa-times {
-  padding-left: 14px;
+  padding-left: 5px;
+  padding-right: 12px;
   text-align: center;
 }
 
@@ -5568,11 +5569,17 @@ element.style {
   background: #55acee;
 }
 
+.login-and-register-form .soc-log a.google-log {
+    text-align: center;
+    background: #f62222;
+}
+
 .login-and-register-form .soc-log a i {
   font-size: 20px;
   padding-right: 15px;
   position: relative;
   top: 3px;
+  color: #fff;
 }
 
 .login-and-register-form .soc-log a.facebook-log {
@@ -5584,7 +5591,7 @@ element.style {
 }
 
 .login-and-register-form .close-reg:hover, .custom-form .log-submit-btn:hover, .soc-log a:hover {
-  background: #2F3B59;
+  background: #fff;
 }
 
 .login-and-register-form .log-separator span {
@@ -5628,7 +5635,7 @@ element.style {
 }
 
 .login-and-register-form .tabs-menu li.current a {
-  background: #FF385C;
+  background: #c18847;
 }
 
 .login-and-register-form .main-register .filter-tags {
@@ -5729,7 +5736,7 @@ element.style {
 
 .login-and-register-form .custom-form .log-submit-btn {
   float: left;
-  background: #FF385C;
+  background: #c18847;
   padding: 13px 35px;
   border: none;
   border-radius: 4px;
@@ -5753,7 +5760,7 @@ element.style {
 .login-and-register-form .tabs-menu li.current a,
 .login-and-register-form .tabs-menu li a:hover {
   color: #fff;
-  background: #FF385C;
+  background: #c18847;
 }
 
 .login-and-register-form .tab-contents {
@@ -5767,7 +5774,7 @@ element.style {
 }
 
 .login-and-register-form .main-register h3 span strong {
-  color: #FF385C;
+  color: #c18847;
   border: none;
   outline: 0;
   font-weight: inherit;
@@ -7722,10 +7729,11 @@ html input[disabled] {
 
 .header-widget.sign-in {
   height: auto;
+  cursor: pointer;
 }
 
 .header-widget.sign-in a {
-  color: #fff;
+  color: black;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
@@ -7735,7 +7743,7 @@ html input[disabled] {
 .hd-white .header-widget.sign-in a,
 .hd-white .show-lang,
 .hd-white .show-lang .fa-caret-down.arrlan {
-  color: #666;
+  color: black;
 }
 
 .hd-white .right-side.sign {
