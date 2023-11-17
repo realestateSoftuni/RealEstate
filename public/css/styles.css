@@ -2070,7 +2070,7 @@ section.recently.portfolio {
 
 ul.slick-dots {
   margin-top: 20px;
-  list-style-type: disc;
+  /*list-style-type: disc;*/
 }
 
 .slick-dots li {
@@ -2102,6 +2102,14 @@ ul.slick-dots {
   transition: all 0.3s;
 }
 
+.slick-dots li button::before{
+    display: none;
+}
+
+.slick-dots li button::after{
+    content: '';
+}
+
 .slick-dots li.slick-active {
   -webkit-box-shadow: inset 0 0 0 6px #FF385C;
           box-shadow: inset 0 0 0 6px #FF385C;
@@ -2110,7 +2118,7 @@ ul.slick-dots {
 }
 
 .slick-dots li:after {
-  display: block;
+  display: none;
   height: 13px;
   width: 13px;
   content: "";
@@ -2140,6 +2148,10 @@ ul.slick-dots {
   font: inherit;
   line-height: normal;
   cursor: pointer;
+}
+
+#wrapper > main > section.featured.portfolio.home18.bg-white-3 > div > div.slick-slider.slick-initialized > button.slick-arrow.slick-next {
+    display: none;
 }
 
 .agents-grid {
@@ -5126,7 +5138,7 @@ element.style {
   border-radius: 8px;
   height: 700px;
   position: relative;
-  z-index: 0;
+  z-index: 99;
 }
 
 .m0a {
@@ -10071,6 +10083,7 @@ body.int_white_bg {
 .int_white_bg .slick-dots li.slick-active {
   -webkit-box-shadow: inset 0 0 0 6px #c18847;
           box-shadow: inset 0 0 0 6px #c18847;
+    background-color: #c18847;
 }
 
 .int_white_bg .slick-dots li:after {

@@ -1,12 +1,14 @@
 import React from "react";
-import HeaderSearchBar from "../components/HeaderSearchBar.jsx";
-import PopularPlaces from "../components/PopularPlaces.jsx";
+import HeaderSearchBar from "./HeaderSearchBar.jsx";
+import PopularPlaces from "./PopularPlaces.jsx";
+import SaleProperties from "./SaleProperties.jsx";
 
 function HomePage(){
     return(
         <main className="main">
             <HeaderSearchBar/>
             <PopularPlaces/>
+            <SaleProperties/>
         </main>
     );
 }

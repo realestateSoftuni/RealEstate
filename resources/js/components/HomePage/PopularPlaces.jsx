@@ -1,7 +1,7 @@
-import picture from '../../assets/NewYork.jpg'
-import picture2 from '../../assets/LA.jpg'
-import picture3 from '../../assets/SF.jpg'
-import picture4 from '../../assets/Miami.jpg'
+import picture from '../../../assets/NewYork.jpg'
+import picture2 from '../../../assets/LA.jpg'
+import picture3 from '../../../assets/SF.jpg'
+import picture4 from '../../../assets/Miami.jpg'
 
 function PopularPlaces() {
     return(

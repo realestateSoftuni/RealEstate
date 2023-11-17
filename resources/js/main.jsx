@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 import AOS from 'aos'
 import HeaderBar from "./components/HeaderBar.jsx";
 import Footer from "./components/Footer.jsx";
-import HomePage from "./components/HomePage.jsx";
+import HomePage from "./components/HomePage/HomePage.jsx";
 import {Route, Routes} from "react-router-dom";
 import LogIn from "./components/LogIn.jsx";
 import Register from "./components/Register.jsx";
