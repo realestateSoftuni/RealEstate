@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{any}', function () {
+    return view('welcome'); // Your entry point view for React
+})->where('any', '.*'); // This regex allows for nested paths

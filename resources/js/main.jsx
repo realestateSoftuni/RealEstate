@@ -1,12 +1,17 @@
 import React, {useEffect} from 'react'
-import ReactDOM from 'react-dom/client'
-// import InfoSideBar from './components/InfoSideBar.jsx';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+
 import HeaderBar from "./components/HeaderBar.jsx";
 import Footer from "./components/Footer.jsx";
+import HeaderSearchBar from "./components/HeaderSearchBar.jsx";
+import PopularPlaces from "./components/PopularPlaces.jsx";
+import Register from "./components/Register.jsx";
+import EmailVerify from "./components/EmailVerify.jsx";
+
 import "../../public/favicon.ico"
 import '../../public/css/jquery-ui.css'
 import '../../public/font/flaticon.css'
-// import '../css/app.css'
+
 import "../../public/css/fontawesome-all.min.css"
 import "../../public/css/fontawesome-5-all.min.css"
 import "../../public/css/font-awesome.min.css"
@@ -23,9 +28,10 @@ import "../../public/css/menu.css"
 import "../../public/css/slick.css"
 import "../../public/css/styles.css"
 import '../../public/css/colors/dark-gray.css'
-import HeaderSearchBar from "./components/HeaderSearchBar.jsx";
-import PopularPlaces from "./components/PopularPlaces.jsx";
+
+
 import AOS from 'aos'
+
 
 function Main() {
     useEffect(() => {
@@ -33,17 +39,22 @@ function Main() {
     }, []);
     return (
         <div className="maxw1600 m0a homepage-2 the-search hd-white">
-            <div id="wrapper">
-                {/*< InfoSideBar />*/}
-                < HeaderBar />
-
-                <main className="main">
-                    <HeaderSearchBar/>
-                    <PopularPlaces/>
-                </main>
-
-                <Footer />
-            </div>
+            <Router>
+                <div id="wrapper">
+                    {/*< InfoSideBar />*/}
+                    < HeaderBar/>
+                    <Routes>
+                        <Route path="/" element={
+                            <main className="main">
+                                <HeaderSearchBar/>
+                                <PopularPlaces/>
+                            </main>}/>
+                        <Route path="/register" element={<Register/>}/>
+                        <Route path="/verify/:token" element={<EmailVerify />}/>
+                    </Routes>
+                    <Footer/>
+                </div>
+            </Router>
         </div>
     );
 }
