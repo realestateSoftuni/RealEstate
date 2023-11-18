@@ -1,5 +1,8 @@
 import logo from '../../../public/images/FullLogo_Transparent_NoBuffer.png'
 import {useState} from "react";
+
+import SignInComponent from "../components/SignInComponent.jsx";
+
 function HeaderBar(){
     const[isLanguageClicked, setIsLanguageClicked] = useState(false)
     const[isProfileClicked, setIsProfileClicked] = useState(false)
@@ -214,11 +217,8 @@ function HeaderBar(){
                             </ul>
                         </div>
 
-                        <div className="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
-                            <div className="header-widget sign-in">
-                                <div className="show-reg-form modal-open"><a href="#">Sign In</a></div>
-                            </div>
-                        </div>
+                         < SignInComponent />
+                                
                         <div className={`header-user-menu user-menu add d-none d-lg-none d-xl-flex ${isLanguageClicked ? 'active' : ''}`} onClick={languageHandler}>
                             <div className="lang-wrap">
                                 <div className="show-lang"><span><i className="fas fa-globe-americas"></i><strong>ENG</strong></span><i className="fa fa-caret-down arrlan"></i></div>
@@ -238,4 +238,4 @@ function HeaderBar(){
     )
 }
 
-export default HeaderBar
+export default HeaderBar;
