@@ -110,7 +110,7 @@ function Footer(){
                     </div>
                 </div>
             </div>
-            <div className="second-footer bg-white-1 rec-pro">
+            <div className="second-footer bg-white-3 rec-pro">
                 <div className="container-fluid sd-f">
                     <p>2021 © Copyright - All Rights Reserved.</p>
                     <ul className="netsocials">
