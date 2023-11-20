@@ -17,6 +17,20 @@ const LoginView = ({isOpen, onClose, children}) => {
         }
     }
 
+    const[buttonRegisterIsClicked, setButtonRegIsClicked] = useState(1);
+    
+
+    const RegisterHandler = (buttonNumber) => {
+        setButtonRegIsClicked(buttonNumber)
+    };
+
+    const styleChangesLog = {
+        display: buttonRegisterIsClicked === 1 ? 'block' : 'none'
+    };
+
+    const styleChangesReg = {
+        display: buttonRegisterIsClicked === 2 ? 'block' : 'none'
+    };
 
     return (
             <div className="login-and-register-form modal" onClick={stopPropagation}>
@@ -27,11 +41,13 @@ const LoginView = ({isOpen, onClose, children}) => {
                             <h3>Welcome to <span>Home<strong>ESTATE</strong></span></h3>
                             <div id="tabs-container">
                                 <ul className="tabs-menu">
-                                    <li><a href="#tab-1" onClick={(e) => scrollToTarget(e, 'tab-1')}>Login</a></li>
-                                    <li><a href="#tab-2" onClick={(e) => scrollToTarget(e, 'tab-2')}>Register</a></li>
+                                    <li onClick={() => RegisterHandler(1)}>
+                                        <a className={`${buttonRegisterIsClicked === 1 ? 'current' : ''}`}>Login</a></li>
+                                    <li onClick={() => RegisterHandler(2)}>
+                                        <a className={`${buttonRegisterIsClicked === 2 ? 'current' : ''}`}>Register</a></li>
                                 </ul>
                                 <div className="tab">
-                                    <div id="tab-1" className="tab-contents">
+                                    <div className="tab-contents" style={styleChangesLog} id="tab-1">
                                         <div className="custom-form">
                                             <form method="post" name="registerform">
                                                 <label>Username or Email Address * </label>
@@ -60,7 +76,7 @@ const LoginView = ({isOpen, onClose, children}) => {
                                         </div>
                                     </div>
                                     <div className="tab">
-                                        <div id="tab-2" className="tab-contents">
+                                        <div className="tab-contents" style={styleChangesReg} id="tab-2">
                                             <div className="custom-form">
                                                 <form method="post" name="registerform" className="main-register-form"
                                                       id="main-register-form2">
