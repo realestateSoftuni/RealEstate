@@ -5561,17 +5561,24 @@ element.style {
 
 .login-and-register-form .soc-log a.facebook-log {
   text-align: center;
-  background: #3b5998;
+  background: #2e4b77;
+  color: #fff;
 }
 
-.login-and-register-form .soc-log a.twitter-log {
+.login-and-register-form .soc-log i.fa-apple {
+    color: black;
+}
+
+.login-and-register-form .soc-log a.apple-log {
   text-align: center;
-  background: #55acee;
+  background: #577c78;
+  color: #fff;
 }
 
 .login-and-register-form .soc-log a.google-log {
     text-align: center;
     background: #f62222;
+    color: #fff;
 }
 
 .login-and-register-form .soc-log a i {
@@ -7740,7 +7747,7 @@ html input[disabled] {
   margin-top: 30px;
 }
 
-.hd-white .header-widget.sign-in a,
+.hd-white .header-widget.sign-in,
 .hd-white .show-lang,
 .hd-white .show-lang .fa-caret-down.arrlan {
   color: black;

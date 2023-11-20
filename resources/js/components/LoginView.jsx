@@ -18,7 +18,7 @@ const LoginView = ({isOpen, onClose, children}) => {
     }
 
     const[buttonRegisterIsClicked, setButtonRegIsClicked] = useState(1);
-    
+
 
     const RegisterHandler = (buttonNumber) => {
         setButtonRegIsClicked(buttonNumber)
@@ -41,10 +41,10 @@ const LoginView = ({isOpen, onClose, children}) => {
                             <h3>Welcome to <span>Home<strong>ESTATE</strong></span></h3>
                             <div id="tabs-container">
                                 <ul className="tabs-menu">
-                                    <li onClick={() => RegisterHandler(1)}>
-                                        <a className={`${buttonRegisterIsClicked === 1 ? 'current' : ''}`}>Login</a></li>
-                                    <li onClick={() => RegisterHandler(2)}>
-                                        <a className={`${buttonRegisterIsClicked === 2 ? 'current' : ''}`}>Register</a></li>
+                                    <li onClick={() => RegisterHandler(1)} className={`${buttonRegisterIsClicked === 1 ? 'current' : ''}`}>
+                                        <a>Login</a></li>
+                                    <li onClick={() => RegisterHandler(2)} className={`${buttonRegisterIsClicked === 2 ? 'current' : ''}`}>
+                                        <a>Register</a></li>
                                 </ul>
                                 <div className="tab">
                                     <div className="tab-contents" style={styleChangesLog} id="tab-1">
@@ -68,9 +68,11 @@ const LoginView = ({isOpen, onClose, children}) => {
                                             </div>
                                             <div className="log-separator fl-wrap"><span>Or</span></div>
                                             <div className="soc-log fl-wrap">
-                                                <a href="#" className="google-log"><i className="fa fa-google"></i> Log in with
+                                                <a href="#" className="google-log"><i className="fa fa-google"></i> Sign in with
                                                     Google</a>
-                                                <a href="#" className="facebook-log"><i className="fa fa-facebook-official"></i>Log in
+                                                <a href="#" className="apple-log"><i className="fa fa-apple"></i>Sign in
+                                                    with Apple</a>
+                                                <a href="#" className="facebook-log"><i className="fa fa-facebook-official"></i>Sign in
                                                     with Facebook</a>
                                             </div>
                                         </div>
@@ -87,6 +89,9 @@ const LoginView = ({isOpen, onClose, children}) => {
                                                     <label>Email Address *</label>
                                                     <input name="email" type="text" onClick="this.select()" value=""/>
                                                     <label>Password *</label>
+                                                    <input name="password" type="password" onClick="this.select()"
+                                                           value=""/>
+                                                    <label>Confirm Password *</label>
                                                     <input name="password" type="password" onClick="this.select()"
                                                            value=""/>
                                                     <button type="submit" className="log-submit-btn">
