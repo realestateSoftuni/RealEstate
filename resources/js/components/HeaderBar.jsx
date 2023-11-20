@@ -1,5 +1,7 @@
 import logo from '../../../public/images/FullLogo_Transparent_NoBuffer.png'
 import {useState} from "react";
+import {Link} from "react-router-dom";
+
 function HeaderBar(){
     const[isLanguageClicked, setIsLanguageClicked] = useState(false)
     const[isProfileClicked, setIsProfileClicked] = useState(false)
