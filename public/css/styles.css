@@ -789,14 +789,14 @@ img {
 }
 
 .btn-default.btn-theme-colored2:hover {
-  background: #FF385C;
+  background: #c18847;
   color: #fff;
   border-color: #fff;
 }
 
 .btn-dark.btn-theme-colored {
   color: #fff;
-  background-color: #FF385C;
+  background-color: #c18847;
   border-color: #fff;
   font-size: 16px;
   font-weight: 600;
@@ -1606,11 +1606,11 @@ section.recently.portfolio {
 .hp1 .request .btn {
   cursor: pointer;
   margin-top: 1rem;
-  background: #FF385C;
+  background: #c18847;
 }
 
 .hp1 .request .btn:hover {
-  background: #FF385C;
+  background: #c18847;
 }
 
 .hp1 .request .address-info p:last-child {
@@ -1649,7 +1649,7 @@ section.recently.portfolio {
 .hp1 .request .contact-form input[type="text"]:focus,
 .hp1 .request .contact-form input[type="email"]:focus,
 .hp1 .request .contact-form textarea:focus {
-  border-color: #FF385C;
+  border-color: #b0793b;
 }
 
 .hp1 .request .contact-form textarea {
@@ -1683,8 +1683,8 @@ section.recently.portfolio {
 }
 
 .hp1 .bgc {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(43, 43, 43, 0.8)), to(rgba(43, 43, 43, 0.8))), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
-  background: linear-gradient(rgba(43, 43, 43, 0.8), rgba(43, 43, 43, 0.8)), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(43, 43, 43, 0.8)), to(rgba(43, 43, 43, 0.8))), url(../images/bg/call-center.jpg) no-repeat center center;
+  background: linear-gradient(rgba(43, 43, 43, 0.8), rgba(43, 43, 43, 0.8)), url(../images/bg/call-center.jpg) no-repeat center center;
   padding: 2rem;
   background-size: cover;
 }
@@ -3122,7 +3122,7 @@ section.portfolio {
 }
 
 .btn.btn-outline-light {
-  background-color: #FF385C;
+  background-color: #c18847;
   color: #fff;
   border-color: #fff;
   font-size: 16px;
@@ -4662,6 +4662,65 @@ section.counterup {
   background: #cd201f;
 }
 
+.homepage-2 .bgc {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(169, 156, 142, 0.7)), to(rgb(161, 152, 141, 0.7))), url(../images/bg/call-center.jpg) no-repeat center center;
+    background: linear-gradient(rgb(180, 164, 147, 0.7), rgb(180, 153, 122, 0.7)), url(../images/bg/call-center.jpg) no-repeat center center;
+    padding: 2rem;
+    background-size: cover;
+}
+
+.homepage-2 .call-info h3 {
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+.homepage-2 .call-info p {
+    color: #fff;
+}
+
+.homepage-2 .call-info h3::after {
+    display: block;
+    height: 3px;
+    font-weight: bold;
+    background-color: #fff;
+    content: " ";
+    width: 50px;
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+}
+.homepage-2 .call-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.homepage-2 .call-info ul li .fa {
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.homepage-2 .call-info .info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.homepage-2 .call-info .ti {
+    margin-bottom: 0px;
+}
+
+.homepage-2 .cll:last-child {
+    margin-bottom: 0px;
+}
+
+.homepage-2 .call-info .info p {
+    color: #fff;
+    margin: 0px;
+    margin-left: 1.5rem;
+    font-weight: 300;
+}
+
 @media screen and (max-width: 768px) {
   .homepage-2 .second-footer .container-fluid {
     -webkit-box-orient: vertical;
@@ -5380,7 +5439,7 @@ element.style {
   width: 36px;
   height: 36px;
   line-height: 33px;
-  background: rgba(74, 74, 76, 0.7);
+  background: rgba(202, 202, 211, 0.7);
   z-index: 99;
 }
 
@@ -5741,7 +5800,7 @@ element.style {
 
 .login-and-register-form .custom-form .log-submit-btn {
   float: left;
-  background: #FF385C;
+  background: #c18847;
   padding: 13px 35px;
   border: none;
   border-radius: 4px;
@@ -5876,16 +5935,16 @@ a.button,
     font-size: 15px;
   }
 }
-.homepage-3 .btn, .homepage-3 .btn:active,
+.homepage-2 .btn, .homepage-2 .btn:active,
 .homepage-3 .btn.sApp-btn:before,
 .homepage-3 .bg-overlay::after,
 .homepage-3 .benifits-item:after {
-  background: linear-gradient(-47deg, #4528DC 0%, #8731E8 100%);
+  background: linear-gradient(-47deg, #c18847 0%, #c18847 100%);
 }
 
-.homepage-3 a.btn.btn-yellow:hover {
+.homepage-2 a.btn.btn-yellow:hover {
   background: #fff !important;
-  color: #8731E8;
+  color: #c18847;
 }
 
 .homepage-3 .bg-overlay::after {
@@ -5949,12 +6008,12 @@ a.button,
   width: 180px;
 }
 
-.homepage-3 .btn.btn-yellow {
+.homepage-2 .btn.btn-yellow {
   border: 0px;
   border-radius: 8px;
   font-size: 15px;
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-          box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgb(161, 107, 46);
+          box-shadow: 0px 1px 4px 0px rgb(161, 107, 46);
   color: #ffffff;
   height: 50px;
   width: 170px;
@@ -7583,16 +7642,16 @@ html input[disabled] {
   margin-top: 30px;
 }
 
-.hp-6 .btn, .homepage-3 .btn:active,
+.hp-6 .btn, .homepage-2 .btn:active,
 .hp-6 .btn.sApp-btn:before,
 .hp-6 .bg-overlay::after,
 .hp-6 .benifits-item:after {
-  background: linear-gradient(-47deg, #FF385C 0%, #FF385C 100%);
+  background: linear-gradient(-47deg, #c18847 0%, #c9a47e 100%);
 }
 
 .hp-6 a.btn.btn-yellow:hover {
   background: #fff !important;
-  color: #FF385C;
+  color: #c18847;
 }
 
 .hp-6 .bg-overlay::after {
@@ -13095,8 +13154,8 @@ a.button,
 }
 
 .th-8 .contact-us .btn {
-  background: #FF385C;
-  border: 1px solid #FF385C;
+  background: #c18847;
+  border: 1px solid #885c2a;
   cursor: pointer;
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
@@ -13104,8 +13163,8 @@ a.button,
 
 .th-8 .contact-us .btn:hover {
   background: #fff;
-  color: #121B22;
-  border: 1px solid #FF385C;
+  color: #c18847;
+  border: 1px solid #885c2a;
 }
 
 .th-8 .address-info p:last-child {
@@ -14461,11 +14520,11 @@ a.button {
     font-size: 15px;
   }
 }
-.homepage-23 .btn, .homepage-3 .btn:active,
+.homepage-23 .btn, .homepage-2 .btn:active,
 .homepage-23 .btn.sApp-btn:before,
 .homepage-23 .bg-overlay::after,
 .homepage-23 .benifits-item:after {
-  background: linear-gradient(-47deg, #274abb 0%, #274abb 100%);
+  background: linear-gradient(-47deg, #f3e0cc 0%, #f3e0cc 100%);
 }
 
 .homepage-23 a.btn.btn-yellow:hover {
@@ -14729,12 +14788,12 @@ a.button {
   cursor: pointer;
   margin-top: 1rem;
   border: 0px;
-  background: #FF385C;
+  background: #c18847;
 }
 
 .homepage-24 .bgc {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(43, 43, 43, 0.8)), to(rgba(43, 43, 43, 0.8))), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
-  background: linear-gradient(rgba(43, 43, 43, 0.8), rgba(43, 43, 43, 0.8)), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(43, 43, 43, 0.8)), to(rgba(43, 43, 43, 0.8))), url(../images/bg/call-center.jpg) no-repeat center center;
+  background: linear-gradient(rgba(43, 43, 43, 0.8), rgba(43, 43, 43, 0.8)), url(../images/bg/call-center.jpg) no-repeat center center;
   padding: 2rem;
   background-size: cover;
 }
@@ -19454,7 +19513,7 @@ select:focus {
 .inner-pages .section-inforamation .btn-primary,
 .inner-pages .my-address .btn-primary {
   color: #fff;
-  background-color: #FF385C;
+  background-color: #c18847;
   border: none;
   cursor: pointer;
   -webkit-transition: all .5s ease;
@@ -19463,7 +19522,7 @@ select:focus {
 
 .inner-pages .section-inforamation .btn-primary:hover,
 .inner-pages .my-address .btn-primary:hover {
-  background: #121B22;
+  background: #c18847;
   color: #fff;
 }
 
@@ -19485,7 +19544,7 @@ select:focus {
 }
 
 .btn-common {
-  background-color: #FF385C;
+  background-color: #c18847;
   position: relative;
   z-index: 1;
   color: #fff;
@@ -20403,7 +20462,7 @@ section.pricing-table {
 
 .plan a.btn {
   color: #fff;
-  background: #FF385C;
+  background: #c18847;
   border: 0px;
   margin: 25px 0;
   padding: 8px 30px;
@@ -20463,9 +20522,9 @@ section.pricing-table {
 }
 
 .inner-pages .port-info .btn {
-  background: #FF385C;
+  background: #c18847;
   color: #fff;
-  border: 1px solid #FF385C;
+  border: 1px solid #c18847;
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
 }
@@ -20656,7 +20715,7 @@ a.btn_1.full-width {
 #login .btn_1,
 a.btn_1 {
   border: none;
-  background: #FF385C;
+  background: #c18847;
   cursor: pointer;
   display: inline-block;
   padding: 15px 30px;
@@ -21424,15 +21483,15 @@ a.btn_1 {
 }
 
 .inner-pages .input-group-btn .btn-primary {
-  background: #FF385C;
-  border: 1px solid #FF385C;
+  background: #c18847;
+  border: 1px solid #b0793b;
   cursor: pointer;
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
 }
 
 .inner-pages .input-group-btn .btn-primary:hover {
-  background: #121B22;
+  background: #e2ece7d0;
   color: #fff;
 }
 
@@ -21635,17 +21694,17 @@ a.btn_1 {
   cursor: pointer;
 }
 
-.inner-pages .input-group-btn .btn-primary {
-  background: #FF385C;
-  border: 1px solid #FF385C;
+.homepage-2 .btn-primary .btn-lg {
+  background: #c18847;
+  border: 1px solid #b0793b;
   cursor: pointer;
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
 }
 
-.inner-pages .input-group-btn .btn-primary:hover {
+.homepage-2 .input-group-btn .btn-primary:hover {
   background: #fff;
-  color: #FF385C;
+  color: #c18847;
 }
 
 .inner-pages .recent-main {
@@ -21893,7 +21952,7 @@ section.leve-comments {
 }
 
 .inner-pages .leve-comments .btn {
-  background: #FF385C;
+  background: #c18847;
   cursor: pointer;
   font-size: 16px;
   border: none;
@@ -21949,8 +22008,8 @@ section.leve-comments {
 }
 
 .inner-pages .contact-us .btn {
-  background: #FF385C;
-  border: 1px solid #FF385C;
+  background: #c18847;
+  border: 1px solid #885c2a;
   cursor: pointer;
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
@@ -21958,8 +22017,8 @@ section.leve-comments {
 
 .inner-pages .contact-us .btn:hover {
   background: #fff;
-  color: #121B22;
-  border: 1px solid #FF385C;
+  color: #c18847;
+  border: 1px solid #885c2a;
 }
 
 .inner-pages .address-info p:last-child {
@@ -22032,8 +22091,8 @@ form label.error {
 
 /*---- CONTACT INFO ----*/
 .inner-pages .bgc {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(32, 51, 100, 0.8)), to(rgba(32, 51, 100, 0.8))), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
-  background: linear-gradient(rgba(32, 51, 100, 0.8), rgba(32, 51, 100, 0.8)), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(32, 51, 100, 0.8)), to(rgba(32, 51, 100, 0.8))), url(../images/bg/call-center.jpg) no-repeat center center;
+  background: linear-gradient(rgba(32, 51, 100, 0.8), rgba(32, 51, 100, 0.8)), url(../images/bg/call-center.jpg) no-repeat center center;
   padding: 2rem;
   background-size: cover;
 }
@@ -24026,7 +24085,9 @@ section.ui-element {
   padding: 1rem 2.5rem;
   font-size: 1.0625rem;
   line-height: 1.47;
+  background: #c18847;
   border-radius: 0.375rem;
+
 }
 
 .ui-elements .ui-buttons .btn-sm,

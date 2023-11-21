@@ -1,7 +1,8 @@
+/*jshint esversion: 6 */
 import React, {useEffect} from 'react'
 import ReactDOM from 'react-dom/client'
 // import InfoSideBar from './components/InfoSideBar.jsx';
-import AOS from 'aos'
+import AOS from '../../node_modules/aos'
 import HeaderBar from "./components/HeaderBar.jsx";
 import Footer from "./components/Footer.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
@@ -11,6 +12,7 @@ import Register from "./components/Register.jsx";
 import PropertiesCatalogue from "./components/PropertiesCatalogue.jsx";
 import AddProperty from "./components/AddProperty.jsx";
 import User from "./components/UserDetails.jsx";
+import Contact from "./components/Contact.jsx"
 import "../../public/favicon.ico"
 import '../../public/css/jquery-ui.css'
 import '../../public/font/flaticon.css'
@@ -37,6 +39,7 @@ function Main() {
     useEffect(() => {
         AOS.init()
     }, []);
+    
     return (
         <div className="maxw1600 m0a homepage-2 the-search hd-white">
             <div id="wrapper">
@@ -51,6 +54,7 @@ function Main() {
                     <Route path='/properties' element={<PropertiesCatalogue/>}/>
                     <Route path='/add-property' element={<AddProperty/>}/>
                     <Route path='/user-details' element={<User/>}/>
+                    <Route path='/contact-us' element={<Contact/>}/>
 
                 </Routes>
 

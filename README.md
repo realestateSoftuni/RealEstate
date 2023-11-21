@@ -106,6 +106,14 @@ If you don't have an .env file, you can create one by copying the example provid
 cp.env.example .env
 ```
 
+### 3. Install:
+
+```
+npm install
+npm install react-google-recaptcha
+
+```
+
 ### 4. Start the Project:
 
 To start the project, run:

@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 import logo from '../../../public/images/FullLogo_Transparent_NoBuffer.png'
 import {useState} from "react";
 import {Link} from "react-router-dom";
@@ -188,7 +189,7 @@ function HeaderBar(){
                                             <li><a href="blog-details.html">Blog Details</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact-us.html">Contact</a></li>
+                                    <li><Link to="/contact-us">Contact</Link></li>
                                     <li className="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
                                     <li className="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
                                     <li className="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a href="add-property.html" className="button border btn-lg btn-block text-center">Add Listing<i className="fas fa-laptop-house ml-2"></i></a></li>
