@@ -7,6 +7,25 @@ for (let i = 1; i < 10; i++ ) {
     options.push(i)
 }
 
+const checkboxOptions = {
+    "WiFi": false,
+    "TV Cable": false,
+    "Dryer": false,
+    "Microwave": false,
+    "Washer": false,
+    "Refrigerator": false,
+    "Outdoor Shower": false,
+    "Air Conditioning": false,
+    "Swimming Pool": false,
+    "Central Heating": false,
+    "Laundry Room": false,
+    "Gym": false,
+    "Alarm": false,
+    "Window Covering": false,
+}
+
+let halfOptions = Object.keys(checkboxOptions).length/2
+
 // 'typeProperty' give us info to filter what the client is searching for ('Sale' or 'Rent' values)
 function SearchBar(typeProperty) {
     //Advanced search menu
@@ -18,7 +37,7 @@ function SearchBar(typeProperty) {
     const[statusValue, setStatusValue] = useState('Property status')
     const[bedroomsValue, setBedroomsValue] = useState('Bedrooms')
     const[bathroomsClicked, setBathroomsClicked] = useState(false)
-    const[bathroomsValue, setBathroomsValue] = useState('Bedrooms')
+    const[bathroomsValue, setBathroomsValue] = useState('Bathrooms')
 
     //Range-sliders
     const [minValueArea, setMinValueArea] = useState(1);
@@ -27,6 +46,9 @@ function SearchBar(typeProperty) {
     const [maxValuePrice, setMaxValuePrice] = useState(999000);
     const currency = 'EUR';
     const areaMeasure = 'sq.m.'
+
+    //Check-box
+    const [checkBox, setCheckBox] = useState(checkboxOptions)
 
     //Advanced search menus
     const clickAdvancedHandler = () => {
@@ -70,7 +92,15 @@ function SearchBar(typeProperty) {
     const bathroomsValueHandler = (option) => {
         setBathroomsValue(option)
         setBathroomsClicked(!bathroomsClicked);
+        console.log(checkBox)
     };
+
+    const checkBoxHandler = (e) => {
+        setCheckBox(state => ({
+            ...state,
+            [e.target.name]: e.target.checked
+        }))
+    }
 
     return(
         <div className="tab-pane fade show active" id="tabs_1">
@@ -119,7 +149,7 @@ function SearchBar(typeProperty) {
                                     <div className={`nice-select form-control wide ${bedroomsClicked ? 'open' : ''}`} tabIndex="0"><span className="current"><i className="fa fa-bed" aria-hidden="true"></i> {bedroomsValue}</span>
                                         <ul className="list">
                                             {options.map((b) =>
-                                                <li onClick={() => bedroomsValueHandler(b)} data-value={b} className="option">{b}</li>
+                                                <li key={b} onClick={() => bedroomsValueHandler(b)} data-value={b} className="option">{b}</li>
                                             )}
                                         </ul>
                                     </div>
@@ -130,7 +160,7 @@ function SearchBar(typeProperty) {
                                     <div className={`nice-select form-control wide ${bathroomsClicked ? 'open' : ''}`} tabIndex="0"><span className="current"><i className="fa fa-bath" aria-hidden="true"></i> {bathroomsValue}</span>
                                         <ul className="list">
                                             {options.map((b) =>
-                                                <li onClick={() => bathroomsValueHandler(b)} data-value={b} className="option">{b}</li>
+                                                <li key={b} onClick={() => bathroomsValueHandler(b)} data-value={b} className="option">{b}</li>
                                             )}
                                         </ul>
                                     </div>
@@ -181,38 +211,22 @@ function SearchBar(typeProperty) {
                             </div>
                             <div className="col-lg-3 col-md-6 col-sm-12 py-1 pr-30 d-none d-lg-none d-xl-flex">
                                 <div className="checkboxes one-in-row margin-bottom-10 ch-1">
-                                    <input id="check-2" type="checkbox" name="check"/>
-                                    <label htmlFor="check-2">Air Conditioning</label>
-                                    <input id="check-3" type="checkbox" name="check"/>
-                                    <label htmlFor="check-3">Swimming Pool</label>
-                                    <input id="check-4" type="checkbox" name="check"/>
-                                    <label htmlFor="check-4">Central Heating</label>
-                                    <input id="check-5" type="checkbox" name="check"/>
-                                    <label htmlFor="check-5">Laundry Room</label>
-                                    <input id="check-6" type="checkbox" name="check"/>
-                                    <label htmlFor="check-6">Gym</label>
-                                    <input id="check-7" type="checkbox" name="check"/>
-                                    <label htmlFor="check-7">Alarm</label>
-                                    <input id="check-8" type="checkbox" name="check"/>
-                                    <label htmlFor="check-8">Window Covering</label>
+                                    {Object.keys(checkboxOptions).slice(0,halfOptions).map((box, i) =>
+                                        <>
+                                            <input key={box} onChange={checkBoxHandler} id={`check-${i+2}`} type="checkbox" name={box}/>
+                                            <label htmlFor={`check-${i+2}`}>{box}</label>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 col-sm-12 py-1 pr-30 d-none d-lg-none d-xl-flex">
                                 <div className="checkboxes one-in-row margin-bottom-10 ch-2">
-                                    <input id="check-9" type="checkbox" name="check"/>
-                                    <label htmlFor="check-9">WiFi</label>
-                                    <input id="check-10" type="checkbox" name="check"/>
-                                    <label htmlFor="check-10">TV Cable</label>
-                                    <input id="check-11" type="checkbox" name="check"/>
-                                    <label htmlFor="check-11">Dryer</label>
-                                    <input id="check-12" type="checkbox" name="check"/>
-                                    <label htmlFor="check-12">Microwave</label>
-                                    <input id="check-13" type="checkbox" name="check"/>
-                                    <label htmlFor="check-13">Washer</label>
-                                    <input id="check-14" type="checkbox" name="check"/>
-                                    <label htmlFor="check-14">Refrigerator</label>
-                                    <input id="check-15" type="checkbox" name="check"/>
-                                    <label htmlFor="check-15">Outdoor Shower</label>
+                                    {Object.keys(checkboxOptions).slice(halfOptions, halfOptions*2+1).map((box, i) =>
+                                        <>
+                                            <input key={box} onChange={checkBoxHandler} id={`check-${i+2+halfOptions}`} type="checkbox" name={box}/>
+                                            <label htmlFor={`check-${i+2+halfOptions}`}>{box}</label>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
