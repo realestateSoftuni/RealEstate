@@ -111,6 +111,9 @@ cp.env.example .env
 ```
 npm install
 npm install react-google-recaptcha
+npm install --save google-maps-react@2.0.6
+npm install formik yup
+
 
 ```
 

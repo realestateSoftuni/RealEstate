@@ -1,32 +1,29 @@
 /*jshint esversion: 6 */
-import React from 'react';
-import {GoogleMap, LoadScript} from "@react-google-maps/api";
+import React, {Component} from 'react';
+import {Map, GoogleApiWrapper, Marker} from "google-maps-react";
 
-const mapContainerStyle = {
-    width: '100%',
-    height: '300px',
-};
+class GoogleMap extends Component {
+    render() {
+        const mapStyles = {
+            width: '56%',
+            height: '300px',
+        };
 
-const center = {
-    lat: -34.397,
-    lng: 150.644,
-};
+        return (
+            <div id="map-contact" className="contact-map">
+                <Map
+                    google={this.props.google}
+                    zoom={18}
+                    style={mapStyles}
+                    initialCenter={{ lat: 42.690941, lng: 23.312689 }}
+                >
+                    <Marker position={{ lat: 42.690941, lng: 23.312689 }} />
+                </Map>
+            </div>
+        );
+    }
+}
 
-const GoogleMapsComponent = () => {
-    return (
-        <LoadScript googleMapsApiKey="AIzaSyA3zVO0rI-7CFUGUmTuSIXBKXT8GzO1V3w">
-            <script
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3zVO0rI-7CFUGUmTuSIXBKXT8GzO1V3w&v=weekly&callback=initMap"
-                async
-                defer
-            ></script>
-            <GoogleMap
-                mapContainerStyle={mapContainerStyle}
-                center={center}
-                zoom={10}
-            > </GoogleMap>
-        </LoadScript>
-    );
-};
-
-export default GoogleMapsComponent;
+export default GoogleApiWrapper({
+    apiKey: 'AIzaSyA3zVO0rI-7CFUGUmTuSIXBKXT8GzO1V3w',
+})(GoogleMap);
