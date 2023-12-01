@@ -11,7 +11,11 @@
     @vite('resources/js/app.jsx')
 </head>
 <body class="int_white_bg hd-white">
-
+    <script>
+        window.Laravel = {
+            apiUrl: "{{ env('APP_URL') }}"
+        };
+    </script>
     <div id="app"></div>
 
 </body>

@@ -1,5 +1,7 @@
 import logo from '../../../public/images/FullLogo_Transparent_NoBuffer.png'
 import {useState} from "react";
+import {Link} from "react-router-dom";
+
 function HeaderBar(){
     const[isLanguageClicked, setIsLanguageClicked] = useState(false)
     const[isProfileClicked, setIsProfileClicked] = useState(false)
@@ -18,7 +20,7 @@ function HeaderBar(){
                     <div className="container container-header">
                         <div className="left-side">
                             <div id="logo">
-                                <a href="#"><img src={logo} alt=""/></a>
+                               <Link to='/'><img src={logo} alt=""/></Link>
                             </div>
                             <div className="mmenu-trigger">
                                 <button className="hamburger hamburger--collapse" type="button">
