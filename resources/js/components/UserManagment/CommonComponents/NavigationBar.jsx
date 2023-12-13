@@ -1,45 +1,21 @@
-import logo from '../../../public/images/FullLogo_Transparent_NoBuffer.png'
-import {useState } from "react";
-import React from 'react';
-import {Link} from "react-router-dom";
-import PropTypes from 'prop-types';
-
-HeaderBar.propTypes = {
-    navigateToRoute: PropTypes.func.isRequired,
-};
-function HeaderBar  ({navigateToRoute})  {
-    const[isLanguageClicked, setIsLanguageClicked] = useState(false)
-    const[isProfileClicked, setIsProfileClicked] = useState(false)
-    const languageHandler = () =>{
-        setIsLanguageClicked(!isLanguageClicked)
-    }
-
-    const profileHandler = () => {
-        setIsProfileClicked(!isProfileClicked)
-    }
-
-    const handleMenuItemClick = (route, exclude) => {
-        navigateToRoute(route, exclude);
-    };
-
-
+const NavigationBar = () => {
     return (
-        <>
-            <div id="header-container">
+        <div className="dash-content-wrap">
+            <header id="header-container" className="db-top-header">
                 <div id="header">
-                    <div className="container container-header">
+                    <div className="container-fluid">
                         <div className="left-side">
                             <div id="logo">
-                                <Link to="/"><img src={logo} alt=""/></Link>
+                                <a href="index.html"><img src="images/logo.svg" alt="" /></a>
                             </div>
                             <div className="mmenu-trigger">
                                 <button className="hamburger hamburger--collapse" type="button">
                                     <span className="hamburger-box">
-                                        <span className="hamburger-inner"></span>
+							<span className="hamburger-inner"></span>
                                     </span>
                                 </button>
                             </div>
-                            <nav id="navigation" className="style-1 white">
+                            <nav id="navigation" className="style-1">
                                 <ul id="responsive">
                                     <li><a href="#">Home</a>
                                         <ul>
@@ -50,22 +26,21 @@ function HeaderBar  ({navigateToRoute})  {
                                                 </ul>
                                             </li>
                                             <li><a href="#">Home Image</a>
-                                                {/*<ul>*/}
-                                                {/*    <li><a href="index.html">Modern Home</a></li>*/}
-                                                {/*    <li><a href="index-2.html">Home Boxed Image</a></li>*/}
-                                                {/*    <li><a href="index-3.html">Home Modern Image</a></li>*/}
-                                                {/*    <li><a href="index-5.html">Home Minimalist Style</a></li>*/}
-                                                {/*    <li><a href="index-6.html">Home Parallax Image</a></li>*/}
-                                                {/*    <li><a href="index-8.html">Home Search Form</a></li>*/}
-                                                {/*    <li><a href="index-10.html">Modern Full Image</a></li>*/}
-                                                {/*    <li><a href="index-15.html">Home Typed Image</a></li>*/}
-                                                {/*    <li><a href="index-17.html">Modern Parallax Image</a></li>*/}
-                                                {/*    <li><a href="index-18.html">Image Filter Search</a>*/}
-                                                {/*        <li><a href="index-21.html">Parallax Image video</a></li>*/}
-                                                {/*        <li><a href="index-23.html">Home Image</a></li>*/}
-                                                {/*        <li><a href="index-24.html">Image and video</a></li>*/}
-                                                {/*    </li>*/}
-                                                {/*</ul>*/}
+                                                <ul>
+                                                    <li><a href="index.html">Modern Home</a></li>
+                                                    <li><a href="index-2.html">Home Boxed Image</a></li>
+                                                    <li><a href="index-3.html">Home Modern Image</a></li>
+                                                    <li><a href="index-5.html">Home Minimalist Style</a></li>
+                                                    <li><a href="index-6.html">Home Parallax Image</a></li>
+                                                    <li><a href="index-8.html">Home Search Form</a></li>
+                                                    <li><a href="index-10.html">Modern Full Image</a></li>
+                                                    <li><a href="index-15.html">Home Typed Image</a></li>
+                                                    <li><a href="index-17.html">Modern Parallax Image</a></li>
+                                                    <li><a href="index-18.html">Image Filter Search</a></li>
+                                                        <li><a href="index-21.html">Parallax Image video</a></li>
+                                                        <li><a href="index-23.html">Home Image</a></li>
+                                                        <li><a href="index-24.html">Image and video</a></li>
+                                                </ul>
                                             </li>
                                             <li><a href="#">Home Video</a>
                                                 <ul>
@@ -200,54 +175,15 @@ function HeaderBar  ({navigateToRoute})  {
                                         </ul>
                                     </li>
                                     <li><a href="contact-us.html">Contact</a></li>
-                                    <li className="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
-                                    <li className="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
-                                    <li className="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a href="add-property.html" className="button border btn-lg btn-block text-center">Add Listing<i className="fas fa-laptop-house ml-2"></i></a></li>
                                 </ul>
                             </nav>
-                        </div>
-
-                        <div className="right-side d-none d-none d-lg-none d-xl-flex">
-                            <div className="header-widget">
-                                <Link to="/add-property" className="button border">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link>
-                            </div>
-                        </div>
-
-                        <div className={`header-user-menu user-menu add ${isProfileClicked ? 'active' : ''}`} onClick={profileHandler}>
-                            <div className="header-user-name">
-                                <span><img src="images/testimonials/ts-1.jpg" alt=""/></span>Hi, Mary!
-                            </div>
-                            <ul>
-                                <li onClick={() => handleMenuItemClick('/edit-profile', true)}>Edit Profile</li>
-                                <li><Link to="/add-property">Add Property</Link></li>
-                                <li><Link to="/payments">Payments</Link></li>
-                                <li onClick={() => handleMenuItemClick('/change-password', true)}>Change Password</li>
-                                <li><Link to="/logout">Log Out</Link></li>
-                            </ul>
-                        </div>
-
-                        <div className="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
-                            <div className="header-widget sign-in">
-                                <div className="show-reg-form modal-open"><Link to="/login">Sign In</Link></div>
-                            </div>
-                        </div>
-                        <div className={`header-user-menu user-menu add d-none d-lg-none d-xl-flex ${isLanguageClicked ? 'active' : ''}`} onClick={languageHandler}>
-                            <div className="lang-wrap">
-                                <div className="show-lang"><span><i className="fas fa-globe-americas"></i><strong>ENG</strong></span><i className="fa fa-caret-down arrlan"></i></div>
-                                <ul className="lang-tooltip lang-action no-list-style">
-                                    <li><a href="#" className="current-lan" data-lantext="En">English</a></li>
-                                    <li><a href="#" data-lantext="Fr">Francais</a></li>
-                                    <li><a href="#" data-lantext="Es">Espanol</a></li>
-                                    <li><a href="#" data-lantext="De">Deutsch</a></li>
-                                </ul>
-                            </div>
+                            <div className="clearfix"></div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="clearfix"></div>
-        </>
+            </header>
+        </div>
     )
 }
 
-export default HeaderBar
+export default NavigationBar

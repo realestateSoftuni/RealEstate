@@ -12,11 +12,10 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique();
+            $table->string('username')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('role', [User::ROLE_CUSTOMER, User::ROLE_AGENT, User::ROLE_ADMIN])->default(User::ROLE_CUSTOMER);
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('profile_picture')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
