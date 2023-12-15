@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800");
+
 /*------------------------------------------------------------------
 Author       : Code-Theme
 Template Name: Find Houses - HTML5 Template
@@ -120,7 +121,7 @@ h2 {
 
 h2 span {
   font-weight: 600;
-  color: #FF385C;
+  color: #b0793b;
 }
 
 h3 {
@@ -2291,7 +2292,7 @@ section.welcome {
 .welcome .popup-youtube {
   background: #fff none repeat scroll 0 0;
   border-radius: 100%;
-  color: #FF385C;
+  color: #b0793b;
   font-size: 30px;
   height: 70px;
   left: 50%;
@@ -18345,7 +18346,7 @@ section.single-proper.details {
 
 .agents.det .text-heading.text-left span {
   font-size: 16px;
-  color: #FF385C;
+  color: #b0793b;
 }
 
 .inner-pages .agent-details .button-effect {
@@ -19947,26 +19948,26 @@ header.payment-card-header .pull-right img {
   padding: 6rem 0;
 }
 
-.inner-pages .headings {
+.homepage-2 .headings {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/bg-details.jpg) no-repeat center center;
   background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/bg-details.jpg) no-repeat center center;
   width: 100%;
   height: 30vh;
 }
 
-.inner-pages.about .headings {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
-  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
+.homepage-2 .about .headings  {
+  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/home-16.png) no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/home-16.png) no-repeat center center;
 }
 
-.inner-pages .headings h1 {
+.homepage-2 .headings h1 {
   margin-top: 7.5rem;
   font-size: 26px;
   color: #fff;
 }
 
-.inner-pages .headings h2 a,
-.inner-pages .headings h2 {
+.homepage-2 .headings h2 a,
+.homepage-2 .headings h2 {
   text-decoration: none;
   text-transform: capitalize;
   color: #fff;
@@ -19976,11 +19977,11 @@ header.payment-card-header .pull-right img {
   transition: all .5s ease;
 }
 
-.inner-pages .headings h2 a:hover {
-  color: #FF385C;
+.homepage-2 .headings h2 a:hover {
+  color: #b0793b;
 }
 
-.inner-pages .about-us h2::after {
+.homepage-2 .about-us h2::after {
   display: block;
   height: 3px;
   font-weight: bold;
@@ -19991,10 +19992,10 @@ header.payment-card-header .pull-right img {
   margin-bottom: 1.5rem;
 }
 
-.inner-pages .about-us.fh .popup-youtube {
+.homepage-2 .about-us.fh .popup-youtube {
   background: #0f1341 none repeat scroll 0 0;
   border-radius: 100%;
-  color: #03a9f5;
+  color: #b0793b;
   font-size: 30px;
   height: 70px;
   left: 50%;
@@ -20008,7 +20009,7 @@ header.payment-card-header .pull-right img {
   z-index: 9;
 }
 
-.inner-pages .about-us.fh .wprt-image-video .iq-waves {
+.homepage-2 .about-us.fh .wprt-image-video .iq-waves {
   height: 352px;
   height: 22rem;
   left: 50%;
@@ -20021,7 +20022,7 @@ header.payment-card-header .pull-right img {
   z-index: 2;
 }
 
-.inner-pages .about-us.fh .wprt-image-video .iq-waves .waves {
+.homepage-2 .about-us.fh .wprt-image-video .iq-waves .waves {
   -webkit-animation: 3s ease-in-out 0s normal none infinite running waves;
           animation: 3s ease-in-out 0s normal none infinite running waves;
   background: rgba(255, 255, 255, 0.2) none repeat scroll 0 0 padding-box;
@@ -20035,68 +20036,68 @@ header.payment-card-header .pull-right img {
   width: 22rem;
 }
 
-.inner-pages .about-us.fh .box .button {
+.homepage-2 .about-us.fh .box .button {
   padding: 20px;
   width: 100%;
 }
 
-.inner-pages .about-us.fh .wprt-image-video .iq-waves .wave-1 {
+.homepage-2 .about-us.fh .wprt-image-video .iq-waves .wave-1 {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 }
 
-.inner-pages .about-us.fh .wprt-image-video .iq-waves .wave-2 {
+.homepage-2 .about-us.fh .wprt-image-video .iq-waves .wave-2 {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
 
-.inner-pages .about-us.fh .wprt-image-video .iq-waves .wave-3 {
+.homepage-2 .about-us.fh .wprt-image-video .iq-waves .wave-3 {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 }
 
-.inner-pages.about .sec-title {
+.homepage-2 .about .sec-title {
   text-align: center;
   padding-bottom: 2rem;
 }
 
-.inner-pages.about .sec-title h2 {
+.homepage-2 .about .sec-title h2 {
   color: #444;
   font-size: 1.7rem;
   text-align: center;
   padding-bottom: 0rem;
 }
 
-.inner-pages.about .sec-title h2 span {
+.homepage-2 .about .sec-title h2 span {
   font-weight: 600;
-  color: #FF385C;
+  color: #b0793b;
 }
 
-.inner-pages.about .sec-title h2 span::before {
+.homepage-2 .about .sec-title h2 span::before {
   display: none;
 }
 
-.inner-pages.about .testimonials .test-1 p::before {
+.homepage-2 .about .testimonials .test-1 p::before {
   left: 236px;
   top: -24px;
   position: relative;
 }
 
-.inner-pages.about .owl-dots {
+.homepage-2 .about .owl-dots {
   margin-top: 0px;
 }
 
-.inner-pages.about .starts .fa {
+.homepage-2 .about .starts .fa {
   color: #FF385C !important;
 }
 
 @media screen and (max-width: 500px) {
-  .inner-pages .headings h1 {
+  .homepage-2 .headings h1 {
     margin-top: 5rem;
     font-size: 1.5rem;
   }
 }
-.inner-pages .about-us .who-1 {
+.homepage-2 .about-us .who-1 {
   background: #fff;
   background-size: cover;
   color: #666;
@@ -20113,11 +20114,11 @@ header.payment-card-header .pull-right img {
   top: 0;
 }
 
-.inner-pages .about-us .who-1 h2 span {
-  color: #FF385C;
+.homepage-2 .about-us .who-1 h2 span {
+  color: #b0793b;
 }
 
-.inner-pages .about-us .who-1 p {
+.homepage-2 .about-us .who-1 p {
   color: #666;
   background: #fff;
   font-weight: 400;
