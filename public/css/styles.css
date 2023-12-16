@@ -20712,6 +20712,11 @@ a.btn_1.full-width {
   margin-bottom: 5px;
 }
 
+#login .btn_1:hover {
+    background-color: #FF385C;
+    color: white;
+}
+
 #login .btn_1,
 a.btn_1 {
   border: none;
