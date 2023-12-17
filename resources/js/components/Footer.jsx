@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 import logo from '../../../public/images/FullLogo_Transparent_NoBuffer.png'
 
 function Footer(){

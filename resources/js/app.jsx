@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 import './bootstrap';
 import ReactDOM from 'react-dom/client';
 import Main from './main.jsx';
