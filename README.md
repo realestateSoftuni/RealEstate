@@ -112,6 +112,17 @@ cp.env.example .env
  -On integrations from the dropdown menu choose PHP -> Laravel 9+ You gonna see example set up for the .env file</p>
  -Click on 'show credentials' and add them in the .env file</p>
 
+### 3. Install:
+
+```
+npm install
+npm install react-google-recaptcha
+npm install --save google-maps-react@2.0.6
+npm install formik yup
+
+
+```
+
 ### 4. Start the Project:
 
 To start the project, run:
