@@ -5298,12 +5298,12 @@ element.style {
   margin-top: 20px;
 }
 
-.homepage-2 .range-slider .ui-slider .ui-slider-handle {
+.homepage-2 .range-slider .ui-slider .ui-slider-handle, .slider-bar-custom .bar-inner {
   border: 2px solid #687389;
 }
 
 .homepage-2 .range-slider .ui-widget-header,
-.homepage-2 .checkboxes input[type=checkbox]:checked + label:before {
+.homepage-2 .checkboxes input[type=checkbox]:checked + label:before, .slider-bar-custom .bar-inner {
   background: #687389;
 }
 

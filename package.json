@@ -18,10 +18,11 @@
         "formik": "^2.4.5",
         "google-maps-react": "^2.0.6",
         "jquery": "^3.7.1",
+        "multi-range-slider-react": "^2.0.5",
         "node-sass": "^9.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-
+        "react-dropdown-select": "^4.10.0",
         "react-google-recaptcha": "^3.1.0",
         "react-router-dom": "^6.19.0",
         "react-slick": "^0.29.0",

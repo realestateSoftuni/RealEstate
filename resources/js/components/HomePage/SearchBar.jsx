@@ -1,12 +1,106 @@
 import {useState} from "react";
+import MultiRangeSlider from "multi-range-slider-react";
+
+const options = []
+
+for (let i = 1; i < 10; i++ ) {
+    options.push(i)
+}
+
+const checkboxOptions = {
+    "WiFi": false,
+    "TV Cable": false,
+    "Dryer": false,
+    "Microwave": false,
+    "Washer": false,
+    "Refrigerator": false,
+    "Outdoor Shower": false,
+    "Air Conditioning": false,
+    "Swimming Pool": false,
+    "Central Heating": false,
+    "Laundry Room": false,
+    "Gym": false,
+    "Alarm": false,
+    "Window Covering": false,
+}
+
+let halfOptions = Object.keys(checkboxOptions).length/2
 
 // 'typeProperty' give us info to filter what the client is searching for ('Sale' or 'Rent' values)
 function SearchBar(typeProperty) {
+    //Advanced search menu
     const[advancedIsClicked, setAdvancedIsClicked] = useState(false);
 
+    //Drop-down menus
+    const[statusClicked, setStatusClicked] = useState(false)
+    const[bedroomsClicked, setBedroomsClicked] = useState(false)
+    const[statusValue, setStatusValue] = useState('Property status')
+    const[bedroomsValue, setBedroomsValue] = useState('Bedrooms')
+    const[bathroomsClicked, setBathroomsClicked] = useState(false)
+    const[bathroomsValue, setBathroomsValue] = useState('Bathrooms')
+
+    //Range-sliders
+    const [minValueArea, setMinValueArea] = useState(1);
+    const [maxValueArea, setMaxValueArea] = useState(1300);
+    const [minValuePrice, setMinValuePrice] = useState(1);
+    const [maxValuePrice, setMaxValuePrice] = useState(999000);
+    const currency = 'EUR';
+    const areaMeasure = 'sq.m.'
+
+    //Check-box
+    const [checkBox, setCheckBox] = useState(checkboxOptions)
+
+    //Advanced search menus
     const clickAdvancedHandler = () => {
         setAdvancedIsClicked(!advancedIsClicked);
     };
+
+    // Range-sliders
+    const handleArea = (e) => {
+        setMinValueArea(e.minValue);
+        setMaxValueArea(e.maxValue);
+    }
+
+    const handlePrice = (e) => {
+        setMinValuePrice(e.minValue);
+        setMaxValuePrice(e.maxValue);
+    }
+
+    //Drop-downs
+    const clickStatusHandler = () => {
+        setStatusClicked(!statusClicked);
+    };
+
+    const clickBedroomsHandler = () => {
+        setBedroomsClicked(!bedroomsClicked)
+    }
+
+    const clickBathroomsHandler = () => {
+        setBathroomsClicked(!bathroomsClicked)
+    }
+
+    const statusValueHandler = (option) => {
+        setStatusValue(option)
+        setStatusClicked(!statusClicked);
+    };
+
+    const bedroomsValueHandler = (option) => {
+        setBedroomsValue(option)
+        setBedroomsClicked(!bedroomsClicked);
+    };
+
+    const bathroomsValueHandler = (option) => {
+        setBathroomsValue(option)
+        setBathroomsClicked(!bathroomsClicked);
+        console.log(checkBox)
+    };
+
+    const checkBoxHandler = (e) => {
+        setCheckBox(state => ({
+            ...state,
+            [e.target.name]: e.target.checked
+        }))
+    }
 
     return(
         <div className="tab-pane fade show active" id="tabs_1">
@@ -40,48 +134,34 @@ function SearchBar(typeProperty) {
                     </div>
                     <div className={`explore__form-checkbox-list full-filter ${advancedIsClicked ? 'filter-block' : ''}`}>
                         <div className="row">
-                            <div className="col-lg-4 col-md-6 py-1 pr-30 pl-0">
+                            <div onClick={clickStatusHandler} className="col-lg-4 col-md-6 py-1 pr-30 pl-0">
                                 <div className="form-group categories">
-                                    <div className="nice-select form-control wide" tabIndex="0"><span className="current"><i className="fa fa-home"></i>Property Status</span>
+                                    <div className={`nice-select form-control wide ${statusClicked ? 'open' : ''}`} tabIndex="0"><span className="current"><i className="fa fa-home"></i>{statusValue}</span>
                                         <ul className="list">
-                                            <li data-value="1" className="option selected ">For Sale</li>
-                                            <li data-value="2" className="option">For Rent</li>
+                                            <li onClick={() => statusValueHandler("For Sale")} value="For Sale" className="option">For Sale</li>
+                                            <li onClick={() => statusValueHandler("For Rent")} value="For Rent" className="option">For Rent</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
+                            <div onClick={clickBedroomsHandler} className="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
                                 <div className="form-group beds">
-                                    <div className="nice-select form-control wide" tabIndex="0"><span className="current"><i className="fa fa-bed" aria-hidden="true"></i> Bedrooms</span>
+                                    <div className={`nice-select form-control wide ${bedroomsClicked ? 'open' : ''}`} tabIndex="0"><span className="current"><i className="fa fa-bed" aria-hidden="true"></i> {bedroomsValue}</span>
                                         <ul className="list">
-                                            <li data-value="1" className="option selected">1</li>
-                                            <li data-value="2" className="option">2</li>
-                                            <li data-value="3" className="option">3</li>
-                                            <li data-value="3" className="option">4</li>
-                                            <li data-value="3" className="option">5</li>
-                                            <li data-value="3" className="option">6</li>
-                                            <li data-value="3" className="option">7</li>
-                                            <li data-value="3" className="option">8</li>
-                                            <li data-value="3" className="option">9</li>
-                                            <li data-value="3" className="option">10</li>
+                                            {options.map((b) =>
+                                                <li key={b} onClick={() => bedroomsValueHandler(b)} data-value={b} className="option">{b}</li>
+                                            )}
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-4 col-md-6 py-1 pr-30 pl-0">
+                            <div onClick={clickBathroomsHandler} className="col-lg-4 col-md-6 py-1 pr-30 pl-0">
                                 <div className="form-group bath">
-                                    <div className="nice-select form-control wide" tabIndex="0"><span className="current"><i className="fa fa-bath" aria-hidden="true"></i> Bathrooms</span>
+                                    <div className={`nice-select form-control wide ${bathroomsClicked ? 'open' : ''}`} tabIndex="0"><span className="current"><i className="fa fa-bath" aria-hidden="true"></i> {bathroomsValue}</span>
                                         <ul className="list">
-                                            <li data-value="1" className="option selected">1</li>
-                                            <li data-value="2" className="option">2</li>
-                                            <li data-value="3" className="option">3</li>
-                                            <li data-value="3" className="option">4</li>
-                                            <li data-value="3" className="option">5</li>
-                                            <li data-value="3" className="option">6</li>
-                                            <li data-value="3" className="option">7</li>
-                                            <li data-value="3" className="option">8</li>
-                                            <li data-value="3" className="option">9</li>
-                                            <li data-value="3" className="option">10</li>
+                                            {options.map((b) =>
+                                                <li key={b} onClick={() => bathroomsValueHandler(b)} data-value={b} className="option">{b}</li>
+                                            )}
                                         </ul>
                                     </div>
                                 </div>
@@ -90,51 +170,63 @@ function SearchBar(typeProperty) {
                                 <div className="main-search-field-2">
                                     <div className="range-slider">
                                         <label>Area Size</label>
-                                        <div id="area-range" data-min="0" data-max="1300" data-unit="sq ft"></div>
+                                        <MultiRangeSlider
+                                            min={1}
+                                            max={1300}
+                                            step={1}
+                                            minValue={minValueArea}
+                                            maxValue={maxValueArea}
+                                            ruler={false}
+                                            onInput={(e) => {
+                                                handleArea(e);
+                                            }}
+                                            className={'slider-bar-custom'}
+                                            label='false'
+                                        />
+                                        <label className='first-slider-value'>{minValueArea} {areaMeasure}</label>
+                                        <label className='second-slider-value'>{maxValueArea} {areaMeasure}</label>
                                         <div className="clearfix"></div>
                                     </div>
                                     <br/>
                                     <div className="range-slider">
                                         <label>Price Range</label>
-                                        <div id="price-range" data-min="0" data-max="600000" data-unit="$"></div>
+                                        <MultiRangeSlider
+                                            min={1}
+                                            max={999000}
+                                            step={1}
+                                            minValue={minValuePrice}
+                                            maxValue={maxValuePrice}
+                                            ruler={false}
+                                            onInput={(e) => {
+                                                handlePrice(e);
+                                            }}
+                                            className={'slider-bar-custom'}
+                                            label='false'
+                                        />
+                                        <label className='first-slider-value'>{currency} {minValuePrice.toLocaleString()}</label>
+                                        <label className='second-slider-value'>{currency} {maxValuePrice. toLocaleString()}</label>
                                         <div className="clearfix"></div>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 col-sm-12 py-1 pr-30 d-none d-lg-none d-xl-flex">
                                 <div className="checkboxes one-in-row margin-bottom-10 ch-1">
-                                    <input id="check-2" type="checkbox" name="check"/>
-                                    <label htmlFor="check-2">Air Conditioning</label>
-                                    <input id="check-3" type="checkbox" name="check"/>
-                                    <label htmlFor="check-3">Swimming Pool</label>
-                                    <input id="check-4" type="checkbox" name="check"/>
-                                    <label htmlFor="check-4">Central Heating</label>
-                                    <input id="check-5" type="checkbox" name="check"/>
-                                    <label htmlFor="check-5">Laundry Room</label>
-                                    <input id="check-6" type="checkbox" name="check"/>
-                                    <label htmlFor="check-6">Gym</label>
-                                    <input id="check-7" type="checkbox" name="check"/>
-                                    <label htmlFor="check-7">Alarm</label>
-                                    <input id="check-8" type="checkbox" name="check"/>
-                                    <label htmlFor="check-8">Window Covering</label>
+                                    {Object.keys(checkboxOptions).slice(0,halfOptions).map((box, i) =>
+                                        <>
+                                            <input key={box} onChange={checkBoxHandler} id={`check-${i+2}`} type="checkbox" name={box}/>
+                                            <label htmlFor={`check-${i+2}`}>{box}</label>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 col-sm-12 py-1 pr-30 d-none d-lg-none d-xl-flex">
                                 <div className="checkboxes one-in-row margin-bottom-10 ch-2">
-                                    <input id="check-9" type="checkbox" name="check"/>
-                                    <label htmlFor="check-9">WiFi</label>
-                                    <input id="check-10" type="checkbox" name="check"/>
-                                    <label htmlFor="check-10">TV Cable</label>
-                                    <input id="check-11" type="checkbox" name="check"/>
-                                    <label htmlFor="check-11">Dryer</label>
-                                    <input id="check-12" type="checkbox" name="check"/>
-                                    <label htmlFor="check-12">Microwave</label>
-                                    <input id="check-13" type="checkbox" name="check"/>
-                                    <label htmlFor="check-13">Washer</label>
-                                    <input id="check-14" type="checkbox" name="check"/>
-                                    <label htmlFor="check-14">Refrigerator</label>
-                                    <input id="check-15" type="checkbox" name="check"/>
-                                    <label htmlFor="check-15">Outdoor Shower</label>
+                                    {Object.keys(checkboxOptions).slice(halfOptions, halfOptions*2+1).map((box, i) =>
+                                        <>
+                                            <input key={box} onChange={checkBoxHandler} id={`check-${i+2+halfOptions}`} type="checkbox" name={box}/>
+                                            <label htmlFor={`check-${i+2+halfOptions}`}>{box}</label>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
