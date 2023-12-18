@@ -4377,6 +4377,7 @@ div.partners {
 .partners .style2 .owl-item img {
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
+  padding-left: 20px;
 }
 
 .partners-1 .style2 img {
@@ -4400,8 +4401,8 @@ div.partners {
 /*-----------------------------------*/
 section.counterup {
   padding: 6rem 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0.8))), url(../images/bg/bg-counter2.jpg) no-repeat center center;
-  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../images/bg/bg-counter2.jpg) no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0.8))), url(../images/bg/composition-hygge-style-with-wooden-word-home.jpg) no-repeat center center;
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../images/bg/composition-hygge-style-with-wooden-word-home.jpg) no-repeat center center;
   background-attachment: fixed;
   color: #fff;
   text-align: center;
@@ -5420,7 +5421,7 @@ element.style {
 .homepage-2 .portfolio .homes-content h3 a:hover,
 .homepage-2 .blog-section .news-item h3:hover,
 .homepage-2 .dropdown-filter span::after {
-  color: #687389;
+  color: #b0793b;
 }
 
 .homepage-2 .btn:hover,
@@ -7048,8 +7049,8 @@ a.button,
   width: 100%;
 }
 
-.homepage-5 .home5-right-slider.owl-carousel .owl-prev,
-.homepage-5 .home5-right-slider.owl-carousel .owl-next {
+.homepage-2 .home5-right-slider.owl-carousel .owl-prev,
+.homepage-2 .home5-right-slider.owl-carousel .owl-next {
   background-color: #ffffff !important;
   border-radius: 50%;
   color: #555;
@@ -13783,7 +13784,7 @@ section.how-it-works {
 
 .how-it-works .sec-title h2 span {
   font-weight: 600;
-  color: #111;
+  color: #b0793b;
 }
 
 .how-it-works .sec-title img {
@@ -18157,11 +18158,11 @@ ul.the-agents-details li a {
 }
 
 .inner-pages .agent-details a:hover {
-  color: #48a0dc;
+  color: #b0793b;
 }
 
 .inner-pages .agent-details .fa {
-  color: #FF385C;
+  color: #b0793b;
   font-size: 15px;
   margin-right: 8px;
 }
@@ -19948,26 +19949,26 @@ header.payment-card-header .pull-right img {
   padding: 6rem 0;
 }
 
-.homepage-2 .headings {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/bg-details.jpg) no-repeat center center;
-  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/bg-details.jpg) no-repeat center center;
+.inner-pages .headings {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat center center;
+  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat center center;
   width: 100%;
   height: 30vh;
 }
 
-.homepage-2 .about .headings  {
-  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/home-16.png) no-repeat center center;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/home-16.png) no-repeat center center;
+.inner-pages .about .headings {
+  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat bottom;
 }
 
-.homepage-2 .headings h1 {
+.inner-pages .headings h1 {
   margin-top: 7.5rem;
-  font-size: 26px;
-  color: #fff;
+  font-size: 28px;
+  color: #b0793b;
 }
 
-.homepage-2 .headings h2 a,
-.homepage-2 .headings h2 {
+.inner-pages .headings h2 a,
+.inner-pages .headings h2 {
   text-decoration: none;
   text-transform: capitalize;
   color: #fff;
@@ -19977,11 +19978,11 @@ header.payment-card-header .pull-right img {
   transition: all .5s ease;
 }
 
-.homepage-2 .headings h2 a:hover {
+.inner-pages .headings h2 a:hover {
   color: #b0793b;
 }
 
-.homepage-2 .about-us h2::after {
+.inner-pages .about-us h2::after {
   display: block;
   height: 3px;
   font-weight: bold;
@@ -19992,7 +19993,7 @@ header.payment-card-header .pull-right img {
   margin-bottom: 1.5rem;
 }
 
-.homepage-2 .about-us.fh .popup-youtube {
+.inner-pages .about-us.fh .popup-youtube {
   background: #0f1341 none repeat scroll 0 0;
   border-radius: 100%;
   color: #b0793b;
@@ -20009,7 +20010,7 @@ header.payment-card-header .pull-right img {
   z-index: 9;
 }
 
-.homepage-2 .about-us.fh .wprt-image-video .iq-waves {
+.inner-pages .about-us.fh .wprt-image-video .iq-waves {
   height: 352px;
   height: 22rem;
   left: 50%;
@@ -20022,7 +20023,7 @@ header.payment-card-header .pull-right img {
   z-index: 2;
 }
 
-.homepage-2 .about-us.fh .wprt-image-video .iq-waves .waves {
+.inner-pages .about-us.fh .wprt-image-video .iq-waves .waves {
   -webkit-animation: 3s ease-in-out 0s normal none infinite running waves;
           animation: 3s ease-in-out 0s normal none infinite running waves;
   background: rgba(255, 255, 255, 0.2) none repeat scroll 0 0 padding-box;
@@ -20036,71 +20037,72 @@ header.payment-card-header .pull-right img {
   width: 22rem;
 }
 
-.homepage-2 .about-us.fh .box .button {
+.inner-pages .about-us.fh .box .button {
   padding: 20px;
   width: 100%;
 }
 
-.homepage-2 .about-us.fh .wprt-image-video .iq-waves .wave-1 {
+.inner-pages .about-us.fh .wprt-image-video .iq-waves .wave-1 {
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 }
 
-.homepage-2 .about-us.fh .wprt-image-video .iq-waves .wave-2 {
+.inner-pages .about-us.fh .wprt-image-video .iq-waves .wave-2 {
   -webkit-animation-delay: 1s;
           animation-delay: 1s;
 }
 
-.homepage-2 .about-us.fh .wprt-image-video .iq-waves .wave-3 {
+.inner-pages .about-us.fh .wprt-image-video .iq-waves .wave-3 {
   -webkit-animation-delay: 2s;
           animation-delay: 2s;
 }
 
-.homepage-2 .about .sec-title {
+.inner-pages.about .sec-title {
   text-align: center;
   padding-bottom: 2rem;
 }
 
-.homepage-2 .about .sec-title h2 {
-  color: #444;
+.inner-pages .about h2 {
+  color: #b0793b;
   font-size: 1.7rem;
   text-align: center;
   padding-bottom: 0rem;
 }
 
-.homepage-2 .about .sec-title h2 span {
+.inner-pages .about h2 span {
   font-weight: 600;
   color: #b0793b;
 }
 
-.homepage-2 .about .sec-title h2 span::before {
+.inner-pages .about .sec-title h2 span::before {
   display: none;
+  color: #b0793b;
 }
 
-.homepage-2 .about .testimonials .test-1 p::before {
+.inner-page .about .testimonials .test-1 p::before {
   left: 236px;
   top: -24px;
   position: relative;
 }
 
-.homepage-2 .about .owl-dots {
+.inner-pages.about .owl-dots {
   margin-top: 0px;
 }
 
-.homepage-2 .about .starts .fa {
-  color: #FF385C !important;
+.inner-pages .about .starts .fa {
+  color: #b0793b !important;
 }
 
 @media screen and (max-width: 500px) {
-  .homepage-2 .headings h1 {
+  .inner-pages .headings h1 {
     margin-top: 5rem;
     font-size: 1.5rem;
   }
 }
-.homepage-2 .about-us .who-1 {
+.inner-pages .about-us .who-1 {
   background: #fff;
   background-size: cover;
-  color: #666;
+  color: #b0793b;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20114,12 +20116,12 @@ header.payment-card-header .pull-right img {
   top: 0;
 }
 
-.homepage-2 .about-us .who-1 h2 span {
+.homepage-2 .about .who-1 h2 span {
   color: #b0793b;
 }
 
-.homepage-2 .about-us .who-1 p {
-  color: #666;
+.inner-pages .about-us .who-1 p {
+  color: #0a0a0a;
   background: #fff;
   font-weight: 400;
   font-family: 'Lato', sans-serif;

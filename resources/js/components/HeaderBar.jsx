@@ -80,17 +80,7 @@ function HeaderBar(){
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">About Us</a>
-                                        <ul>
-                                            <li> <Link to='/our-story'>Our Story</Link>
-                                            </li>
-                                            <li><Link to='/'>Mission</Link>
-                                            </li>
-                                            <li><Link to='/'>Benefits</Link>
-                                            </li>
-                                            <li><Link to='/'>Client stories</Link>
-                                            </li>
-                                        </ul>
+                                    <li><Link to='/about-us'>About Us</Link>
                                     </li>
                                     <li><a href="#">Property</a>
                                         <ul>
