@@ -1,6 +1,8 @@
+/*jshint esversion: 6 */
 import logo from '../../../public/images/FullLogo_Transparent_NoBuffer.png'
 import {useState} from "react";
 import {Link} from "react-router-dom";
+
 
 function HeaderBar(){
     const[isLanguageClicked, setIsLanguageClicked] = useState(false)
@@ -20,7 +22,9 @@ function HeaderBar(){
                     <div className="container container-header">
                         <div className="left-side">
                             <div id="logo">
-                               <Link to='/'><img src={logo} alt=""/></Link>
+
+                                <Link to="/"><img src={logo} alt=""/></Link>
+
                             </div>
                             <div className="mmenu-trigger">
                                 <button className="hamburger hamburger--collapse" type="button">
@@ -143,7 +147,7 @@ function HeaderBar(){
                                             <li><a href="blog-details.html">Blog Details</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact-us.html">Contact</a></li>
+                                    <li><Link to="/contact-us">Contact</Link></li>
                                     <li className="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
                                     <li className="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
                                     <li className="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a href="add-property.html" className="button border btn-lg btn-block text-center">Add Listing<i className="fas fa-laptop-house ml-2"></i></a></li>
@@ -153,7 +157,7 @@ function HeaderBar(){
 
                         <div className="right-side d-none d-none d-lg-none d-xl-flex">
                             <div className="header-widget">
-                                <a href="add-property.html" className="button border">Add Listing<i className="fas fa-laptop-house ml-2"></i></a>
+                                <Link to="/add-property" className="button border">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link>
                             </div>
                         </div>
 
@@ -163,7 +167,7 @@ function HeaderBar(){
                             </div>
                             <ul>
                                 <li><a href="#"> Edit profile</a></li>
-                                <li><a href="#"> Add Property</a></li>
+                                <li><Link to="/add-property"> Add Property</Link></li>
                                 <li><a href="#">  Payments</a></li>
                                 <li><a href="#"> Change Password</a></li>
                                 <li><a href="#">Log Out</a></li>
@@ -172,7 +176,7 @@ function HeaderBar(){
 
                         <div className="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
                             <div className="header-widget sign-in">
-                                <div className="show-reg-form modal-open"><a href="#">Sign In</a></div>
+                                <div className="show-reg-form modal-open"><Link to="/login">Sign In</Link></div>
                             </div>
                         </div>
                         <div className={`header-user-menu user-menu add d-none d-lg-none d-xl-flex ${isLanguageClicked ? 'active' : ''}`} onClick={languageHandler}>
