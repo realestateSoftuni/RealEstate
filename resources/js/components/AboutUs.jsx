@@ -1,3 +1,4 @@
+
 function AboutUs() {
     return (
         <div className="inner-pages hd-white about">
@@ -14,7 +15,7 @@ function AboutUs() {
                     <div className="row">
                         <div className="col-lg-6 col-md-12 who-1">
                             <div>
-                                <h2 className="text-left mb-4">About <span>Us</span></h2>
+                                <h2 className="text-left mb-4">About <span className="us">Us</span></h2>
                             </div>
                             <div className="pftext">
                                 <p> Welcome to Home-Estate, where we turn dreams of home ownership into reality.
@@ -65,7 +66,7 @@ function AboutUs() {
                         <article className="col-lg-4 col-md-6 col-xs-12 serv" data-aos="fade-up">
                             <div className="serv-flex">
                                 <div className="art-1 img-13">
-                                    <img src="../../../public/images/icons/icon-4.svg" alt="" />
+                                    <img src="/images/icons/icon-4.svg" alt="" />
                                         <h3>Wide Renge Of Properties</h3>
                                 </div>
                                 <div className="service-text-p">
@@ -80,7 +81,7 @@ function AboutUs() {
                         <article className="col-lg-4 col-md-6 col-xs-12 serv" data-aos="fade-up">
                             <div className="serv-flex">
                                 <div className="art-1 img-14">
-                                    <img src="../../../public/images/icons/icon-5.svg" alt="" />
+                                    <img src="/images/icons/icon-5.svg" alt="" />
                                         <h3>Trusted by thousands</h3>
                                 </div>
                                 <div className="service-text-p">
@@ -94,7 +95,7 @@ function AboutUs() {
                         <article className="col-lg-4 col-md-6 col-xs-12 serv mb-0 pt" data-aos="fade-up">
                             <div className="serv-flex arrow">
                                 <div className="art-1 img-15">
-                                    <img src="../../../public/images/icons/icon-6.svg" alt="" />
+                                    <img src="/images/icons/icon-6.svg" alt="" />
                                         <h3>Financing made easy</h3>
                                 </div>
                                 <div className="service-text-p">
@@ -181,100 +182,42 @@ function AboutUs() {
                                     donec, suscipit tortor et sapien donec.</p>
                         </div>
                         <div className="test-1 pb-0 pt-0">
-                            <img src="images/testimonials/ts-2.jpg" alt="" />
-                                <h3 className="mt-3 mb-0">Jhon Morris</h3>
-                                <h6 className="mt-1">Los Angeles</h6>
-                                <ul className="starts text-center mb-2">
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star-o"></i>
-                                    </li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
-                                    donec, suscipit tortor et sapien donec.</p>
+                            <img src="images/testimonials/ts-1.jpg" alt="" />
+                            <h3 className="mt-3 mb-0">Lisa Smith</h3>
+                            <h6 className="mt-1">New York</h6>
+                            <ul className="starts text-center mb-2">
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                            </ul>
+                            <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
+                                donec, suscipit tortor et sapien donec.</p>
                         </div>
-                        <div className="test-1 pt-0">
-                            <img src="images/testimonials/ts-3.jpg" alt="" />
-                                <h3 className="mt-3 mb-0">Mary Deshaw</h3>
-                                <h6 className="mt-1">Chicago</h6>
-                                <ul className="starts text-center mb-2">
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
-                                    donec, suscipit tortor et sapien donec.</p>
-                        </div>
-                        <div className="test-1 pt-0">
-                            <img src="images/testimonials/ts-4.jpg" alt="" />
-                                <h3 className="mt-3 mb-0">Gary Steven</h3>
-                                <h6 className="mt-1">Philadelphia</h6>
-                                <ul className="starts text-center mb-2">
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star-o"></i>
-                                    </li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
-                                    donec, suscipit tortor et sapien donec.
-                                </p>
-                        </div>
-                        <div className="test-1 pt-0">
-                            <img src="images/testimonials/ts-5.jpg" alt="" />
-                                <h3 className="mt-3 mb-0">Cristy Mayer</h3>
-                                <h6 className="mt-1">San Francisco</h6>
-                                <ul className="starts text-center mb-2">
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
-                                    donec, suscipit tortor et sapien donec.</p>
-                        </div>
-                        <div className="test-1 pt-0">
-                            <img src="images/testimonials/ts-6.jpg" alt="" />
-                                <h3 className="mt-3 mb-0">Ichiro Tasaka</h3>
-                                <h6 className="mt-1">Houston</h6>
-                                <ul className="starts text-center mb-2">
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star-o"></i>
-                                    </li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
-                                    donec, suscipit tortor et sapien donec.</p>
+                        <div className="test-1 pb-0 pt-0">
+                            <img src="images/testimonials/ts-1.jpg" alt="" />
+                            <h3 className="mt-3 mb-0">Lisa Smith</h3>
+                            <h6 className="mt-1">New York</h6>
+                            <ul className="starts text-center mb-2">
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                            </ul>
+                            <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
+                                donec, suscipit tortor et sapien donec.</p>
                         </div>
                     </div>
                 </div>
