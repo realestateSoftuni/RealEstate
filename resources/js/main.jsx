@@ -7,7 +7,8 @@ import HeaderSearchBar from "./components/HeaderSearchBar.jsx";
 import PopularPlaces from "./components/PopularPlaces.jsx";
 import Register from "./components/Register.jsx";
 import EmailVerify from "./components/EmailVerify.jsx";
-import AboutUs from "./components/AboutUs.jsx"
+import AboutUs from "./components/AboutUs.jsx";
+import FAQs from "./components/FAQs.jsx";
 
 import "../../public/favicon.ico"
 import '../../public/css/jquery-ui.css'
@@ -52,6 +53,8 @@ function Main() {
                                 <PopularPlaces/>
                             </main>}/>
                         <Route path="/about-us" element={<AboutUs/>}/>
+                        {/*<Route path="/process" element={<Process/>}/>*/}
+                        <Route path="/faqs" element={<FAQs/>}/>
                         <Route path="/register" element={<Register/>}/>
                         <Route path="/verify/:token" element={<EmailVerify />}/>
                         <Route path="*" element={<NotFound404 />} />
