@@ -13,6 +13,7 @@ import HomePage from "./components/HomePage/HomePage.jsx";
 import LogIn from "./components/LogIn.jsx";
 import AddProperty from "./components/AddProperty.jsx";
 import User from "./components/UserDetails.jsx";
+import SingleProperty from "./components/SingleProperty.jsx";
 import Contact from "./components/Contact.jsx"
 
 
@@ -20,22 +21,29 @@ import "../../public/favicon.ico"
 import '../../public/css/jquery-ui.css'
 import '../../public/font/flaticon.css'
 
-import "../../public/css/fontawesome-all.min.css"
-import "../../public/css/fontawesome-5-all.min.css"
-import "../../public/css/font-awesome.min.css"
-import '../../public/css/search-form.css'
-import "../../public/css/search.css"
-import "../../public/css/animate.css"
-import "../../public/css/aos.css"
-import "../../public/css/aos2.css"
-import "../../public/css/magnific-popup.css"
-import "../../public/css/lightcase.css"
-import "../../public/css/owl.carousel.min.css"
-import "../../public/css/bootstrap.min.css"
-import "../../public/css/menu.css"
-import "../../public/css/slick.css"
-import "../../public/css/styles.css"
-import '../../public/css/colors/dark-gray.css'
+import "../../public/css/fontawesome-all.min.css";
+import "../../public/css/fontawesome-5-all.min.css";
+import "../../public/css/font-awesome.min.css";
+import '../../public/css/search-form.css';
+import "../../public/css/search.css";
+import "../../public/css/animate.css";
+import "../../public/css/aos.css";
+import "../../public/css/aos2.css";
+import "../../public/css/magnific-popup.css";
+import "../../public/css/lightcase.css";
+import "../../public/css/owl.carousel.min.css";
+import "../../public/css/bootstrap.min.css";
+import "../../public/css/menu.css";
+import "../../public/css/slick.css";
+import "../../public/css/styles.css";
+import '../../public/css/colors/dark-gray.css';
+import '../../public/css/leaflet.css';
+import '../../public/css/leaflet-gesture-handling.min.css';
+import '../../public/css/leaflet.markercluster.css';
+import '../../public/css/leaflet.markercluster.default.css';
+import '../../public/css/timedropper.css';
+import '../../public/css/datedropper.css';
+import '../../public/css/default.css';
 
 
 
@@ -45,12 +53,13 @@ function Main() {
     }, []);
 
     return (
-        <div className="maxw1600 m0a homepage-2 the-search hd-white">
+        <div className="inner-pages sin-1 maxw1600 m0a homepage-2 the-search hd-white">
                 <div id="wrapper">
                     {/*< InfoSideBar />*/}
                     < HeaderBar/>
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
+                        <Route path="/property" element={<SingleProperty/>}/>
                         <Route path="/register" element={<Register/>}/>
                         <Route path="/verify/:token" element={<EmailVerify />}/>
                         <Route path="*" element={<NotFound404 />} />

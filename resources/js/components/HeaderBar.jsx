@@ -2,6 +2,7 @@
 import logo from '../../../public/images/FullLogo_Transparent_NoBuffer.png'
 import {useState} from "react";
 import {Link} from "react-router-dom";
+import SingleProperty from "@/components/SingleProperty.jsx";
 
 
 function HeaderBar(){
@@ -132,16 +133,7 @@ function HeaderBar(){
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Property</a>
-                                        <ul>
-                                            <li><a href="single-property-1.html">Single Property 1</a></li>
-                                            <li><a href="single-property-2.html">Single Property 2</a></li>
-                                            <li><a href="single-property-3.html">Single Property 3</a></li>
-                                            <li><a href="single-property-4.html">Single Property 4</a></li>
-                                            <li><a href="single-property-5.html">Single Property 5</a></li>
-                                            <li><a href="single-property-6.html">Single Property 6</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><Link to={'/property'}>Property</Link></li>
                                     <li><a href="#">Pages</a>
                                         <ul>
                                             <li><a href="#">Shop</a>
