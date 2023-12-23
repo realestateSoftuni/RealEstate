@@ -1,5 +1,16 @@
-
+import Slider from "react-slick";
+import pic from "../../assets/LA.jpg";
+import pic2 from "../../assets/SF.jpg";
 function SingleProperty(){
+    const settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        adaptiveHeight: true,
+    };
     return(
         <section className="single-proper blog details">
             <div className="container">
@@ -36,53 +47,67 @@ function SingleProperty(){
                                 <div id="listingDetailsSlider" className="carousel listing-details-sliders slide mb-30">
                                     <h5 className="mb-4">Gallery</h5>
                                     <div className="carousel-inner">
-                                        <div className="active item carousel-item" data-slide-number="0">
-                                            <img src="images/single-property/s-1.jpg" className="img-fluid" alt="slider-listing"/>
-                                        </div>
-                                        <div className="item carousel-item" data-slide-number="1">
-                                            <img src="images/single-property/s-2.jpg" className="img-fluid" alt="slider-listing"/>
-                                        </div>
-                                        <div className="item carousel-item" data-slide-number="2">
-                                            <img src="images/single-property/s-3.jpg" className="img-fluid" alt="slider-listing"/>
-                                        </div>
-                                        <div className="item carousel-item" data-slide-number="4">
-                                            <img src="images/single-property/s-4.jpg" className="img-fluid" alt="slider-listing"/>
-                                        </div>
-                                        <div className="item carousel-item" data-slide-number="5">
-                                            <img src="images/single-property/s-5.jpg" className="img-fluid" alt="slider-listing"/>
-                                        </div>
+                                        <Slider {...settings}>
+                                            <div>
+                                                <img className='property-img' src={pic} />
+                                            </div>
+                                            <div>
+                                                <img className='property-img' src={pic2} />
+                                            </div>
+                                            <div>
+                                                <img className='property-img' src={pic} />
+                                            </div>
+                                            <div>
+                                                <img className='property-img' src={pic2} />
+                                            </div>
+                                        </Slider>
+                                        {/*<div className="active item carousel-item" data-slide-number="0">*/}
+                                        {/*    <img src="images/single-property/s-1.jpg" className="img-fluid" alt="slider-listing"/>*/}
+                                        {/*</div>*/}
+                                        {/*<div className="item carousel-item" data-slide-number="1">*/}
+                                        {/*    <img src="images/single-property/s-2.jpg" className="img-fluid" alt="slider-listing"/>*/}
+                                        {/*</div>*/}
+                                        {/*<div className="item carousel-item" data-slide-number="2">*/}
+                                        {/*    <img src="images/single-property/s-3.jpg" className="img-fluid" alt="slider-listing"/>*/}
+                                        {/*</div>*/}
+                                        {/*<div className="item carousel-item" data-slide-number="4">*/}
+                                        {/*    <img src="images/single-property/s-4.jpg" className="img-fluid" alt="slider-listing"/>*/}
+                                        {/*</div>*/}
+                                        {/*<div className="item carousel-item" data-slide-number="5">*/}
+                                        {/*    <img src="images/single-property/s-5.jpg" className="img-fluid" alt="slider-listing"/>*/}
+                                        {/*</div>*/}
 
-                                        <a className="carousel-control left" href="#listingDetailsSlider" data-slide="prev"><i className="fa fa-angle-left"></i></a>
-                                        <a className="carousel-control right" href="#listingDetailsSlider" data-slide="next"><i className="fa fa-angle-right"></i></a>
+                                        {/*<a className="carousel-control left" href="#listingDetailsSlider" data-slide="prev"><i className="fa fa-angle-left"></i></a>*/}
+                                        {/*<a className="carousel-control right" href="#listingDetailsSlider" data-slide="next"><i className="fa fa-angle-right"></i></a>*/}
 
                                     </div>
-                                    <ul className="carousel-indicators smail-listing list-inline">
-                                        <li className="list-inline-item active">
-                                            <a id="carousel-selector-0" className="selected" data-slide-to="0" data-target="#listingDetailsSlider">
-                                                <img src="images/single-property/s-1.jpg" className="img-fluid" alt="listing-small"/>
-                                            </a>
-                                        </li>
-                                        <li className="list-inline-item">
-                                            <a id="carousel-selector-1" data-slide-to="1" data-target="#listingDetailsSlider">
-                                                <img src="images/single-property/s-2.jpg" className="img-fluid" alt="listing-small"/>
-                                            </a>
-                                        </li>
-                                        <li className="list-inline-item">
-                                            <a id="carousel-selector-2" data-slide-to="2" data-target="#listingDetailsSlider">
-                                                <img src="images/single-property/s-3.jpg" className="img-fluid" alt="listing-small"/>
-                                            </a>
-                                        </li>
-                                        <li className="list-inline-item">
-                                            <a id="carousel-selector-3" data-slide-to="3" data-target="#listingDetailsSlider">
-                                                <img src="images/single-property/s-4.jpg" className="img-fluid" alt="listing-small"/>
-                                            </a>
-                                        </li>
-                                        <li className="list-inline-item">
-                                            <a id="carousel-selector-4" data-slide-to="4" data-target="#listingDetailsSlider">
-                                                <img src="images/single-property/s-5.jpg" className="img-fluid" alt="listing-small"/>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    {/*<ul className="carousel-indicators smail-listing list-inline">*/}
+                                    {/*    <li className="list-inline-item active">*/}
+                                    {/*        <a id="carousel-selector-0" className="selected" data-slide-to="0" data-target="#listingDetailsSlider">*/}
+                                    {/*            <img src="images/single-property/s-1.jpg" className="img-fluid" alt="listing-small"/>*/}
+                                    {/*        </a>*/}
+                                    {/*    </li>*/}
+                                    {/*    <li className="list-inline-item">*/}
+                                    {/*        <a id="carousel-selector-1" data-slide-to="1" data-target="#listingDetailsSlider">*/}
+                                    {/*            <img src="images/single-property/s-2.jpg" className="img-fluid" alt="listing-small"/>*/}
+                                    {/*        </a>*/}
+                                    {/*    </li>*/}
+                                    {/*    <li className="list-inline-item">*/}
+                                    {/*        <a id="carousel-selector-2" data-slide-to="2" data-target="#listingDetailsSlider">*/}
+                                    {/*            <img src="images/single-property/s-3.jpg" className="img-fluid" alt="listing-small"/>*/}
+                                    {/*        </a>*/}
+                                    {/*    </li>*/}
+                                    {/*    <li className="list-inline-item">*/}
+                                    {/*        <a id="carousel-selector-3" data-slide-to="3" data-target="#listingDetailsSlider">*/}
+                                    {/*            <img src="images/single-property/s-4.jpg" className="img-fluid" alt="listing-small"/>*/}
+                                    {/*        </a>*/}
+                                    {/*    </li>*/}
+                                    {/*    <li className="list-inline-item">*/}
+                                    {/*        <a id="carousel-selector-4" data-slide-to="4" data-target="#listingDetailsSlider">*/}
+                                    {/*            <img src="images/single-property/s-5.jpg" className="img-fluid" alt="listing-small"/>*/}
+                                    {/*        </a>*/}
+                                    {/*    </li>*/}
+                                    {/*</ul>*/}
                                 </div>
                                 <div className="blog-info details mb-30">
                                     <h5 className="mb-4">Description</h5>

@@ -1436,6 +1436,14 @@ section.recently.portfolio {
   left: -80px;
 }
 
+#listingDetailsSlider > div > div > button.slick-arrow.slick-prev{
+    left: 0;
+}
+
+#listingDetailsSlider > div > div > button.slick-arrow.slick-next{
+    right: 0;
+}
+
 .hp1 div.partners-1,
 .hp1 div.partners {
   padding: 4.6rem 0;
@@ -2104,6 +2112,17 @@ ul.slick-dots {
 
 .slick-dots li button::before{
     display: none;
+}
+
+.property-img{
+    height: 100%;
+    width: auto;
+    max-width: 90%;
+    margin: auto;
+}
+
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus{
+    background: #fff;
 }
 
 .slick-dots li button::after{
