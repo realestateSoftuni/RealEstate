@@ -1437,11 +1437,11 @@ section.recently.portfolio {
 }
 
 #listingDetailsSlider > div > div > button.slick-arrow.slick-prev{
-    left: 0;
+    left: 10px;
 }
 
 #listingDetailsSlider > div > div > button.slick-arrow.slick-next{
-    right: 0;
+    right: 10px;
 }
 
 .hp1 div.partners-1,
@@ -16179,7 +16179,7 @@ section.headings-2 {
 .inner-pages .headings-2 .listing-title-bar h4 {
   font-size: 24px;
   font-weight: 600;
-  color: #FF385C;
+  color: #c18847;
   text-transform: capitalize !important;
 }
 
@@ -16192,7 +16192,7 @@ section.headings-2 {
 
 .inner-pages .headings-2 span.category-tag {
   font-size: 14px;
-  background: #FF385C;
+  background: #c18847;
   color: #fff;
   border: 1px solid #fff;
   padding: 5px 15px;
@@ -16521,7 +16521,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
   line-height: 40px;
   text-align: center;
   background-color: #fff;
-  color: #FF385C;
+  color: #c18847;
   border-radius: 50%;
   font-size: 18px;
   margin-right: 10px;
@@ -16669,7 +16669,8 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 }
 
 .agent-contact-form-sidebar .multiple-send-message {
-  background-color: #FF385C;
+  background-color: #987654;
+  border-radius: 0.3rem;
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
@@ -16680,10 +16681,12 @@ div.datedropper.my-style.picker-lkd .pick-submit {
   margin-bottom: 0px;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
+  border: 1px solid #987654;
 }
 
 .agent-contact-form-sidebar .multiple-send-message:hover {
-  background-color: #121B22;
+    background: #687389;
+    color: #fff;
 }
 
 /* Arrows */
@@ -16778,7 +16781,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 
 .homes-content .font-weight-bold.mr-1 {
   font-weight: 600;
-  color: #555 !important;
+  color: #987654 !important;
 }
 
 .homes-content span.det {
@@ -16814,6 +16817,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 
 .wprt-image-video.w50.pro {
   margin-bottom: 30px !important;
+  position: relative;
 }
 
 .inner-pages .blog .blog-info.details h4,
@@ -16883,6 +16887,20 @@ div.datedropper.my-style.picker-lkd .pick-submit {
     margin-left: 150px;
   }
 }
+
+.inner-slider-div,
+.slick-list .slick-track,
+.slick-list .slick-track .slick-slide,
+.slick-track .slick-slide,
+.slick-slide > div,
+.slick-slide > div > div{
+    height: 100%;
+}
+
+.slick-list{
+    height: 400px;
+}
+
 @media screen and (max-width: 767px) {
   .inner-pages .blog .homes-content.details-2 {
     padding-left: 4rem;
@@ -17086,11 +17104,11 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 .wprt-image-video.w50.pro h5:after,
 .similar-property h5:after,
 .ag-de .blog-section h5:after {
-  color: #FF385C;
+  color: #c18847;
   display: block;
   height: 3px;
   font-weight: bold;
-  background-color: #FF385C;
+  background-color: #c18847;
   content: " ";
   width: 50px;
   margin-top: .5rem;
@@ -17307,7 +17325,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
   padding: 6px 7px;
   color: #fff;
   border: 0px;
-  background-color: #FF385C;
+  background-color: rgba(74, 74, 76, 0.7);
   border-radius: 50px;
   display: inline-block;
   position: relative;
@@ -18505,7 +18523,7 @@ a.button {
 }
 
 .inner-pages.sin-1 a.button.border, a.button {
-  background-color: #FF385C;
+  background-color: #c18847;
   color: #fff !important;
 }
 

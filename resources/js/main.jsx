@@ -36,7 +36,7 @@ import "../../public/css/bootstrap.min.css";
 import "../../public/css/menu.css";
 import "../../public/css/slick.css";
 import "../../public/css/styles.css";
-import '../../public/css/colors/dark-gray.css';
+import '../../public/css/colors/brown.css';
 import '../../public/css/leaflet.css';
 import '../../public/css/leaflet-gesture-handling.min.css';
 import '../../public/css/leaflet.markercluster.css';

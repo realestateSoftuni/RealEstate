@@ -3,13 +3,13 @@ import pic from "../../assets/LA.jpg";
 import pic2 from "../../assets/SF.jpg";
 function SingleProperty(){
     const settings = {
-        dots: true,
+        dots: false,
         infinite: false,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 0,
-        adaptiveHeight: true,
+        className: 'inner-slider-div'
     };
     return(
         <section className="single-proper blog details">
@@ -61,53 +61,8 @@ function SingleProperty(){
                                                 <img className='property-img' src={pic2} />
                                             </div>
                                         </Slider>
-                                        {/*<div className="active item carousel-item" data-slide-number="0">*/}
-                                        {/*    <img src="images/single-property/s-1.jpg" className="img-fluid" alt="slider-listing"/>*/}
-                                        {/*</div>*/}
-                                        {/*<div className="item carousel-item" data-slide-number="1">*/}
-                                        {/*    <img src="images/single-property/s-2.jpg" className="img-fluid" alt="slider-listing"/>*/}
-                                        {/*</div>*/}
-                                        {/*<div className="item carousel-item" data-slide-number="2">*/}
-                                        {/*    <img src="images/single-property/s-3.jpg" className="img-fluid" alt="slider-listing"/>*/}
-                                        {/*</div>*/}
-                                        {/*<div className="item carousel-item" data-slide-number="4">*/}
-                                        {/*    <img src="images/single-property/s-4.jpg" className="img-fluid" alt="slider-listing"/>*/}
-                                        {/*</div>*/}
-                                        {/*<div className="item carousel-item" data-slide-number="5">*/}
-                                        {/*    <img src="images/single-property/s-5.jpg" className="img-fluid" alt="slider-listing"/>*/}
-                                        {/*</div>*/}
-
-                                        {/*<a className="carousel-control left" href="#listingDetailsSlider" data-slide="prev"><i className="fa fa-angle-left"></i></a>*/}
-                                        {/*<a className="carousel-control right" href="#listingDetailsSlider" data-slide="next"><i className="fa fa-angle-right"></i></a>*/}
 
                                     </div>
-                                    {/*<ul className="carousel-indicators smail-listing list-inline">*/}
-                                    {/*    <li className="list-inline-item active">*/}
-                                    {/*        <a id="carousel-selector-0" className="selected" data-slide-to="0" data-target="#listingDetailsSlider">*/}
-                                    {/*            <img src="images/single-property/s-1.jpg" className="img-fluid" alt="listing-small"/>*/}
-                                    {/*        </a>*/}
-                                    {/*    </li>*/}
-                                    {/*    <li className="list-inline-item">*/}
-                                    {/*        <a id="carousel-selector-1" data-slide-to="1" data-target="#listingDetailsSlider">*/}
-                                    {/*            <img src="images/single-property/s-2.jpg" className="img-fluid" alt="listing-small"/>*/}
-                                    {/*        </a>*/}
-                                    {/*    </li>*/}
-                                    {/*    <li className="list-inline-item">*/}
-                                    {/*        <a id="carousel-selector-2" data-slide-to="2" data-target="#listingDetailsSlider">*/}
-                                    {/*            <img src="images/single-property/s-3.jpg" className="img-fluid" alt="listing-small"/>*/}
-                                    {/*        </a>*/}
-                                    {/*    </li>*/}
-                                    {/*    <li className="list-inline-item">*/}
-                                    {/*        <a id="carousel-selector-3" data-slide-to="3" data-target="#listingDetailsSlider">*/}
-                                    {/*            <img src="images/single-property/s-4.jpg" className="img-fluid" alt="listing-small"/>*/}
-                                    {/*        </a>*/}
-                                    {/*    </li>*/}
-                                    {/*    <li className="list-inline-item">*/}
-                                    {/*        <a id="carousel-selector-4" data-slide-to="4" data-target="#listingDetailsSlider">*/}
-                                    {/*            <img src="images/single-property/s-5.jpg" className="img-fluid" alt="listing-small"/>*/}
-                                    {/*        </a>*/}
-                                    {/*    </li>*/}
-                                    {/*</ul>*/}
                                 </div>
                                 <div className="blog-info details mb-30">
                                     <h5 className="mb-4">Description</h5>
@@ -201,6 +156,7 @@ function SingleProperty(){
                             <h5>Floor Plans</h5>
                             <img alt="image" src="images/bg/floor-plan-1.png"/>
                         </div>
+                        {/*ToDo: Is that section needed?*/}
                         <div className="floor-plan property wprt-image-video w50 pro">
                             <h5>What's Nearby</h5>
                             <div className="property-nearby">
@@ -348,11 +304,13 @@ function SingleProperty(){
                                     <div className="waves wave-3"></div>
                                 </div>
                         </div>
+                        {/*ToDo: Is that section needed?*/}
                         <div className="property-location map">
                             <h5>Location</h5>
                             <div className="divider-fade"></div>
                             <div id="map-contact" className="contact-map"></div>
                         </div>
+                        {/*ToDo: Is that section needed?*/}
                         <section className="reviews comments">
                             <h3 className="mb-5">3 Reviews</h3>
                             <div className="row mb-5">
@@ -438,6 +396,7 @@ function SingleProperty(){
                                 </ul>
                             </div>
                         </section>
+                        {/*ToDo: Is that section needed?*/}
                         <section className="single reviews leve-comments details">
                             <div id="add-review" className="add-review-box">
                                 <h3 className="listing-desc-headline margin-bottom-20 mb-4">Add Review</h3>
@@ -498,56 +457,6 @@ function SingleProperty(){
                     </div>
                     <aside className="col-lg-4 col-md-12 car">
                         <div className="single widget">
-                            <div className="schedule widget-boxed mt-33 mt-0">
-                                <div className="widget-boxed-header">
-                                    <h4><i className="fa fa-calendar pr-3 padd-r-10"></i>Schedule a Tour</h4>
-                                </div>
-                                <div className="widget-boxed-body">
-                                    <div className="row">
-                                        <div className="col-lg-6 col-md-12 book">
-                                            <input type="text" id="reservation-date" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" className="form-control" readOnly=""/>
-                                        </div>
-                                        <div className="col-lg-6 col-md-12 book2">
-                                            <input type="text" id="reservation-time" className="form-control" readOnly=""/>
-                                        </div>
-                                    </div>
-                                    <div className="row mrg-top-15 mb-3">
-                                        <div className="col-lg-6 col-md-12 mt-4">
-                                            <label className="mb-4">Adult</label>
-                                            <div className="input-group">
-                                                <span className="input-group-btn">
-										 <button type="button" className="btn counter-btn theme-cl btn-number" disabled="disabled" datatype="minus" data-field="quant[1]">
-											 <i className="fa fa-minus"></i>
-										 </button>
-									        </span>
-                                                <input type="text" name="quant[1]" className="border-0 text-center form-control input-number" data-min="0" data-max="10" value="0"/>
-                                                <span className="input-group-btn">
-											 <button type="button" className="btn counter-btn theme-cl btn-number" datatype="plus" data-field="quant[1]">
-											  <i className="fa fa-plus"></i>
-											 </button>
-									        </span>
-                                            </div>
-                                        </div>
-                                        <div className="col-lg-6 col-md-12 mt-4">
-                                            <label className="mb-4">Children</label>
-                                            <div className="input-group">
-                                                <span className="input-group-btn">
-										 <button type="button" className="btn counter-btn theme-cl btn-number" disabled="disabled" datatype="minus" data-field="quant[2]">
-											 <i className="fa fa-minus"></i>
-										 </button>
-									        </span>
-                                                <input type="text" name="quant[2]" className="border-0 text-center form-control input-number" data-min="0" data-max="10" value="0"/>
-                                                <span className="input-group-btn">
-											 <button type="button" className="btn counter-btn theme-cl btn-number" datatype="plus" data-field="quant[2]">
-											  <i className="fa fa-plus"></i>
-											 </button>
-									        </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="payment-method.html" className="btn reservation btn-radius theme-btn full-width mrg-top-10">Submit Request</a>
-                                </div>
-                            </div>
                             <div className="sidebar">
                                 <div className="widget-boxed mt-33 mt-5">
                                     <div className="widget-boxed-header">
@@ -579,171 +488,6 @@ function SingleProperty(){
                                     </div>
                                 </div>
                                 <div className="main-search-field-2">
-                                    <div className="widget-boxed mt-5">
-                                        <div className="widget-boxed-header">
-                                            <h4>Recent Properties</h4>
-                                        </div>
-                                        <div className="widget-boxed-body">
-                                            <div className="recent-post">
-                                                <div className="recent-main">
-                                                    <div className="recent-img">
-                                                        <a href="blog-details.html"><img src="images/feature-properties/fp-1.jpg" alt=""/></a>
-                                                    </div>
-                                                    <div className="info-img">
-                                                        <a href="blog-details.html"><h6>Family Home</h6></a>
-                                                        <p>$230,000</p>
-                                                    </div>
-                                                </div>
-                                                <div className="recent-main my-4">
-                                                    <div className="recent-img">
-                                                        <a href="blog-details.html"><img src="images/feature-properties/fp-2.jpg" alt=""/></a>
-                                                    </div>
-                                                    <div className="info-img">
-                                                        <a href="blog-details.html"><h6>Family Home</h6></a>
-                                                        <p>$230,000</p>
-                                                    </div>
-                                                </div>
-                                                <div className="recent-main">
-                                                    <div className="recent-img">
-                                                        <a href="blog-details.html"><img src="images/feature-properties/fp-3.jpg" alt=""/></a>
-                                                    </div>
-                                                    <div className="info-img">
-                                                        <a href="blog-details.html"><h6>Family Home</h6></a>
-                                                        <p>$230,000</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="widget-boxed mt-5">
-                                        <div className="widget-boxed-header mb-5">
-                                            <h4>Feature Properties</h4>
-                                        </div>
-                                        <div className="widget-boxed-body">
-                                            <div className="slick-lancers">
-                                                <div className="agents-grid mr-0">
-                                                    <div className="listing-item compact">
-                                                        <a href="properties-details.html" className="listing-img-container">
-                                                            <div className="listing-badges">
-                                                                <span className="featured">$ 230,000</span>
-                                                                <span>For Sale</span>
-                                                            </div>
-                                                            <div className="listing-img-content">
-                                                                <span className="listing-compact-title">House Luxury <i>New York</i></span>
-                                                                <ul className="listing-hidden-content">
-                                                                    <li>Area <span>720 sq ft</span></li>
-                                                                    <li>Rooms <span>6</span></li>
-                                                                    <li>Beds <span>2</span></li>
-                                                                    <li>Baths <span>3</span></li>
-                                                                </ul>
-                                                            </div>
-                                                            <img src="images/feature-properties/fp-1.jpg" alt=""/>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div className="agents-grid mr-0">
-                                                    <div className="listing-item compact">
-                                                        <a href="properties-details.html" className="listing-img-container">
-                                                            <div className="listing-badges">
-                                                                <span className="featured">$ 6,500</span>
-                                                                <span className="rent">For Rent</span>
-                                                            </div>
-                                                            <div className="listing-img-content">
-                                                                <span className="listing-compact-title">House Luxury <i>Los Angles</i></span>
-                                                                <ul className="listing-hidden-content">
-                                                                    <li>Area <span>720 sq ft</span></li>
-                                                                    <li>Rooms <span>6</span></li>
-                                                                    <li>Beds <span>2</span></li>
-                                                                    <li>Baths <span>3</span></li>
-                                                                </ul>
-                                                            </div>
-                                                            <img src="images/feature-properties/fp-2.jpg" alt=""/>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div className="agents-grid mr-0">
-                                                    <div className="listing-item compact">
-                                                        <a href="properties-details.html" className="listing-img-container">
-                                                            <div className="listing-badges">
-                                                                <span className="featured">$ 230,000</span>
-                                                                <span>For Sale</span>
-                                                            </div>
-                                                            <div className="listing-img-content">
-                                                                <span className="listing-compact-title">House Luxury <i>San Francisco</i></span>
-                                                                <ul className="listing-hidden-content">
-                                                                    <li>Area <span>720 sq ft</span></li>
-                                                                    <li>Rooms <span>6</span></li>
-                                                                    <li>Beds <span>2</span></li>
-                                                                    <li>Baths <span>3</span></li>
-                                                                </ul>
-                                                            </div>
-                                                            <img src="images/feature-properties/fp-3.jpg" alt=""/>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div className="agents-grid mr-0">
-                                                    <div className="listing-item compact">
-                                                        <a href="properties-details.html" className="listing-img-container">
-                                                            <div className="listing-badges">
-                                                                <span className="featured">$ 6,500</span>
-                                                                <span className="rent">For Rent</span>
-                                                            </div>
-                                                            <div className="listing-img-content">
-                                                                <span className="listing-compact-title">House Luxury <i>Miami FL</i></span>
-                                                                <ul className="listing-hidden-content">
-                                                                    <li>Area <span>720 sq ft</span></li>
-                                                                    <li>Rooms <span>6</span></li>
-                                                                    <li>Beds <span>2</span></li>
-                                                                    <li>Baths <span>3</span></li>
-                                                                </ul>
-                                                            </div>
-                                                            <img src="images/feature-properties/fp-4.jpg" alt=""/>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div className="agents-grid mr-0">
-                                                    <div className="listing-item compact">
-                                                        <a href="properties-details.html" className="listing-img-container">
-                                                            <div className="listing-badges">
-                                                                <span className="featured">$ 230,000</span>
-                                                                <span>For Sale</span>
-                                                            </div>
-                                                            <div className="listing-img-content">
-                                                                <span className="listing-compact-title">House Luxury <i>Chicago IL</i></span>
-                                                                <ul className="listing-hidden-content">
-                                                                    <li>Area <span>720 sq ft</span></li>
-                                                                    <li>Rooms <span>6</span></li>
-                                                                    <li>Beds <span>2</span></li>
-                                                                    <li>Baths <span>3</span></li>
-                                                                </ul>
-                                                            </div>
-                                                            <img src="images/feature-properties/fp-5.jpg" alt=""/>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div className="agents-grid mr-0">
-                                                    <div className="listing-item compact">
-                                                        <a href="properties-details.html" className="listing-img-container">
-                                                            <div className="listing-badges">
-                                                                <span className="featured">$ 6,500</span>
-                                                                <span className="rent">For Rent</span>
-                                                            </div>
-                                                            <div className="listing-img-content">
-                                                                <span className="listing-compact-title">House Luxury <i>Toronto CA</i></span>
-                                                                <ul className="listing-hidden-content">
-                                                                    <li>Area <span>720 sq ft</span></li>
-                                                                    <li>Rooms <span>6</span></li>
-                                                                    <li>Beds <span>2</span></li>
-                                                                    <li>Baths <span>3</span></li>
-                                                                </ul>
-                                                            </div>
-                                                            <img src="images/feature-properties/fp-6.jpg" alt=""/>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div className="widget-boxed popular mt-5">
                                         <div className="widget-boxed-header">
                                             <h4>Specials of the day</h4>
@@ -752,198 +496,11 @@ function SingleProperty(){
                                             <div className="banner"><img src="images/single-property/banner.jpg" alt=""/></div>
                                         </div>
                                     </div>
-                                    <div className="widget-boxed popular mt-5">
-                                        <div className="widget-boxed-header">
-                                            <h4>Popular Tags</h4>
-                                        </div>
-                                        <div className="widget-boxed-body">
-                                            <div className="recent-post">
-                                                <div className="tags">
-                                                    <span><a href="#" className="btn btn-outline-primary">Houses</a></span>
-                                                    <span><a href="#" className="btn btn-outline-primary">Real Home</a></span>
-                                                </div>
-                                                <div className="tags">
-                                                    <span><a href="#" className="btn btn-outline-primary">Baths</a></span>
-                                                    <span><a href="#" className="btn btn-outline-primary">Beds</a></span>
-                                                </div>
-                                                <div className="tags">
-                                                    <span><a href="#" className="btn btn-outline-primary">Garages</a></span>
-                                                    <span><a href="#" className="btn btn-outline-primary">Family</a></span>
-                                                </div>
-                                                <div className="tags">
-                                                    <span><a href="#" className="btn btn-outline-primary">Real Estates</a></span>
-                                                    <span><a href="#" className="btn btn-outline-primary">Properties</a></span>
-                                                </div>
-                                                <div className="tags no-mb">
-                                                    <span><a href="#" className="btn btn-outline-primary">Location</a></span>
-                                                    <span><a href="#" className="btn btn-outline-primary">Price</a></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </aside>
                 </div>
-                <section className="similar-property featured portfolio p-0 bg-white-inner">
-                    <div className="container">
-                        <h5>Similar Properties</h5>
-                        <div className="row portfolio-items">
-                            <div className="item col-lg-4 col-md-6 col-xs-12 landscapes">
-                                <div className="project-single">
-                                    <div className="project-inner project-head">
-                                        <div className="homes">
-                                            <a href="single-property-1.html" className="homes-img">
-                                                <div className="homes-tag button alt featured">Featured</div>
-                                                <div className="homes-tag button alt sale">For Sale</div>
-                                                <div className="homes-price">$9,000/mo</div>
-                                                <img src="images/blog/b-11.jpg" alt="home-1" className="img-responsive"/>
-                                            </a>
-                                        </div>
-                                        <div className="button-effect">
-                                            <a href="single-property-1.html" className="btn"><i className="fa fa-link"></i></a>
-                                            <a href="https://www.youtube.com/watch?v=14semTlwyUY" className="btn popup-video popup-youtube"><i className="fas fa-video"></i></a>
-                                            <a href="single-property-2.html" className="img-poppu btn"><i className="fa fa-photo"></i></a>
-                                        </div>
-                                    </div>
-                                    <div className="homes-content">
-                                        <h3><a href="single-property-1.html">Real House Luxury Villa</a></h3>
-                                        <p className="homes-address mb-3">
-                                            <a href="single-property-1.html">
-                                                <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                            </a>
-                                        </p>
-                                        <ul className="homes-list clearfix pb-3">
-                                            <li className="the-icons">
-                                                <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                                <span>6 Bedrooms</span>
-                                            </li>
-                                            <li className="the-icons">
-                                                <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                                <span>3 Bathrooms</span>
-                                            </li>
-                                            <li className="the-icons">
-                                                <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                                <span>720 sq ft</span>
-                                            </li>
-                                            <li className="the-icons">
-                                                <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                                <span>2 Garages</span>
-                                            </li>
-                                        </ul>
-                                        <div className="footer">
-                                            <a href="agent-details.html">
-                                                <img src="images/testimonials/ts-1.jpg" alt="" className="mr-2"/> Lisa Jhonson
-                                            </a>
-                                            <span>2 months ago</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="item col-lg-4 col-md-6 col-xs-12 people">
-                                <div className="project-single">
-                                    <div className="project-inner project-head">
-                                        <div className="homes">
-                                            <a href="single-property-1.html" className="homes-img">
-                                                <div className="homes-tag button sale rent">For Rent</div>
-                                                <div className="homes-price">$3,000/mo</div>
-                                                <img src="images/blog/b-12.jpg" alt="home-1" className="img-responsive"/>
-                                            </a>
-                                        </div>
-                                        <div className="button-effect">
-                                            <a href="single-property-1.html" className="btn"><i className="fa fa-link"></i></a>
-                                            <a href="https://www.youtube.com/watch?v=14semTlwyUY" className="btn popup-video popup-youtube"><i className="fas fa-video"></i></a>
-                                            <a href="single-property-2.html" className="img-poppu btn"><i className="fa fa-photo"></i></a>
-                                        </div>
-                                    </div>
-                                    <div className="homes-content">
-                                        <h3><a href="single-property-1.html">Real House Luxury Villa</a></h3>
-                                        <p className="homes-address mb-3">
-                                            <a href="single-property-1.html">
-                                                <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                            </a>
-                                        </p>
-                                        <ul className="homes-list clearfix pb-3">
-                                            <li className="the-icons">
-                                                <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                                <span>6 Bedrooms</span>
-                                            </li>
-                                            <li className="the-icons">
-                                                <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                                <span>3 Bathrooms</span>
-                                            </li>
-                                            <li className="the-icons">
-                                                <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                                <span>720 sq ft</span>
-                                            </li>
-                                            <li className="the-icons">
-                                                <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                                <span>2 Garages</span>
-                                            </li>
-                                        </ul>
-                                        <div className="footer">
-                                            <a href="agent-details.html">
-                                                <img src="images/testimonials/ts-2.jpg" alt="" className="mr-2"/> Karl Smith
-                                            </a>
-                                            <span>2 months ago</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="item col-lg-4 col-md-6 col-xs-12 people landscapes no-pb pbp-3">
-                                <div className="project-single no-mb mbp-3">
-                                    <div className="project-inner project-head">
-                                        <div className="homes">
-                                            <a href="single-property-1.html" className="homes-img">
-                                                <div className="homes-tag button alt sale">For Sale</div>
-                                                <div className="homes-price">$9,000/mo</div>
-                                                <img src="images/blog/b-1.jpg" alt="home-1" className="img-responsive"/>
-                                            </a>
-                                        </div>
-                                        <div className="button-effect">
-                                            <a href="single-property-1.html" className="btn"><i className="fa fa-link"></i></a>
-                                            <a href="https://www.youtube.com/watch?v=14semTlwyUY" className="btn popup-video popup-youtube"><i className="fas fa-video"></i></a>
-                                            <a href="single-property-2.html" className="img-poppu btn"><i className="fa fa-photo"></i></a>
-                                        </div>
-                                    </div>
-                                    <div className="homes-content">
-                                        <h3><a href="single-property-1.html">Real House Luxury Villa</a></h3>
-                                        <p className="homes-address mb-3">
-                                            <a href="single-property-1.html">
-                                                <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                            </a>
-                                        </p>
-                                        <ul className="homes-list clearfix pb-3">
-                                            <li className="the-icons">
-                                                <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                                <span>6 Bedrooms</span>
-                                            </li>
-                                            <li className="the-icons">
-                                                <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                                <span>3 Bathrooms</span>
-                                            </li>
-                                            <li className="the-icons">
-                                                <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                                <span>720 sq ft</span>
-                                            </li>
-                                            <li className="the-icons">
-                                                <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                                <span>2 Garages</span>
-                                            </li>
-                                        </ul>
-                                        <div className="footer">
-                                            <a href="agent-details.html">
-                                                <img src="images/testimonials/ts-3.jpg" alt="" className="mr-2"/> katy Teddy
-                                            </a>
-                                            <span>2 months ago</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </div>
         </section>
     );
