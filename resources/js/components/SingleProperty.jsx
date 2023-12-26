@@ -1,6 +1,10 @@
 import Slider from "react-slick";
 import pic from "../../assets/LA.jpg";
 import pic2 from "../../assets/SF.jpg";
+import video_pic from "../../assets/video3.png"
+import location from "../../assets/location_pic.png"
+import ModalVideo from 'react-modal-video';
+import React, {useState} from "react";
 function SingleProperty(){
     const settings = {
         dots: false,
@@ -11,6 +15,8 @@ function SingleProperty(){
         initialSlide: 0,
         className: 'inner-slider-div'
     };
+    const [isOpen, setOpen] = useState(false);
+
     return(
         <section className="single-proper blog details">
             <div className="container">
@@ -156,146 +162,18 @@ function SingleProperty(){
                             <h5>Floor Plans</h5>
                             <img alt="image" src="images/bg/floor-plan-1.png"/>
                         </div>
-                        {/*ToDo: Is that section needed?*/}
-                        <div className="floor-plan property wprt-image-video w50 pro">
-                            <h5>What's Nearby</h5>
-                            <div className="property-nearby">
-                                <div className="row">
-                                    <div className="col-lg-12">
-                                        <div className="nearby-info mb-4">
-                                            <span className="nearby-title mb-3 d-block text-info">
-                                               <i className="fas fa-graduation-cap mr-2"></i><b className="title">Education</b>
-                                            </span>
-                                            <div className="nearby-list">
-                                                <ul className="property-list list-unstyled mb-0">
-                                                    <li className="d-flex">
-                                                        <h6 className="mb-3 mr-2">Education Mandarin</h6>
-                                                        <span>(15.61 miles)</span>
-                                                        <ul className="list-unstyled list-inline ml-auto">
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star-half fa-xs"></i></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="d-flex">
-                                                        <h6 className="mb-3 mr-2">Marry's Education</h6>
-                                                        <span>(15.23 miles)</span>
-                                                        <ul className="list-unstyled list-inline ml-auto">
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star-half fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="far fa-star fa-xs"></i></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="d-flex">
-                                                        <h6 className="mb-3 mr-2">The Kaplan</h6>
-                                                        <span>(15.16 miles)</span>
-                                                        <ul className="list-unstyled list-inline ml-auto">
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star-half fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="far fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="far fa-star fa-xs"></i></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div className="nearby-info mb-4">
-                                            <span className="nearby-title mb-3 d-block text-success">
-                                              <i className="fas fa-user-md mr-2"></i><b className="title">Health & Medical</b>
-                                            </span>
-                                            <div className="nearby-list">
-                                                <ul className="property-list list-unstyled mb-0">
-                                                    <li className="d-flex">
-                                                        <h6 className="mb-3 mr-2">Natural Market</h6>
-                                                        <span>(13.20 miles)</span>
-                                                        <ul className="list-unstyled list-inline ml-auto">
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star-half fa-xs"></i></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="d-flex">
-                                                        <h6 className="mb-3 mr-2">Food For Health</h6>
-                                                        <span>(13.22 miles)</span>
-                                                        <ul className="list-unstyled list-inline ml-auto">
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star-half fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="far fa-star fa-xs"></i></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="d-flex">
-                                                        <h6 className="mb-3 mr-2">A Matter of Health</h6>
-                                                        <span>(13.34 miles)</span>
-                                                        <ul className="list-unstyled list-inline ml-auto">
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star-half fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="far fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="far fa-star fa-xs"></i></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div className="nearby-info">
-                                            <span className="nearby-title mb-3 d-block text-danger">
-                                                <i className="fas fa-car mr-2"></i><b className="title">Transportation</b>
-                                            </span>
-                                            <div className="nearby-list">
-                                                <ul className="property-list list-unstyled mb-0">
-                                                    <li className="d-flex">
-                                                        <h6 className="mb-3 mr-2">Airport Transportation</h6>
-                                                        <span>(11.36 miles)</span>
-                                                        <ul className="list-unstyled list-inline ml-auto">
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star-half fa-xs"></i></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="d-flex">
-                                                        <h6 className="mb-3 mr-2">NYC Executive Limo</h6>
-                                                        <span>(11.87 miles)</span>
-                                                        <ul className="list-unstyled list-inline ml-auto">
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star-half fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="far fa-star fa-xs"></i></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li className="d-flex">
-                                                        <h6 className="mb-3 mr-2">Empire Limousine</h6>
-                                                        <span>(11.52 miles)</span>
-                                                        <ul className="list-unstyled list-inline ml-auto">
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="fas fa-star-half fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="far fa-star fa-xs"></i></li>
-                                                            <li className="list-inline-item m-0 text-warning"><i className="far fa-star fa-xs"></i></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div className="property wprt-image-video w50 pro">
                             <h5>Property Video</h5>
-                            <img alt="image" src="images/slider/home-slider-4.jpg"/>
-                                <a className="icon-wrap popup-video popup-youtube" href="https://www.youtube.com/watch?v=14semTlwyUY">
+                            <React.Fragment>
+                                <ModalVideo
+                                    channel="youtube"
+                                    youtube={{ mute: 0, autoplay: 0 }}
+                                    isOpen={isOpen}
+                                    videoId="14semTlwyUY"
+                                    onClose={() => setOpen(false)}
+                                />
+                                <img alt="image" src={video_pic}/>
+                                <a  className="icon-wrap popup-video popup-youtube" onClick={() => setOpen(true)}>
                                     <i className="fa fa-play"></i>
                                 </a>
                                 <div className="iq-waves">
@@ -303,157 +181,16 @@ function SingleProperty(){
                                     <div className="waves wave-2"></div>
                                     <div className="waves wave-3"></div>
                                 </div>
+                            </React.Fragment>
+
                         </div>
-                        {/*ToDo: Is that section needed?*/}
                         <div className="property-location map">
                             <h5>Location</h5>
                             <div className="divider-fade"></div>
-                            <div id="map-contact" className="contact-map"></div>
+                            <div id="map-contact" className="contact-map">
+                                <img alt='location map' className='location-picture' src={location}/>
+                            </div>
                         </div>
-                        {/*ToDo: Is that section needed?*/}
-                        <section className="reviews comments">
-                            <h3 className="mb-5">3 Reviews</h3>
-                            <div className="row mb-5">
-                                <ul className="col-12 commented pl-0">
-                                    <li className="comm-inf">
-                                        <div className="col-md-2">
-                                            <img src="images/testimonials/ts-5.jpg" className="img-fluid" alt=""/>
-                                        </div>
-                                        <div className="col-md-10 comments-info">
-                                            <div className="conra">
-                                                <h5 className="mb-2">Mary Smith</h5>
-                                                <div className="rating-box">
-                                                    <div className="detail-list-rating mr-0">
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star-o"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p className="mb-4">May 30 2020</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam, quam congue dictum luctus, lacus magna congue ante, in finibus dui sapien eu dolor. Integer tincidunt suscipit erat, nec laoreet ipsum vestibulum sed.</p>
-                                            <div className="rest"><img src="images/single-property/s-1.jpg" className="img-fluid" alt=""/></div>
-                                        </div>
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <div className="row">
-                                <ul className="col-12 commented pl-0">
-                                    <li className="comm-inf">
-                                        <div className="col-md-2">
-                                            <img src="images/testimonials/ts-4.jpg" className="img-fluid" alt=""/>
-                                        </div>
-                                        <div className="col-md-10 comments-info">
-                                            <div className="conra">
-                                                <h5 className="mb-2">Abraham Tyron</h5>
-                                                <div className="rating-box">
-                                                    <div className="detail-list-rating mr-0">
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p className="mb-4">june 1 2020</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam, quam congue dictum luctus, lacus magna congue ante, in finibus dui sapien eu dolor. Integer tincidunt suscipit erat, nec laoreet ipsum vestibulum sed.</p>
-                                        </div>
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <div className="row mt-5">
-                                <ul className="col-12 commented mb-0 pl-0">
-                                    <li className="comm-inf">
-                                        <div className="col-md-2">
-                                            <img src="images/testimonials/ts-3.jpg" className="img-fluid" alt=""/>
-                                        </div>
-                                        <div className="col-md-10 comments-info">
-                                            <div className="conra">
-                                                <h5 className="mb-2">Lisa Williams</h5>
-                                                <div className="rating-box">
-                                                    <div className="detail-list-rating mr-0">
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star"></i>
-                                                        <i className="fa fa-star-o"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p className="mb-4">jul 12 2020</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam, quam congue dictum luctus, lacus magna congue ante, in finibus dui sapien eu dolor. Integer tincidunt suscipit erat, nec laoreet ipsum vestibulum sed.</p>
-                                            <div className="resti">
-                                                <div className="rest"><img src="images/single-property/s-2.jpg" className="img-fluid" alt=""/></div>
-                                                <div className="rest"><img src="images/single-property/s-3.jpg" className="img-fluid" alt=""/></div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </section>
-                        {/*ToDo: Is that section needed?*/}
-                        <section className="single reviews leve-comments details">
-                            <div id="add-review" className="add-review-box">
-                                <h3 className="listing-desc-headline margin-bottom-20 mb-4">Add Review</h3>
-                                <span className="leave-rating-title">Your rating for this listing</span>
-                                <div className="row mb-4">
-                                    <div className="col-md-6">
-                                        <div className="clearfix"></div>
-                                        <div className="leave-rating margin-bottom-30">
-                                            <input type="radio" name="rating" id="rating-1" value="1" />
-                                            <label htmlFor="rating-1" className="fa fa-star"></label>
-                                            <input type="radio" name="rating" id="rating-2" value="2" />
-                                            <label htmlFor="rating-2" className="fa fa-star"></label>
-                                            <input type="radio" name="rating" id="rating-3" value="3" />
-                                            <label htmlFor="rating-3" className="fa fa-star"></label>
-                                            <input type="radio" name="rating" id="rating-4" value="4" />
-                                            <label htmlFor="rating-4" className="fa fa-star"></label>
-                                            <input type="radio" name="rating" id="rating-5" value="5" />
-                                            <label htmlFor="rating-5" className="fa fa-star"></label>
-                                        </div>
-                                        <div className="clearfix"></div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="add-review-photos margin-bottom-30">
-                                            <div className="photoUpload">
-                                                <span><i className="sl sl-icon-arrow-up-circle"></i> Upload Photos</span>
-                                                <input type="file" className="upload" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-12 data">
-                                        <form action="#">
-                                            <div className="col-md-12">
-                                                <div className="form-group">
-                                                    <input type="text" name="name" className="form-control" placeholder="First Name" required/>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-12">
-                                                <div className="form-group">
-                                                    <input type="text" name="name" className="form-control" placeholder="Last Name" required/>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-12">
-                                                <div className="form-group">
-                                                    <input type="email" name="email" className="form-control" placeholder="Email" required/>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-12 form-group">
-                                                <textarea className="form-control" id="exampleTextarea" rows="8" placeholder="Review" required></textarea>
-                                            </div>
-                                            <button type="submit" className="btn btn-primary btn-lg mt-2">Submit Review</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
                     </div>
                     <aside className="col-lg-4 col-md-12 car">
                         <div className="single widget">

@@ -44,6 +44,7 @@ import '../../public/css/leaflet.markercluster.default.css';
 import '../../public/css/timedropper.css';
 import '../../public/css/datedropper.css';
 import '../../public/css/default.css';
+import 'react-modal-video/scss/modal-video.scss';
 
 
 
