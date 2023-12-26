@@ -31,6 +31,7 @@ import "../../public/css/aos.css";
 import "../../public/css/aos2.css";
 import "../../public/css/magnific-popup.css";
 import "../../public/css/lightcase.css";
+import '../../public/css/owl-carousel.css';
 import "../../public/css/owl.carousel.min.css";
 import "../../public/css/bootstrap.min.css";
 import "../../public/css/menu.css";
@@ -45,6 +46,9 @@ import '../../public/css/timedropper.css';
 import '../../public/css/datedropper.css';
 import '../../public/css/default.css';
 import 'react-modal-video/scss/modal-video.scss';
+import '../../public/css/dashbord-mobile-menu.css';
+import '../../public/css/swiper.min.css'
+
 
 
 

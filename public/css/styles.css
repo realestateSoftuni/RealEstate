@@ -5160,6 +5160,7 @@ section.counterup {
   margin-top: .5rem;
   margin-bottom: 0px;
   font-weight: 400;
+  margin-left: 140px;
 }
 
 .second-footer .container {
@@ -18704,6 +18705,8 @@ a.button {
 .dashboard-bd .sidebar-header {
   background-color: #24324a;
   padding: 28px 0 28px 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .dashboard-bd .left-side {
@@ -18768,9 +18771,9 @@ a.button {
 .dashboard-bd .active-user h2 {
   text-transform: capitalize;
   font-weight: 400;
-  padding-top: 15px;
+  padding-top: 50px;
   font-size: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: #aeb7c2;
   text-align: center;
 }
@@ -18780,8 +18783,13 @@ body.dashboard-bd {
 }
 
 .dashboard-bd .sidebar-header img {
-  width: 340px;
-  height: 47px;
+  width: 70px;
+  height: auto;
+  margin: auto;
+}
+
+.dashboard-bd .sidebar-header a{
+  margin: auto;
 }
 
 @media only screen and (max-width: 1024px) {

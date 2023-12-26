@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-import logo from '../../../../public/images/FullLogo_Transparent_NoBuffer.png'
+import logo from '../../../assets/FullLogo_Transparent_NoBuffer.png'
 import {useState} from "react";
 import {Link} from "react-router-dom";
 import SingleProperty from "@/components/SingleProperty.jsx";
@@ -23,9 +23,7 @@ function HeaderBar(){
                     <div className="container container-header">
                         <div className="left-side">
                             <div id="logo">
-
                                 <Link to="/"><img src={logo} alt=""/></Link>
-
                             </div>
                             <div className="mmenu-trigger">
                                 <button className="hamburger hamburger--collapse" type="button">

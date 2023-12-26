@@ -1,3 +1,6 @@
+import logo from '../../../assets/FullLogo_Transparent_NoBuffer.png'
+import {Link} from "react-router-dom";
+
 function UserNavigation(){
     return(
         <>
@@ -7,13 +10,13 @@ function UserNavigation(){
                         <div className="container-fluid">
                             <div className="left-side">
                                 <div id="logo">
-                                    <a href="index.html"><img src="images/logo.svg" alt=""/></a>
+                                    <Link to="/"><img src={logo} alt=""/></Link>
                                 </div>
                                 <div className="mmenu-trigger">
                                     <button className="hamburger hamburger--collapse" type="button">
-                                    <span className="hamburger-box">
-							<span className="hamburger-inner"></span>
-                                    </span>
+                                        <span className="hamburger-box">
+                                            <span className="hamburger-inner"></span>
+                                        </span>
                                     </button>
                                 </div>
                                 <nav id="navigation" className="style-1">
@@ -36,13 +39,13 @@ function UserNavigation(){
                                                 <li><a href="#">Agencies View</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Property</a></li>
+                                        <li><Link to="/property">Property</Link></li>
                                         <li><a href="#">Pages</a></li>
                                         <li><a href="#">Blog</a></li>
-                                        <li><a href="contact-us.html">Contact</a></li>
+                                        <li><Link to="/contact-us">Contact</Link></li>
                                         <li className="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
                                         <li className="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
-                                        <li className="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a href="add-property.html" className="button border btn-lg btn-block text-center">Add Listing<i className="fas fa-laptop-house ml-2"></i></a></li>
+                                        <li className="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><Link to="/add-property" className="button border btn-lg btn-block text-center">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link></li>
                                     </ul>
                                 </nav>
                                 <div className="clearfix"></div>
