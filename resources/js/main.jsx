@@ -5,10 +5,10 @@ import {Routes, Route} from 'react-router-dom';
 // import InfoSideBar from './components/InfoSideBar.jsx';
 import AOS from 'aos'
 import NotFound404 from "./components/NotFound404.jsx";
-import HeaderBar from "./components/HeaderBar.jsx";
+import HeaderBar from "./components/MainLayout/HeaderBar.jsx";
 import Register from "./components/Register.jsx";
 import EmailVerify from "./components/EmailVerify.jsx";
-import Footer from "./components/Footer.jsx";
+import Footer from "./components/MainLayout/Footer.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import LogIn from "./components/LogIn.jsx";
 import AddProperty from "./components/AddProperty.jsx";
@@ -57,7 +57,6 @@ function Main() {
         <div className="inner-pages sin-1 maxw1600 m0a homepage-2 the-search hd-white">
                 <div id="wrapper">
                     {/*< InfoSideBar />*/}
-                    < HeaderBar/>
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
                         <Route path="/property" element={<SingleProperty/>}/>
@@ -65,8 +64,8 @@ function Main() {
                         <Route path="/verify/:token" element={<EmailVerify />}/>
                         <Route path="*" element={<NotFound404 />} />
                         <Route path='/contact-us' element={<Contact/>}/>
+                        <Route path='/add-property' element={<AddProperty/>} />
                     </Routes>
-                    <Footer/>
                 </div>
         </div>
     );
