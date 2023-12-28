@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-import logo from '../../../public/images/FullLogo_Transparent_NoBuffer.png'
+import logo from '../../../assets/FullLogo_Transparent_NoBuffer.png'
 
 function Footer(){
     return (
