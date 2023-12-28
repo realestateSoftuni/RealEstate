@@ -1,7 +1,7 @@
 import UserLayout from "../components/UserLayout/UserLayout.jsx";
 import {useState} from "react";
 
-const types = ['house', 'apartment', 'commercial', 'lot', 'garage']
+const types = ['House', 'Apartment', 'Commercial', 'Lot', 'Garage']
 const rooms = []
 
 for (let i = 1; i < 7; i++ ) {
@@ -14,21 +14,78 @@ for (let i = 1; i < 11; i++ ) {
     floors.push(i)
 }
 
-const initialState = {
+const openInitialState = {
     status: false,
     type: false,
-    year: false,
+    size: false,
     floor: false,
     bedrooms: false,
     bathrooms: false,
 }
 
+const fieldsState = {
+    title: '',
+    description: '',
+    status: 'Status',
+    type: 'Type',
+    rooms: 'Size',
+    price: '',
+    area: '',
+    build: '',
+    address: '',
+    city: '',
+    state: '',
+    country: '',
+    latitude: '',
+    longitude: '',
+    floor: 'Floor',
+    bedrooms: 'Bedrooms',
+    bathrooms: 'Bathrooms',
+    airConditioning: false,
+    swimmingPool: false,
+    centralHeating: false,
+    laundryRoom: false,
+    gym: false,
+    alarm: false,
+    windowCovering: false,
+    refrigerator: false,
+    tv_wifi: false,
+    microwave: false,
+    name: '',
+    username: '',
+    email: '',
+    phone: '',
+}
+
 function AddProperty() {
-    const [isOpen, setIsOpen] = useState(initialState)
+    const [isOpen, setIsOpen] = useState(openInitialState);
+    const [initialValues, setInitialValues] = useState(fieldsState);
 
     const clickOpenHandler = (button) => {
-        let newState = {...initialState, [button]: !isOpen[button]}
+        let newState = {...openInitialState, [button]: !isOpen[button]}
         setIsOpen(newState)
+    }
+
+    const valueHandler = (e, field, value) => {
+        let newValue = '';
+        let fieldName = '';
+
+        switch (e.target.type) {
+            case 'dropdown':
+                newValue = value;
+                fieldName = field;
+                break;
+            case 'checkbox':
+                fieldName = e.target.name;
+                newValue = e.target.checked;
+                break;
+            default:
+                newValue = e.target.value;
+                fieldName = e.target.name;
+                break;
+        }
+        let newState = { ...initialValues, [fieldName]: newValue}
+        setInitialValues(newState)
     }
 
     return(
@@ -42,7 +99,7 @@ function AddProperty() {
                                 <div className="col-md-12">
                                     <p>
                                         <label htmlFor="title">Property Title</label>
-                                        <input type="text" name="title" id="title" placeholder="Enter your property title"/>
+                                        <input type="text" name="title" id="title" onChange={(e) => valueHandler(e)} placeholder="Enter your property title"/>
                                     </p>
                                 </div>
                             </div>
@@ -50,38 +107,38 @@ function AddProperty() {
                                 <div className="col-md-12">
                                     <p>
                                         <label htmlFor="description">Property Description</label>
-                                        <textarea id="description" name="pro-dexc" placeholder="Describe about your property"></textarea>
+                                        <textarea id="description" name="description" onChange={(e) => valueHandler(e)} placeholder="Describe about your property"></textarea>
                                     </p>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('status')}>
                                     <div className="form-group categories">
-                                        <div className={`nice-select form-control wide ${isOpen.status ? 'open' : ''}`} tabIndex="0"><span className="current">Status</span>
+                                        <div className={`nice-select form-control wide ${isOpen.status ? 'open' : ''}`} tabIndex="0"><span className="current">{initialValues.status}</span>
                                             <ul className="list">
-                                                <li data-value="1" className="option">Rent</li>
-                                                <li data-value="2" className="option">Sale</li>
+                                                <li type='dropdown' data-value="1" className="option" onClick={(e) => valueHandler(e, 'status', 'Rent')}>Rent</li>
+                                                <li type='dropdown' data-value="2" className="option" onClick={(e) => valueHandler(e, 'status', 'Sale')}>Sale</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('type')}>
                                     <div className="form-group categories">
-                                        <div className={`nice-select form-control wide ${isOpen.type ? 'open' : ''}`} tabIndex="0"><span className="current">Type</span>
+                                        <div className={`nice-select form-control wide ${isOpen.type ? 'open' : ''}`} tabIndex="0"><span className="current">{initialValues.type}</span>
                                             <ul className="list">
                                                 {types.map((t) =>
-                                                    <li key={t} data-value={t} className="option">{t}</li>
+                                                    <li key={t} type='dropdown' data-value={t} className="option" onClick={(e) => valueHandler(e, 'type', t)}>{t}</li>
                                                 )}
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('year')}>
+                                <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('rooms')}>
                                     <div className="form-group categories">
-                                        <div className={`nice-select form-control wide ${isOpen.year ? 'open' : ''}`} tabIndex="0"><span className="current">Size</span>
+                                        <div className={`nice-select form-control wide ${isOpen.rooms ? 'open' : ''}`} tabIndex="0"><span className="current">{initialValues.rooms}</span>
                                             <ul className="list">
                                                 {rooms.map((s) =>
-                                                    <li key={s} data-value={s} className="option">{s}</li>
+                                                    <li key={s} type='dropdown' data-value={s} className="option" onClick={(e) => valueHandler(e, 'rooms', s)}>{s}</li>
                                                 )}
                                             </ul>
                                         </div>
@@ -92,19 +149,19 @@ function AddProperty() {
                                 <div className="col-lg-4 col-md-6">
                                     <p className="no-mb">
                                         <label htmlFor="price">Price</label>
-                                        <input type="text" name="price" placeholder="USD" id="price"/>
+                                        <input type="text" name="price" onChange={(e) => valueHandler(e)} placeholder="USD" id="price"/>
                                     </p>
                                 </div>
                                 <div className="col-lg-4 col-md-6">
                                     <p className="no-mb last">
                                         <label htmlFor="area">Area</label>
-                                        <input type="text" name="area" placeholder="Sqft" id="area"/>
+                                        <input type="text" name="area" onChange={(e) => valueHandler(e)} placeholder="Sqft" id="area"/>
                                     </p>
                                 </div>
                                 <div className="col-lg-4 col-md-6">
                                     <p className="no-mb">
                                         <label htmlFor="price">Build</label>
-                                        <input type="text" name="price" placeholder="Year" id="price"/>
+                                        <input type="text" name="year" onChange={(e) => valueHandler(e)} placeholder="Year" id="price"/>
                                     </p>
                                 </div>
                             </div>
@@ -128,13 +185,13 @@ function AddProperty() {
                             <div className="col-lg-6 col-md-12">
                                 <p>
                                     <label htmlFor="address">Address</label>
-                                    <input type="text" name="address" placeholder="Enter Your Address" id="address"/>
+                                    <input type="text" name="address" onChange={(e) => valueHandler(e)} placeholder="Enter Your Address" id="address"/>
                                 </p>
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <p>
                                     <label htmlFor="city">City</label>
-                                    <input type="text" name="city" placeholder="Enter Your City" id="city"/>
+                                    <input type="text" name="city" onChange={(e) => valueHandler(e)} placeholder="Enter Your City" id="city"/>
                                 </p>
                             </div>
                         </div>
@@ -142,13 +199,13 @@ function AddProperty() {
                             <div className="col-lg-6 col-md-12">
                                 <p>
                                     <label htmlFor="state">State</label>
-                                    <input type="text" name="state" placeholder="Enter Your State" id="state"/>
+                                    <input type="text" name="state" onChange={(e) => valueHandler(e)} placeholder="Enter Your State" id="state"/>
                                 </p>
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <p>
                                     <label htmlFor="country">Country</label>
-                                    <input type="text" name="country" placeholder="Enter Your Country" id="country"/>
+                                    <input type="text" name="country" onChange={(e) => valueHandler(e)} placeholder="Enter Your Country" id="country"/>
                                 </p>
                             </div>
                         </div>
@@ -156,13 +213,13 @@ function AddProperty() {
                             <div className="col-lg-6 col-md-12">
                                 <p className="no-mb first">
                                     <label htmlFor="latitude">Google Maps latitude</label>
-                                    <input type="text" name="latitude" placeholder="Google Maps latitude" id="latitude"/>
+                                    <input type="text" name="latitude" onChange={(e) => valueHandler(e)} placeholder="Google Maps latitude" id="latitude"/>
                                 </p>
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <p className="no-mb last">
                                     <label htmlFor="longitude">Google Maps longitude</label>
-                                    <input type="text" name="longitude" placeholder="Google Maps longitude" id="longitude"/>
+                                    <input type="text" name="longitude" onChange={(e) => valueHandler(e)} placeholder="Google Maps longitude" id="longitude"/>
                                 </p>
                             </div>
                         </div>
@@ -174,42 +231,33 @@ function AddProperty() {
                         <div className="row">
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
                                 <div className="form-group categories" onClick={() => clickOpenHandler('floor')}>
-                                    <div className={`nice-select form-control wide ${isOpen.floor ? 'open' : ''}`} tabIndex="0"><span className="current">Floor</span>
+                                    <div className={`nice-select form-control wide ${isOpen.floor ? 'open' : ''}`} tabIndex="0"><span className="current">{initialValues.floor}</span>
                                         <ul className="list">
-                                            <li data-value="1" className="option">1</li>
-                                            <li data-value="2" className="option">2</li>
-                                            <li data-value="1" className="option">3</li>
-                                            <li data-value="2" className="option">4</li>
-                                            <li data-value="1" className="option">5</li>
-                                            <li data-value="2" className="option">6</li>
+                                            {rooms.map((f) =>
+                                                <li key={f} data-value={f} className="option"  onClick={() => valueHandler('floor', f)}>{f}</li>
+                                            )}
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
                                 <div className="form-group categories" onClick={() => clickOpenHandler('bedrooms')}>
-                                    <div className={`nice-select form-control wide ${isOpen.bedrooms ? 'open' : ''}`} tabIndex="0"><span className="current">Bedrooms</span>
+                                    <div className={`nice-select form-control wide ${isOpen.bedrooms ? 'open' : ''}`} tabIndex="0"><span className="current">{initialValues.bedrooms}</span>
                                         <ul className="list">
-                                            <li data-value="1" className="option">1</li>
-                                            <li data-value="2" className="option">2</li>
-                                            <li data-value="1" className="option">3</li>
-                                            <li data-value="2" className="option">4</li>
-                                            <li data-value="1" className="option">5</li>
-                                            <li data-value="2" className="option">6</li>
+                                            {rooms.map((bed) =>
+                                                <li key={bed} data-value={bed} className="option"  onClick={() => valueHandler('bedrooms', bed)}>{bed}</li>
+                                            )}
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
                                 <div className="form-group categories" onClick={() => clickOpenHandler('bathrooms')}>
-                                    <div className={`nice-select form-control wide ${isOpen.bathrooms ? 'open' : ''}`} tabIndex="0"><span className="current">Bathrooms</span>
+                                    <div className={`nice-select form-control wide ${isOpen.bathrooms ? 'open' : ''}`} tabIndex="0"><span className="current">{initialValues.bathrooms}</span>
                                         <ul className="list">
-                                            <li data-value="1" className="option">1</li>
-                                            <li data-value="2" className="option">2</li>
-                                            <li data-value="1" className="option">3</li>
-                                            <li data-value="2" className="option">4</li>
-                                            <li data-value="1" className="option">5</li>
-                                            <li data-value="2" className="option">6</li>
+                                            {rooms.map((bath) =>
+                                                <li key={bath} data-value={bath} className="option"  onClick={() => valueHandler('bathrooms', bath)}>{bath}</li>
+                                            )}
                                         </ul>
                                     </div>
                                 </div>
@@ -226,7 +274,7 @@ function AddProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <div className="filter-tags-wrap">
-                                                <input id="check-a" type="checkbox" name="check"/>
+                                                <input id="check-a" type="checkbox" name="airConditioning" onChange={(e) => valueHandler(e)} />
                                                     <label htmlFor="check-a">Air Conditioning</label>
                                             </div>
                                         </div>
@@ -234,7 +282,7 @@ function AddProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <div className="filter-tags-wrap">
-                                                <input id="check-b" type="checkbox" name="check"/>
+                                                <input id="check-b" type="checkbox" name="swimmingPool" onChange={(e) => valueHandler(e)} />
                                                     <label htmlFor="check-b">Swimming Pool</label>
                                             </div>
                                         </div>
@@ -242,7 +290,7 @@ function AddProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <div className="filter-tags-wrap">
-                                                <input id="check-c" type="checkbox" name="check"/>
+                                                <input id="check-c" type="checkbox" name="centralHeating" onChange={(e) => valueHandler(e)} />
                                                     <label htmlFor="check-c">Central Heating</label>
                                             </div>
                                         </div>
@@ -250,7 +298,7 @@ function AddProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <div className="filter-tags-wrap">
-                                                <input id="check-d" type="checkbox" name="check"/>
+                                                <input id="check-d" type="checkbox" name="laundryRoom" onChange={(e) => valueHandler(e)} />
                                                     <label htmlFor="check-d">Laundry Room</label>
                                             </div>
                                         </div>
@@ -258,7 +306,7 @@ function AddProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <div className="filter-tags-wrap">
-                                                <input id="check-e" type="checkbox" name="check"/>
+                                                <input id="check-e" type="checkbox" name="gym" onChange={(e) => valueHandler(e)} />
                                                     <label htmlFor="check-e">Gym</label>
                                             </div>
                                         </div>
@@ -266,7 +314,7 @@ function AddProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <div className="filter-tags-wrap">
-                                                <input id="check-g" type="checkbox" name="check"/>
+                                                <input id="check-g" type="checkbox" name="alarm" onChange={(e) => valueHandler(e)} />
                                                     <label htmlFor="check-g">Alarm</label>
                                             </div>
                                         </div>
@@ -274,7 +322,7 @@ function AddProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <div className="filter-tags-wrap">
-                                                <input id="check-h" type="checkbox" name="check"/>
+                                                <input id="check-h" type="checkbox" name="windowCovering" onChange={(e) => valueHandler(e)} />
                                                     <label htmlFor="check-h">Window Covering</label>
                                             </div>
                                         </div>
@@ -282,7 +330,7 @@ function AddProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <div className="filter-tags-wrap">
-                                                <input id="check-i" type="checkbox" name="check"/>
+                                                <input id="check-i" type="checkbox" name="refrigerator" onChange={(e) => valueHandler(e)} />
                                                     <label htmlFor="check-i">Refrigerator</label>
                                             </div>
                                         </div>
@@ -290,7 +338,7 @@ function AddProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <div className="filter-tags-wrap">
-                                                <input id="check-j" type="checkbox" name="check"/>
+                                                <input id="check-j" type="checkbox" name="tv_wifi" onChange={(e) => valueHandler(e)} />
                                                     <label htmlFor="check-j">TV Cable & WIFI</label>
                                             </div>
                                         </div>
@@ -298,7 +346,7 @@ function AddProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <div className="filter-tags-wrap">
-                                                <input id="check-k" type="checkbox" name="check"/>
+                                                <input id="check-k" type="checkbox" name="microwave" onChange={(e) => valueHandler(e)} />
                                                     <label htmlFor="check-k">Microwave</label>
                                             </div>
                                         </div>
@@ -315,13 +363,13 @@ function AddProperty() {
                             <div className="col-lg-6 col-md-12">
                                 <p>
                                     <label htmlFor="con-name">Name</label>
-                                    <input type="text" placeholder="Enter Your Name" id="con-name" name="con-name"/>
+                                    <input type="text" placeholder="Enter Your Name" id="con-name" name="name" onChange={(e) => valueHandler(e)} />
                                 </p>
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <p>
                                     <label htmlFor="con-user">Username</label>
-                                    <input type="text" placeholder="Enter Your Username" id="con-user" name="con-user"/>
+                                    <input type="text" placeholder="Enter Your Username" id="con-user" name="username" onChange={(e) => valueHandler(e)} />
                                 </p>
                             </div>
                         </div>
@@ -329,13 +377,13 @@ function AddProperty() {
                             <div className="col-lg-6 col-md-12">
                                 <p className="no-mb first">
                                     <label htmlFor="con-email">Email</label>
-                                    <input type="email" placeholder="Enter Your Email" id="con-email" name="con-email"/>
+                                    <input type="email" placeholder="Enter Your Email" id="con-email" name="email" onChange={(e) => valueHandler(e)} />
                                 </p>
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <p className="no-mb last">
                                     <label htmlFor="con-phn">Phone</label>
-                                    <input type="text" placeholder="Enter Your Phone Number" id="con-phn" name="con-phn"/>
+                                    <input type="text" placeholder="Enter Your Phone Number" id="con-phn" name="phone" onChange={(e) => valueHandler(e)} />
                                 </p>
                             </div>
                         </div>
