@@ -21849,6 +21849,10 @@ a.btn_1 {
   color: #FF385C;
 }
 
+.button-change {
+    padding-top: 50px;
+}
+
 .inner-pages .recent-post ul li .fa {
   margin-right: 1rem;
 }
@@ -23194,7 +23198,7 @@ form label.error {
 input[type="file"] {
   background: white;
   border: none;
-  padding: 5px 0px 5px 0px;
+  padding: 20px;
   width: auto;
   display: inline-block;
 }

@@ -19,11 +19,20 @@ const LayoutAll = ({ children }) => {
                                 </div>
                                 <div className="detail clearfix">
                                     <ul className="mb-0">
-                                        <li>
-                                            <a href="user-profile.html">
-                                                <i className="fa fa-user"></i>Profile
-                                            </a>
-                                        </li>
+                                        <Link to="/profile-details">
+                                            <li>
+                                                <a>
+                                                    <i className="fa fa-address-card-o"></i>My Profile details
+                                                </a>
+                                            </li>
+                                        </Link>
+                                        <Link to="/edit-profile">
+                                            <li>
+                                                <a>
+                                                    <i className="fa fa-user"></i> Edit Profile
+                                                </a>
+                                            </li>
+                                        </Link>
                                         <li>
                                             <a href="my-listings.html">
                                                 <i className="fa fa-list" aria-hidden="true"></i>My Properties
@@ -39,11 +48,13 @@ const LayoutAll = ({ children }) => {
                                                 <i className="fa fa-list" aria-hidden="true"></i>Add Property
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="change-password.html">
-                                                <i className="fa fa-lock"></i>Change Password
-                                            </a>
-                                        </li>
+                                        <Link to="/change-password">
+                                            <li>
+                                                <a>
+                                                    <i className="fa fa-lock"></i>Change Password
+                                                </a>
+                                            </li>
+                                        </Link>
                                         <li>
                                             <a href="index.html">
                                                 <i className="fas fa-sign-out-alt"></i>Log Out
