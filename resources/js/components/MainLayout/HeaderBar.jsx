@@ -1,7 +1,8 @@
 /*jshint esversion: 6 */
-import logo from '../../../public/images/FullLogo_Transparent_NoBuffer.png'
+import logo from '../../../assets/FullLogo_Transparent_NoBuffer.png'
 import {useState} from "react";
 import {Link} from "react-router-dom";
+import SingleProperty from "@/components/SingleProperty.jsx";
 
 
 function HeaderBar(){
@@ -22,9 +23,7 @@ function HeaderBar(){
                     <div className="container container-header">
                         <div className="left-side">
                             <div id="logo">
-
                                 <Link to="/"><img src={logo} alt=""/></Link>
-
                             </div>
                             <div className="mmenu-trigger">
                                 <button className="hamburger hamburger--collapse" type="button">
@@ -132,16 +131,7 @@ function HeaderBar(){
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Property</a>
-                                        <ul>
-                                            <li><a href="single-property-1.html">Single Property 1</a></li>
-                                            <li><a href="single-property-2.html">Single Property 2</a></li>
-                                            <li><a href="single-property-3.html">Single Property 3</a></li>
-                                            <li><a href="single-property-4.html">Single Property 4</a></li>
-                                            <li><a href="single-property-5.html">Single Property 5</a></li>
-                                            <li><a href="single-property-6.html">Single Property 6</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><Link to={'/property'}>Property</Link></li>
                                     <li><a href="#">Pages</a>
                                         <ul>
                                             <li><a href="#">Shop</a>
@@ -196,7 +186,7 @@ function HeaderBar(){
                                     <li><Link to="/contact-us">Contact</Link></li>
                                     <li className="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
                                     <li className="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
-                                    <li className="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a href="add-property.html" className="button border btn-lg btn-block text-center">Add Listing<i className="fas fa-laptop-house ml-2"></i></a></li>
+                                    <li className="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><Link to="/add-property" className="button border btn-lg btn-block text-center">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link></li>
                                 </ul>
                             </nav>
                         </div>
