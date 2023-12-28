@@ -1,5 +1,7 @@
 import UserLayout from "../components/UserLayout/UserLayout.jsx";
 import {useState} from "react";
+import {useFormik} from "formik";
+import * as Yup from "yup";
 
 const types = ['House', 'Apartment', 'Commercial', 'Lot', 'Garage']
 const rooms = []
@@ -173,7 +175,9 @@ function AddProperty() {
                     <div className="property-form-group">
                         <div className="row">
                             <div className="col-md-12">
-                                <form action="/file-upload" className="dropzone"></form>
+                                <form action="/file-upload" className="dropzone">
+                                    <div className='dz-default dz-message'><span><i className='fa fa-cloud-upload'></i> Click here or drop files to upload</span></div>
+                                </form>
                             </div>
                         </div>
                     </div>
