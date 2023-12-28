@@ -50,18 +50,6 @@ function UserNavigation(){
                                 </nav>
                                 <div className="clearfix"></div>
                             </div>
-                            <div className="header-user-menu user-menu">
-                                <div className="header-user-name">
-                                    <span><img src="images/testimonials/ts-1.jpg" alt=""/></span>Hi, Mary!
-                                </div>
-                                <ul>
-                                    <li><a href="user-profile.html"> Edit profile</a></li>
-                                    <li><a href="add-property.html"> Add Property</a></li>
-                                    <li><a href="payment-method.html">  Payments</a></li>
-                                    <li><a href="change-password.html"> Change Password</a></li>
-                                    <li><a href="#">Log Out</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </header>

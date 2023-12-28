@@ -15904,7 +15904,7 @@ a.button {
   color: #fff;
   text-align: center;
   line-height: 15px;
-  background-color: #FF385C;
+  background-color: #987654;
   border: 2px solid transparent;
   -webkit-transition: border-color 0s;
   transition: border-color 0s;
@@ -22259,6 +22259,7 @@ form label.error {
 
 .inner-pages .property-form-group p input {
   border: 1px solid #ddd;
+  border-radius: 5px;
   height: 50px;
   padding: 10px;
   width: 100%;
@@ -22382,7 +22383,7 @@ form label.error {
 }
 
 .inner-pages .dropdown.faq-drop span {
-  color: #999;
+  color: #666;
   margin-left: 5px;
 }
 
