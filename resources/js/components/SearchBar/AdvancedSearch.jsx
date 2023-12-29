@@ -27,7 +27,7 @@ const checkboxOptions = {
 let halfOptions = Object.keys(checkboxOptions).length/2
 
 // 'typeProperty' give us info to filter what the client is searching for ('Sale' or 'Rent' values)
-function SearchBar(typeProperty) {
+function AdvancedSearch(typeProperty) {
     //Advanced search menu
     const[advancedIsClicked, setAdvancedIsClicked] = useState(false);
 
@@ -92,7 +92,6 @@ function SearchBar(typeProperty) {
     const bathroomsValueHandler = (option) => {
         setBathroomsValue(option)
         setBathroomsClicked(!bathroomsClicked);
-        console.log(checkBox)
     };
 
     const checkBoxHandler = (e) => {
@@ -237,4 +236,4 @@ function SearchBar(typeProperty) {
     );
 }
 
-export default SearchBar
+export default AdvancedSearch

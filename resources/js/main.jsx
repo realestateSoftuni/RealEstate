@@ -1,22 +1,17 @@
 /*jshint esversion: 6 */
 import React, {useEffect} from 'react'
 import ReactDOM from 'react-dom/client'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import {Route, Routes} from "react-router-dom";
+import {Routes, Route} from 'react-router-dom';
 // import InfoSideBar from './components/InfoSideBar.jsx';
 import AOS from 'aos'
 import NotFound404 from "./components/NotFound404.jsx";
 import HeaderBar from "./components/HeaderBar.jsx";
-import HeaderSearchBar from "./components/HeaderSearchBar.jsx";
-import PopularPlaces from "./components/PopularPlaces.jsx";
 import Register from "./components/Register.jsx";
 import EmailVerify from "./components/EmailVerify.jsx";
 
 import Footer from "./components/Footer.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import LogIn from "./components/LogIn.jsx";
-import Register from "./components/Register.jsx";
-import PropertiesCatalogue from "./components/PropertiesCatalogue.jsx";
 import AddProperty from "./components/AddProperty.jsx";
 import User from "./components/UserDetails.jsx";
 import Contact from "./components/Contact.jsx"
@@ -50,11 +45,9 @@ function Main() {
     useEffect(() => {
         AOS.init()
     }, []);
-    
+
     return (
         <div className="maxw1600 m0a homepage-2 the-search hd-white">
-
-            <Router>
                 <div id="wrapper">
                     {/*< InfoSideBar />*/}
                     < HeaderBar/>
@@ -65,6 +58,7 @@ function Main() {
                                 <PopularPlaces/>
                             </main>}/>
                         <Route path="/about-us" element={<AboutUs/>}/>
+
                         <Route path="/register" element={<Register/>}/>
                         <Route path="/verify/:token" element={<EmailVerify />}/>
                         <Route path="*" element={<NotFound404 />} />
@@ -72,8 +66,6 @@ function Main() {
                     </Routes>
                     <Footer/>
                 </div>
-            </Router>
-
         </div>
     );
 }
