@@ -13496,7 +13496,7 @@ form label.error {
 
 .th-8 input, textarea, select {
   width: 100%;
-  height: 50px;
+  height: 40px;
   padding: 9px;
   margin-bottom: 0px;
   border: 1px solid #ddd;
@@ -15687,11 +15687,26 @@ a.button {
   padding-left: 20px;
 }
 
+.select-hide{
+    display: none;
+}
+
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+
 .inner-pages .form-group .nice-select {
   margin: 0px;
   height: 50px;
   line-height: 50px;
-  padding: 0 15px;
+  padding: 0;
   border-radius: 5px;
   border: 1px solid #ddd;
   -webkit-box-shadow: none;
@@ -19477,7 +19492,7 @@ body.dashboard-bd {
   padding: 0 15px;
   color: #727272;
   background: #ffffff;
-  z-index: 1;
+  z-index: 0;
   width: 100%;
   position: relative;
   -webkit-appearance: none;
@@ -19487,7 +19502,6 @@ body.dashboard-bd {
   min-height: 45px;
   -webkit-box-shadow: none;
           box-shadow: none;
-  border: 1px solid #f3f3f3;
   background: #fff;
   border-radius: 4px;
   width: 100% !important;

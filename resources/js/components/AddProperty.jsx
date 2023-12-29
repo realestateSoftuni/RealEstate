@@ -1,9 +1,9 @@
 import UserLayout from "../components/UserLayout/UserLayout.jsx";
-import {useState} from "react";
-import {Form, Formik, useFormik} from "formik";
+import { useState } from "react";
+import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import {MyCheckbox, MySelect, MyTextarea, MyTextInput} from "@/utils/fields.jsx";
-import {addPropertyValidations} from "@/utils/validations.js";
+import {MyCheckbox, MyField, MyTextarea, MyTextInput} from "../utils/fields.jsx";
+import {addPropertyValidations} from "../utils/validations.js";
 
 const types = ['House', 'Apartment', 'Commercial', 'Lot', 'Garage']
 const rooms = []
@@ -63,7 +63,8 @@ const fieldsState = {
 
 function AddProperty() {
     const [isOpen, setIsOpen] = useState(openInitialState);
-    const [initialValues, setInitialValues] = useState(fieldsState);
+    const [dropdownValues, setDropdownValues] = useState(fieldsState);
+
 
     const clickOpenHandler = (button) => {
         let newState = {...openInitialState, [button]: !isOpen[button]}
@@ -71,25 +72,8 @@ function AddProperty() {
     }
 
     const valueHandler = (e, field, value) => {
-        let newValue = '';
-        let fieldName = '';
-
-        switch (e.target.type) {
-            case 'dropdown':
-                newValue = value;
-                fieldName = field;
-                break;
-            case 'checkbox':
-                fieldName = e.target.name;
-                newValue = e.target.checked;
-                break;
-            default:
-                newValue = e.target.value;
-                fieldName = e.target.name;
-                break;
-        }
-        let newState = { ...initialValues, [fieldName]: newValue}
-        setInitialValues(newState)
+        let newState = { ...dropdownValues, [field]: value}
+        setDropdownValues(newState)
     }
 
     return(
@@ -99,11 +83,23 @@ function AddProperty() {
                 initialValues={fieldsState}
                 validationSchema={Yup.object(addPropertyValidations)}
                 onSubmit={(values, { setSubmitting }) => {
-                    console.log('submitted')
+                    console.log(values)
                     setSubmitting(false);
                 }}
             >
-            <Form>
+                {props => {
+                    const {
+                        values,
+                        touched,
+                        errors,
+                        isSubmitting,
+                        handleChange,
+                        handleBlur,
+                        handleSubmit,
+                        setFieldValue
+                    } = props;
+            return(
+                <Form>
                 <div className="single-add-property">
                     <h3>Property description and price</h3>
                     <div className="property-form-group">
@@ -115,6 +111,7 @@ function AddProperty() {
                                         name="title"
                                         type="text"
                                         placeholder="Enter your property title"
+                                        className='text-input'
                                     />
                                 </div>
                             </div>
@@ -125,26 +122,46 @@ function AddProperty() {
                                         name="description"
                                         type="textarea"
                                         placeholder="Describe about your property"
+                                        className='text-input'
                                     />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('status')}>
                                     <div className="form-group categories">
-                                        <MySelect name="status" divClass='nice-select form-control wide'>
-                                            <option value='rent' className='option'>Rent</option>
-                                        </MySelect>
-                                        {/*<div className={`nice-select form-control wide ${isOpen.status ? 'open' : ''}`} tabIndex="0"><span className="current">{initialValues.status}</span>*/}
-                                        {/*    <ul className="list">*/}
-                                        {/*        <li type='dropdown' data-value="1" className="option" onClick={(e) => valueHandler(e, 'status', 'Rent')}>Rent</li>*/}
-                                        {/*        <li type='dropdown' data-value="2" className="option" onClick={(e) => valueHandler(e, 'status', 'Sale')}>Sale</li>*/}
-                                        {/*    </ul>*/}
-                                        {/*</div>*/}
+                                        <MyField
+                                            name="status"
+                                            id='status'
+                                            type="text"
+                                            setFieldValue={setFieldValue}
+                                            value={dropdownValues.status}
+                                            values={values}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            className='text-input select-hide'
+                                        />
+                                        <div className={`nice-select form-control wide ${isOpen.status ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.status}</span>
+                                            <ul className="list">
+                                                <li type='dropdown' data-value="1" className="option" onClick={(e) => valueHandler(e, 'status', 'Rent')}>Rent</li>
+                                                <li type='dropdown' data-value="2" className="option" onClick={(e) => valueHandler(e, 'status', 'Sale')}>Sale</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('type')}>
                                     <div className="form-group categories">
-                                        <div className={`nice-select form-control wide ${isOpen.type ? 'open' : ''}`} tabIndex="0"><span className="current">{initialValues.type}</span>
+                                        <MyField
+                                            name="type"
+                                            type="text"
+                                            id='type'
+                                            setFieldValue={setFieldValue}
+                                            value={dropdownValues.type}
+                                            values={values}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            className='text-input select-hide'
+                                        />
+                                        <div className={`nice-select form-control wide ${isOpen.type ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.type}</span>
                                             <ul className="list">
                                                 {types.map((t) =>
                                                     <li key={t} type='dropdown' data-value={t} className="option" onClick={(e) => valueHandler(e, 'type', t)}>{t}</li>
@@ -155,7 +172,18 @@ function AddProperty() {
                                 </div>
                                 <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('rooms')}>
                                     <div className="form-group categories">
-                                        <div className={`nice-select form-control wide ${isOpen.rooms ? 'open' : ''}`} tabIndex="0"><span className="current">{initialValues.rooms}</span>
+                                        <MyField
+                                            name="rooms"
+                                            type="text"
+                                            id='rooms'
+                                            setFieldValue={setFieldValue}
+                                            value={dropdownValues.rooms}
+                                            values={values}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            className='text-input select-hide'
+                                        />
+                                        <div className={`nice-select form-control wide ${isOpen.rooms ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.rooms}</span>
                                             <ul className="list">
                                                 {rooms.map((s) =>
                                                     <li key={s} type='dropdown' data-value={s} className="option" onClick={(e) => valueHandler(e, 'rooms', s)}>{s}</li>
@@ -167,22 +195,34 @@ function AddProperty() {
                             </div>
                             <div className="row">
                                 <div className="col-lg-4 col-md-6">
-                                    <p className="no-mb">
-                                        <label htmlFor="price">Price</label>
-                                        <input type="text" name="price" onChange={(e) => valueHandler(e)} placeholder="USD" id="price"/>
-                                    </p>
+                                    <MyTextInput
+                                        label="Price"
+                                        name="price"
+                                        type="text"
+                                        id='price'
+                                        placeholder="USD"
+                                        className='text-input'
+                                    />
                                 </div>
                                 <div className="col-lg-4 col-md-6">
-                                    <p className="no-mb last">
-                                        <label htmlFor="area">Area</label>
-                                        <input type="text" name="area" onChange={(e) => valueHandler(e)} placeholder="Sqft" id="area"/>
-                                    </p>
+                                    <MyTextInput
+                                        label="Area"
+                                        name="area"
+                                        type="text"
+                                        id='area'
+                                        placeholder="Sqft"
+                                        className='text-input'
+                                    />
                                 </div>
                                 <div className="col-lg-4 col-md-6">
-                                    <p className="no-mb">
-                                        <label htmlFor="price">Build</label>
-                                        <input type="text" name="year" onChange={(e) => valueHandler(e)} placeholder="Year" id="price"/>
-                                    </p>
+                                    <MyTextInput
+                                        label="Build"
+                                        name="year"
+                                        type="text"
+                                        id='year'
+                                        placeholder="Year"
+                                        className='text-input'
+                                    />
                                 </div>
                             </div>
                         </form>
@@ -210,11 +250,8 @@ function AddProperty() {
                                     name="address"
                                     type="text"
                                     placeholder="Enter Your Address"
+                                    className='text-input'
                                 />
-                                {/*<p>*/}
-                                {/*    <label htmlFor="address">Address</label>*/}
-                                {/*    <input type="text" name="address" onChange={(e) => valueHandler(e)} placeholder="Enter Your Address" id="address"/>*/}
-                                {/*</p>*/}
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <MyTextInput
@@ -222,11 +259,8 @@ function AddProperty() {
                                     name="city"
                                     type="text"
                                     placeholder="Enter Your City"
+                                    className='text-input'
                                 />
-                                {/*<p>*/}
-                                {/*    <label htmlFor="city">City</label>*/}
-                                {/*    <input type="text" name="city" onChange={(e) => valueHandler(e)} placeholder="Enter Your City" id="city"/>*/}
-                                {/*</p>*/}
                             </div>
                         </div>
                         <div className="row">
@@ -236,11 +270,8 @@ function AddProperty() {
                                     name="state"
                                     type="text"
                                     placeholder="Enter Your State"
+                                    className='text-input'
                                 />
-                                {/*<p>*/}
-                                {/*    <label htmlFor="state">State</label>*/}
-                                {/*    <input type="text" name="state" onChange={(e) => valueHandler(e)} placeholder="Enter Your State" id="state"/>*/}
-                                {/*</p>*/}
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <MyTextInput
@@ -248,11 +279,8 @@ function AddProperty() {
                                     name="country"
                                     type="text"
                                     placeholder="Enter Your Country"
+                                    className='text-input'
                                 />
-                                {/*<p>*/}
-                                {/*    <label htmlFor="country">Country</label>*/}
-                                {/*    <input type="text" name="country" onChange={(e) => valueHandler(e)} placeholder="Enter Your Country" id="country"/>*/}
-                                {/*</p>*/}
                             </div>
                         </div>
                         <div className="row">
@@ -262,11 +290,8 @@ function AddProperty() {
                                     name="latitude"
                                     type="text"
                                     placeholder="Google Maps latitude"
+                                    className='text-input'
                                 />
-                                {/*<p className="no-mb first">*/}
-                                {/*    <label htmlFor="latitude">Google Maps latitude</label>*/}
-                                {/*    <input type="text" name="latitude" onChange={(e) => valueHandler(e)} placeholder="Google Maps latitude" id="latitude"/>*/}
-                                {/*</p>*/}
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <MyTextInput
@@ -274,11 +299,8 @@ function AddProperty() {
                                     name="longitude"
                                     type="text"
                                     placeholder="Google Maps longitude"
+                                    className='text-input'
                                 />
-                                {/*<p className="no-mb last">*/}
-                                {/*    <label htmlFor="longitude">Google Maps longitude</label>*/}
-                                {/*    <input type="text" name="longitude" onChange={(e) => valueHandler(e)} placeholder="Google Maps longitude" id="longitude"/>*/}
-                                {/*</p>*/}
                             </div>
                         </div>
                     </div>
@@ -289,7 +311,18 @@ function AddProperty() {
                         <div className="row">
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
                                 <div className="form-group categories" onClick={() => clickOpenHandler('floor')}>
-                                    <div className={`nice-select form-control wide ${isOpen.floor ? 'open' : ''}`} tabIndex="0"><span className="current">{initialValues.floor}</span>
+                                    <MyField
+                                        name="floor"
+                                        type="text"
+                                        id='floor'
+                                        setFieldValue={setFieldValue}
+                                        value={dropdownValues.floor}
+                                        values={values}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className='text-input select-hide'
+                                    />
+                                    <div className={`nice-select form-control wide ${isOpen.floor ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.floor}</span>
                                         <ul className="list">
                                             {rooms.map((f) =>
                                                 <li key={f} type='dropdown' data-value={f} className="option"  onClick={(e) => valueHandler(e,'floor', f)}>{f}</li>
@@ -300,7 +333,18 @@ function AddProperty() {
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
                                 <div className="form-group categories" onClick={() => clickOpenHandler('bedrooms')}>
-                                    <div className={`nice-select form-control wide ${isOpen.bedrooms ? 'open' : ''}`} tabIndex="0"><span className="current">{initialValues.bedrooms}</span>
+                                    <MyField
+                                        name="bedrooms"
+                                        type="text"
+                                        id='bedrooms'
+                                        setFieldValue={setFieldValue}
+                                        value={dropdownValues.bedrooms}
+                                        values={values}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className='text-input select-hide'
+                                    />
+                                    <div className={`nice-select form-control wide ${isOpen.bedrooms ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.bedrooms}</span>
                                         <ul className="list">
                                             {rooms.map((bed) =>
                                                 <li key={bed} type='dropdown' data-value={bed} className="option"  onClick={(e) => valueHandler(e, 'bedrooms', bed)}>{bed}</li>
@@ -311,7 +355,18 @@ function AddProperty() {
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
                                 <div className="form-group categories" onClick={() => clickOpenHandler('bathrooms')}>
-                                    <div className={`nice-select form-control wide ${isOpen.bathrooms ? 'open' : ''}`} tabIndex="0"><span className="current">{initialValues.bathrooms}</span>
+                                    <MyField
+                                        name="bathrooms"
+                                        type="text"
+                                        id='bathrooms'
+                                        setFieldValue={setFieldValue}
+                                        value={dropdownValues.bathrooms}
+                                        values={values}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className='text-input select-hide'
+                                    />
+                                    <div className={`nice-select form-control wide ${isOpen.bathrooms ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.bathrooms}</span>
                                         <ul className="list">
                                             {rooms.map((bath) =>
                                                 <li key={bath} type='dropdown' data-value={bath} className="option"  onClick={(e) => valueHandler(e,'bathrooms', bath)}>{bath}</li>
@@ -338,10 +393,6 @@ function AddProperty() {
                                                 divClass='filter-tags-wrap'
                                                 id='airConditioning'
                                             />
-                                            {/*<div className="filter-tags-wrap">*/}
-                                            {/*    <input id="check-a" type="checkbox" name="airConditioning" onChange={(e) => valueHandler(e)} />*/}
-                                            {/*        <label htmlFor="check-a">Air Conditioning</label>*/}
-                                            {/*</div>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
@@ -353,10 +404,6 @@ function AddProperty() {
                                                 divClass='filter-tags-wrap'
                                                 id='swimmingPool'
                                             />
-                                            {/*<div className="filter-tags-wrap">*/}
-                                            {/*    <input id="check-b" type="checkbox" name="swimmingPool" onChange={(e) => valueHandler(e)} />*/}
-                                            {/*        <label htmlFor="check-b">Swimming Pool</label>*/}
-                                            {/*</div>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
@@ -368,10 +415,6 @@ function AddProperty() {
                                                 divClass='filter-tags-wrap'
                                                 id='centralHeating'
                                             />
-                                            {/*<div className="filter-tags-wrap">*/}
-                                            {/*    <input id="check-c" type="checkbox" name="centralHeating" onChange={(e) => valueHandler(e)} />*/}
-                                            {/*        <label htmlFor="check-c">Central Heating</label>*/}
-                                            {/*</div>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
@@ -383,10 +426,6 @@ function AddProperty() {
                                                 divClass='filter-tags-wrap'
                                                 id='laundryRoom'
                                             />
-                                            {/*<div className="filter-tags-wrap">*/}
-                                            {/*    <input id="check-d" type="checkbox" name="laundryRoom" onChange={(e) => valueHandler(e)} />*/}
-                                            {/*        <label htmlFor="check-d">Laundry Room</label>*/}
-                                            {/*</div>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
@@ -398,10 +437,6 @@ function AddProperty() {
                                                 divClass='filter-tags-wrap'
                                                 id='gym'
                                             />
-                                            {/*<div className="filter-tags-wrap">*/}
-                                            {/*    <input id="check-e" type="checkbox" name="gym" onChange={(e) => valueHandler(e)} />*/}
-                                            {/*        <label htmlFor="check-e">Gym</label>*/}
-                                            {/*</div>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
@@ -413,10 +448,6 @@ function AddProperty() {
                                                 divClass='filter-tags-wrap'
                                                 id='alarm'
                                             />
-                                            {/*<div className="filter-tags-wrap">*/}
-                                            {/*    <input id="check-g" type="checkbox" name="alarm" onChange={(e) => valueHandler(e)} />*/}
-                                            {/*        <label htmlFor="check-g">Alarm</label>*/}
-                                            {/*</div>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
@@ -428,10 +459,6 @@ function AddProperty() {
                                                 divClass='filter-tags-wrap'
                                                 id='windowCovering'
                                             />
-                                            {/*<div className="filter-tags-wrap">*/}
-                                            {/*    <input id="check-h" type="checkbox" name="windowCovering" onChange={(e) => valueHandler(e)} />*/}
-                                            {/*        <label htmlFor="check-h">Window Covering</label>*/}
-                                            {/*</div>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
@@ -443,10 +470,6 @@ function AddProperty() {
                                                 divClass='filter-tags-wrap'
                                                 id='refrigerator'
                                             />
-                                            {/*<div className="filter-tags-wrap">*/}
-                                            {/*    <input id="check-i" type="checkbox" name="refrigerator" onChange={(e) => valueHandler(e)} />*/}
-                                            {/*        <label htmlFor="check-i">Refrigerator</label>*/}
-                                            {/*</div>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
@@ -458,10 +481,6 @@ function AddProperty() {
                                                 divClass='filter-tags-wrap'
                                                 id='tv_wifi'
                                             />
-                                            {/*<div className="filter-tags-wrap">*/}
-                                            {/*    <input id="check-j" type="checkbox" name="tv_wifi" onChange={(e) => valueHandler(e)} />*/}
-                                            {/*        <label htmlFor="check-j">TV Cable & WIFI</label>*/}
-                                            {/*</div>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
@@ -473,10 +492,6 @@ function AddProperty() {
                                                 divClass='filter-tags-wrap'
                                                 id='microwave'
                                             />
-                                            {/*<div className="filter-tags-wrap">*/}
-                                            {/*    <input id="check-k" type="checkbox" name="microwave" onChange={(e) => valueHandler(e)} />*/}
-                                            {/*        <label htmlFor="check-k">Microwave</label>*/}
-                                            {/*</div>*/}
                                         </div>
                                     </li>
                                 </ul>
@@ -489,30 +504,46 @@ function AddProperty() {
                     <div className="property-form-group">
                         <div className="row">
                             <div className="col-lg-6 col-md-12">
-                                <p>
-                                    <label htmlFor="con-name">Name</label>
-                                    <input type="text" placeholder="Enter Your Name" id="con-name" name="name" onChange={(e) => valueHandler(e)} />
-                                </p>
+                                <MyTextInput
+                                    label="Name"
+                                    name="name"
+                                    type="text"
+                                    id="name"
+                                    placeholder="Enter Your Name"
+                                    className='text-input'
+                                />
                             </div>
                             <div className="col-lg-6 col-md-12">
-                                <p>
-                                    <label htmlFor="con-user">Username</label>
-                                    <input type="text" placeholder="Enter Your Username" id="con-user" name="username" onChange={(e) => valueHandler(e)} />
-                                </p>
+                                <MyTextInput
+                                    label="Username"
+                                    name="username"
+                                    type="text"
+                                    id="username"
+                                    placeholder="Enter Your Username"
+                                    className='text-input'
+                                />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-lg-6 col-md-12">
-                                <p className="no-mb first">
-                                    <label htmlFor="con-email">Email</label>
-                                    <input type="email" placeholder="Enter Your Email" id="con-email" name="email" onChange={(e) => valueHandler(e)} />
-                                </p>
+                                <MyTextInput
+                                    label="Email"
+                                    name="email"
+                                    type="email"
+                                    id="email"
+                                    placeholder="Enter Your Email"
+                                    className='text-input'
+                                />
                             </div>
                             <div className="col-lg-6 col-md-12">
-                                <p className="no-mb last">
-                                    <label htmlFor="con-phn">Phone</label>
-                                    <input type="text" placeholder="Enter Your Phone Number" id="con-phn" name="phone" onChange={(e) => valueHandler(e)} />
-                                </p>
+                                <MyTextInput
+                                    label="Phone"
+                                    name="phone"
+                                    type="text"
+                                    id="phone"
+                                    placeholder="Enter Your Phone Number"
+                                    className='text-input'
+                                />
                             </div>
                         </div>
                     </div>
@@ -526,7 +557,7 @@ function AddProperty() {
                         </div>
                     </div>
                 </div>
-            </Form>
+            </Form>);}}
         </Formik>
             </div>
         </UserLayout>
