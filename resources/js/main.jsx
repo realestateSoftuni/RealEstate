@@ -8,12 +8,14 @@ import NotFound404 from "./components/NotFound404.jsx";
 import HeaderBar from "./components/HeaderBar.jsx";
 import Register from "./components/Register.jsx";
 import EmailVerify from "./components/EmailVerify.jsx";
+
 import Footer from "./components/Footer.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import LogIn from "./components/LogIn.jsx";
 import AddProperty from "./components/AddProperty.jsx";
 import User from "./components/UserDetails.jsx";
 import Contact from "./components/Contact.jsx"
+import AboutUs from "./components/AboutUs.jsx"
 
 
 import "../../public/favicon.ico"
@@ -50,7 +52,13 @@ function Main() {
                     {/*< InfoSideBar />*/}
                     < HeaderBar/>
                     <Routes>
-                        <Route path="/" element={<HomePage/>}/>
+                        <Route path="/" element={
+                            <main className="main">
+                                <HeaderSearchBar/>
+                                <PopularPlaces/>
+                            </main>}/>
+                        <Route path="/about-us" element={<AboutUs/>}/>
+
                         <Route path="/register" element={<Register/>}/>
                         <Route path="/verify/:token" element={<EmailVerify />}/>
                         <Route path="*" element={<NotFound404 />} />
