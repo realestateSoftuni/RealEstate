@@ -16,18 +16,24 @@ export const MyTextInput = ({ label, ...props }, className) => {
 };
 
 export const MyField = props => {
+    const [field, meta] = useField(props);
     useEffect(() => {
         props.setFieldValue(props.name, props.value);
     }, [props.value]);
 
     return (
-        <input
-            id={props.id}
-            type="text"
-            name={props.name}
-            value={props.values[props.name]}
-            className={props.className}
-        />
+        <>
+            <input
+                id={props.id}
+                type="text"
+                name={props.name}
+                value={props.values[props.name]}
+                className={props.className}
+            />
+            {meta.touched && meta.error ? (
+                <span className="error">{meta.error}</span>
+            ) : null}
+        </>
     );
 };
 

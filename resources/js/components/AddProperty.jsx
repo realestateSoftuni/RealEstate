@@ -27,12 +27,26 @@ const openInitialState = {
     bathrooms: false,
 }
 
-const fieldsState = {
-    title: '',
-    description: '',
+const heatingTypes = ['Air Conditioning', 'Gas', 'Central heating']
+const constructionTypes = ['Brick', 'Ganged Wall Form', 'Prefabricated', 'Panel-build']
+
+const dropdownFields = {
     status: 'Status',
     type: 'Type',
     rooms: 'Size',
+    floor: 'Floor',
+    construction: 'Construction Type',
+    bedrooms: 'Bedrooms',
+    bathrooms: 'Bathrooms',
+    heating: 'Heating',
+}
+
+const fieldsState = {
+    title: '',
+    description: '',
+    status: '',
+    type: '',
+    rooms: '',
     price: '',
     area: '',
     build: '',
@@ -42,19 +56,23 @@ const fieldsState = {
     country: '',
     latitude: '',
     longitude: '',
-    floor: 'Floor',
-    bedrooms: 'Bedrooms',
-    bathrooms: 'Bathrooms',
-    airConditioning: false,
+    floor: '',
+    construction: '',
+    bedrooms: '',
+    bathrooms: '',
+    heating: '',
+    inConstruction: false,
+    garage: false,
     swimmingPool: false,
-    centralHeating: false,
-    laundryRoom: false,
+    furnished: false,
+    parking: false,
     gym: false,
     alarm: false,
     windowCovering: false,
-    refrigerator: false,
+    guard: false,
     tv_wifi: false,
-    microwave: false,
+    renovated: false,
+    yard: false,
     name: '',
     username: '',
     email: '',
@@ -63,7 +81,7 @@ const fieldsState = {
 
 function AddProperty() {
     const [isOpen, setIsOpen] = useState(openInitialState);
-    const [dropdownValues, setDropdownValues] = useState(fieldsState);
+    const [dropdownValues, setDropdownValues] = useState(dropdownFields);
 
 
     const clickOpenHandler = (button) => {
@@ -129,6 +147,13 @@ function AddProperty() {
                             <div className="row">
                                 <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('status')}>
                                     <div className="form-group categories">
+                                        <div className={`nice-select form-control wide ${isOpen.status ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.status}</span>
+                                            <ul className="list">
+                                                <li type='dropdown' data-value="1" className="option"
+                                                    onClick={(e) => valueHandler(e, 'status', 'Rent')}>Rent</li>
+                                                <li type='dropdown' data-value="2" className="option" onClick={(e) => valueHandler(e, 'status', 'Sale')}>Sale</li>
+                                            </ul>
+                                        </div>
                                         <MyField
                                             name="status"
                                             id='status'
@@ -140,16 +165,17 @@ function AddProperty() {
                                             onBlur={handleBlur}
                                             className='text-input select-hide'
                                         />
-                                        <div className={`nice-select form-control wide ${isOpen.status ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.status}</span>
-                                            <ul className="list">
-                                                <li type='dropdown' data-value="1" className="option" onClick={(e) => valueHandler(e, 'status', 'Rent')}>Rent</li>
-                                                <li type='dropdown' data-value="2" className="option" onClick={(e) => valueHandler(e, 'status', 'Sale')}>Sale</li>
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('type')}>
                                     <div className="form-group categories">
+                                        <div className={`nice-select form-control wide ${isOpen.type ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.type}</span>
+                                            <ul className="list">
+                                                {types.map((t) =>
+                                                    <li key={t} type='dropdown' data-value={t} className="option" onClick={(e) => valueHandler(e, 'type', t)}>{t}</li>
+                                                )}
+                                            </ul>
+                                        </div>
                                         <MyField
                                             name="type"
                                             type="text"
@@ -161,17 +187,17 @@ function AddProperty() {
                                             onBlur={handleBlur}
                                             className='text-input select-hide'
                                         />
-                                        <div className={`nice-select form-control wide ${isOpen.type ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.type}</span>
-                                            <ul className="list">
-                                                {types.map((t) =>
-                                                    <li key={t} type='dropdown' data-value={t} className="option" onClick={(e) => valueHandler(e, 'type', t)}>{t}</li>
-                                                )}
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
                                 <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('rooms')}>
                                     <div className="form-group categories">
+                                        <div className={`nice-select form-control wide ${isOpen.rooms ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.rooms}</span>
+                                            <ul className="list">
+                                                {rooms.map((s) =>
+                                                    <li key={s} type='dropdown' data-value={s} className="option" onClick={(e) => valueHandler(e, 'rooms', s)}>{s}</li>
+                                                )}
+                                            </ul>
+                                        </div>
                                         <MyField
                                             name="rooms"
                                             type="text"
@@ -183,13 +209,6 @@ function AddProperty() {
                                             onBlur={handleBlur}
                                             className='text-input select-hide'
                                         />
-                                        <div className={`nice-select form-control wide ${isOpen.rooms ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.rooms}</span>
-                                            <ul className="list">
-                                                {rooms.map((s) =>
-                                                    <li key={s} type='dropdown' data-value={s} className="option" onClick={(e) => valueHandler(e, 'rooms', s)}>{s}</li>
-                                                )}
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -375,6 +394,50 @@ function AddProperty() {
                                     </div>
                                 </div>
                             </div>
+                            <div className="col-lg-4 col-md-12 dropdown faq-drop">
+                                <div className="form-group categories" onClick={() => clickOpenHandler('heating')}>
+                                    <MyField
+                                        name="heating"
+                                        type="text"
+                                        id='heating'
+                                        setFieldValue={setFieldValue}
+                                        value={dropdownValues.heating}
+                                        values={values}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className='text-input select-hide'
+                                    />
+                                    <div className={`nice-select form-control wide ${isOpen.heating ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.heating}</span>
+                                        <ul className="list">
+                                            {heatingTypes.map((h) =>
+                                                <li key={h} type='dropdown' data-value={h} className="option"  onClick={(e) => valueHandler(e, 'heating', h)}>{h}</li>
+                                            )}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-12 dropdown faq-drop">
+                                <div className="form-group categories" onClick={() => clickOpenHandler('construction')}>
+                                    <MyField
+                                        name="construction"
+                                        type="text"
+                                        id='construction'
+                                        setFieldValue={setFieldValue}
+                                        value={dropdownValues.construction}
+                                        values={values}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className='text-input select-hide'
+                                    />
+                                    <div className={`nice-select form-control wide ${isOpen.construction ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.construction}</span>
+                                        <ul className="list">
+                                            {constructionTypes.map((c) =>
+                                                <li key={c} type='dropdown' data-value={c} className="option"  onClick={(e) => valueHandler(e, 'construction', c)}>{c}</li>
+                                            )}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -387,55 +450,55 @@ function AddProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <MyCheckbox
-                                                label="Air Conditioning"
-                                                name="airConditioning"
+                                                label="In construction"
+                                                name="inConstruction"
                                                 type="checkbox"
                                                 divClass='filter-tags-wrap'
-                                                id='airConditioning'
+                                                id='inConstruction'
                                             />
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <MyCheckbox
-                                                label="Swimming Pool"
-                                                name="swimmingPool"
+                                                label="Garage"
+                                                name="garage"
                                                 type="checkbox"
                                                 divClass='filter-tags-wrap'
-                                                id='swimmingPool'
+                                                id='garage'
                                             />
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <MyCheckbox
-                                                label="Central Heating"
-                                                name="centralHeating"
+                                                label="Yard"
+                                                name="yard"
                                                 type="checkbox"
                                                 divClass='filter-tags-wrap'
-                                                id='centralHeating'
+                                                id='yard'
                                             />
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <MyCheckbox
-                                                label="Laundry Room"
-                                                name="laundryRoom"
+                                                label="Parking"
+                                                name="parking"
                                                 type="checkbox"
                                                 divClass='filter-tags-wrap'
-                                                id='laundryRoom'
+                                                id='parking'
                                             />
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <MyCheckbox
-                                                label="Gym"
-                                                name="gym"
+                                                label="Guard"
+                                                name="guard"
                                                 type="checkbox"
                                                 divClass='filter-tags-wrap'
-                                                id='gym'
+                                                id='guard'
                                             />
                                         </div>
                                     </li>
@@ -453,6 +516,50 @@ function AddProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <MyCheckbox
+                                                label="Furnished"
+                                                name="furnished"
+                                                type="checkbox"
+                                                divClass='filter-tags-wrap'
+                                                id='furnished'
+                                            />
+                                        </div>
+                                    </li>
+                                    <li className="fl-wrap filter-tags clearfix">
+                                        <div className="checkboxes float-left">
+                                            <MyCheckbox
+                                                label="Renovated"
+                                                name="renovated"
+                                                type="checkbox"
+                                                divClass='filter-tags-wrap'
+                                                id='renovated'
+                                            />
+                                        </div>
+                                    </li>
+                                    <li className="fl-wrap filter-tags clearfix">
+                                        <div className="checkboxes float-left">
+                                            <MyCheckbox
+                                                label="Swimming Pool"
+                                                name="swimmingPool"
+                                                type="checkbox"
+                                                divClass='filter-tags-wrap'
+                                                id='swimmingPool'
+                                            />
+                                        </div>
+                                    </li>
+                                    <li className="fl-wrap filter-tags clearfix">
+                                        <div className="checkboxes float-left">
+                                            <MyCheckbox
+                                                label="Gym"
+                                                name="gym"
+                                                type="checkbox"
+                                                divClass='filter-tags-wrap'
+                                                id='gym'
+                                            />
+                                        </div>
+                                    </li>
+                                    <li className="fl-wrap filter-tags clearfix">
+                                        <div className="checkboxes float-left">
+                                            <MyCheckbox
                                                 label="Window Covering"
                                                 name="windowCovering"
                                                 type="checkbox"
@@ -464,33 +571,11 @@ function AddProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <MyCheckbox
-                                                label="Refrigerator"
-                                                name="refrigerator"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='refrigerator'
-                                            />
-                                        </div>
-                                    </li>
-                                    <li className="fl-wrap filter-tags clearfix">
-                                        <div className="checkboxes float-left">
-                                            <MyCheckbox
                                                 label="TV Cable & WIFI"
                                                 name="tv_wifi"
                                                 type="checkbox"
                                                 divClass='filter-tags-wrap'
                                                 id='tv_wifi'
-                                            />
-                                        </div>
-                                    </li>
-                                    <li className="fl-wrap filter-tags clearfix">
-                                        <div className="checkboxes float-left">
-                                            <MyCheckbox
-                                                label="Microwave"
-                                                name="microwave"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='microwave'
                                             />
                                         </div>
                                     </li>
