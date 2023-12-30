@@ -15,6 +15,7 @@ import AddProperty from "./components/AddProperty.jsx";
 import User from "./components/UserDetails.jsx";
 import SingleProperty from "./components/SingleProperty.jsx";
 import Contact from "./components/Contact.jsx"
+import AboutUs from "./components/AboutUs.jsx";
 
 
 import "../../public/favicon.ico"
@@ -66,6 +67,7 @@ function Main() {
                         <Route path="/property" element={<SingleProperty/>}/>
                         <Route path="/register" element={<Register/>}/>
                         <Route path="/verify/:token" element={<EmailVerify />}/>
+                        <Route path="/about-us" element={<AboutUs/>}/>
                         <Route path="*" element={<NotFound404 />} />
                         <Route path='/contact-us' element={<Contact/>}/>
                         <Route path='/add-property' element={<AddProperty/>} />
