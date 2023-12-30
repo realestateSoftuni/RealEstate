@@ -44,3 +44,19 @@ export const addPropertyValidations={
         })
         .required('This field is required'),
 };
+
+export const ContactUs = {
+    name: Yup.string()
+        .required('The field is Required!'),
+    lastname: Yup.string()
+        .required('The field is Required!'),
+    email: Yup.string()
+        .email('Invalid email address')
+        .required('The field is Required!'),
+    subject: Yup.string()
+        .required('The field is Required!'),
+    message: Yup.string()
+        .required('The field is Required!'),
+    recaptcha: Yup.string()
+        .required('Please complete the ReCAPTCHA validation'),
+}

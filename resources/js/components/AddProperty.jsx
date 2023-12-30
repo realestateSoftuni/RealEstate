@@ -97,6 +97,18 @@ function AddProperty() {
     return(
         <UserLayout>
             <div className="col-lg-9 col-md-12 col-xs-12 royal-add-property-area section_100 pl-0 user-dash2">
+                <div className="single-add-property">
+                    <h3>property Media</h3>
+                    <div className="property-form-group">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <form action="/file-upload" className="dropzone">
+                                    <div className='dz-default dz-message'><span><i className='fa fa-cloud-upload'></i> Click here or drop files to upload</span></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <Formik
                 initialValues={fieldsState}
                 validationSchema={Yup.object(addPropertyValidations)}
@@ -121,140 +133,126 @@ function AddProperty() {
                 <div className="single-add-property">
                     <h3>Property description and price</h3>
                     <div className="property-form-group">
-                        <form>
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <MyTextInput
-                                        label="Property Title"
-                                        name="title"
-                                        type="text"
-                                        placeholder="Enter your property title"
-                                        className='text-input'
-                                    />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <MyTextarea
-                                        label="Property Description"
-                                        name="description"
-                                        type="textarea"
-                                        placeholder="Describe about your property"
-                                        className='text-input'
-                                    />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('status')}>
-                                    <div className="form-group categories">
-                                        <div className={`nice-select form-control wide ${isOpen.status ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.status}</span>
-                                            <ul className="list">
-                                                <li type='dropdown' data-value="1" className="option"
-                                                    onClick={(e) => valueHandler(e, 'status', 'Rent')}>Rent</li>
-                                                <li type='dropdown' data-value="2" className="option" onClick={(e) => valueHandler(e, 'status', 'Sale')}>Sale</li>
-                                            </ul>
-                                        </div>
-                                        <MyField
-                                            name="status"
-                                            id='status'
-                                            type="text"
-                                            setFieldValue={setFieldValue}
-                                            value={dropdownValues.status}
-                                            values={values}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            className='text-input select-hide'
-                                        />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('type')}>
-                                    <div className="form-group categories">
-                                        <div className={`nice-select form-control wide ${isOpen.type ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.type}</span>
-                                            <ul className="list">
-                                                {types.map((t) =>
-                                                    <li key={t} type='dropdown' data-value={t} className="option" onClick={(e) => valueHandler(e, 'type', t)}>{t}</li>
-                                                )}
-                                            </ul>
-                                        </div>
-                                        <MyField
-                                            name="type"
-                                            type="text"
-                                            id='type'
-                                            setFieldValue={setFieldValue}
-                                            value={dropdownValues.type}
-                                            values={values}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            className='text-input select-hide'
-                                        />
-                                    </div>
-                                </div>
-                                <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('rooms')}>
-                                    <div className="form-group categories">
-                                        <div className={`nice-select form-control wide ${isOpen.rooms ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.rooms}</span>
-                                            <ul className="list">
-                                                {rooms.map((s) =>
-                                                    <li key={s} type='dropdown' data-value={s} className="option" onClick={(e) => valueHandler(e, 'rooms', s)}>{s}</li>
-                                                )}
-                                            </ul>
-                                        </div>
-                                        <MyField
-                                            name="rooms"
-                                            type="text"
-                                            id='rooms'
-                                            setFieldValue={setFieldValue}
-                                            value={dropdownValues.rooms}
-                                            values={values}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            className='text-input select-hide'
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-lg-4 col-md-6">
-                                    <MyTextInput
-                                        label="Price"
-                                        name="price"
-                                        type="text"
-                                        id='price'
-                                        placeholder="USD"
-                                        className='text-input'
-                                    />
-                                </div>
-                                <div className="col-lg-4 col-md-6">
-                                    <MyTextInput
-                                        label="Area"
-                                        name="area"
-                                        type="text"
-                                        id='area'
-                                        placeholder="Sqft"
-                                        className='text-input'
-                                    />
-                                </div>
-                                <div className="col-lg-4 col-md-6">
-                                    <MyTextInput
-                                        label="Build"
-                                        name="year"
-                                        type="text"
-                                        id='year'
-                                        placeholder="Year"
-                                        className='text-input'
-                                    />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div className="single-add-property">
-                    <h3>property Media</h3>
-                    <div className="property-form-group">
                         <div className="row">
                             <div className="col-md-12">
-                                <form action="/file-upload" className="dropzone">
-                                    <div className='dz-default dz-message'><span><i className='fa fa-cloud-upload'></i> Click here or drop files to upload</span></div>
-                                </form>
+                                <MyTextInput
+                                    label="Property Title"
+                                    name="title"
+                                    type="text"
+                                    placeholder="Enter your property title"
+                                    className='text-input'
+                                />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <MyTextarea
+                                    label="Property Description"
+                                    name="description"
+                                    type="textarea"
+                                    placeholder="Describe about your property"
+                                    className='text-input'
+                                />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('status')}>
+                                <div className="form-group categories">
+                                    <div className={`nice-select form-control wide ${isOpen.status ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.status}</span>
+                                        <ul className="list">
+                                            <li type='dropdown' data-value="1" className="option"
+                                                onClick={(e) => valueHandler(e, 'status', 'Rent')}>Rent</li>
+                                            <li type='dropdown' data-value="2" className="option" onClick={(e) => valueHandler(e, 'status', 'Sale')}>Sale</li>
+                                        </ul>
+                                    </div>
+                                    <MyField
+                                        name="status"
+                                        id='status'
+                                        type="text"
+                                        setFieldValue={setFieldValue}
+                                        value={dropdownValues.status}
+                                        values={values}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className='text-input select-hide'
+                                    />
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('type')}>
+                                <div className="form-group categories">
+                                    <div className={`nice-select form-control wide ${isOpen.type ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.type}</span>
+                                        <ul className="list">
+                                            {types.map((t) =>
+                                                <li key={t} type='text' data-value={t} className="option" onClick={(e) => valueHandler(e, 'type', t)}>{t}</li>
+                                            )}
+                                        </ul>
+                                    </div>
+                                    <MyField
+                                        name="type"
+                                        type="text"
+                                        id='type'
+                                        setFieldValue={setFieldValue}
+                                        value={dropdownValues.type}
+                                        values={values}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className='text-input select-hide'
+                                    />
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('rooms')}>
+                                <div className="form-group categories">
+                                    <div className={`nice-select form-control wide ${isOpen.rooms ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.rooms}</span>
+                                        <ul className="list">
+                                            {rooms.map((s) =>
+                                                <li key={s} type='dropdown' data-value={s} className="option" onClick={(e) => valueHandler(e, 'rooms', s)}>{s}</li>
+                                            )}
+                                        </ul>
+                                    </div>
+                                    <MyField
+                                        name="rooms"
+                                        type="text"
+                                        id='rooms'
+                                        setFieldValue={setFieldValue}
+                                        value={dropdownValues.rooms}
+                                        values={values}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className='text-input select-hide'
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-lg-4 col-md-6">
+                                <MyTextInput
+                                    label="Price"
+                                    name="price"
+                                    type="text"
+                                    id='price'
+                                    placeholder="USD"
+                                    className='text-input'
+                                />
+                            </div>
+                            <div className="col-lg-4 col-md-6">
+                                <MyTextInput
+                                    label="Area"
+                                    name="area"
+                                    type="text"
+                                    id='area'
+                                    placeholder="Sqft"
+                                    className='text-input'
+                                />
+                            </div>
+                            <div className="col-lg-4 col-md-6">
+                                <MyTextInput
+                                    label="Build"
+                                    name="year"
+                                    type="text"
+                                    id='year'
+                                    placeholder="Year"
+                                    className='text-input'
+                                />
                             </div>
                         </div>
                     </div>
@@ -330,6 +328,13 @@ function AddProperty() {
                         <div className="row">
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
                                 <div className="form-group categories" onClick={() => clickOpenHandler('floor')}>
+                                    <div className={`nice-select form-control wide ${isOpen.floor ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.floor}</span>
+                                        <ul className="list">
+                                            {rooms.map((f) =>
+                                                <li key={f} type='dropdown' data-value={f} className="option"  onClick={(e) => valueHandler(e,'floor', f)}>{f}</li>
+                                            )}
+                                        </ul>
+                                    </div>
                                     <MyField
                                         name="floor"
                                         type="text"
@@ -341,17 +346,17 @@ function AddProperty() {
                                         onBlur={handleBlur}
                                         className='text-input select-hide'
                                     />
-                                    <div className={`nice-select form-control wide ${isOpen.floor ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.floor}</span>
-                                        <ul className="list">
-                                            {rooms.map((f) =>
-                                                <li key={f} type='dropdown' data-value={f} className="option"  onClick={(e) => valueHandler(e,'floor', f)}>{f}</li>
-                                            )}
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
                                 <div className="form-group categories" onClick={() => clickOpenHandler('bedrooms')}>
+                                    <div className={`nice-select form-control wide ${isOpen.bedrooms ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.bedrooms}</span>
+                                        <ul className="list">
+                                            {rooms.map((bed) =>
+                                                <li key={bed} type='dropdown' data-value={bed} className="option"  onClick={(e) => valueHandler(e, 'bedrooms', bed)}>{bed}</li>
+                                            )}
+                                        </ul>
+                                    </div>
                                     <MyField
                                         name="bedrooms"
                                         type="text"
@@ -363,17 +368,17 @@ function AddProperty() {
                                         onBlur={handleBlur}
                                         className='text-input select-hide'
                                     />
-                                    <div className={`nice-select form-control wide ${isOpen.bedrooms ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.bedrooms}</span>
-                                        <ul className="list">
-                                            {rooms.map((bed) =>
-                                                <li key={bed} type='dropdown' data-value={bed} className="option"  onClick={(e) => valueHandler(e, 'bedrooms', bed)}>{bed}</li>
-                                            )}
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
                                 <div className="form-group categories" onClick={() => clickOpenHandler('bathrooms')}>
+                                    <div className={`nice-select form-control wide ${isOpen.bathrooms ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.bathrooms}</span>
+                                        <ul className="list">
+                                            {rooms.map((bath) =>
+                                                <li key={bath} type='dropdown' data-value={bath} className="option"  onClick={(e) => valueHandler(e,'bathrooms', bath)}>{bath}</li>
+                                            )}
+                                        </ul>
+                                    </div>
                                     <MyField
                                         name="bathrooms"
                                         type="text"
@@ -385,17 +390,17 @@ function AddProperty() {
                                         onBlur={handleBlur}
                                         className='text-input select-hide'
                                     />
-                                    <div className={`nice-select form-control wide ${isOpen.bathrooms ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.bathrooms}</span>
-                                        <ul className="list">
-                                            {rooms.map((bath) =>
-                                                <li key={bath} type='dropdown' data-value={bath} className="option"  onClick={(e) => valueHandler(e,'bathrooms', bath)}>{bath}</li>
-                                            )}
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
                                 <div className="form-group categories" onClick={() => clickOpenHandler('heating')}>
+                                    <div className={`nice-select form-control wide ${isOpen.heating ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.heating}</span>
+                                        <ul className="list">
+                                            {heatingTypes.map((h) =>
+                                                <li key={h} type='dropdown' data-value={h} className="option"  onClick={(e) => valueHandler(e, 'heating', h)}>{h}</li>
+                                            )}
+                                        </ul>
+                                    </div>
                                     <MyField
                                         name="heating"
                                         type="text"
@@ -407,17 +412,17 @@ function AddProperty() {
                                         onBlur={handleBlur}
                                         className='text-input select-hide'
                                     />
-                                    <div className={`nice-select form-control wide ${isOpen.heating ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.heating}</span>
-                                        <ul className="list">
-                                            {heatingTypes.map((h) =>
-                                                <li key={h} type='dropdown' data-value={h} className="option"  onClick={(e) => valueHandler(e, 'heating', h)}>{h}</li>
-                                            )}
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
                                 <div className="form-group categories" onClick={() => clickOpenHandler('construction')}>
+                                    <div className={`nice-select form-control wide ${isOpen.construction ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.construction}</span>
+                                        <ul className="list">
+                                            {constructionTypes.map((c) =>
+                                                <li key={c} type='dropdown' data-value={c} className="option"  onClick={(e) => valueHandler(e, 'construction', c)}>{c}</li>
+                                            )}
+                                        </ul>
+                                    </div>
                                     <MyField
                                         name="construction"
                                         type="text"
@@ -429,13 +434,6 @@ function AddProperty() {
                                         onBlur={handleBlur}
                                         className='text-input select-hide'
                                     />
-                                    <div className={`nice-select form-control wide ${isOpen.construction ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.construction}</span>
-                                        <ul className="list">
-                                            {constructionTypes.map((c) =>
-                                                <li key={c} type='dropdown' data-value={c} className="option"  onClick={(e) => valueHandler(e, 'construction', c)}>{c}</li>
-                                            )}
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -29,9 +29,11 @@ export const MyField = props => {
                 name={props.name}
                 value={props.values[props.name]}
                 className={props.className}
+                {...field}
+                {...props}
             />
             {meta.touched && meta.error ? (
-                <span className="error">{meta.error}</span>
+                <span className="error" id='error-select'>{meta.error}</span>
             ) : null}
         </>
     );
