@@ -5,13 +5,11 @@ import {Routes, Route} from 'react-router-dom';
 // import InfoSideBar from './components/InfoSideBar.jsx';
 import AOS from 'aos'
 import NotFound404 from "./components/NotFound404.jsx";
-import HeaderBar from "./components/MainLayout/HeaderBar.jsx";
 import Register from "./components/Register.jsx";
 import EmailVerify from "./components/EmailVerify.jsx";
-import Footer from "./components/MainLayout/Footer.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import LogIn from "./components/LogIn.jsx";
-import AddProperty from "./components/AddProperty.jsx";
+import AddChangeProperty from "./components/AddChangeProperty.jsx";
 import User from "./components/UserDetails.jsx";
 import SingleProperty from "./components/SingleProperty.jsx";
 import Contact from "./components/Contact.jsx"
@@ -49,6 +47,7 @@ import '../../public/css/default.css';
 import 'react-modal-video/scss/modal-video.scss';
 import '../../public/css/dashbord-mobile-menu.css';
 import '../../public/css/swiper.min.css'
+import UserProperties from "@/components/UserProperties.jsx";
 
 
 
@@ -70,7 +69,9 @@ function Main() {
                         <Route path="/about-us" element={<AboutUs/>}/>
                         <Route path="*" element={<NotFound404 />} />
                         <Route path='/contact-us' element={<Contact/>}/>
-                        <Route path='/add-property' element={<AddProperty/>} />
+                        <Route path='/add-property' element={<AddChangeProperty/>} />
+                        <Route path='/favorite-properties' element={<UserProperties collection={'favorites'}/> } />
+                        <Route path='/my-properties' element={<UserProperties collection='my-properties'/> } />
                     </Routes>
                 </div>
         </div>

@@ -79,7 +79,7 @@ const fieldsState = {
     phone: '',
 }
 
-function AddProperty() {
+function AddChangeProperty() {
     const [isOpen, setIsOpen] = useState(openInitialState);
     const [dropdownValues, setDropdownValues] = useState(dropdownFields);
 
@@ -647,4 +647,4 @@ function AddProperty() {
     );
 }
 
-export default AddProperty
+export default AddChangeProperty
