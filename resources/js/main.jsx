@@ -9,7 +9,7 @@ import Register from "./components/Register.jsx";
 import EmailVerify from "./components/EmailVerify.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import LogIn from "./components/LogIn.jsx";
-import AddChangeProperty from "./components/AddChangeProperty.jsx";
+import AddEditProperty from "./components/AddEditProperty.jsx";
 import User from "./components/UserDetails.jsx";
 import SingleProperty from "./components/SingleProperty.jsx";
 import Contact from "./components/Contact.jsx"
@@ -69,7 +69,8 @@ function Main() {
                         <Route path="/about-us" element={<AboutUs/>}/>
                         <Route path="*" element={<NotFound404 />} />
                         <Route path='/contact-us' element={<Contact/>}/>
-                        <Route path='/add-property' element={<AddChangeProperty/>} />
+                        <Route path='/add-property' element={<AddEditProperty/> } />
+                        <Route path='/edit-property' element={<AddEditProperty action={'edit'}/>} />
                         <Route path='/favorite-properties' element={<UserProperties collection={'favorites'}/> } />
                         <Route path='/my-properties' element={<UserProperties collection='my-properties'/> } />
                     </Routes>

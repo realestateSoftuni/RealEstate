@@ -2,8 +2,9 @@ import UserLayout from "../components/UserLayout/UserLayout.jsx";
 import { useState } from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import {MyCheckbox, MyField, MyTextarea, MyTextInput} from "../utils/fields.jsx";
-import {addPropertyValidations} from "../utils/validations.js";
+import { MyCheckbox, MyField, MyTextarea, MyTextInput } from "../utils/fields.jsx";
+import { addPropertyValidations } from "../utils/validations.js";
+import { useLocation } from "react-router-dom";
 
 const types = ['House', 'Apartment', 'Commercial', 'Lot', 'Garage']
 const rooms = []
@@ -30,58 +31,14 @@ const openInitialState = {
 const heatingTypes = ['Air Conditioning', 'Gas', 'Central heating']
 const constructionTypes = ['Brick', 'Ganged Wall Form', 'Prefabricated', 'Panel-build']
 
-const dropdownFields = {
-    status: 'Status',
-    type: 'Type',
-    rooms: 'Size',
-    floor: 'Floor',
-    construction: 'Construction Type',
-    bedrooms: 'Bedrooms',
-    bathrooms: 'Bathrooms',
-    heating: 'Heating',
-}
 
-const fieldsState = {
-    title: '',
-    description: '',
-    status: '',
-    type: '',
-    rooms: '',
-    price: '',
-    area: '',
-    build: '',
-    address: '',
-    city: '',
-    state: '',
-    country: '',
-    latitude: '',
-    longitude: '',
-    floor: '',
-    construction: '',
-    bedrooms: '',
-    bathrooms: '',
-    heating: '',
-    inConstruction: false,
-    garage: false,
-    swimmingPool: false,
-    furnished: false,
-    parking: false,
-    gym: false,
-    alarm: false,
-    windowCovering: false,
-    guard: false,
-    tv_wifi: false,
-    renovated: false,
-    yard: false,
-    name: '',
-    username: '',
-    email: '',
-    phone: '',
-}
-
-function AddChangeProperty() {
+function AddEditProperty() {
     const [isOpen, setIsOpen] = useState(openInitialState);
-    const [dropdownValues, setDropdownValues] = useState(dropdownFields);
+    const location = useLocation()
+    const initialData = location.state.initialData
+    const [dropdownValues, setDropdownValues] = useState(initialData);
+
+    // console.log(location.state.initialData)
 
 
     const clickOpenHandler = (button) => {
@@ -110,8 +67,8 @@ function AddChangeProperty() {
                     </div>
                 </div>
             <Formik
-                initialValues={fieldsState}
-                validationSchema={Yup.object(addPropertyValidations)}
+                initialValues= {initialData}
+                validationSchema={ Yup.object(addPropertyValidations) }
                 onSubmit={(values, { setSubmitting }) => {
                     console.log(values)
                     setSubmitting(false);
@@ -141,6 +98,7 @@ function AddChangeProperty() {
                                     type="text"
                                     placeholder="Enter your property title"
                                     className='text-input'
+                                    value = {values.title}
                                 />
                             </div>
                         </div>
@@ -152,6 +110,7 @@ function AddChangeProperty() {
                                     type="textarea"
                                     placeholder="Describe about your property"
                                     className='text-input'
+                                    value={values.description}
                                 />
                             </div>
                         </div>
@@ -647,4 +606,4 @@ function AddChangeProperty() {
     );
 }
 
-export default AddChangeProperty
+export default AddEditProperty

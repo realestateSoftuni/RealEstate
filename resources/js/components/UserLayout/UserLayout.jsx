@@ -2,7 +2,16 @@ import UserNavigation from "./UserNavigation.jsx";
 import UserFooter from "./UserFooter.jsx";
 import logo from "../../../assets/FullLogo_Transparent_NoBuffer.png";
 import {Link} from "react-router-dom";
+import { initialData } from '../../utils/initialValues.js';
+import {useState} from "react";
+
 const LayoutAll = ({ children }) => {
+    const[userMenuOpen, setUserMenuOpen] = useState(false)
+
+    const openHandler = () => {
+        setUserMenuOpen(!userMenuOpen)
+    }
+
     return (
         <div className="inner-pages maxw1600 m0a dashboard-bd">
         <div id="wrapper" className="int_main_wraapper">
@@ -35,9 +44,9 @@ const LayoutAll = ({ children }) => {
                                             </Link>
                                         </li>
                                         <li>
-                                            <a className="active" href="add-property.html">
+                                            <Link to='/add-property' state= {{ action: 'add', initialData }}>
                                                 <i className="fa fa-list" aria-hidden="true"></i>Add Property
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
                                             <a href="change-password.html">
@@ -57,42 +66,27 @@ const LayoutAll = ({ children }) => {
                             <div className="col-lg-12 mobile-dashbord dashbord">
                                 <div className="dashboard_navigationbar dashxl">
                                     <div className="dropdown">
-                                        <button className="dropbtn"><i className="fa fa-bars pr10 mr-2"></i> Dashboard Navigation</button>
-                                        <ul id="myDropdown" className="dropdown-content">
-                                            <li>
-                                                <a href="dashboard.html">
-                                                    <i className="fa fa-map-marker mr-3"></i> Dashboard
-                                                </a>
-                                            </li>
+                                        <button onClick={openHandler} className="dropbtn"><i className="fa fa-bars pr10 mr-2"></i> User menu</button>
+                                        <ul id="myDropdown" className={`dropdown-content ${userMenuOpen ? 'show' : ''}`}>
                                             <li>
                                                 <a href="user-profile.html">
                                                     <i className="fa fa-user mr-3"></i>Profile
                                                 </a>
                                             </li>
                                             <li>
-                                                <a className="active" href="my-listings.html">
+                                                <Link to="/my-properties">
                                                     <i className="fa fa-list mr-3" aria-hidden="true"></i>My Properties
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a href="favorited-listings.html">
-                                                    <i className="fa fa-heart mr-3" aria-hidden="true"></i>Favorited Properties
-                                                </a>
+                                                <Link to="/favorite-properties">
+                                                    <i className="fa fa-heart mr-3" aria-hidden="true"></i>Favorite Properties
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a href="add-property.html">
+                                                <Link to='/add-property' state= {{ action: 'add', initialData }}>
                                                     <i className="fa fa-list mr-3" aria-hidden="true"></i>Add Property
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="payment-method.html">
-                                                    <i className="fas fa-credit-card mr-3"></i>Payments
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="invoice.html">
-                                                    <i className="fas fa-paste mr-3"></i>Invoices
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li>
                                                 <a href="change-password.html">

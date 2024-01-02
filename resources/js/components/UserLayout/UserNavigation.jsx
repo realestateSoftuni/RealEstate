@@ -1,7 +1,14 @@
 import logo from '../../../assets/FullLogo_Transparent_NoBuffer.png'
 import {Link} from "react-router-dom";
+import {useState} from "react";
 
 function UserNavigation(){
+    const [mainMenuOpen, setMainMenuOpen] = useState(false);
+
+    const openHandler = () => {
+        setMainMenuOpen(!mainMenuOpen)
+    }
+
     return(
         <>
             <div className="dash-content-wrap">
@@ -13,7 +20,7 @@ function UserNavigation(){
                                     <Link to="/"><img src={logo} alt=""/></Link>
                                 </div>
                                 <div className="mmenu-trigger">
-                                    <button className="hamburger hamburger--collapse" type="button">
+                                    <button onClick={openHandler} className={`hamburger hamburger--collapse ${mainMenuOpen ? 'is-active' : ''}`} type="button">
                                         <span className="hamburger-box">
                                             <span className="hamburger-inner"></span>
                                         </span>

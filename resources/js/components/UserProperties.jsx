@@ -1,6 +1,8 @@
 import UserLayout from "../components/UserLayout/UserLayout.jsx";
 import {Link} from "react-router-dom";
 
+const initialData = { title: 'Apartment 1', description: 'test', status: 'Rent', yard: true}
+
 
 const deleteHandler = (collection) => {
     if (collection === 'my-properties') {
@@ -52,7 +54,7 @@ function UserProperties(props) {
                         <td>08.14.2020</td>
                         <td>163</td>
                         <td className="actions">
-                            {props.collection === 'my-properties' && <Link to="#" className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
+                            {props.collection === 'my-properties' && <Link to='/edit-property' state= {{ action: 'edit', initialData }} className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
                             <button onClick={() => deleteHandler(props.collection)} className='delete-property'><i className="far fa-trash-alt"></i></button>
                         </td>
                     </tr>
@@ -82,7 +84,7 @@ function UserProperties(props) {
                         <td>08.14.2020</td>
                         <td>202</td>
                         <td className="actions">
-                            {props.collection === 'my-properties' && <Link to="#" className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
+                            {props.collection === 'my-properties' && <Link to='/edit-property' state= {{ action: 'edit', initialData }} className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
                             <button onClick={() => deleteHandler(props.collection)} className='delete-property'><i className="far fa-trash-alt"></i></button>
                         </td>
                     </tr>

@@ -1,13 +1,15 @@
 /*jshint esversion: 6 */
 import logo from '../../../assets/FullLogo_Transparent_NoBuffer.png'
 import {useState} from "react";
-import {Link} from "react-router-dom";
-import SingleProperty from "@/components/SingleProperty.jsx";
+import {Link, useNavigate} from "react-router-dom";
+import { initialData } from '../../utils/initialValues.js';
 
 
 function HeaderBar(){
+    const navigate = useNavigate()
     const[isLanguageClicked, setIsLanguageClicked] = useState(false)
     const[isProfileClicked, setIsProfileClicked] = useState(false)
+
     const languageHandler = () =>{
         setIsLanguageClicked(!isLanguageClicked)
     }
@@ -147,7 +149,8 @@ function HeaderBar(){
 
                         <div className="right-side d-none d-none d-lg-none d-xl-flex">
                             <div className="header-widget">
-                                <Link to="/add-property" className="button border">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link>
+                                <Link to='/add-property' state= {{ action: 'add', initialData }}
+                                className="button border">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link>
                             </div>
                         </div>
 
@@ -157,9 +160,10 @@ function HeaderBar(){
                             </div>
                             <ul>
                                 <li><a href="#"> Edit profile</a></li>
-                                <li><Link to="/add-property"> Add Property</Link></li>
-                                <li><a href="#">  Payments</a></li>
-                                <li><a href="#"> Change Password</a></li>
+                                <li><Link to='/add-property' state= {{ action: 'add', initialData }}> Add Property</Link></li>
+                                <li><Link to="my-properties"> My properties </Link></li>
+                                <li><Link to="favorite-properties"> Favorite properties </Link></li>
+                                <li><Link to="/change-password"> Change Password</Link></li>
                                 <li><a href="#">Log Out</a></li>
                             </ul>
                         </div>
