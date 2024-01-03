@@ -390,7 +390,7 @@ img {
   left: auto;
   margin: 0;
   min-width: 115px;
-  padding: 0px;
+  padding: 0;
   position: absolute;
   right: 0;
   z-index: 9999999;
@@ -1437,6 +1437,14 @@ section.recently.portfolio {
   left: -80px;
 }
 
+#listingDetailsSlider > div > div > button.slick-arrow.slick-prev{
+    left: 10px;
+}
+
+#listingDetailsSlider > div > div > button.slick-arrow.slick-next{
+    right: 10px;
+}
+
 .hp1 div.partners-1,
 .hp1 div.partners {
   padding: 4.6rem 0;
@@ -2105,6 +2113,17 @@ ul.slick-dots {
 
 .slick-dots li button::before{
     display: none;
+}
+
+.property-img{
+    height: 100%;
+    width: auto;
+    max-width: 90%;
+    margin: auto;
+}
+
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus{
+    background: #fff;
 }
 
 .slick-dots li button::after{
@@ -3906,8 +3925,7 @@ section.blog-section {
   background: #fff;
   -webkit-box-shadow: 0px 0px 1px #e7e7e7 !important;
           box-shadow: 0px 0px 1px #e7e7e7 !important;
-  border: 1px solid #e7e7e7;
-  overflow: hidden;
+
 }
 
 .blog-section .news-item.-news-page {
@@ -3943,7 +3961,7 @@ section.blog-section {
 }
 
 .blog-section .news-item a:hover h3 {
-  color: #FF385C;
+  color: #c18847;
   -webkit-transition: all .25s;
   transition: all .25s;
 }
@@ -4137,7 +4155,7 @@ section.blog-section {
   position: relative;
   font-size: 1rem;
   font-weight: 600;
-  color: #FF385C;
+  color: #c18847;
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
 }
@@ -4195,7 +4213,7 @@ section.blog-section {
 @media screen and (max-width: 414px) {
   .blog-section .news-item-descr p,
   .blog-section .news-item-descr {
-    overflow: hidden;
+    overflow: scroll;
   }
 
   .blog-section ul.action-list {
@@ -5154,6 +5172,7 @@ section.counterup {
   margin-top: .5rem;
   margin-bottom: 0px;
   font-weight: 400;
+  margin-left: 140px;
 }
 
 .second-footer .container {
@@ -15031,11 +15050,11 @@ a.button {
 .inner-pages.hp-6.full .parallax-searchs .form-group .nice-select:hover,
 .inner-pages.hp-6.full .dropdown-filter span::after,
 .inner-pages.hp-6.full .btn.btn-yellow:hover {
-  color: #FF385C;
+  color: #b0793b;
 }
 
 .inner-pages.hp-6.full .btn.btn-yellow {
-  background: #FF385C;
+  background: #b0793b;
 }
 
 .inner-pages.hp-6.full .nice-select.wide {
@@ -16173,7 +16192,7 @@ section.headings-2 {
 .inner-pages .headings-2 .listing-title-bar h4 {
   font-size: 24px;
   font-weight: 600;
-  color: #FF385C;
+  color: #c18847;
   text-transform: capitalize !important;
 }
 
@@ -16186,7 +16205,7 @@ section.headings-2 {
 
 .inner-pages .headings-2 span.category-tag {
   font-size: 14px;
-  background: #FF385C;
+  background: #c18847;
   color: #fff;
   border: 1px solid #fff;
   padding: 5px 15px;
@@ -16515,7 +16534,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
   line-height: 40px;
   text-align: center;
   background-color: #fff;
-  color: #FF385C;
+  color: #c18847;
   border-radius: 50%;
   font-size: 18px;
   margin-right: 10px;
@@ -16663,7 +16682,8 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 }
 
 .agent-contact-form-sidebar .multiple-send-message {
-  background-color: #FF385C;
+  background-color: #987654;
+  border-radius: 0.3rem;
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
@@ -16674,10 +16694,12 @@ div.datedropper.my-style.picker-lkd .pick-submit {
   margin-bottom: 0px;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
+  border: 1px solid #987654;
 }
 
 .agent-contact-form-sidebar .multiple-send-message:hover {
-  background-color: #121B22;
+    background: #687389;
+    color: #fff;
 }
 
 /* Arrows */
@@ -16772,7 +16794,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 
 .homes-content .font-weight-bold.mr-1 {
   font-weight: 600;
-  color: #555 !important;
+  color: #987654 !important;
 }
 
 .homes-content span.det {
@@ -16808,6 +16830,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 
 .wprt-image-video.w50.pro {
   margin-bottom: 30px !important;
+  position: relative;
 }
 
 .inner-pages .blog .blog-info.details h4,
@@ -16877,6 +16900,20 @@ div.datedropper.my-style.picker-lkd .pick-submit {
     margin-left: 150px;
   }
 }
+
+.inner-slider-div,
+.slick-list .slick-track,
+.slick-list .slick-track .slick-slide,
+.slick-track .slick-slide,
+.slick-slide > div,
+.slick-slide > div > div{
+    height: 100%;
+}
+
+.slick-list{
+    height: 400px;
+}
+
 @media screen and (max-width: 767px) {
   .inner-pages .blog .homes-content.details-2 {
     padding-left: 4rem;
@@ -17080,11 +17117,11 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 .wprt-image-video.w50.pro h5:after,
 .similar-property h5:after,
 .ag-de .blog-section h5:after {
-  color: #FF385C;
+  color: #c18847;
   display: block;
   height: 3px;
   font-weight: bold;
-  background-color: #FF385C;
+  background-color: #c18847;
   content: " ";
   width: 50px;
   margin-top: .5rem;
@@ -17301,7 +17338,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
   padding: 6px 7px;
   color: #fff;
   border: 0px;
-  background-color: #FF385C;
+  background-color: rgba(74, 74, 76, 0.7);
   border-radius: 50px;
   display: inline-block;
   position: relative;
@@ -17403,6 +17440,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
   width: 100%;
   height: 300px;
   position: relative;
+  overflow: hidden;
 }
 
 .contact-map {
@@ -18499,7 +18537,7 @@ a.button {
 }
 
 .inner-pages.sin-1 a.button.border, a.button {
-  background-color: #FF385C;
+  background-color: #c18847;
   color: #fff !important;
 }
 
@@ -18679,6 +18717,8 @@ a.button {
 .dashboard-bd .sidebar-header {
   background-color: #24324a;
   padding: 28px 0 28px 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .dashboard-bd .left-side {
@@ -18743,9 +18783,9 @@ a.button {
 .dashboard-bd .active-user h2 {
   text-transform: capitalize;
   font-weight: 400;
-  padding-top: 15px;
+  padding-top: 50px;
   font-size: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: #aeb7c2;
   text-align: center;
 }
@@ -18755,8 +18795,13 @@ body.dashboard-bd {
 }
 
 .dashboard-bd .sidebar-header img {
-  width: 340px;
-  height: 47px;
+  width: 70px;
+  height: auto;
+  margin: auto;
+}
+
+.dashboard-bd .sidebar-header a{
+  margin: auto;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -20147,7 +20192,7 @@ header.payment-card-header .pull-right img {
 }
 
 .inner-pages .about h2 {
-  color: #b0793b;
+  color: #0a0a0a;
   font-size: 1.7rem;
   text-align: center;
   padding-bottom: 0rem;
@@ -20967,7 +21012,7 @@ a.btn_1 {
   background: #fff;
   -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .inner-pages .blog-section .news-item.-news-page {
@@ -21183,7 +21228,7 @@ a.btn_1 {
   position: relative;
   font-size: 1rem;
   font-weight: 600;
-  color: #FF385C;
+  color: #c18847;
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
 }
@@ -21260,7 +21305,7 @@ a.btn_1 {
 @media screen and (max-width: 414px) {
   .inner-pages .blog-section .news-item-descr p,
   .inner-pages .blog-section .news-item-descr {
-    overflow: visible;
+    overflow: hidden;
   }
 
   .inner-pages .blog-section .news-item-descr.visib {
@@ -21312,7 +21357,7 @@ a.btn_1 {
   background: #fff;
   -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .inner-pages .blog-section .news-item.-news-page {
@@ -21354,7 +21399,7 @@ a.btn_1 {
 }
 
 .inner-pages .blog-section .news-item a:hover h3 {
-  color: #FF385C;
+  color: #c18847;
   -webkit-transition: all .25s;
   transition: all .25s;
 }
@@ -21831,6 +21876,10 @@ a.btn_1 {
 
 .inner-pages .recent-post ul li a:hover {
   color: #FF385C;
+}
+
+.button-change {
+    padding-top: 50px;
 }
 
 .inner-pages .recent-post ul li .fa {
@@ -23178,7 +23227,7 @@ form label.error {
 input[type="file"] {
   background: white;
   border: none;
-  padding: 5px 0px 5px 0px;
+  padding: 20px;
   width: auto;
   display: inline-block;
 }
