@@ -86,14 +86,10 @@ function HeaderBar(){
                                     </li>
                                     <li><Link to='/about-us'>About Us</Link>
                                     </li>
-                                    <li><a href="#">Property</a>
+                                    <li><a href="#">Customer Care</a>
                                         <ul>
-                                            <li><a href="single-property-1.html">Single Property 1</a></li>
-                                            <li><a href="single-property-2.html">Single Property 2</a></li>
-                                            <li><a href="single-property-3.html">Single Property 3</a></li>
-                                            <li><a href="single-property-4.html">Single Property 4</a></li>
-                                            <li><a href="single-property-5.html">Single Property 5</a></li>
-                                            <li><a href="single-property-6.html">Single Property 6</a></li>
+                                            <li><Link to='/process'>The Process</Link></li>
+                                            <li><Link to='/faqs'>FAQs</Link></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Pages</a>

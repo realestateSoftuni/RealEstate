@@ -8,7 +8,7 @@ import NotFound404 from "./components/NotFound404.jsx";
 import HeaderBar from "./components/HeaderBar.jsx";
 import Register from "./components/Register.jsx";
 import EmailVerify from "./components/EmailVerify.jsx";
-
+import FAQs from "./components/FAQs.jsx";
 import Footer from "./components/Footer.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import LogIn from "./components/LogIn.jsx";
@@ -58,7 +58,8 @@ function Main() {
                                 <PopularPlaces/>
                             </main>}/>
                         <Route path="/about-us" element={<AboutUs/>}/>
-
+                        {/*<Route path="/process" element={<Process/>}/>*/}
+                        <Route path="/faqs" element={<FAQs/>}/>
                         <Route path="/register" element={<Register/>}/>
                         <Route path="/verify/:token" element={<EmailVerify />}/>
                         <Route path="*" element={<NotFound404 />} />
