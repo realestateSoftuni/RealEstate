@@ -8,6 +8,7 @@ import NotFound404 from "./components/NotFound404.jsx";
 import HeaderBar from "./components/MainLayout/HeaderBar.jsx";
 import Register from "./components/Register.jsx";
 import EmailVerify from "./components/EmailVerify.jsx";
+import FAQs from "./components/FAQs.jsx";
 import Footer from "./components/MainLayout/Footer.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import LogIn from "./components/LogIn.jsx";
@@ -15,7 +16,7 @@ import AddProperty from "./components/AddProperty.jsx";
 import User from "./components/UserDetails.jsx";
 import SingleProperty from "./components/SingleProperty.jsx";
 import Contact from "./components/Contact.jsx"
-import AboutUs from "./components/AboutUs.jsx";
+import AboutUs from "./components/AboutUs.jsx"
 
 
 import "../../public/favicon.ico"
@@ -63,6 +64,9 @@ function Main() {
                 <div id="wrapper">
                     {/*< InfoSideBar />*/}
                     <Routes>
+                        <Route path="/about-us" element={<AboutUs/>}/>
+                        {/*<Route path="/process" element={<Process/>}/>*/}
+                        <Route path="/faqs" element={<FAQs/>}/>
                         <Route path="/" element={<HomePage/>}/>
                         <Route path="/property" element={<SingleProperty/>}/>
                         <Route path="/register" element={<Register/>}/>
