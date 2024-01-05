@@ -1,12 +1,15 @@
 /*jshint esversion: 6 */
-import logo from '../../../public/images/FullLogo_Transparent_NoBuffer.png'
+import logo from '../../../assets/FullLogo_Transparent_NoBuffer.png'
 import {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import { initialData } from '../../utils/initialValues.js';
 
 
 function HeaderBar(){
+    const navigate = useNavigate()
     const[isLanguageClicked, setIsLanguageClicked] = useState(false)
     const[isProfileClicked, setIsProfileClicked] = useState(false)
+
     const languageHandler = () =>{
         setIsLanguageClicked(!isLanguageClicked)
     }
@@ -22,9 +25,7 @@ function HeaderBar(){
                     <div className="container container-header">
                         <div className="left-side">
                             <div id="logo">
-
                                 <Link to="/"><img src={logo} alt=""/></Link>
-
                             </div>
                             <div className="mmenu-trigger">
                                 <button className="hamburger hamburger--collapse" type="button">
@@ -86,12 +87,7 @@ function HeaderBar(){
                                     </li>
                                     <li><Link to='/about-us'>About Us</Link>
                                     </li>
-                                    <li><a href="#">Customer Care</a>
-                                        <ul>
-                                            <li><Link to='/process'>The Process</Link></li>
-                                            <li><Link to='/faqs'>FAQs</Link></li>
-                                        </ul>
-                                    </li>
+                                    <li><Link to={'/property'}>Property</Link></li>
                                     <li><a href="#">Pages</a>
                                         <ul>
                                             <li><a href="#">Shop</a>
@@ -146,14 +142,15 @@ function HeaderBar(){
                                     <li><Link to="/contact-us">Contact</Link></li>
                                     <li className="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
                                     <li className="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>
-                                    <li className="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a href="add-property.html" className="button border btn-lg btn-block text-center">Add Listing<i className="fas fa-laptop-house ml-2"></i></a></li>
+                                    <li className="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><Link to="/add-property" className="button border btn-lg btn-block text-center">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link></li>
                                 </ul>
                             </nav>
                         </div>
 
                         <div className="right-side d-none d-none d-lg-none d-xl-flex">
                             <div className="header-widget">
-                                <Link to="/add-property" className="button border">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link>
+                                <Link to='/add-property' state= {{ action: 'add', initialData }}
+                                      className="button border">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link>
                             </div>
                         </div>
 
@@ -163,9 +160,10 @@ function HeaderBar(){
                             </div>
                             <ul>
                                 <li><a href="#"> Edit profile</a></li>
-                                <li><Link to="/add-property"> Add Property</Link></li>
-                                <li><a href="#">  Payments</a></li>
-                                <li><a href="#"> Change Password</a></li>
+                                <li><Link to='/add-property' state= {{ action: 'add', initialData }}> Add Property</Link></li>
+                                <li><Link to="my-properties"> My properties </Link></li>
+                                <li><Link to="favorite-properties"> Favorite properties </Link></li>
+                                <li><Link to="/change-password"> Change Password</Link></li>
                                 <li><a href="#">Log Out</a></li>
                             </ul>
                         </div>
