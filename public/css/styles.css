@@ -3925,8 +3925,7 @@ section.blog-section {
   background: #fff;
   -webkit-box-shadow: 0px 0px 1px #e7e7e7 !important;
           box-shadow: 0px 0px 1px #e7e7e7 !important;
-  border: 1px solid #e7e7e7;
-  overflow: hidden;
+
 }
 
 .blog-section .news-item.-news-page {
@@ -3962,7 +3961,7 @@ section.blog-section {
 }
 
 .blog-section .news-item a:hover h3 {
-  color: #FF385C;
+  color: #c18847;
   -webkit-transition: all .25s;
   transition: all .25s;
 }
@@ -4156,7 +4155,7 @@ section.blog-section {
   position: relative;
   font-size: 1rem;
   font-weight: 600;
-  color: #FF385C;
+  color: #c18847;
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
 }
@@ -4214,7 +4213,7 @@ section.blog-section {
 @media screen and (max-width: 414px) {
   .blog-section .news-item-descr p,
   .blog-section .news-item-descr {
-    overflow: hidden;
+    overflow: scroll;
   }
 
   .blog-section ul.action-list {
@@ -21241,14 +21240,14 @@ a.btn_1 {
 
 .inner-pages .blog-section .news-item-sm .news-item-descr {
   height: 52px;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .inner-pages .blog-section .news-link {
   position: relative;
   font-size: 1rem;
   font-weight: 600;
-  color: #FF385C;
+  color: #c18847;
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
 }
@@ -21325,11 +21324,11 @@ a.btn_1 {
 @media screen and (max-width: 414px) {
   .inner-pages .blog-section .news-item-descr p,
   .inner-pages .blog-section .news-item-descr {
-    overflow: visible;
+    overflow: scroll;
   }
 
   .inner-pages .blog-section .news-item-descr.visib {
-    overflow: hidden;
+    overflow: scroll;
     margin-bottom: 2rem;
   }
 
@@ -21377,7 +21376,7 @@ a.btn_1 {
   background: #fff;
   -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .inner-pages .blog-section .news-item.-news-page {
@@ -21419,7 +21418,7 @@ a.btn_1 {
 }
 
 .inner-pages .blog-section .news-item a:hover h3 {
-  color: #FF385C;
+  color: #c18847;
   -webkit-transition: all .25s;
   transition: all .25s;
 }

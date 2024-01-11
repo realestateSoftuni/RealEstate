@@ -18,7 +18,10 @@ import ProfileDetails from "./components/ProfileDetails.jsx";
 import EditProfile from "./components/EditProfile.jsx";
 import User from "./components/UserDetails.jsx";
 import SingleProperty from "./components/SingleProperty.jsx";
-import Contact from "./components/Contact.jsx"
+import Contact from "./components/Contact.jsx";
+import Blog from "./components/Blog.jsx";
+import FirstBlogArticle from "./components/FirstBlogArticle.jsx";
+import SecondBlogArticle from "./components/SecondBlogArticle.jsx";
 import AboutUs from "./components/AboutUs.jsx"
 
 
@@ -57,7 +60,6 @@ import '../../public/css/swiper.min.css'
 
 
 
-
 function Main() {
     useEffect(() => {
         AOS.init()
@@ -72,6 +74,9 @@ function Main() {
                         {/*<Route path="/process" element={<Process/>}/>*/}
                         <Route path="/faqs" element={<FAQs/>}/>
                         <Route path="/" element={<HomePage/>}/>
+                        <Route path='/blog' element={<Blog/>} />
+                        <Route path='/navigating-the-real-estate-market' element={<FirstBlogArticle/>} />
+                        <Route path='/embracing-the-future' element={<SecondBlogArticle/>} />
                         <Route path="/property" element={<SingleProperty/>}/>
                         <Route path="/register" element={<Register/>}/>
                         <Route path="/verify/:token" element={<EmailVerify />}/>

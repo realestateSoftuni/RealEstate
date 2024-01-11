@@ -122,22 +122,7 @@ function HeaderBar(){
                                             <li><a href="ui-element.html">UI Elements</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Blog</a>
-                                        <ul>
-                                            <li><a href="#">Grid Layout</a>
-                                                <ul>
-                                                    <li><a href="blog-full-grid.html">Full Grid</a></li>
-                                                    <li><a href="blog-grid-sidebar.html">With Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">List Layout</a>
-                                                <ul>
-                                                    <li><a href="blog-full-list.html">Full List</a></li>
-                                                    <li><a href="blog-list-sidebar.html">With Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                        </ul>
+                                    <li><Link to="/blog">Blog</Link>
                                     </li>
                                     <li><Link to="/contact-us">Contact</Link></li>
                                     <li className="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
