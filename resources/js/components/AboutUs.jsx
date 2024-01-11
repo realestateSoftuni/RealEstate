@@ -1,6 +1,9 @@
+import LayoutAll from "../components/MainLayout/LayoutAll.jsx";
+
 
 function AboutUs() {
     return (
+        <LayoutAll>
         <div className="inner-pages hd-white about">
             <section className="headings">
                 <div className="text-heading text-center">
@@ -67,7 +70,7 @@ function AboutUs() {
                             <div className="serv-flex">
                                 <div className="art-1 img-13">
                                     <img src="/images/icons/icon-4.svg" alt="" />
-                                        <h3>Wide Renge Of Properties</h3>
+                                    <h3>Wide Renge Of Properties</h3>
                                 </div>
                                 <div className="service-text-p">
                                     <p className="text-center">A wide range of properties, encompassing diverse architectural
@@ -82,7 +85,7 @@ function AboutUs() {
                             <div className="serv-flex">
                                 <div className="art-1 img-14">
                                     <img src="/images/icons/icon-5.svg" alt="" />
-                                        <h3>Trusted by thousands</h3>
+                                    <h3>Trusted by thousands</h3>
                                 </div>
                                 <div className="service-text-p">
                                     <p className="text-center">Trusted by thousands, our commitment to reliability and
@@ -96,7 +99,7 @@ function AboutUs() {
                             <div className="serv-flex arrow">
                                 <div className="art-1 img-15">
                                     <img src="/images/icons/icon-6.svg" alt="" />
-                                        <h3>Financing made easy</h3>
+                                    <h3>Financing made easy</h3>
                                 </div>
                                 <div className="service-text-p">
                                     <p className="text-center">Financing made easy with transparent processes and
@@ -164,22 +167,22 @@ function AboutUs() {
                     <div className="owl-carousel style1">
                         <div className="test-1 pb-0 pt-0">
                             <img src="images/testimonials/ts-1.jpg" alt="" />
-                                <h3 className="mt-3 mb-0">Lisa Smith</h3>
-                                <h6 className="mt-1">New York</h6>
-                                <ul className="starts text-center mb-2">
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                    <li><i className="fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
-                                    donec, suscipit tortor et sapien donec.</p>
+                            <h3 className="mt-3 mb-0">Lisa Smith</h3>
+                            <h6 className="mt-1">New York</h6>
+                            <ul className="starts text-center mb-2">
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                                <li><i className="fa fa-star"></i>
+                                </li>
+                            </ul>
+                            <p>Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis. Vitae sit felis
+                                donec, suscipit tortor et sapien donec.</p>
                         </div>
                         <div className="test-1 pb-0 pt-0">
                             <img src="images/testimonials/ts-1.jpg" alt="" />
@@ -232,9 +235,9 @@ function AboutUs() {
                     </div>
                     <div className="owl-carousel style2 owl-loaded owl-drag">
                         <div className="owl-stage">
-                        <div className="owl-item"><img src="images/partners/11.jpg" alt="" /></div>
-                        <div className="owl-item"><img src="images/partners/12.jpg" alt="" /></div>
-                        <div className="owl-item"><img src="images/partners/13.jpg" alt="" /></div>
+                            <div className="owl-item"><img src="images/partners/11.jpg" alt="" /></div>
+                            <div className="owl-item"><img src="images/partners/12.jpg" alt="" /></div>
+                            <div className="owl-item"><img src="images/partners/13.jpg" alt="" /></div>
                         </div>
                         <div className="owl-nav disabled">
                             <div className="owl-prev">prev</div>
@@ -245,8 +248,8 @@ function AboutUs() {
                 </div>
             </div>
         </div>
-
-);
+        </LayoutAll>
+    );
 }
 
 export default AboutUs
