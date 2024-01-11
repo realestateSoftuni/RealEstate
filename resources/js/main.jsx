@@ -13,6 +13,9 @@ import Footer from "./components/MainLayout/Footer.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import LogIn from "./components/LogIn.jsx";
 import AddProperty from "./components/AddProperty.jsx";
+import ChangePassword from "./components/ChangePassword.jsx";
+import ProfileDetails from "./components/ProfileDetails.jsx";
+import EditProfile from "./components/EditProfile.jsx";
 import User from "./components/UserDetails.jsx";
 import SingleProperty from "./components/SingleProperty.jsx";
 import Contact from "./components/Contact.jsx"
@@ -54,6 +57,7 @@ import '../../public/css/swiper.min.css'
 
 
 
+
 function Main() {
     useEffect(() => {
         AOS.init()
@@ -75,6 +79,9 @@ function Main() {
                         <Route path="*" element={<NotFound404 />} />
                         <Route path='/contact-us' element={<Contact/>}/>
                         <Route path='/add-property' element={<AddProperty/>} />
+                        <Route path='/change-password' element={<ChangePassword/>} />
+                        <Route path='/profile-details' element={<ProfileDetails/>} />
+                        <Route path='/edit-profile' element={<EditProfile/>} />
                     </Routes>
                 </div>
         </div>
