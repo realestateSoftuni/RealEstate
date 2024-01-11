@@ -1,13 +1,15 @@
 /*jshint esversion: 6 */
 import logo from '../../../assets/FullLogo_Transparent_NoBuffer.png'
 import {useState} from "react";
-import {Link} from "react-router-dom";
-import SingleProperty from "@/components/SingleProperty.jsx";
+import {Link, useNavigate} from "react-router-dom";
+import { initialData } from '../../utils/initialValues.js';
 
 
 function HeaderBar(){
+    const navigate = useNavigate()
     const[isLanguageClicked, setIsLanguageClicked] = useState(false)
     const[isProfileClicked, setIsProfileClicked] = useState(false)
+
     const languageHandler = () =>{
         setIsLanguageClicked(!isLanguageClicked)
     }
@@ -83,53 +85,7 @@ function HeaderBar(){
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Listing</a>
-                                        <ul>
-                                            <li><a href="#">Listing Grid</a>
-                                                <ul>
-                                                    <li><a href="properties-grid-1.html">Grid View 1</a></li>
-                                                    <li><a href="properties-grid-2.html">Grid View 2</a></li>
-                                                    <li><a href="properties-grid-3.html">Grid View 3</a></li>
-                                                    <li><a href="properties-grid-4.html">Grid View 4</a></li>
-                                                    <li><a href="properties-full-grid-1.html">Grid Fullwidth 1</a></li>
-                                                    <li><a href="properties-full-grid-2.html">Grid Fullwidth 2</a></li>
-                                                    <li><a href="properties-full-grid-3.html">Grid Fullwidth 3</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Listing List</a>
-                                                <ul>
-                                                    <li><a href="properties-full-list-1.html">List View 1</a></li>
-                                                    <li><a href="properties-list-1.html">List View 2</a></li>
-                                                    <li><a href="properties-full-list-2.html">List View 3</a></li>
-                                                    <li><a href="properties-list-2.html">List View 4</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Listing Map</a>
-                                                <ul>
-                                                    <li><a href="properties-half-map-1.html">Half Map 1</a></li>
-                                                    <li><a href="properties-half-map-2.html">Half Map 2</a></li>
-                                                    <li><a href="properties-half-map-3.html">Half Map 3</a></li>
-                                                    <li><a href="properties-top-map-1.html">Top Map 1</a></li>
-                                                    <li><a href="properties-top-map-2.html">Top Map 2</a></li>
-                                                    <li><a href="properties-top-map-3.html">Top Map 3</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Agent View</a>
-                                                <ul>
-                                                    <li><a href="agents-listing-grid.html">Agent View 1</a></li>
-                                                    <li><a href="agents-listing-row.html">Agent View 2</a></li>
-                                                    <li><a href="agents-listing-row-2.html">Agent View 3</a></li>
-                                                    <li><a href="agent-details.html">Agent Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Agencies View</a>
-                                                <ul>
-                                                    <li><a href="agencies-listing-1.html">Agencies View 1</a></li>
-                                                    <li><a href="agencies-listing-2.html">Agencies View 2</a></li>
-                                                    <li><a href="agencies-details.html">Agencies Details</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                    <li><Link to='/about-us'>About Us</Link>
                                     </li>
                                     <li><Link to={'/property'}>Property</Link></li>
                                     <li><a href="#">Pages</a>
@@ -178,7 +134,8 @@ function HeaderBar(){
 
                         <div className="right-side d-none d-none d-lg-none d-xl-flex">
                             <div className="header-widget">
-                                <Link to="/add-property" className="button border">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link>
+                                <Link to='/add-property' state= {{ action: 'add', initialData }}
+                                      className="button border">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link>
                             </div>
                         </div>
 
@@ -188,9 +145,10 @@ function HeaderBar(){
                             </div>
                             <ul>
                                 <li><a href="#"> Edit profile</a></li>
-                                <li><Link to="/add-property"> Add Property</Link></li>
-                                <li><a href="#">  Payments</a></li>
-                                <li><a href="#"> Change Password</a></li>
+                                <li><Link to='/add-property' state= {{ action: 'add', initialData }}> Add Property</Link></li>
+                                <li><Link to="my-properties"> My properties </Link></li>
+                                <li><Link to="favorite-properties"> Favorite properties </Link></li>
+                                <li><Link to="/change-password"> Change Password</Link></li>
                                 <li><a href="#">Log Out</a></li>
                             </ul>
                         </div>

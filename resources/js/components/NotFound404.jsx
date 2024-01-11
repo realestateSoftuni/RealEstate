@@ -1,4 +1,4 @@
-import not_found_image from '../../../public/images/bg/error-404.jpg';
+import not_found_image from '../../../public/images/bg/error-404-photo.jpg';
 import { Link } from "react-router-dom";
 
 function NotFound404() {
