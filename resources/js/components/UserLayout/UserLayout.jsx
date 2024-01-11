@@ -4,7 +4,7 @@ import logo from "../../../assets/FullLogo_Transparent_NoBuffer.png";
 import {Link} from "react-router-dom";
 const LayoutAll = ({ children }) => {
     return (
-        <body className="inner-pages maxw1600 m0a dashboard-bd">
+        <div className="inner-pages maxw1600 m0a dashboard-bd">
         <div id="wrapper" className="int_main_wraapper">
             <UserNavigation />
             <section className="user-page section-padding pt-5">
@@ -70,7 +70,7 @@ const LayoutAll = ({ children }) => {
             </section>
             <UserFooter />
         </div>
-        </body>
+        </div>
     );
 };
 
