@@ -13,7 +13,7 @@ import FAQs from "./components/FAQs.jsx";
 import Footer from "./components/MainLayout/Footer.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import LogIn from "./components/LogIn.jsx";
-import AddProperty from "./components/AddProperty.jsx";
+import AddProperty from "./components/AddEditProperty.jsx";
 import ChangePassword from "./components/ChangePassword.jsx";
 import ProfileDetails from "./components/ProfileDetails.jsx";
 import EditProfile from "./components/EditProfile.jsx";
