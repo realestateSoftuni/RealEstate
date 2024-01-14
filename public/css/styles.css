@@ -381,6 +381,12 @@ img {
   transition: all 0.4s ease 0s;
 }
 
+.delete-property {
+    background-color: white;
+    border: none;
+    color: #f50057;
+}
+
 .header-top .dropdown button:hover {
   color: #fff;
 }
@@ -19435,7 +19441,7 @@ body.dashboard-bd {
 
 .my-properties table tbody tr td.actions .edit {
   float: left;
-  color: #008000;
+  color: #987654;
 }
 
 .my-properties table tbody tr td.actions .edit i {
@@ -19606,6 +19612,7 @@ select:focus {
 
 .btn:not(:disabled):not(.disabled) {
   cursor: pointer;
+  transition: all .5s ease;
 }
 
 .pagination-container .pagination {
@@ -19635,14 +19642,14 @@ select:focus {
 .pagination-container .pagination .page-item .page-link {
   margin: 0 10px;
   padding: 15px 20px;
-  color: #FF385C;
+  color: #987654;
   border-color: #f3f3f3;
   border-radius: 4px;
   background: #fff;
 }
 
 .pagination-container .pagination .page-item .page-link:hover {
-  background: #FF385C;
+  background: #687389;
   color: #fff;
 }
 

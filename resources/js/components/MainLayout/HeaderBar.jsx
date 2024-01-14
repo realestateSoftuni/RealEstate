@@ -135,7 +135,8 @@ function HeaderBar(){
                         <div className="right-side d-none d-none d-lg-none d-xl-flex">
                             <div className="header-widget">
                                 <Link to='/add-property' state= {{ action: 'add', initialData }}
-                                      className="button border">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link>
+                                className="button border">Add Listing<i className="fas fa-laptop-house ml-2"></i></Link>
+
                             </div>
                         </div>
 

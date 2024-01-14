@@ -5,9 +5,10 @@ import {Routes, Route} from 'react-router-dom';
 // import InfoSideBar from './components/InfoSideBar.jsx';
 import AOS from 'aos'
 import NotFound404 from "./components/NotFound404.jsx";
-import HeaderBar from "./components/MainLayout/HeaderBar.jsx";
 import Register from "./components/Register.jsx";
 import EmailVerify from "./components/EmailVerify.jsx";
+
+import AddEditProperty from "./components/AddEditProperty.jsx";
 import FAQs from "./components/FAQs.jsx";
 import Footer from "./components/MainLayout/Footer.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
@@ -56,6 +57,7 @@ import '../../public/css/default.css';
 import 'react-modal-video/scss/modal-video.scss';
 import '../../public/css/dashbord-mobile-menu.css';
 import '../../public/css/swiper.min.css'
+import UserProperties from "@/components/UserProperties.jsx";
 
 
 
@@ -83,10 +85,11 @@ function Main() {
                         <Route path="/about-us" element={<AboutUs/>}/>
                         <Route path="*" element={<NotFound404 />} />
                         <Route path='/contact-us' element={<Contact/>}/>
-                        <Route path='/add-property' element={<AddProperty/>} />
-                        <Route path='/change-password' element={<ChangePassword/>} />
-                        <Route path='/profile-details' element={<ProfileDetails/>} />
-                        <Route path='/edit-profile' element={<EditProfile/>} />
+                        <Route path='/add-property' element={<AddEditProperty/> } />
+                        <Route path='/edit-property' element={<AddEditProperty action={'edit'}/>} />
+                        <Route path='/favorite-properties' element={<UserProperties collection={'favorites'}/> } />
+                        <Route path='/my-properties' element={<UserProperties collection='my-properties'/> } />
+
                     </Routes>
                 </div>
         </div>
