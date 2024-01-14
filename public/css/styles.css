@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800");
+
 /*------------------------------------------------------------------
 Author       : Code-Theme
 Template Name: Find Houses - HTML5 Template
@@ -120,7 +121,7 @@ h2 {
 
 h2 span {
   font-weight: 600;
-  color: #FF385C;
+  color: #b0793b;
 }
 
 h3 {
@@ -2328,7 +2329,7 @@ section.welcome {
 .welcome .popup-youtube {
   background: #fff none repeat scroll 0 0;
   border-radius: 100%;
-  color: #FF385C;
+  color: #b0793b;
   font-size: 30px;
   height: 70px;
   left: 50%;
@@ -3930,8 +3931,7 @@ section.blog-section {
   background: #fff;
   -webkit-box-shadow: 0px 0px 1px #e7e7e7 !important;
           box-shadow: 0px 0px 1px #e7e7e7 !important;
-  border: 1px solid #e7e7e7;
-  overflow: hidden;
+
 }
 
 .blog-section .news-item.-news-page {
@@ -3967,7 +3967,7 @@ section.blog-section {
 }
 
 .blog-section .news-item a:hover h3 {
-  color: #FF385C;
+  color: #c18847;
   -webkit-transition: all .25s;
   transition: all .25s;
 }
@@ -4161,7 +4161,7 @@ section.blog-section {
   position: relative;
   font-size: 1rem;
   font-weight: 600;
-  color: #FF385C;
+  color: #c18847;
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
 }
@@ -4219,7 +4219,7 @@ section.blog-section {
 @media screen and (max-width: 414px) {
   .blog-section .news-item-descr p,
   .blog-section .news-item-descr {
-    overflow: hidden;
+    overflow: scroll;
   }
 
   .blog-section ul.action-list {
@@ -4279,6 +4279,12 @@ section.testimonials {
   margin-top: 1px;
 }
 
+.testimonials .owl-carousel {
+    display: flex;
+    width: 100%;
+    z-index: 1;
+}
+
 .testimonials .owl-carousel .test-1 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4293,7 +4299,10 @@ section.testimonials {
   background: #fff;
   color: #000;
   padding: 2rem;
+  margin-left: auto;
   border-radius: 10px;
+  width: 350px;
+  height: 350px;
 }
 
 .testimonials .test-1 img {
@@ -4318,7 +4327,7 @@ section.testimonials {
   left: 136px;
   top: -24px;
   position: relative;
-  color: #FF385C;
+  color: #b0793b;
 }
 
 .testimonials .test-1 p::after {
@@ -4337,7 +4346,7 @@ section.testimonials {
   text-align: center;
   font-size: 1.2rem;
   margin-bottom: .8rem;
-  color: #FF385C;
+  color: #b0793b;
   font-weight: 600;
 }
 
@@ -4413,6 +4422,7 @@ div.partners {
 .partners .style2 .owl-item img {
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
+  padding-left: 20px;
 }
 
 .partners-1 .style2 img {
@@ -4436,8 +4446,8 @@ div.partners {
 /*-----------------------------------*/
 section.counterup {
   padding: 6rem 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0.8))), url(../images/bg/bg-counter2.jpg) no-repeat center center;
-  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../images/bg/bg-counter2.jpg) no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0.8))), url(../images/bg/different-color-apartments-near-each-other-with-clear-sky.jpg) no-repeat center center;
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../images/bg/different-color-apartments-near-each-other-with-clear-sky.jpg) no-repeat center center;
   background-attachment: fixed;
   color: #fff;
   text-align: center;
@@ -4451,7 +4461,7 @@ section.counterup {
   content: "";
   width: 100px;
   height: 2px;
-  background: #FF385C;
+  background: #b0793b;
   position: absolute;
   top: 14px;
   left: -80px;
@@ -4461,7 +4471,7 @@ section.counterup {
   content: "";
   width: 100px;
   height: 2px;
-  background: #FF385C;
+  background: #b0793b;
   position: absolute;
   top: 14px;
   right: -80px;
@@ -4475,10 +4485,11 @@ section.counterup {
 
 .counterup .countr .fa {
   font-size: 3rem;
-  color: #FF385C;
+  color: #b0793b;
   border-radius: 5px;
   margin-right: 1.5rem;
 }
+
 
 .counterup .countr p {
   font-size: 30px;
@@ -4548,6 +4559,7 @@ section.counterup {
 
   .counterup .countr .fa {
     margin-top: 0px;
+    color: #b0793b;
   }
 }
 /*-----------------------------------*/
@@ -5516,7 +5528,7 @@ element.style {
 .homepage-2 .portfolio .homes-content h3 a:hover,
 .homepage-2 .blog-section .news-item h3:hover,
 .homepage-2 .dropdown-filter span::after {
-  color: #687389;
+  color: #b0793b;
 }
 
 .homepage-2 .btn:hover,
@@ -6288,7 +6300,7 @@ a.button,
 
 .homepage-3 .sec-title h2 span {
   position: relative;
-  color: #444;
+  color: #b0793b;
   font-weight: 500;
 }
 
@@ -6822,11 +6834,11 @@ a.button,
 }
 
 .homepage-4 .home18 .sec-title h2 {
-  color: #FF385C;
+  color: #b0793b;
 }
 
 .homepage-4 .home18 .sec-title h2 span::before {
-  background: #FF385C;
+  background: #b0793b;
 }
 
 .homepage-4 .portfolio .homes-tag.sale {
@@ -6976,8 +6988,8 @@ a.button,
   color: #666;
 }
 
-.homepage-4 .starts .fa {
-  color: #FF385C !important;
+.homepage-4 .starts {
+  color: #b0793b !important;
 }
 
 .homepage-4 .testimonials .test-1 p::before {
@@ -7144,8 +7156,8 @@ a.button,
   width: 100%;
 }
 
-.homepage-5 .home5-right-slider.owl-carousel .owl-prev,
-.homepage-5 .home5-right-slider.owl-carousel .owl-next {
+.homepage-2 .home5-right-slider.owl-carousel .owl-prev,
+.homepage-2 .home5-right-slider.owl-carousel .owl-next {
   background-color: #ffffff !important;
   border-radius: 50%;
   color: #555;
@@ -7274,7 +7286,7 @@ a.button,
 
 .homepage-5 .sec-title h2 span {
   position: relative;
-  color: #3e4452;
+  color: #b0793b;
   font-weight: 600;
 }
 
@@ -10679,7 +10691,7 @@ a.button {
 
 .home-11 .sec-title h2 span {
   position: relative;
-  color: #444;
+  color: #b0793b;
   font-weight: 500;
 }
 
@@ -10840,7 +10852,7 @@ a.button {
 
 .th-15 .sec-title h2 span {
   position: relative;
-  color: #444;
+  color: #b0793b;
   font-weight: 500;
 }
 
@@ -13099,7 +13111,7 @@ a.button,
 
 .th-8 .sec-title h2 span {
   position: relative;
-  color: #444;
+  color: #b0793b;
   font-weight: 500;
 }
 
@@ -13869,8 +13881,8 @@ section.how-it-works {
 .how-it-works article img {
   padding-right: 1rem;
   padding-bottom: .5rem;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   text-align: center;
 }
 
@@ -13880,7 +13892,7 @@ section.how-it-works {
 
 .how-it-works .sec-title h2 span {
   font-weight: 600;
-  color: #111;
+  color: #b0793b;
 }
 
 .how-it-works .sec-title img {
@@ -14140,7 +14152,7 @@ section.h18.testimonials {
 
 .home18 .sec-title h2 {
   font-size: 28px;
-  color: #f55d2c;
+  color: #b0793b;
 }
 
 .home18 .sec-title h2 span {
@@ -14148,15 +14160,15 @@ section.h18.testimonials {
   color: #111;
 }
 
-.home18 .sec-title h2 span::before {
-  position: absolute;
-  width: 50px;
-  height: 1px;
-  background: #f55d2c;
-  top: 18px;
-  content: "";
-  left: -60px;
-}
+/*.home18 .sec-title h2 span::before {*/
+/*  position: absolute;*/
+/*  width: 50px;*/
+/*  height: 1px;*/
+/*  background: #b0793b;*/
+/*  top: 18px;*/
+/*  content: "";*/
+/*  left: -60px;*/
+/*}*/
 
 .home18 .sec-title p {
   margin-top: 10px;
@@ -18294,11 +18306,11 @@ ul.the-agents-details li a {
 }
 
 .inner-pages .agent-details a:hover {
-  color: #48a0dc;
+  color: #b0793b;
 }
 
 .inner-pages .agent-details .fa {
-  color: #FF385C;
+  color: #b0793b;
   font-size: 15px;
   margin-right: 8px;
 }
@@ -18483,7 +18495,7 @@ section.single-proper.details {
 
 .agents.det .text-heading.text-left span {
   font-size: 16px;
-  color: #FF385C;
+  color: #b0793b;
 }
 
 .inner-pages .agent-details .button-effect {
@@ -20093,21 +20105,21 @@ header.payment-card-header .pull-right img {
 }
 
 .inner-pages .headings {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/bg-details.jpg) no-repeat center center;
-  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/bg-details.jpg) no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat center center;
+  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat center center;
   width: 100%;
   height: 30vh;
 }
 
-.inner-pages.about .headings {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
-  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
+.inner-pages .about .headings {
+  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat bottom;
 }
 
 .inner-pages .headings h1 {
   margin-top: 7.5rem;
-  font-size: 26px;
-  color: #fff;
+  font-size: 28px;
+  color: #b0793b;
 }
 
 .inner-pages .headings h2 a,
@@ -20122,14 +20134,14 @@ header.payment-card-header .pull-right img {
 }
 
 .inner-pages .headings h2 a:hover {
-  color: #FF385C;
+  color: #b0793b;
 }
 
-.inner-pages .about-us h2::after {
+.inner-pages .about-us h2:after {
   display: block;
   height: 3px;
   font-weight: bold;
-  background-color: #121B22;
+  background-color: #b0793b;
   content: " ";
   width: 97px;
   margin-top: .5rem;
@@ -20139,7 +20151,7 @@ header.payment-card-header .pull-right img {
 .inner-pages .about-us.fh .popup-youtube {
   background: #0f1341 none repeat scroll 0 0;
   border-radius: 100%;
-  color: #03a9f5;
+  color: #b0793b;
   font-size: 30px;
   height: 70px;
   left: 50%;
@@ -20205,23 +20217,24 @@ header.payment-card-header .pull-right img {
   padding-bottom: 2rem;
 }
 
-.inner-pages.about .sec-title h2 {
-  color: #444;
+.inner-pages .about h2 {
+  color: #b0793b;
   font-size: 1.7rem;
   text-align: center;
   padding-bottom: 0rem;
 }
 
-.inner-pages.about .sec-title h2 span {
+.inner-pages .about h2 span {
   font-weight: 600;
-  color: #FF385C;
+  color: #b0793b;
 }
 
-.inner-pages.about .sec-title h2 span::before {
+.inner-pages .about .sec-title h2 span::before {
   display: none;
+  color: #b0793b;
 }
 
-.inner-pages.about .testimonials .test-1 p::before {
+.inner-page .about .testimonials .test-1 p::before {
   left: 236px;
   top: -24px;
   position: relative;
@@ -20231,8 +20244,8 @@ header.payment-card-header .pull-right img {
   margin-top: 0px;
 }
 
-.inner-pages.about .starts .fa {
-  color: #FF385C !important;
+.inner-pages .about .starts .fa {
+  color: #b0793b !important;
 }
 
 @media screen and (max-width: 500px) {
@@ -20244,7 +20257,7 @@ header.payment-card-header .pull-right img {
 .inner-pages .about-us .who-1 {
   background: #fff;
   background-size: cover;
-  color: #666;
+  color: #b0793b;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20258,12 +20271,12 @@ header.payment-card-header .pull-right img {
   top: 0;
 }
 
-.inner-pages .about-us .who-1 h2 span {
-  color: #FF385C;
+.inner-pages .about-us .who-1 .us {
+  color: #b0793b;
 }
 
 .inner-pages .about-us .who-1 p {
-  color: #666;
+  color: #0a0a0a;
   background: #fff;
   font-weight: 400;
   font-family: 'Lato', sans-serif;
@@ -20594,18 +20607,34 @@ section.pricing-table {
   margin-top: 2rem;
 }
 
+.notfound .port-info .btn {
+    background: #b0793b;
+    color: #fff;
+    border: 1px solid #653d0c;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.notfound .port-info .btn:hover {
+    background: #c9a47e;
+    color: #fff;
+    border: 1px solid #b0793b;
+}
+
+
 .inner-pages .port-info .btn {
-  background: #c18847;
+  background: #b0793b;
   color: #fff;
-  border: 1px solid #c18847;
+  border: 1px solid #653d0c;
+
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
 }
 
 .inner-pages .port-info .btn:hover {
-  background: #121B22;
+  background: #c9a47e;
   color: #fff;
-  border: 1px solid #121B22;
+  border: 1px solid #b0793b;
 }
 
 @media screen and (max-width: 500px) {
@@ -21218,14 +21247,14 @@ a.btn_1 {
 
 .inner-pages .blog-section .news-item-sm .news-item-descr {
   height: 52px;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .inner-pages .blog-section .news-link {
   position: relative;
   font-size: 1rem;
   font-weight: 600;
-  color: #FF385C;
+  color: #c18847;
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
 }
@@ -21302,11 +21331,11 @@ a.btn_1 {
 @media screen and (max-width: 414px) {
   .inner-pages .blog-section .news-item-descr p,
   .inner-pages .blog-section .news-item-descr {
-    overflow: visible;
+    overflow: scroll;
   }
 
   .inner-pages .blog-section .news-item-descr.visib {
-    overflow: hidden;
+    overflow: scroll;
     margin-bottom: 2rem;
   }
 
@@ -21354,7 +21383,7 @@ a.btn_1 {
   background: #fff;
   -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .inner-pages .blog-section .news-item.-news-page {
@@ -21396,7 +21425,7 @@ a.btn_1 {
 }
 
 .inner-pages .blog-section .news-item a:hover h3 {
-  color: #FF385C;
+  color: #c18847;
   -webkit-transition: all .25s;
   transition: all .25s;
 }
@@ -21873,6 +21902,10 @@ a.btn_1 {
 
 .inner-pages .recent-post ul li a:hover {
   color: #FF385C;
+}
+
+.button-change {
+    padding-top: 50px;
 }
 
 .inner-pages .recent-post ul li .fa {
@@ -23221,7 +23254,7 @@ form label.error {
 input[type="file"] {
   background: white;
   border: none;
-  padding: 5px 0px 5px 0px;
+  padding: 20px;
   width: auto;
   display: inline-block;
 }
@@ -23414,7 +23447,7 @@ section.ui-element {
 }
 
 .ui-elements .accordion-1 .active .title {
-  background: #FF385C;
+  background: #b0793b;
   color: #fff;
 }
 
@@ -23441,7 +23474,7 @@ section.ui-element {
 }
 
 .ui-elements .accordion-1 .active .title:hover {
-  background: #FF385C;
+  background: #b0793b;
 }
 
 .ui-elements ul {
