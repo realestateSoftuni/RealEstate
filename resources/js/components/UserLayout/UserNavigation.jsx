@@ -37,18 +37,9 @@ function UserNavigation(){
                                                 <li><a href="#">Home Styles</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Listing</a>
-                                            <ul>
-                                                <li><a href="#">Listing Grid</a></li>
-                                                <li><a href="#">Listing List</a></li>
-                                                <li><a href="#">Listing Map</a></li>
-                                                <li><a href="#">Agent View</a></li>
-                                                <li><a href="#">Agencies View</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><Link to="/about-us">About us</Link></li>
                                         <li><Link to="/property">Property</Link></li>
-                                        <li><a href="#">Pages</a></li>
-                                        <li><a href="#">Blog</a></li>
+                                        <li><Link to="/blog">Blog</Link></li>
                                         <li><Link to="/contact-us">Contact</Link></li>
                                         <li className="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
                                         <li className="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a></li>

@@ -10,10 +10,8 @@ import EmailVerify from "./components/EmailVerify.jsx";
 
 import AddEditProperty from "./components/AddEditProperty.jsx";
 import FAQs from "./components/FAQs.jsx";
-import Footer from "./components/MainLayout/Footer.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import LogIn from "./components/LogIn.jsx";
-import AddProperty from "./components/AddProperty.jsx";
 import ChangePassword from "./components/ChangePassword.jsx";
 import ProfileDetails from "./components/ProfileDetails.jsx";
 import EditProfile from "./components/EditProfile.jsx";
@@ -84,6 +82,9 @@ function Main() {
                         <Route path="/verify/:token" element={<EmailVerify />}/>
                         <Route path="/about-us" element={<AboutUs/>}/>
                         <Route path="*" element={<NotFound404 />} />
+                        <Route path='/change-password' element={<ChangePassword/>} />
+                        <Route path='/profile-details' element={<ProfileDetails/>} />
+                        <Route path='/edit-profile' element={<EditProfile/>} />
                         <Route path='/contact-us' element={<Contact/>}/>
                         <Route path='/add-property' element={<AddEditProperty/> } />
                         <Route path='/edit-property' element={<AddEditProperty action={'edit'}/>} />
