@@ -1,14 +1,7 @@
 import logo from '../../../assets/FullLogo_Transparent_NoBuffer.png'
 import {Link} from "react-router-dom";
-import {useState} from "react";
 
 function UserNavigation(){
-    const [mainMenuOpen, setMainMenuOpen] = useState(false);
-
-    const openHandler = () => {
-        setMainMenuOpen(!mainMenuOpen)
-    }
-
     return(
         <>
             <div className="dash-content-wrap">
@@ -20,7 +13,7 @@ function UserNavigation(){
                                     <Link to="/"><img src={logo} alt=""/></Link>
                                 </div>
                                 <div className="mmenu-trigger">
-                                    <button onClick={openHandler} className={`hamburger hamburger--collapse ${mainMenuOpen ? 'is-active' : ''}`} type="button">
+                                    <button className="hamburger hamburger--collapse" type="button">
                                         <span className="hamburger-box">
                                             <span className="hamburger-inner"></span>
                                         </span>
@@ -56,6 +49,18 @@ function UserNavigation(){
                                     </ul>
                                 </nav>
                                 <div className="clearfix"></div>
+                            </div>
+                            <div className="header-user-menu user-menu">
+                                <div className="header-user-name">
+                                    <span><img src="images/testimonials/ts-1.jpg" alt=""/></span>Hi, Mary!
+                                </div>
+                                <ul>
+                                    <li><a href="user-profile.html"> Edit profile</a></li>
+                                    <li><a href="add-property.html"> Add Property</a></li>
+                                    <li><a href="payment-method.html">  Payments</a></li>
+                                    <li><a href="change-password.html"> Change Password</a></li>
+                                    <li><a href="#">Log Out</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
