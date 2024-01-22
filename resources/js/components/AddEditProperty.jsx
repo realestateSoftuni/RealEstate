@@ -1,10 +1,11 @@
 import UserLayout from "../components/UserLayout/UserLayout.jsx";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { MyCheckbox, MyField, MyTextarea, MyTextInput } from "../utils/fields.jsx";
 import { addPropertyValidations } from "../utils/validations.js";
-import { useLocation } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
+import axios from "axios";
 
 const types = ['House', 'Apartment', 'Commercial', 'Lot', 'Garage']
 const rooms = []
@@ -38,7 +39,48 @@ function AddEditProperty() {
     const initialData = location.state.initialData
     const [dropdownValues, setDropdownValues] = useState(initialData);
 
-    // console.log(location.state.initialData)
+    const [errors, setErrors] = useState({});
+    const [success, setSuccess] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+
+    const navigate = useNavigate(); // Hook for navigation
+
+
+    const submitHandler = async (e, values, setSubmitting) => {
+        e.preventDefault();
+        console.log(values)
+        setSubmitting(false);
+        setErrors({}); // Reset errors on new submission
+        setSuccess(''); // Reset success message on new submission
+        setIsLoading(true);
+
+        try {
+            const response = await axios.post(`${window.Laravel.apiUrl}/api/add_property`, values);
+            console.log('New property has been added!', response.data);
+            setSuccess(response.data.message || 'Your property has been added successfully'); // Set success message
+            setIsLoading(false);
+            // Login Logic
+            setTimeout(() => { // Redirect after 3 seconds
+                navigate('/my-properties');
+            }, 3000);
+        } catch (error) {
+            console.error('Error during adding property:', error);
+            setIsLoading(false);
+            if (error.response && error.response.status === 422) {
+                console.log('Validation errors:', error.response.data.errors);
+                setErrors(error.response.data.errors);
+            } else {
+                console.error('Unexpected error:', error);
+            }
+        }
+    };
+
+    const renderError = field => {
+        if (errors[field]) {
+            const errorMessage = errors[field].join(', ');
+            return <span style={{ color: 'red' }}>{errorMessage}</span>;
+        }
+    };
 
 
     const clickOpenHandler = (button) => {
@@ -69,10 +111,7 @@ function AddEditProperty() {
             <Formik
                 initialValues= {initialData}
                 validationSchema={ Yup.object(addPropertyValidations) }
-                onSubmit={(values, { setSubmitting }) => {
-                    console.log(values)
-                    setSubmitting(false);
-                }}
+                onSubmit={(e) => {submitHandler(e, values, {setSubmitting})}}
             >
                 {props => {
                     const {
