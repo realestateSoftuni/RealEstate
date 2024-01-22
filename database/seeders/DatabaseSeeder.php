@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
          \App\Models\PropertyPhoto::factory(10)->create();
          \App\Models\PropertyReview::factory(10)->create();
          \App\Models\PropertyMortagageDetails::factory(10)->create();
+         \App\Models\AddPropertyData::factory(50)->create();
     }
 }

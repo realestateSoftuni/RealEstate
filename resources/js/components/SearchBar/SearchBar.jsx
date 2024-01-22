@@ -1,17 +1,48 @@
-import {useState} from "react";
+import { useState } from "react";
 import AdvancedSearch from "./AdvancedSearch.jsx";
+import axios from "axios";
+// ... (imports)
 
 function SearchBar() {
-    const[buttonTypeIsClicked, setButtonTypeIsClicked] = useState('Sale');
-
-
+    const [buttonTypeIsClicked, setButtonTypeIsClicked] = useState('Sale');
+    const [formValues, setFormValues] = useState({
+        // Initialize your form values here
+    });
 
     const saleRentButtonHandler = (buttonType) => {
-        setButtonTypeIsClicked(buttonType)
+        setButtonTypeIsClicked(buttonType);
     };
 
+    const valueHandler = (field, value) => {
+        setFormValues((prevFormValues) => ({
+            ...prevFormValues,
+            [field]: value,
+        }));
+    };
 
-    return(
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        console.log("Search form submitted with:", buttonTypeIsClicked, formValues);
+
+        try {
+            const response = await axios.post("http://127.0.0.1:8000/api/search", {
+                type: buttonTypeIsClicked,
+                formData: formValues,
+            });
+
+            console.log("Backend response:", response.data);
+            // Handle the response as needed
+
+            // For debugging purposes, log any additional information
+            console.log("Additional log:", response.additionalInfo);
+
+        } catch (error) {
+            console.error("Error sending data to backend:", error);
+            // Handle errors
+        }
+    };
+
+    return (
         <div className="col-12">
             <div className="banner-search-wrap">
                 <ul className="nav nav-tabs rld-banner-tab">
@@ -23,10 +54,18 @@ function SearchBar() {
                     </li>
                 </ul>
                 <div className="tab-content">
-                    <AdvancedSearch typeProperty={buttonTypeIsClicked}/>
+                    <form onSubmit={submitHandler} method="post"> {/* Ensure the method is set to "post" */}
+                        {/* ... (existing form elements) */}
+                        <AdvancedSearch
+                            typeProperty={buttonTypeIsClicked}
+                            formValues={formValues}
+                            onValueChange={valueHandler}
+                        />
+                    </form>
                 </div>
             </div>
         </div>
-    )
+    );
 }
-export default SearchBar
+
+export default SearchBar;
