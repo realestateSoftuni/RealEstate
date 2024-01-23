@@ -30,18 +30,48 @@ const LoginView = ({isOpen, onClose, children}) => {
     // Formik for login form
     const loginFormik = useFormik({
         initialValues: {
-            email: '',
+            username: '',
             password: '',
         },
         validationSchema: Yup.object({
-            email: Yup.string().email('Invalid email address').required('Required'),
-            password: Yup.string().required('Required'),
+            username: Yup.string().required('Username is required!'),
+            password: Yup.string().required('Password is required!'),
         }),
         onSubmit: (values) => {
-            // Handle login form submission
+            // Handle register form submission
             console.log('Login Form Values:', values);
-        },
+        }
     });
+
+    //Back-end login validation
+    const onSubmitLogin = async (e) => {
+        e.preventDefault();
+
+        const formData = loginFormik.values;
+        setErrors({});
+        setSuccess('');
+        setIsLoading(true);
+
+        try {
+            const response = await axios.post(`${window.Laravel.apiUrl}/api/login`, formData);
+            console.log('Login successful!', response.data);
+            setSuccess(response.data.message || 'Login successful!');
+
+            setIsLoading(false);
+        } catch (error) {
+            console.error('Error during login:', error);
+            setIsLoading(false);
+
+            if (error.response && error.response.status === 401) {
+                console.log('Invalid credentials');
+                setErrors({ credentials: 'Incorrect username or password!' });
+            } else {
+                console.error('Unexpected error:', error);
+            }
+        }
+    };
+
+
 
     // Formik for register form
     const registerFormik = useFormik({
@@ -95,7 +125,7 @@ const LoginView = ({isOpen, onClose, children}) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const onSubmit = async e => {
+    const onSubmitRegister = async e => {
         e.preventDefault();
         setErrors({}); // Reset errors on new submission
         setSuccess(''); // Reset success message on new submission
@@ -112,10 +142,6 @@ const LoginView = ({isOpen, onClose, children}) => {
                 password_confirmation: '',
             });
             setIsLoading(false);
-            // Login Logic
-            // setTimeout(() => { // Redirect after 3 seconds
-            //     navigate('/login'); // Replace '/login' with the path you want to redirect to
-            // }, 3000);
         } catch (error) {
             console.error('Error during registration:', error);
             setIsLoading(false);
@@ -154,16 +180,19 @@ const LoginView = ({isOpen, onClose, children}) => {
                         <div className="tab">
                             <div className="tab-contents" style={styleChangesLog} id="tab-1">
                                 <div className="custom-form">
-                                    <form method="post" name="registerform" onSubmit={loginFormik.handleSubmit}>
-                                        <label>Username or Email Address * </label>
-                                        <input name="email"
+                                    {success && <div className="success-message">{success}</div>}
+                                    <form onSubmit={loginFormik.handleSubmit && onSubmitLogin} name="loginform" >
+                                        <label>Username * </label>
+                                        <input name="username"
                                                type="text"
                                                onChange={loginFormik.handleChange}
                                                onBlur={loginFormik.handleBlur}
-                                               value={loginFormik.values.email}/>
-                                        {loginFormik.touched.email && loginFormik.errors.email ? (
-                                            <div className="error-message">{loginFormik.errors.email}</div>
+                                               value={loginFormik.values.username}/>
+                                        {loginFormik.touched.username && loginFormik.errors.username ? (
+                                            <div className="error-message">{loginFormik.errors.username}</div>
                                         ) : null}
+                                        {renderError('username')}
+
                                         <label>Password * </label>
                                         <input name="password"
                                                type="password"
@@ -173,7 +202,9 @@ const LoginView = ({isOpen, onClose, children}) => {
                                         {loginFormik.touched.password && loginFormik.errors.password ? (
                                             <div className="error-message">{loginFormik.errors.password}</div>
                                         ) : null}
-                                        <button type="submit" className="log-submit-btn"><span>Log In</span>
+                                        {renderError('password')}
+                                        {errors.credentials && <div className="error-message">{errors.credentials}</div>}
+                                        <button type="submit" className="log-submit-btn"> <span>{isLoading ? 'Logging in...' : 'Log In'}</span>
                                         </button>
                                         <div className="clearfix"></div>
                                         <div className="filter-tags">
@@ -199,7 +230,7 @@ const LoginView = ({isOpen, onClose, children}) => {
                                 <div className="tab-contents" style={styleChangesReg} id="tab-2">
                                     <div className="custom-form">
                                         {success && <div className="success-message">{success}</div>}
-                                        <form onSubmit={registerFormik.handleSubmit && onSubmit} name="registerform" className="main-register-form"
+                                        <form onSubmit={registerFormik.handleSubmit && onSubmitRegister} name="registerform" className="main-register-form"
                                               id="main-register-form2">
                                             <label>Username * </label>
                                             <input name="username"

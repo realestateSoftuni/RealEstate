@@ -6,6 +6,7 @@ use App\Rules\ComplexPassword;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Mail\RegisterMail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -15,15 +16,41 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $user = Auth::user();
-            $token = $user->createToken('authToken')->accessToken;
+        // Validate the request
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
 
-            return response()->json(['message' => 'Login successful', 'user' => $user, 'token' => $token]);
+        // Find the user by username
+        $user = User::where('username', $request->username)->first();
+
+        // Check if the user exists and the provided password is correct
+        if ($user && Hash::check($request->password, $user->password)) {
+            // Attempt to log in
+            Auth::login($user);
+
+            // Check if the login was successful
+            if (Auth::check()) {
+                // Authentication successful
+                $token = $user->createToken('authToken')->accessToken;
+
+                // Return a JSON response with a 200 status code for successful authentication
+                return response()->json(['message' => 'Login successful', 'user' => $user, 'token' => $token]);
+            } else {
+                // Authentication failed
+                // Return a JSON response with a 401 status code for authentication failures
+                return response()->json(['message' => 'Invalid credentials'], 401);
+            }
         } else {
+            // Authentication failed
+            // Return a JSON response with a 401 status code for authentication failures
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
     }
+
+
+
 
     public function register(Request $request)
     {
@@ -68,7 +95,7 @@ class AuthController extends Controller
         $save->remember_token = Str::random(20);
         $save->save();
 
-//        Mail::to($save->email)->send(new RegisterMail($save));
+           //Mail::to($save->email)->send(new RegisterMail($save));
         return response()->json(['message' => 'Your account has been registered! Please check your email to verify!'], 201);
     }
 
