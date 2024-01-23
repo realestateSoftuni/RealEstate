@@ -155,6 +155,7 @@ function AddEditProperty() {
                                     className='text-input'
                                     value={values.description}
                                 />
+                                {renderError('description')}
                             </div>
                         </div>
                         <div className="row">
@@ -178,6 +179,7 @@ function AddEditProperty() {
                                         onBlur={handleBlur}
                                         className='text-input select-hide'
                                     />
+                                    {renderError('status')}
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('property_type')}>
@@ -200,6 +202,7 @@ function AddEditProperty() {
                                         onBlur={handleBlur}
                                         className='text-input select-hide'
                                     />
+                                    {renderError('property_type')}
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('rooms')}>
@@ -222,6 +225,7 @@ function AddEditProperty() {
                                         onBlur={handleBlur}
                                         className='text-input select-hide'
                                     />
+                                    {renderError('rooms')}
                                 </div>
                             </div>
                         </div>
@@ -235,6 +239,7 @@ function AddEditProperty() {
                                     placeholder="USD"
                                     className='text-input'
                                 />
+                                {renderError('price')}
                             </div>
                             <div className="col-lg-4 col-md-6">
                                 <MyTextInput
@@ -245,16 +250,18 @@ function AddEditProperty() {
                                     placeholder="Sqft"
                                     className='text-input'
                                 />
+                                {renderError('square_feet')}
                             </div>
                             <div className="col-lg-4 col-md-6">
                                 <MyTextInput
                                     label="Build"
-                                    name="year"
+                                    name="build"
                                     type="text"
-                                    id='year'
+                                    id='build'
                                     placeholder="Year"
                                     className='text-input'
                                 />
+                                {renderError('build')}
                             </div>
                         </div>
                     </div>
@@ -271,6 +278,7 @@ function AddEditProperty() {
                                     placeholder="Enter Your Address"
                                     className='text-input'
                                 />
+                                {renderError('address')}
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <MyTextInput
@@ -280,6 +288,7 @@ function AddEditProperty() {
                                     placeholder="Enter Your City"
                                     className='text-input'
                                 />
+                                {renderError('city')}
                             </div>
                         </div>
                         <div className="row">
@@ -291,6 +300,7 @@ function AddEditProperty() {
                                     placeholder="Enter Your State"
                                     className='text-input'
                                 />
+                                {renderError('state')}
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <MyTextInput
@@ -300,6 +310,7 @@ function AddEditProperty() {
                                     placeholder="Enter Your Country"
                                     className='text-input'
                                 />
+                                {renderError('country')}
                             </div>
                         </div>
                         <div className="row">
@@ -311,6 +322,7 @@ function AddEditProperty() {
                                     placeholder="Google Maps latitude"
                                     className='text-input'
                                 />
+                                {renderError('latitude')}
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <MyTextInput
@@ -320,6 +332,7 @@ function AddEditProperty() {
                                     placeholder="Google Maps longitude"
                                     className='text-input'
                                 />
+                                {renderError('longitude')}
                             </div>
                         </div>
                     </div>
@@ -348,6 +361,7 @@ function AddEditProperty() {
                                         onBlur={handleBlur}
                                         className='text-input select-hide'
                                     />
+                                    {renderError('floor')}
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
@@ -370,6 +384,7 @@ function AddEditProperty() {
                                         onBlur={handleBlur}
                                         className='text-input select-hide'
                                     />
+                                    {renderError('bedrooms')}
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
@@ -392,6 +407,7 @@ function AddEditProperty() {
                                         onBlur={handleBlur}
                                         className='text-input select-hide'
                                     />
+                                    {renderError('bathrooms')}
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
@@ -414,6 +430,7 @@ function AddEditProperty() {
                                         onBlur={handleBlur}
                                         className='text-input select-hide'
                                     />
+                                    {renderError('heating')}
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12 dropdown faq-drop">
@@ -436,6 +453,7 @@ function AddEditProperty() {
                                         onBlur={handleBlur}
                                         className='text-input select-hide'
                                     />
+                                    {renderError('construction')}
                                 </div>
                             </div>
                         </div>
@@ -597,6 +615,7 @@ function AddEditProperty() {
                                     placeholder="Enter Your Name"
                                     className='text-input'
                                 />
+                                {renderError('name')}
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <MyTextInput
@@ -607,6 +626,7 @@ function AddEditProperty() {
                                     placeholder="Enter Your Username"
                                     className='text-input'
                                 />
+                                {renderError('username')}
                             </div>
                         </div>
                         <div className="row">
@@ -619,6 +639,7 @@ function AddEditProperty() {
                                     placeholder="Enter Your Email"
                                     className='text-input'
                                 />
+                                {renderError('email')}
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <MyTextInput
@@ -629,6 +650,7 @@ function AddEditProperty() {
                                     placeholder="Enter Your Phone Number"
                                     className='text-input'
                                 />
+                                {renderError('phone')}
                             </div>
                         </div>
                     </div>
