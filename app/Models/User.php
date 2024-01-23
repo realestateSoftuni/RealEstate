@@ -50,6 +50,11 @@ class User extends Authenticatable
         return $this->hasOne(Agent::class);
     }
 
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+    }
+
     protected static function booted()
     {
         static::saving(function ($user) {

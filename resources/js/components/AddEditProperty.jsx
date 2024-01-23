@@ -22,7 +22,7 @@ for (let i = 1; i < 11; i++ ) {
 
 const openInitialState = {
     status: false,
-    type: false,
+    property_type: false,
     size: false,
     floor: false,
     bedrooms: false,
@@ -46,10 +46,9 @@ function AddEditProperty() {
     const navigate = useNavigate(); // Hook for navigation
 
 
-    const submitHandler = async (e, values, setSubmitting) => {
-        e.preventDefault();
-        console.log(values)
-        setSubmitting(false);
+    const submitHandler = async (values) => {
+        // e.preventDefault();
+        console.log(values);
         setErrors({}); // Reset errors on new submission
         setSuccess(''); // Reset success message on new submission
         setIsLoading(true);
@@ -59,7 +58,7 @@ function AddEditProperty() {
             console.log('New property has been added!', response.data);
             setSuccess(response.data.message || 'Your property has been added successfully'); // Set success message
             setIsLoading(false);
-            // Login Logic
+
             setTimeout(() => { // Redirect after 3 seconds
                 navigate('/my-properties');
             }, 3000);
@@ -109,9 +108,13 @@ function AddEditProperty() {
                     </div>
                 </div>
             <Formik
-                initialValues= {initialData}
+                initialValues= { initialData }
                 validationSchema={ Yup.object(addPropertyValidations) }
-                onSubmit={(e) => {submitHandler(e, values, {setSubmitting})}}
+                // onSubmit= {(values) => {
+                //     console.log(values)}}
+                onSubmit={(values) => {
+                    submitHandler(values);
+                }}
             >
                 {props => {
                     const {
@@ -139,6 +142,7 @@ function AddEditProperty() {
                                     className='text-input'
                                     value = {values.title}
                                 />
+                                {renderError('title')}
                             </div>
                         </div>
                         <div className="row">
@@ -176,21 +180,21 @@ function AddEditProperty() {
                                     />
                                 </div>
                             </div>
-                            <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('type')}>
+                            <div className="col-lg-4 col-md-12 dropdown faq-drop" onClick={() => clickOpenHandler('property_type')}>
                                 <div className="form-group categories">
-                                    <div className={`nice-select form-control wide ${isOpen.type ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues.type}</span>
+                                    <div className={`nice-select form-control wide ${isOpen['property_type'] ? 'open' : ''}`} tabIndex="0"><span className="current">{dropdownValues['property_type']}</span>
                                         <ul className="list">
                                             {types.map((t) =>
-                                                <li key={t} type='text' data-value={t} className="option" onClick={(e) => valueHandler(e, 'type', t)}>{t}</li>
+                                                <li key={t} type='text' data-value={t} className="option" onClick={(e) => valueHandler(e, 'property_type', t)}>{t}</li>
                                             )}
                                         </ul>
                                     </div>
                                     <MyField
-                                        name="type"
+                                        name="property_type"
                                         type="text"
-                                        id='type'
+                                        id='property_type'
                                         setFieldValue={setFieldValue}
-                                        value={dropdownValues.type}
+                                        value={dropdownValues['property_type']}
                                         values={values}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
@@ -235,9 +239,9 @@ function AddEditProperty() {
                             <div className="col-lg-4 col-md-6">
                                 <MyTextInput
                                     label="Area"
-                                    name="area"
+                                    name="square_feet"
                                     type="text"
-                                    id='area'
+                                    id='square_feet'
                                     placeholder="Sqft"
                                     className='text-input'
                                 />
@@ -638,7 +642,7 @@ function AddEditProperty() {
                         </div>
                     </div>
                 </div>
-            </Form>);}}
+            </Form>)}}
         </Formik>
             </div>
         </UserLayout>

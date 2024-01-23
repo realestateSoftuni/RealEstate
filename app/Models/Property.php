@@ -10,35 +10,61 @@ class Property extends Model
 {
     use HasFactory, SoftDeletes;
 
-    const STATUS_AVAILABLE = 'available';
-    const STATUS_SOLD = 'sold';
-    const STATUS_RENTED = 'rented';
+    const STATUS_SALE = 'sale';
+    const STATUS_RENT = 'rent';
 
     const TYPE_HOUSE = 'house';
     const TYPE_APARTMENT = 'apartment';
-    const TYPE_LAND = 'land';
+    const TYPE_COMMERCIAL = 'commercial';
+    const TYPE_LOT = 'lot';
+    const TYPE_GARAGE = 'garage';
+
+    const CONSTRUCTION_BRICK = 'brick';
+    const CONSTRUCTION_GANGED = 'ganged_wall_form';
+    const CONSTRUCTION_PREFABRICATED = 'prefabricated';
+    const CONSTRUCTION_PANEL = 'panel_build';
+
+    const HEATING_GAS = 'gas';
+    const HEATING_AIR_CONDITIONING = 'air_conditioning';
+    const HEATING_CENTRAL = 'central_heating';
 
     protected $fillable = [
-        'address',
-        'location_id',
-        'price',
-        'bedrooms',
-        'square_feet',
+        'title',
         'description',
         'status',
         'property_type',
+        'rooms',
+        'price',
+        'square_feet',
+        'build',
+        'address',
+        'city',
+        'state',
+        'country',
+        'latitude',
+        'longitude',
+        'floor',
+        'construction',
+        'bedrooms',
+        'bathrooms',
+        'heating',
+        'name',
+        'username',
+        'email',
+        'phone',
         'date_listed',
-        'update_count'
+        'update_count',
+        'likedBy',
     ];
+//
+//    public function location()
+//    {
+//        return $this->belongsTo(Location::class);
+//    }
 
-    public function location()
+    public function user()
     {
-        return $this->belongsTo(Location::class);
-    }
-
-    public function agent()
-    {
-        return $this->belongsTo(Agent::class);
+        return $this->belongsTo(User::class);
     }
 
     public function property_features()  // Adjusted the relationship to many-to-many
