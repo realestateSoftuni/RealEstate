@@ -17,7 +17,7 @@ class PropertyFeature extends Model
 
     public function properties()
     {
-        return $this->belongsToMany(Property::class);
+        return $this->belongsTo(Property::class);
     }
 
     protected static function booted()

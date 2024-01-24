@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Property;
+use App\Models\PropertyFeature;
 use Illuminate\Http\Request;
 
 class Properties extends Controller
@@ -26,47 +27,87 @@ class Properties extends Controller
             'status'=>'required',
         ]);
 
-        $save = new Property;
-        $save->title = trim($request->title);
-        $save->description = $request->description;
-        $save->price = trim($request->price);
-        $save->square_feet = trim($request->square_feet);
-        $save->build = trim($request->build);
-        $save->address = trim($request->address);
-        $save->latitude = trim($request->latitude);
-        $save->longitude = trim($request->longitude);
-        $save->country = trim($request->country);
-        $save->state = trim($request->state);
-        $save->city = trim($request->city);
-        $save->email = trim($request->email);
-        $save->name = trim($request->name);
-        $save->username = trim($request->username);
-        $save->phone = trim($request->phone);
+        $property = new Property;
+//        $save->user_id = 1;
+//        $save->title = 'title test';
+//        $save->description = 'test test';
+//        $save->price = 100000;
+//        $save->square_feet = 105;
+//        $save->build = '1985';
+//        $save->address = 'some address';
+//        $save->latitude = 100.10;
+//        $save->longitude = 105.25;
+//        $save->country = 'Bulgaria';
+//        $save->state = 'Test state';
+//        $save->city = 'Sofia';
+//        $save->email = 'test@gmail.com';
+//        $save->name = 'Gaby';
+//        $save->username = 'Gabito';
+//        $save->phone = '0885929292';
+//        $save->date_listed = date_create();
+//        $save->property_type = 'lot';
+//        $save->rooms = 3;
+//        $save->status = 'rent';
+//        $save->floor = 5;
+//        $save->bedrooms = 3;
+//        $save->bathrooms = 2;
+//        $save->heating = 'air_conditioning';
+//        $save->construction = 'brick';
+
+        $property->user_id = 1;
+        $property->title = trim($request->title);
+        $property->description = $request->description;
+        $property->price = trim($request->price);
+        $property->square_feet = trim($request->square_feet);
+        $property->build = trim($request->build);
+        $property->address = trim($request->address);
+        $property->latitude = $request->latitude;
+        $property->longitude = $request->longitude;
+        $property->country = trim($request->country);
+        $property->state = trim($request->state);
+        $property->city = trim($request->city);
+        $property->email = trim($request->email);
+        $property->name = trim($request->name);
+        $property->username = trim($request->username);
+        $property->phone = trim($request->phone);
         if ($request->property_type !== 'Type') {
-            $save->property_type = $request->property_type;
+            $property->property_type = $request->property_type;
         };
         if ($request->rooms !== 'Size') {
-            $save->rooms = $request->rooms;
+            $property->rooms = $request->rooms;
         };
         if ($request->status !== 'Status') {
-            $save->status = $request->status;
+            $property->status = $request->status;
         };
         if ($request->floor !== 'Floor') {
-            $save->floor = $request->floor;
+            $property->floor = $request->floor;
         };
         if ($request->bedrooms !== 'Bedrooms') {
-            $save->bedrooms = $request->bedrooms;
+            $property->bedrooms = $request->bedrooms;
         };
         if ($request->bathrooms !== 'Bathrooms') {
-            $save->bathrooms = $request->bathrooms;
+            $property->bathrooms = $request->bathrooms;
         };
         if ($request->heating !== 'Heating') {
-            $save->heating = $request->heating;
+            $property->heating = $request->heating;
         };
         if ($request->construction !== 'Construction Type') {
-            $save->construction = $request->construction;
+            $property->construction = $request->construction;
         };
 
-        $save->save();
+        $property->save();
+
+        $propertyId = $property->id;
+
+        // Assuming $request->features is an array of feature names for the property
+        if ($request->has('features') && is_array($request->features)) {
+            // Iterate through each feature and create an entry in the properties_features table
+            foreach ($request->features as $featureName) {
+                $feature = new PropertyFeature;
+                $feature->feature_name = $featureName;
+                $feature->property_id = $propertyId;
+                $feature->save();
+            }
+        }
     }
 }

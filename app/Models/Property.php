@@ -10,23 +10,23 @@ class Property extends Model
 {
     use HasFactory, SoftDeletes;
 
-    const STATUS_SALE = 'sale';
-    const STATUS_RENT = 'rent';
+    const STATUS_SALE = 'Sale';
+    const STATUS_RENT = 'Rent';
 
-    const TYPE_HOUSE = 'house';
-    const TYPE_APARTMENT = 'apartment';
-    const TYPE_COMMERCIAL = 'commercial';
-    const TYPE_LOT = 'lot';
-    const TYPE_GARAGE = 'garage';
+    const TYPE_HOUSE = 'House';
+    const TYPE_APARTMENT = 'Apartment';
+    const TYPE_COMMERCIAL = 'Commercial';
+    const TYPE_LOT = 'Lot';
+    const TYPE_GARAGE = 'Garage';
 
-    const CONSTRUCTION_BRICK = 'brick';
-    const CONSTRUCTION_GANGED = 'ganged_wall_form';
-    const CONSTRUCTION_PREFABRICATED = 'prefabricated';
-    const CONSTRUCTION_PANEL = 'panel_build';
+    const CONSTRUCTION_BRICK = 'Brick';
+    const CONSTRUCTION_GANGED = 'Ganged Wall Form';
+    const CONSTRUCTION_PREFABRICATED = 'Prefabricated';
+    const CONSTRUCTION_PANEL = 'Panel-build';
 
-    const HEATING_GAS = 'gas';
-    const HEATING_AIR_CONDITIONING = 'air_conditioning';
-    const HEATING_CENTRAL = 'central_heating';
+    const HEATING_GAS = 'Gas';
+    const HEATING_AIR_CONDITIONING = 'Air Conditioning';
+    const HEATING_CENTRAL = 'Central heating';
 
     protected $fillable = [
         'title',
@@ -52,9 +52,7 @@ class Property extends Model
         'username',
         'email',
         'phone',
-        'date_listed',
         'update_count',
-        'likedBy',
     ];
 //
 //    public function location()

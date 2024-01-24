@@ -48,14 +48,14 @@ function AddEditProperty() {
 
     const submitHandler = async (values) => {
         // e.preventDefault();
-        console.log(values);
+        // console.log(values);
         setErrors({}); // Reset errors on new submission
         setSuccess(''); // Reset success message on new submission
         setIsLoading(true);
 
         try {
             const response = await axios.post(`${window.Laravel.apiUrl}/api/add_property`, values);
-            console.log('New property has been added!', response.data);
+            console.log(response);
             setSuccess(response.data.message || 'Your property has been added successfully'); // Set success message
             setIsLoading(false);
 
@@ -92,6 +92,19 @@ function AddEditProperty() {
         setDropdownValues(newState)
     }
 
+    function checkboxHandler(e, values) {
+        if (e.target.checked) {
+            values['features'].push(e.target.name)
+            console.log(values)
+        } else {
+            let index = values['features'].indexOf(e.target.name);
+            if (index !== -1) {
+                values['features'].splice(index, 1);
+            }
+            console.log(values)
+        }
+    }
+
     return(
         <UserLayout>
             <div className="col-lg-9 col-md-12 col-xs-12 royal-add-property-area section_100 pl-0 user-dash2">
@@ -110,8 +123,6 @@ function AddEditProperty() {
             <Formik
                 initialValues= { initialData }
                 validationSchema={ Yup.object(addPropertyValidations) }
-                // onSubmit= {(values) => {
-                //     console.log(values)}}
                 onSubmit={(values) => {
                     submitHandler(values);
                 }}
@@ -467,134 +478,182 @@ function AddEditProperty() {
                                 <ul className="pro-feature-add pl-0">
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
-                                            <MyCheckbox
-                                                label="In construction"
-                                                name="inConstruction"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='inConstruction'
-                                            />
+                                            <div className="filter-tags-wrap">
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-a" type="checkbox" name="Air Conditioning"/>
+                                                    <label htmlFor="check-a">Air Conditioning</label>
+                                            </div>
+                                            {/*<MyCheckbox*/}
+                                            {/*    label="In construction"*/}
+                                            {/*    name="inConstruction"*/}
+                                            {/*    type="checkbox"*/}
+                                            {/*    divClass='filter-tags-wrap'*/}
+                                            {/*    id='inConstruction'*/}
+                                            {/*/>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
-                                            <MyCheckbox
-                                                label="Garage"
-                                                name="garage"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='garage'
-                                            />
+                                            <div className="filter-tags-wrap">
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-b" type="checkbox" name="Garage"/>
+                                                <label htmlFor="check-b">Garage</label>
+                                            </div>
+                                            {/*<MyCheckbox*/}
+                                            {/*    label="Garage"*/}
+                                            {/*    name="garage"*/}
+                                            {/*    type="checkbox"*/}
+                                            {/*    divClass='filter-tags-wrap'*/}
+                                            {/*    id='garage'*/}
+                                            {/*/>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
-                                            <MyCheckbox
-                                                label="Yard"
-                                                name="yard"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='yard'
-                                            />
+                                            <div className="filter-tags-wrap">
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-c" type="checkbox" name="Yard"/>
+                                                <label htmlFor="check-c">Yard</label>
+                                            </div>
+                                            {/*<MyCheckbox*/}
+                                            {/*    label="Yard"*/}
+                                            {/*    name="yard"*/}
+                                            {/*    type="checkbox"*/}
+                                            {/*    divClass='filter-tags-wrap'*/}
+                                            {/*    id='yard'*/}
+                                            {/*/>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
-                                            <MyCheckbox
-                                                label="Parking"
-                                                name="parking"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='parking'
-                                            />
+                                            <div className="filter-tags-wrap">
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-d" type="checkbox" name="Parking"/>
+                                                <label htmlFor="check-d">Parking</label>
+                                            </div>
+                                            {/*<MyCheckbox*/}
+                                            {/*    label="Parking"*/}
+                                            {/*    name="parking"*/}
+                                            {/*    type="checkbox"*/}
+                                            {/*    divClass='filter-tags-wrap'*/}
+                                            {/*    id='parking'*/}
+                                            {/*/>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
-                                            <MyCheckbox
-                                                label="Guard"
-                                                name="guard"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='guard'
-                                            />
+                                            <div className="filter-tags-wrap">
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-e" type="checkbox" name="Guard"/>
+                                                <label htmlFor="check-e">Guard</label>
+                                            </div>
+                                            {/*<MyCheckbox*/}
+                                            {/*    label="Guard"*/}
+                                            {/*    name="guard"*/}
+                                            {/*    type="checkbox"*/}
+                                            {/*    divClass='filter-tags-wrap'*/}
+                                            {/*    id='guard'*/}
+                                            {/*/>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
-                                            <MyCheckbox
-                                                label="Alarm"
-                                                name="alarm"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='alarm'
-                                            />
+                                            <div className="filter-tags-wrap">
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-f" type="checkbox" name="Alarm"/>
+                                                <label htmlFor="check-f">Alarm</label>
+                                            </div>
+                                            {/*<MyCheckbox*/}
+                                            {/*    label="Alarm"*/}
+                                            {/*    name="alarm"*/}
+                                            {/*    type="checkbox"*/}
+                                            {/*    divClass='filter-tags-wrap'*/}
+                                            {/*    id='alarm'*/}
+                                            {/*/>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
-                                            <MyCheckbox
-                                                label="Furnished"
-                                                name="furnished"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='furnished'
-                                            />
+                                            <div className="filter-tags-wrap">
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-g" type="checkbox" name="Furnished"/>
+                                                <label htmlFor="check-g">Furnished</label>
+                                            </div>
+                                            {/*<MyCheckbox*/}
+                                            {/*    label="Furnished"*/}
+                                            {/*    name="furnished"*/}
+                                            {/*    type="checkbox"*/}
+                                            {/*    divClass='filter-tags-wrap'*/}
+                                            {/*    id='furnished'*/}
+                                            {/*/>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
-                                            <MyCheckbox
-                                                label="Renovated"
-                                                name="renovated"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='renovated'
-                                            />
+                                            <div className="filter-tags-wrap">
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-h" type="checkbox" name="Renovated"/>
+                                                <label htmlFor="check-h">Renovated</label>
+                                            </div>
+                                            {/*<MyCheckbox*/}
+                                            {/*    label="Renovated"*/}
+                                            {/*    name="renovated"*/}
+                                            {/*    type="checkbox"*/}
+                                            {/*    divClass='filter-tags-wrap'*/}
+                                            {/*    id='renovated'*/}
+                                            {/*/>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
-                                            <MyCheckbox
-                                                label="Swimming Pool"
-                                                name="swimmingPool"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='swimmingPool'
-                                            />
+                                            <div className="filter-tags-wrap">
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-i" type="checkbox" name="Swimming Pool"/>
+                                                <label htmlFor="check-i">Swimming Pool</label>
+                                            </div>
+                                            {/*<MyCheckbox*/}
+                                            {/*    label="Swimming Pool"*/}
+                                            {/*    name="swimmingPool"*/}
+                                            {/*    type="checkbox"*/}
+                                            {/*    divClass='filter-tags-wrap'*/}
+                                            {/*    id='swimmingPool'*/}
+                                            {/*/>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
-                                            <MyCheckbox
-                                                label="Gym"
-                                                name="gym"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='gym'
-                                            />
+                                            <div className="filter-tags-wrap">
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-j" type="checkbox" name="Gym"/>
+                                                <label htmlFor="check-j">Gym</label>
+                                            </div>
+                                            {/*<MyCheckbox*/}
+                                            {/*    label="Gym"*/}
+                                            {/*    name="gym"*/}
+                                            {/*    type="checkbox"*/}
+                                            {/*    divClass='filter-tags-wrap'*/}
+                                            {/*    id='gym'*/}
+                                            {/*/>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
-                                            <MyCheckbox
-                                                label="Window Covering"
-                                                name="windowCovering"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='windowCovering'
-                                            />
+                                            <div className="filter-tags-wrap">
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-k" type="checkbox" name="Window Covering"/>
+                                                <label htmlFor="check-k">Window Covering</label>
+                                            </div>
+                                            {/*<MyCheckbox*/}
+                                            {/*    label="Window Covering"*/}
+                                            {/*    name="windowCovering"*/}
+                                            {/*    type="checkbox"*/}
+                                            {/*    divClass='filter-tags-wrap'*/}
+                                            {/*    id='windowCovering'*/}
+                                            {/*/>*/}
                                         </div>
                                     </li>
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
-                                            <MyCheckbox
-                                                label="TV Cable & WIFI"
-                                                name="tv_wifi"
-                                                type="checkbox"
-                                                divClass='filter-tags-wrap'
-                                                id='tv_wifi'
-                                            />
+                                            <div className="filter-tags-wrap">
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-l" type="checkbox" name="TV Cable & WIFI"/>
+                                                <label htmlFor="check-l">TV Cable & WIFI</label>
+                                            </div>
+                                            {/*<MyCheckbox*/}
+                                            {/*    label="TV Cable & WIFI"*/}
+                                            {/*    name="tv_wifi"*/}
+                                            {/*    type="checkbox"*/}
+                                            {/*    divClass='filter-tags-wrap'*/}
+                                            {/*    id='tv_wifi'*/}
+                                            {/*/>*/}
                                         </div>
                                     </li>
                                 </ul>

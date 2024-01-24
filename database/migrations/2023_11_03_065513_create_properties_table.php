@@ -11,7 +11,7 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->unique();
+            $table->unsignedBigInteger('user_id');
             $table->enum('status', [Property::STATUS_RENT, Property::STATUS_SALE]);
             $table->text('title');
             $table->text('description');
@@ -23,7 +23,7 @@ class CreatePropertiesTable extends Migration
             $table->string('country');
             $table->string('state');
             $table->string('city');
-            $table->string('address')->unique(); // Assuming addresses are unique
+            $table->string('address');
             $table->decimal('latitude', 9, 6);
             $table->decimal('longitude', 9, 6);
             $table->integer('floor');
@@ -32,11 +32,11 @@ class CreatePropertiesTable extends Migration
             $table->integer('bathrooms');
             $table->enum('heating', [Property::HEATING_CENTRAL, Property::HEATING_GAS, Property::HEATING_AIR_CONDITIONING]);
             $table->string('name');
-            $table->string('username')->unique();
-            $table->string('email')->unique();
+            $table->string('username');
+            $table->string('email');
             $table->string('phone')->nullable();
 
-            $table->date('date_listed');
+//            $table->date();
             $table->integer('update_count')->default(0);
             $table->softDeletes();
             $table->timestamps();
