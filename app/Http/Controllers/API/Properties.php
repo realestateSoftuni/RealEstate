@@ -5,7 +5,14 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Property;
 use App\Models\PropertyFeature;
+use App\Models\PropertyPhoto;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+
+error_reporting(E_ALL);
+ini_set('display_errors', true);
+
 
 class Properties extends Controller
 {
@@ -109,5 +116,41 @@ class Properties extends Controller
                 $feature->save();
             }
         }
+
+        if ($request->has('images')) {
+            foreach ($request->images as $image) {
+//                echo "Image Data: ";
+                var_dump($image);
+                // Check if the 'path' key is present in the image data
+                $uploadedFile = new UploadedFile(
+                    $image->getPathname(),
+                    $image->getClientOriginalName(),
+                    $image->getClientMimeType(),
+                    null,
+                    true
+                    );
+
+                    // Validate and store image
+                    $imageUrl = $this->storeImage($uploadedFile, $propertyId);
+
+                    // Save image information to the database
+                    $propertyImage = new PropertyPhoto;
+                    $propertyImage->photo_url = $imageUrl;
+                    $propertyImage->property_id = $propertyId;
+                    $propertyImage->save();
+
+            }
+        }
+    }
+
+    private function storeImage($image, $propertyId)
+    {
+        // Validate and store the image in the 'public' disk
+        $imagePath = $image->store('images/property/' . $propertyId, 'public');
+
+        // Generate the full URL for the stored image
+        $imageUrl = Storage::disk('public')->url($imagePath);
+
+        return $imageUrl;
     }
 }

@@ -219,6 +219,27 @@ img {
   background: #f5f7fb !important;
 }
 
+.closeBtn {
+    color: #666;
+    border: none;
+    background: transparent;
+    height: 25px;
+    margin-left: 10px;
+    font-size: small;
+}
+
+.dropzoneAside{
+    margin-top: 25px;
+}
+
+.dropzoneAside>h5 {
+    color: #333;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
 /*-----------------------------------*/
 /*------ 2. SECTION HEADINGS ------*/
 /*-----------------------------------*/

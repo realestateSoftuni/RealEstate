@@ -6,6 +6,7 @@ import { MyCheckbox, MyField, MyTextarea, MyTextInput } from "../utils/fields.js
 import { addPropertyValidations } from "../utils/validations.js";
 import {useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
+import DropzoneComponent from "./DragDrop.jsx";
 
 const types = ['House', 'Apartment', 'Commercial', 'Lot', 'Garage']
 const rooms = []
@@ -42,19 +43,28 @@ function AddEditProperty() {
     const [errors, setErrors] = useState({});
     const [success, setSuccess] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [parentAcceptedFiles, setParentAcceptedFiles] = useState([]);
+
+    const handleFilesChange = (acceptedFiles) => {
+        setParentAcceptedFiles(acceptedFiles);
+    };
 
     const navigate = useNavigate(); // Hook for navigation
 
 
     const submitHandler = async (values) => {
-        // e.preventDefault();
-        // console.log(values);
         setErrors({}); // Reset errors on new submission
         setSuccess(''); // Reset success message on new submission
         setIsLoading(true);
+        values.images = parentAcceptedFiles;
 
         try {
-            const response = await axios.post(`${window.Laravel.apiUrl}/api/add_property`, values);
+            console.log(values)
+            const response = await axios.post(`${window.Laravel.apiUrl}/api/add_property`, values, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
             console.log(response);
             setSuccess(response.data.message || 'Your property has been added successfully'); // Set success message
             setIsLoading(false);
@@ -113,10 +123,14 @@ function AddEditProperty() {
                     <div className="property-form-group">
                         <div className="row">
                             <div className="col-md-12">
-                                <form action="/file-upload" className="dropzone">
-                                    <div className='dz-default dz-message'><span><i className='fa fa-cloud-upload'></i> Click here or drop files to upload</span></div>
-                                </form>
+                                <DropzoneComponent onFilesChange={handleFilesChange}/>
+                                {/*<Previews/>*/}
+
+                                {/*<form action="/file-upload" className="dropzone">*/}
+                                {/*    <div className='dz-default dz-message'><span><i className='fa fa-cloud-upload'></i> Click here or drop files to upload</span></div>*/}
+                                {/*</form>*/}
                             </div>
+
                         </div>
                     </div>
                 </div>

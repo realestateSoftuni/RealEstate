@@ -31,6 +31,7 @@ export const initialData = {
     bathrooms: 'Bathrooms',
     heating: 'Heating',
     features: [],
+    images: [],
     // inConstruction: false,
     // garage: false,
     // swimmingPool: false,
