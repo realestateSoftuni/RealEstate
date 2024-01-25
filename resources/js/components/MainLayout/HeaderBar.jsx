@@ -10,7 +10,7 @@ import SignInComponent from "../SignInComponent.jsx";
 function HeaderBar(){
     const[isLanguageClicked, setIsLanguageClicked] = useState(false)
     const[isProfileClicked, setIsProfileClicked] = useState(false)
-    const [isModalOpen, setModalOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const languageHandler = () =>{
         setIsLanguageClicked(!isLanguageClicked)
     }
@@ -188,6 +188,7 @@ function HeaderBar(){
                             </div>
                         </div>
 
+                        { isLoggedIn ? (
                         <div className={`header-user-menu user-menu add ${isProfileClicked ? 'active' : ''}`} onClick={profileHandler}>
                             <div className="header-user-name">
                                 <span><img src="images/testimonials/ts-1.jpg" alt=""/></span>Hi, Mary!
@@ -200,8 +201,10 @@ function HeaderBar(){
                                 <li><a href="#">Log Out</a></li>
                             </ul>
                         </div>
+                            ) : (
 
                         < SignInComponent />
+                            )}
 
                         <div className={`header-user-menu user-menu add d-none d-lg-none d-xl-flex ${isLanguageClicked ? 'active' : ''}`} onClick={languageHandler}>
                             <div className="lang-wrap">

@@ -64,6 +64,8 @@ const LoginView = ({isOpen, onClose, children}) => {
             console.log('Login successful!', response.data);
             setSuccess(response.data.message || 'Login successful!');
             setIsLoading(false);
+
+            navigate('/');
         } catch (error) {
             console.error('Error during login:', error);
             setIsLoading(false);
