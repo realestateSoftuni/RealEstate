@@ -43,20 +43,37 @@ function AddEditProperty() {
     const [errors, setErrors] = useState({});
     const [success, setSuccess] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const [parentAcceptedFiles, setParentAcceptedFiles] = useState([]);
+    const [parentImages, setParentImages] = useState([]);
+    const [parentVideos, setParentVideos] = useState([]);
+    const [parentFloorPlans, setParentFloorPlans] = useState([]);
 
-    const handleFilesChange = (acceptedFiles) => {
-        setParentAcceptedFiles(acceptedFiles);
+    const handleFilesChange = (acceptedFiles, fileType) => {
+        switch (fileType) {
+            case ('image'):
+                setParentImages(acceptedFiles);
+                console.log(parentImages)
+                break;
+            case ('video'):
+                setParentVideos(acceptedFiles);
+                console.log(parentVideos)
+                break;
+            case ('floorPlans'):
+                setParentFloorPlans(acceptedFiles);
+                break;
+        }
     };
 
     const navigate = useNavigate(); // Hook for navigation
 
 
     const submitHandler = async (values) => {
+        console.log(values)
         setErrors({}); // Reset errors on new submission
         setSuccess(''); // Reset success message on new submission
         setIsLoading(true);
-        values.images = parentAcceptedFiles;
+        values.images = parentImages;
+        values.videos = parentVideos;
+        values.floorPlans = parentFloorPlans;
 
         try {
             console.log(values)
@@ -123,7 +140,20 @@ function AddEditProperty() {
                     <div className="property-form-group">
                         <div className="row">
                             <div className="col-md-12">
-                                <DropzoneComponent onFilesChange={handleFilesChange}/>
+                                <DropzoneComponent onFilesChange={handleFilesChange} fileType='image'/>
+                                {/*<Previews/>*/}
+
+                                {/*<form action="/file-upload" className="dropzone">*/}
+                                {/*    <div className='dz-default dz-message'><span><i className='fa fa-cloud-upload'></i> Click here or drop files to upload</span></div>*/}
+                                {/*</form>*/}
+                            </div>
+
+                        </div>
+                    </div>
+                    <div className="property-form-group">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <DropzoneComponent onFilesChange={handleFilesChange} fileType='video'/>
                                 {/*<Previews/>*/}
 
                                 {/*<form action="/file-upload" className="dropzone">*/}

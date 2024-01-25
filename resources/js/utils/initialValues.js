@@ -32,6 +32,8 @@ export const initialData = {
     heating: 'Heating',
     features: [],
     images: [],
+    videos: [],
+    floorPlans: [],
     // inConstruction: false,
     // garage: false,
     // swimmingPool: false,

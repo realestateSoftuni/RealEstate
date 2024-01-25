@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Property;
 use App\Models\PropertyFeature;
 use App\Models\PropertyPhoto;
+use App\Models\PropertyVideo;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -119,8 +120,6 @@ class Properties extends Controller
 
         if ($request->has('images')) {
             foreach ($request->images as $image) {
-//                echo "Image Data: ";
-                var_dump($image);
                 // Check if the 'path' key is present in the image data
                 $uploadedFile = new UploadedFile(
                     $image->getPathname(),
@@ -131,16 +130,49 @@ class Properties extends Controller
                     );
 
                     // Validate and store image
-                    $imageUrl = $this->storeImage($uploadedFile, $propertyId);
+                    $videoURL = $this->storeImage($uploadedFile, $propertyId);
 
                     // Save image information to the database
-                    $propertyImage = new PropertyPhoto;
-                    $propertyImage->photo_url = $imageUrl;
-                    $propertyImage->property_id = $propertyId;
-                    $propertyImage->save();
+                    $propertyVideo = new PropertyPhoto;
+                    $propertyVideo->photo_url = $videoURL;
+                    $propertyVideo->property_id = $propertyId;
+                    $propertyVideo->save();
 
             }
         }
+
+        if ($request->has('videos')) {
+            foreach ($request->videos as $video) {
+                $uploadedFile = new UploadedFile(
+                    $video->getPathname(),
+                    $video->getClientOriginalName(),
+                    $video->getClientMimeType(),
+                    null,
+                    true
+                );
+
+                // Validate and store image
+                $videoURL = $this->storeVideo($uploadedFile, $propertyId);
+
+                // Save image information to the database
+                $propertyVideo = new PropertyVideo;
+                $propertyVideo->video_url = $videoURL;
+                $propertyVideo->property_id = $propertyId;
+                $propertyVideo->save();
+
+            }
+        }
+    }
+
+    private function storeVideo($video, $propertyId)
+    {
+        // Validate and store the image in the 'public' disk
+        $videoPath = $video->store('videos/property/' . $propertyId, 'public');
+
+        // Generate the full URL for the stored image
+        $videoUrl = Storage::disk('public')->url($videoPath);
+
+        return $videoUrl;
     }
 
     private function storeImage($image, $propertyId)

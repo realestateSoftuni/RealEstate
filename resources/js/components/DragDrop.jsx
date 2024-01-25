@@ -2,12 +2,11 @@ import React, {useCallback, useEffect, useState} from 'react';
 import { useDropzone } from 'react-dropzone';
 
 function DropzoneComponent(props) {
-    const { onFilesChange } = props;
+    const { onFilesChange, fileType } = props;
 
     const onDrop = useCallback(acceptedFiles => {
-        // console.log(acceptedFiles);
         setFiles(acceptedFiles);
-        onFilesChange(acceptedFiles);
+        onFilesChange(acceptedFiles, fileType);
     }, [onFilesChange]);
 
     const {
@@ -22,8 +21,6 @@ function DropzoneComponent(props) {
     const [files, setFiles] = useState(acceptedFiles)
 
     useEffect(() => {
-        console.log(acceptedFiles)
-        console.log(typeof ([]))
         setFiles(acceptedFiles)
     }, [acceptedFiles]);
 

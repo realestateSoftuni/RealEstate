@@ -80,6 +80,11 @@ class Property extends Model
         return $this->hasMany(PropertyPhoto::class);
     }
 
+    public function property_videos()
+    {
+        return $this->hasMany(PropertyPhoto::class);
+    }
+
     public function property_mortgage_details()
     {
         return $this->hasOne(PropertyMortagageDetails::class);
