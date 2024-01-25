@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800");
-
 /*------------------------------------------------------------------
 Author       : Code-Theme
 Template Name: Find Houses - HTML5 Template
@@ -121,7 +120,7 @@ h2 {
 
 h2 span {
   font-weight: 600;
-  color: #b0793b;
+  color: #FF385C;
 }
 
 h3 {
@@ -379,12 +378,6 @@ img {
   color: #fff;
   -webkit-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
-}
-
-.delete-property {
-    background-color: white;
-    border: none;
-    color: #f50057;
 }
 
 .header-top .dropdown button:hover {
@@ -2329,7 +2322,7 @@ section.welcome {
 .welcome .popup-youtube {
   background: #fff none repeat scroll 0 0;
   border-radius: 100%;
-  color: #b0793b;
+  color: #FF385C;
   font-size: 30px;
   height: 70px;
   left: 50%;
@@ -4279,12 +4272,6 @@ section.testimonials {
   margin-top: 1px;
 }
 
-.testimonials .owl-carousel {
-    display: flex;
-    width: 100%;
-    z-index: 1;
-}
-
 .testimonials .owl-carousel .test-1 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4299,10 +4286,7 @@ section.testimonials {
   background: #fff;
   color: #000;
   padding: 2rem;
-  margin-left: auto;
   border-radius: 10px;
-  width: 350px;
-  height: 350px;
 }
 
 .testimonials .test-1 img {
@@ -4327,7 +4311,7 @@ section.testimonials {
   left: 136px;
   top: -24px;
   position: relative;
-  color: #b0793b;
+  color: #FF385C;
 }
 
 .testimonials .test-1 p::after {
@@ -4346,7 +4330,7 @@ section.testimonials {
   text-align: center;
   font-size: 1.2rem;
   margin-bottom: .8rem;
-  color: #b0793b;
+  color: #FF385C;
   font-weight: 600;
 }
 
@@ -4422,7 +4406,6 @@ div.partners {
 .partners .style2 .owl-item img {
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  padding-left: 20px;
 }
 
 .partners-1 .style2 img {
@@ -4446,8 +4429,8 @@ div.partners {
 /*-----------------------------------*/
 section.counterup {
   padding: 6rem 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0.8))), url(../images/bg/different-color-apartments-near-each-other-with-clear-sky.jpg) no-repeat center center;
-  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../images/bg/different-color-apartments-near-each-other-with-clear-sky.jpg) no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0.8))), url(../images/bg/bg-counter2.jpg) no-repeat center center;
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../images/bg/bg-counter2.jpg) no-repeat center center;
   background-attachment: fixed;
   color: #fff;
   text-align: center;
@@ -4461,7 +4444,7 @@ section.counterup {
   content: "";
   width: 100px;
   height: 2px;
-  background: #b0793b;
+  background: #FF385C;
   position: absolute;
   top: 14px;
   left: -80px;
@@ -4471,7 +4454,7 @@ section.counterup {
   content: "";
   width: 100px;
   height: 2px;
-  background: #b0793b;
+  background: #FF385C;
   position: absolute;
   top: 14px;
   right: -80px;
@@ -4485,11 +4468,10 @@ section.counterup {
 
 .counterup .countr .fa {
   font-size: 3rem;
-  color: #b0793b;
+  color: #FF385C;
   border-radius: 5px;
   margin-right: 1.5rem;
 }
-
 
 .counterup .countr p {
   font-size: 30px;
@@ -4559,7 +4541,6 @@ section.counterup {
 
   .counterup .countr .fa {
     margin-top: 0px;
-    color: #b0793b;
   }
 }
 /*-----------------------------------*/
@@ -5528,7 +5509,7 @@ element.style {
 .homepage-2 .portfolio .homes-content h3 a:hover,
 .homepage-2 .blog-section .news-item h3:hover,
 .homepage-2 .dropdown-filter span::after {
-  color: #b0793b;
+  color: #687389;
 }
 
 .homepage-2 .btn:hover,
@@ -5568,7 +5549,7 @@ element.style {
   height: 100%;
   z-index: 99999;
   overflow: auto;
-  display: none;
+  display: block;
   -webkit-transform: translate3d(0, 0, 0);
   background: rgba(0, 0, 0, 0.81);
 }
@@ -5618,21 +5599,22 @@ element.style {
 
 .login-and-register-form .close-reg {
   position: absolute;
-  background: #FF385C;
+  background: #c18847;
   top: 14px;
   right: 30px;
   border-radius: 100%;
   color: #fff;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
   cursor: pointer;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
 }
 
 .login-and-register-form .fa.fa-times {
-  padding-left: 14px;
+  padding-left: 5px;
+  padding-right: 12px;
   text-align: center;
 }
 
@@ -5669,12 +5651,24 @@ element.style {
 
 .login-and-register-form .soc-log a.facebook-log {
   text-align: center;
-  background: #3b5998;
+  background: #2e4b77;
+  color: #fff;
 }
 
-.login-and-register-form .soc-log a.twitter-log {
+.login-and-register-form .soc-log i.fa-apple {
+    color: black;
+}
+
+.login-and-register-form .soc-log a.apple-log {
   text-align: center;
-  background: #55acee;
+  background: #577c78;
+  color: #fff;
+}
+
+.login-and-register-form .soc-log a.google-log {
+    text-align: center;
+    background: #f62222;
+    color: #fff;
 }
 
 .login-and-register-form .soc-log a i {
@@ -5682,6 +5676,7 @@ element.style {
   padding-right: 15px;
   position: relative;
   top: 3px;
+  color: #fff;
 }
 
 .login-and-register-form .soc-log a.facebook-log {
@@ -5693,7 +5688,7 @@ element.style {
 }
 
 .login-and-register-form .close-reg:hover, .custom-form .log-submit-btn:hover, .soc-log a:hover {
-  background: #2F3B59;
+  background: #fff;
 }
 
 .login-and-register-form .log-separator span {
@@ -5737,7 +5732,7 @@ element.style {
 }
 
 .login-and-register-form .tabs-menu li.current a {
-  background: #FF385C;
+  background: #c18847;
 }
 
 .login-and-register-form .main-register .filter-tags {
@@ -5862,7 +5857,7 @@ element.style {
 .login-and-register-form .tabs-menu li.current a,
 .login-and-register-form .tabs-menu li a:hover {
   color: #fff;
-  background: #FF385C;
+  background: #c18847;
 }
 
 .login-and-register-form .tab-contents {
@@ -5876,7 +5871,7 @@ element.style {
 }
 
 .login-and-register-form .main-register h3 span strong {
-  color: #FF385C;
+  color: #c18847;
   border: none;
   outline: 0;
   font-weight: inherit;
@@ -6049,12 +6044,12 @@ a.button,
 .homepage-2 .btn.btn-yellow {
   border: 0px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 15px;
   -webkit-box-shadow: 0px 1px 4px 0px rgb(161, 107, 46);
           box-shadow: 0px 1px 4px 0px rgb(161, 107, 46);
   color: #ffffff;
-  height: 48px;
-  width: 150px;
+  height: 50px;
+  width: 170px;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
 }
@@ -6300,7 +6295,7 @@ a.button,
 
 .homepage-3 .sec-title h2 span {
   position: relative;
-  color: #b0793b;
+  color: #444;
   font-weight: 500;
 }
 
@@ -6834,11 +6829,11 @@ a.button,
 }
 
 .homepage-4 .home18 .sec-title h2 {
-  color: #b0793b;
+  color: #FF385C;
 }
 
 .homepage-4 .home18 .sec-title h2 span::before {
-  background: #b0793b;
+  background: #FF385C;
 }
 
 .homepage-4 .portfolio .homes-tag.sale {
@@ -6988,8 +6983,8 @@ a.button,
   color: #666;
 }
 
-.homepage-4 .starts {
-  color: #b0793b !important;
+.homepage-4 .starts .fa {
+  color: #FF385C !important;
 }
 
 .homepage-4 .testimonials .test-1 p::before {
@@ -7156,8 +7151,8 @@ a.button,
   width: 100%;
 }
 
-.homepage-2 .home5-right-slider.owl-carousel .owl-prev,
-.homepage-2 .home5-right-slider.owl-carousel .owl-next {
+.homepage-5 .home5-right-slider.owl-carousel .owl-prev,
+.homepage-5 .home5-right-slider.owl-carousel .owl-next {
   background-color: #ffffff !important;
   border-radius: 50%;
   color: #555;
@@ -7286,7 +7281,7 @@ a.button,
 
 .homepage-5 .sec-title h2 span {
   position: relative;
-  color: #b0793b;
+  color: #3e4452;
   font-weight: 600;
 }
 
@@ -7831,20 +7826,21 @@ html input[disabled] {
 
 .header-widget.sign-in {
   height: auto;
+  cursor: pointer;
 }
 
 .header-widget.sign-in a {
-  color: #fff;
+  color: black;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
   margin-top: 30px;
 }
 
-.hd-white .header-widget.sign-in a,
+.hd-white .header-widget.sign-in,
 .hd-white .show-lang,
 .hd-white .show-lang .fa-caret-down.arrlan {
-  color: #666;
+  color: black;
 }
 
 .hd-white .right-side.sign {
@@ -10691,7 +10687,7 @@ a.button {
 
 .home-11 .sec-title h2 span {
   position: relative;
-  color: #b0793b;
+  color: #444;
   font-weight: 500;
 }
 
@@ -10852,7 +10848,7 @@ a.button {
 
 .th-15 .sec-title h2 span {
   position: relative;
-  color: #b0793b;
+  color: #444;
   font-weight: 500;
 }
 
@@ -13111,7 +13107,7 @@ a.button,
 
 .th-8 .sec-title h2 span {
   position: relative;
-  color: #b0793b;
+  color: #444;
   font-weight: 500;
 }
 
@@ -13514,7 +13510,7 @@ form label.error {
 
 .th-8 input, textarea, select {
   width: 100%;
-  height: 40px;
+  height: 50px;
   padding: 9px;
   margin-bottom: 0px;
   border: 1px solid #ddd;
@@ -13881,8 +13877,8 @@ section.how-it-works {
 .how-it-works article img {
   padding-right: 1rem;
   padding-bottom: .5rem;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   text-align: center;
 }
 
@@ -13892,7 +13888,7 @@ section.how-it-works {
 
 .how-it-works .sec-title h2 span {
   font-weight: 600;
-  color: #b0793b;
+  color: #111;
 }
 
 .how-it-works .sec-title img {
@@ -14152,7 +14148,7 @@ section.h18.testimonials {
 
 .home18 .sec-title h2 {
   font-size: 28px;
-  color: #b0793b;
+  color: #f55d2c;
 }
 
 .home18 .sec-title h2 span {
@@ -14160,15 +14156,15 @@ section.h18.testimonials {
   color: #111;
 }
 
-/*.home18 .sec-title h2 span::before {*/
-/*  position: absolute;*/
-/*  width: 50px;*/
-/*  height: 1px;*/
-/*  background: #b0793b;*/
-/*  top: 18px;*/
-/*  content: "";*/
-/*  left: -60px;*/
-/*}*/
+.home18 .sec-title h2 span::before {
+  position: absolute;
+  width: 50px;
+  height: 1px;
+  background: #f55d2c;
+  top: 18px;
+  content: "";
+  left: -60px;
+}
 
 .home18 .sec-title p {
   margin-top: 10px;
@@ -15705,26 +15701,6 @@ a.button {
   padding-left: 20px;
 }
 
-.select-hide{
-    display: none;
-}
-
-.property-form-group .error, .property-form-group #error-select {
-    color: red;
-    padding-top: 10px;
-}
-
-.select-selected:after {
-    position: absolute;
-    content: "";
-    top: 14px;
-    right: 10px;
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-color: #fff transparent transparent transparent;
-}
-
 .inner-pages .form-group .nice-select {
   margin: 0px;
   height: 50px;
@@ -15942,7 +15918,7 @@ a.button {
   color: #fff;
   text-align: center;
   line-height: 15px;
-  background-color: #987654;
+  background-color: #FF385C;
   border: 2px solid transparent;
   -webkit-transition: border-color 0s;
   transition: border-color 0s;
@@ -16253,6 +16229,19 @@ section.headings-2 {
 .inner-pages .detail-list-rating i {
   color: #ffc107;
 }
+
+.error-message {
+    color: red;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.success-message {
+    color: green;
+    font-style: oblique;
+    font-weight: bold;
+}
+
 
 h4.widget_author__name {
   color: #222;
@@ -18306,11 +18295,11 @@ ul.the-agents-details li a {
 }
 
 .inner-pages .agent-details a:hover {
-  color: #b0793b;
+  color: #48a0dc;
 }
 
 .inner-pages .agent-details .fa {
-  color: #b0793b;
+  color: #FF385C;
   font-size: 15px;
   margin-right: 8px;
 }
@@ -18495,7 +18484,7 @@ section.single-proper.details {
 
 .agents.det .text-heading.text-left span {
   font-size: 16px;
-  color: #b0793b;
+  color: #FF385C;
 }
 
 .inner-pages .agent-details .button-effect {
@@ -19441,7 +19430,7 @@ body.dashboard-bd {
 
 .my-properties table tbody tr td.actions .edit {
   float: left;
-  color: #987654;
+  color: #008000;
 }
 
 .my-properties table tbody tr td.actions .edit i {
@@ -19515,7 +19504,7 @@ body.dashboard-bd {
   padding: 0 15px;
   color: #727272;
   background: #ffffff;
-  z-index: 0;
+  z-index: 1;
   width: 100%;
   position: relative;
   -webkit-appearance: none;
@@ -19525,6 +19514,7 @@ body.dashboard-bd {
   min-height: 45px;
   -webkit-box-shadow: none;
           box-shadow: none;
+  border: 1px solid #f3f3f3;
   background: #fff;
   border-radius: 4px;
   width: 100% !important;
@@ -19612,7 +19602,6 @@ select:focus {
 
 .btn:not(:disabled):not(.disabled) {
   cursor: pointer;
-  transition: all .5s ease;
 }
 
 .pagination-container .pagination {
@@ -19642,14 +19631,14 @@ select:focus {
 .pagination-container .pagination .page-item .page-link {
   margin: 0 10px;
   padding: 15px 20px;
-  color: #987654;
+  color: #FF385C;
   border-color: #f3f3f3;
   border-radius: 4px;
   background: #fff;
 }
 
 .pagination-container .pagination .page-item .page-link:hover {
-  background: #687389;
+  background: #FF385C;
   color: #fff;
 }
 
@@ -20105,21 +20094,21 @@ header.payment-card-header .pull-right img {
 }
 
 .inner-pages .headings {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat center center;
-  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat center center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/bg-details.jpg) no-repeat center center;
+  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/bg-details.jpg) no-repeat center center;
   width: 100%;
   height: 30vh;
 }
 
-.inner-pages .about .headings {
-  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat center center;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat bottom;
+.inner-pages.about .headings {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
+  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/bg-testimonials.jpg) no-repeat center center;
 }
 
 .inner-pages .headings h1 {
   margin-top: 7.5rem;
-  font-size: 28px;
-  color: #b0793b;
+  font-size: 26px;
+  color: #fff;
 }
 
 .inner-pages .headings h2 a,
@@ -20134,14 +20123,14 @@ header.payment-card-header .pull-right img {
 }
 
 .inner-pages .headings h2 a:hover {
-  color: #b0793b;
+  color: #FF385C;
 }
 
-.inner-pages .about-us h2:after {
+.inner-pages .about-us h2::after {
   display: block;
   height: 3px;
   font-weight: bold;
-  background-color: #b0793b;
+  background-color: #121B22;
   content: " ";
   width: 97px;
   margin-top: .5rem;
@@ -20151,7 +20140,7 @@ header.payment-card-header .pull-right img {
 .inner-pages .about-us.fh .popup-youtube {
   background: #0f1341 none repeat scroll 0 0;
   border-radius: 100%;
-  color: #b0793b;
+  color: #03a9f5;
   font-size: 30px;
   height: 70px;
   left: 50%;
@@ -20217,24 +20206,23 @@ header.payment-card-header .pull-right img {
   padding-bottom: 2rem;
 }
 
-.inner-pages .about h2 {
-  color: #b0793b;
+.inner-pages.about .sec-title h2 {
+  color: #444;
   font-size: 1.7rem;
   text-align: center;
   padding-bottom: 0rem;
 }
 
-.inner-pages .about h2 span {
+.inner-pages.about .sec-title h2 span {
   font-weight: 600;
-  color: #b0793b;
+  color: #FF385C;
 }
 
-.inner-pages .about .sec-title h2 span::before {
+.inner-pages.about .sec-title h2 span::before {
   display: none;
-  color: #b0793b;
 }
 
-.inner-page .about .testimonials .test-1 p::before {
+.inner-pages.about .testimonials .test-1 p::before {
   left: 236px;
   top: -24px;
   position: relative;
@@ -20244,8 +20232,8 @@ header.payment-card-header .pull-right img {
   margin-top: 0px;
 }
 
-.inner-pages .about .starts .fa {
-  color: #b0793b !important;
+.inner-pages.about .starts .fa {
+  color: #FF385C !important;
 }
 
 @media screen and (max-width: 500px) {
@@ -20257,7 +20245,7 @@ header.payment-card-header .pull-right img {
 .inner-pages .about-us .who-1 {
   background: #fff;
   background-size: cover;
-  color: #b0793b;
+  color: #666;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20271,12 +20259,12 @@ header.payment-card-header .pull-right img {
   top: 0;
 }
 
-.inner-pages .about-us .who-1 .us {
-  color: #b0793b;
+.inner-pages .about-us .who-1 h2 span {
+  color: #FF385C;
 }
 
 .inner-pages .about-us .who-1 p {
-  color: #0a0a0a;
+  color: #666;
   background: #fff;
   font-weight: 400;
   font-family: 'Lato', sans-serif;
@@ -20607,34 +20595,18 @@ section.pricing-table {
   margin-top: 2rem;
 }
 
-.notfound .port-info .btn {
-    background: #b0793b;
-    color: #fff;
-    border: 1px solid #653d0c;
-    -webkit-transition: all .5s ease;
-    transition: all .5s ease;
-}
-
-.notfound .port-info .btn:hover {
-    background: #c9a47e;
-    color: #fff;
-    border: 1px solid #b0793b;
-}
-
-
 .inner-pages .port-info .btn {
-  background: #b0793b;
+  background: #c18847;
   color: #fff;
-  border: 1px solid #653d0c;
-
+  border: 1px solid #c18847;
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
 }
 
 .inner-pages .port-info .btn:hover {
-  background: #c9a47e;
+  background: #121B22;
   color: #fff;
-  border: 1px solid #b0793b;
+  border: 1px solid #121B22;
 }
 
 @media screen and (max-width: 500px) {
@@ -21355,10 +21327,17 @@ a.btn_1 {
   margin-bottom: 0px;
 }
 
+
 .page-item.active .page-link {
   background: #FF385C;
   border-color: #FF385C;
 }
+
+.modal-open {
+    background: url("http://127.0.0.1:8000/");
+
+}
+
 
 .page-link {
   color: #121B22;
@@ -22318,7 +22297,6 @@ form label.error {
 
 .inner-pages .property-form-group p input {
   border: 1px solid #ddd;
-  border-radius: 5px;
   height: 50px;
   padding: 10px;
   width: 100%;
@@ -22442,7 +22420,7 @@ form label.error {
 }
 
 .inner-pages .dropdown.faq-drop span {
-  color: #666;
+  color: #999;
   margin-left: 5px;
 }
 

@@ -12,9 +12,7 @@ function Footer(){
                                 <a href="" className="logo">
                                     <img src={logo} alt="Logo" style={{width: '60px'}} />
                                 </a>
-                                <p>Unlocking Dreams, Opening Doors – Your Key to Exceptional Real Estate Experiences with
-                                    Home-Estate. Elevate Your Living, Invest in Your Future – Home-Estate, Where Every Property
-                                    Tells a Unique Story.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto soluta laboriosam, perspiciatis, aspernatur officiis esse.</p>
                             </div>
                             <div className="contactus">
                                 <ul>
