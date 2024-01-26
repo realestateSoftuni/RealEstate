@@ -19,6 +19,7 @@ function HeaderBar(){
         setIsProfileClicked(!isProfileClicked)
     }
 
+
     return (
         <>
             <div id="header-container">

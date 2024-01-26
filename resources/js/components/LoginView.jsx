@@ -27,6 +27,7 @@ const LoginView = ({isOpen, onClose, children}) => {
     const styleChangesReg = {
         display: buttonRegisterIsClicked === 2 ? 'block' : 'none'
     };
+
     // Formik for login form
     const loginFormik = useFormik({
         initialValues: {

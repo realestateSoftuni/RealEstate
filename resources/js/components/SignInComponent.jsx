@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 const SignInComponent = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
 
