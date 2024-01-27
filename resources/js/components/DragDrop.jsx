@@ -4,7 +4,7 @@ import { useDropzone } from 'react-dropzone';
 function DropzoneComponent(props) {
     const { onFilesChange, fileType } = props;
 
-    const onDrop = useCallback(acceptedFiles => {
+    const onDrop = useCallback((acceptedFiles, fileRejections) => {
         setFiles(acceptedFiles);
         onFilesChange(acceptedFiles, fileType);
     }, [onFilesChange]);
@@ -13,10 +13,23 @@ function DropzoneComponent(props) {
         getRootProps,
         getInputProps,
         acceptedFiles,
+        fileRejections,
     } = useDropzone({
-        onDrop
+        onDrop,
+        accept: props.fileMimes,
+        maxFiles:props.fileNumber,
     });
 
+    const fileRejectionItems = fileRejections.map(({ file, errors  }) => {
+        return (
+            <li key={file.path}>
+                {file.path} - {file.size} bytes
+                <ul>
+                    {errors.map(e => <li key={e.code}>{e.message}</li>)}
+                </ul>
+            </li>
+        )
+    });
 
     const [files, setFiles] = useState(acceptedFiles)
 
@@ -40,17 +53,23 @@ function DropzoneComponent(props) {
         <>
             <div {...getRootProps()}>
                 <input {...getInputProps()} />
-                <div className='dz-default dz-message'><span><i className='fa fa-cloud-upload'></i> Click here or drop images to upload</span></div>
+                <div className='dz-default dz-message'><span><i className='fa fa-cloud-upload'></i> {props.title}</span></div>
             </div>
-            {acceptedFiles.length > 0 && <aside className='dropzoneAside'>
-                <h5>Files</h5>
-                <ul>
-                    {files.map((file) =>
-                        <li key={file.path}>{file.path}
-                            <button onClick={() => {deleteImg(file.path)}} name={file.path} className='closeBtn'>X</button>
-                        </li>)}
-                </ul>
-            </aside>}
+            <aside className='dropzoneAside'>
+                {acceptedFiles.length > 0 && <>
+                    <h5>Files</h5>
+                    <ul>
+                        {files.map((file) =>
+                            <li key={file.path}>{file.path}
+                                <button onClick={() => {deleteImg(file.path)}} name={file.path} className='closeBtn'>X</button>
+                            </li>)}
+                    </ul>
+                </>}
+                {fileRejectionItems.length > 0 && <>
+                    <h5>Errors</h5>
+                    <ul>{fileRejectionItems}</ul>
+                </>}
+            </aside>
         </>
     )
 }

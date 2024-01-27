@@ -10,6 +10,8 @@ use App\Models\PropertyVideo;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 error_reporting(E_ALL);
 ini_set('display_errors', true);
@@ -19,48 +21,44 @@ class Properties extends Controller
 {
     public function add_property(Request $request)
     {
-        request()->validate([
-            'username'=>'required|unique:users|max:20|min:4',
-            'price'=>'required|min:0',
-            'square_feet'=>'required|min:0',
-            'city'=>'required',
-            'country'=>'required',
-            'email'=>'required|email',
-            'title'=>'required|max:100|min:4',
-            'description'=>'max:900',
-            'property_type'=>'required',
-            'name'=>'required|max:20|min:2',
-            'phone'=>'required|max:255',
-            'rooms'=>'required',
-            'status'=>'required',
-        ]);
+        try {
+            request()->validate([
+                'username'=>'required|unique:users|max:20|min:4',
+                'price'=>'required|min:0',
+                'square_feet'=>'required|min:0',
+                'city'=>'required',
+                'country'=>'required',
+                'email'=>'required|email',
+                'title'=>'required|max:100|min:4',
+                'description'=>'max:900',
+                'property_type'=>'required',
+                'name'=>'required|max:20|min:2',
+                'phone'=>'required|max:255',
+                'rooms'=>'required',
+                'status'=>'required',
+                'images.*' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                'videos.*' => 'mimes:mp4,avi,mov,mkv,wmv,flv,webm',
+                'videos' => 'array|max:1',
+            ]);
+        } catch (ValidationException $e) {
+            $errors = $e->validator->errors()->getMessages();
+            var_dump($errors);
+
+            // Modify error messages to remove .0 suffix
+            $formattedErrors = [];
+            foreach ($errors as $field => $messages) {
+                $formattedErrors[$field] = array_map(function ($message) {
+                    return str_replace('.0', '', $message);
+                }, $messages);
+            }
+
+            return response()->json([
+                'message' => $e->getMessage(),
+                'errors' => $formattedErrors,
+            ], $e->status);
+        }
 
         $property = new Property;
-//        $save->user_id = 1;
-//        $save->title = 'title test';
-//        $save->description = 'test test';
-//        $save->price = 100000;
-//        $save->square_feet = 105;
-//        $save->build = '1985';
-//        $save->address = 'some address';
-//        $save->latitude = 100.10;
-//        $save->longitude = 105.25;
-//        $save->country = 'Bulgaria';
-//        $save->state = 'Test state';
-//        $save->city = 'Sofia';
-//        $save->email = 'test@gmail.com';
-//        $save->name = 'Gaby';
-//        $save->username = 'Gabito';
-//        $save->phone = '0885929292';
-//        $save->date_listed = date_create();
-//        $save->property_type = 'lot';
-//        $save->rooms = 3;
-//        $save->status = 'rent';
-//        $save->floor = 5;
-//        $save->bedrooms = 3;
-//        $save->bathrooms = 2;
-//        $save->heating = 'air_conditioning';
-//        $save->construction = 'brick';
 
         $property->user_id = 1;
         $property->title = trim($request->title);
@@ -120,7 +118,6 @@ class Properties extends Controller
 
         if ($request->has('images')) {
             foreach ($request->images as $image) {
-                // Check if the 'path' key is present in the image data
                 $uploadedFile = new UploadedFile(
                     $image->getPathname(),
                     $image->getClientOriginalName(),
@@ -129,14 +126,14 @@ class Properties extends Controller
                     true
                     );
 
-                    // Validate and store image
-                    $videoURL = $this->storeImage($uploadedFile, $propertyId);
+                    // Store image
+                    $photoURL = $this->storeImage($uploadedFile, $propertyId);
 
                     // Save image information to the database
-                    $propertyVideo = new PropertyPhoto;
-                    $propertyVideo->photo_url = $videoURL;
-                    $propertyVideo->property_id = $propertyId;
-                    $propertyVideo->save();
+                    $propertyImage = new PropertyPhoto;
+                    $propertyImage->photo_url = $photoURL;
+                    $propertyImage->property_id = $propertyId;
+                    $propertyImage->save();
 
             }
         }

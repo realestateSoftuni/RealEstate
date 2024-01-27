@@ -51,11 +51,9 @@ function AddEditProperty() {
         switch (fileType) {
             case ('image'):
                 setParentImages(acceptedFiles);
-                console.log(parentImages)
                 break;
             case ('video'):
                 setParentVideos(acceptedFiles);
-                console.log(parentVideos)
                 break;
             case ('floorPlans'):
                 setParentFloorPlans(acceptedFiles);
@@ -103,7 +101,7 @@ function AddEditProperty() {
 
     const renderError = field => {
         if (errors[field]) {
-            const errorMessage = errors[field].join(', ');
+            const errorMessage = errors[field].join('\n');
             return <span style={{ color: 'red' }}>{errorMessage}</span>;
         }
     };
@@ -118,6 +116,15 @@ function AddEditProperty() {
         let newState = { ...dropdownValues, [field]: value}
         setDropdownValues(newState)
     }
+
+    const imageMimes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+    const imageNum = 10;
+    const imageTitle = 'Click here or drop images to upload (max 10 images)';
+    const videoMimes = ['video/mp4','video/avi','video/mov','video/mkv','video/wmv','video/flv','video/webm'];
+    const videoNum = 1
+    const videoTitle = 'Click here or drop video to upload (no more than 1 video file)';
+    const floorNum = 3
+    const plansTitle = 'Click here or drop floor plans images to upload (max 3 images)';
 
     function checkboxHandler(e, values) {
         if (e.target.checked) {
@@ -139,28 +146,42 @@ function AddEditProperty() {
                     <h3>property Media</h3>
                     <div className="property-form-group">
                         <div className="row">
+                            <h4>Property Photos</h4>
                             <div className="col-md-12">
-                                <DropzoneComponent onFilesChange={handleFilesChange} fileType='image'/>
-                                {/*<Previews/>*/}
-
-                                {/*<form action="/file-upload" className="dropzone">*/}
-                                {/*    <div className='dz-default dz-message'><span><i className='fa fa-cloud-upload'></i> Click here or drop files to upload</span></div>*/}
-                                {/*</form>*/}
+                                <DropzoneComponent onFilesChange={handleFilesChange}
+                                                   fileType='image'
+                                                   fileMimes={imageMimes}
+                                                   fileNumber={imageNum}
+                                                   title={imageTitle}/>
+                                {renderError('images')}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="property-form-group">
+                        <div className="row">
+                            <h4>Property Video</h4>
+                            <div className="col-md-12">
+                                <DropzoneComponent onFilesChange={handleFilesChange}
+                                                   fileType='video'
+                                                   fileMimes={videoMimes}
+                                                   fileNumber={videoNum}
+                                                   title={videoTitle}/>
+                                {renderError('videos')}
                             </div>
 
                         </div>
                     </div>
                     <div className="property-form-group">
                         <div className="row">
+                            <h4>Property Floor Plans</h4>
                             <div className="col-md-12">
-                                <DropzoneComponent onFilesChange={handleFilesChange} fileType='video'/>
-                                {/*<Previews/>*/}
-
-                                {/*<form action="/file-upload" className="dropzone">*/}
-                                {/*    <div className='dz-default dz-message'><span><i className='fa fa-cloud-upload'></i> Click here or drop files to upload</span></div>*/}
-                                {/*</form>*/}
+                                <DropzoneComponent onFilesChange={handleFilesChange}
+                                                   fileType='image'
+                                                   fileMimes={imageMimes}
+                                                   fileNumber={floorNum}
+                                                   title={plansTitle}/>
+                                {renderError('floorPlans')}
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -754,6 +775,7 @@ function AddEditProperty() {
                                     className='text-input'
                                 />
                                 {renderError('phone')}
+                                {renderError('description')}
                             </div>
                         </div>
                     </div>
@@ -766,6 +788,8 @@ function AddEditProperty() {
                             </div>
                         </div>
                     </div>
+                    {renderError("images")}
+                    {renderError("images.0")}
                 </div>
             </Form>)}}
         </Formik>
