@@ -11,7 +11,7 @@ class CreatePropertyVideosTable extends Migration
         Schema::create('property_videos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
-            $table->string('video_url');
+            $table->string('video_url')->nullable();
             $table->integer('update_count')->default(0);
             $table->timestamps();
             $table->softDeletes();

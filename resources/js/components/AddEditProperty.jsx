@@ -156,7 +156,7 @@ function AddEditProperty() {
                                 <p>
                                     <input className='text-input' onChange={(e) => setPropertyVideo(e.target.value)} name='video' type='text' placeholder='Enter your video URL'/>
                                 </p>
-                                {renderError('videos')}
+                                {renderError('video')}
                             </div>
 
                         </div>

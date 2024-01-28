@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 error_reporting(E_ALL);
@@ -32,13 +33,22 @@ class Properties extends Controller
                 'email'=>'required|email',
                 'title'=>'required|max:100|min:4',
                 'description'=>'max:900',
-                'property_type'=>'required',
+                'property_type'=>[
+                    'required',
+                    Rule::notIn(['Type']),
+                ],
                 'name'=>'required|max:20|min:2',
-                'phone'=>'required|max:255',
-                'rooms'=>'required',
-                'status'=>'required',
+                'phone'=>'max:255',
+                'rooms'=>[
+                    'required',
+                    Rule::notIn(['Size']),
+                ],
+                'status'=>[
+                    'required',
+                    Rule::notIn(['Status']),
+                ],
                 'images.*' => 'mimes:jpg,jpeg,png,gif|max:2048',
-                'video' => 'url',
+                'video' => 'nullable|url',
             ]);
         } catch (ValidationException $e) {
             $errors = $e->validator->errors()->getMessages();
@@ -75,15 +85,10 @@ class Properties extends Controller
         $property->name = trim($request->name);
         $property->username = trim($request->username);
         $property->phone = trim($request->phone);
-        if ($request->property_type !== 'Type') {
-            $property->property_type = $request->property_type;
-        };
-        if ($request->rooms !== 'Size') {
-            $property->rooms = $request->rooms;
-        };
-        if ($request->status !== 'Status') {
-            $property->status = $request->status;
-        };
+        $property->rooms = $request->rooms;
+        $property->property_type = $request->property_type;
+        $property->status = $request->status;
+
         if ($request->floor !== 'Floor') {
             $property->floor = $request->floor;
         };
@@ -115,11 +120,13 @@ class Properties extends Controller
             }
         }
 
-        if ($request->has('video')) {
+        if ($request->has('video') && $request->video !== null ) {
             $video = new PropertyVideo;
             $video->video_url = $request->video;
             $video->property_id = $propertyId;
-            $video->save();
+            if ($video->video_url !== '') {
+                $video->save();
+            }
         }
 
         if ($request->has('images')) {
@@ -134,14 +141,14 @@ class Properties extends Controller
                     );
                 $folder = 'images/property/';
 
-                    // Store image
-                    $photoURL = $this->storeImage($uploadedFile, $propertyId, $folder);
+                // Store image
+                $photoURL = $this->storeImage($uploadedFile, $propertyId, $folder);
 
-                    // Save image information to the database
-                    $propertyImage = new PropertyPhoto;
-                    $propertyImage->photo_url = $photoURL;
-                    $propertyImage->property_id = $propertyId;
-                    $propertyImage->save();
+                // Save image information to the database
+                $propertyImage = new PropertyPhoto;
+                $propertyImage->photo_url = $photoURL;
+                $propertyImage->property_id = $propertyId;
+                $propertyImage->save();
 
             }
         }
@@ -168,42 +175,8 @@ class Properties extends Controller
 
             }
         }
-
-//        if ($request->has('videos')) {
-//            var_dump("in video");
-//            var_dump($request);
-//            foreach ($request->videos as $video) {
-//                $uploadedFile = new UploadedFile(
-//                    "blabla",
-//                    $video->getClientOriginalName(),
-//                    $video->getClientMimeType(),
-//                    null,
-//                    true
-//                );
-//
-//                // Validate and store image
-//                $videoURL = $this->storeVideo($uploadedFile, $propertyId);
-//
-//                // Save image information to the database
-//                $propertyVideo = new PropertyVideo;
-//                $propertyVideo->video_url = $videoURL;
-//                $propertyVideo->property_id = $propertyId;
-//                $propertyVideo->save();
-//
-//            }
-//        }
     }
-//
-//    private function storeVideo($video, $propertyId)
-//    {
-//        // Validate and store the image in the 'public' disk
-//        $videoPath = $video->store('videos/property/' . $propertyId, 'public');
-//
-//        // Generate the full URL for the stored image
-//        $videoUrl = Storage::disk('public')->url($videoPath);
-//
-//        return $videoUrl;
-//    }
+
 
     private function storeImage($image, $propertyId, $imageFolder)
     {
