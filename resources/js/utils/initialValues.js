@@ -32,7 +32,7 @@ export const initialData = {
     heating: 'Heating',
     features: [],
     images: [],
-    videos: [],
+    video: '',
     floorPlans: [],
     // inConstruction: false,
     // garage: false,

@@ -22329,12 +22329,18 @@ form label.error {
   text-transform: capitalize;
 }
 
-.inner-pages .property-form-group label {
+.inner-pages .property-form-group label, .inner-pages .property-form-group h4 {
   color: #333;
   display: inline-block;
   font-size: 15px;
   font-weight: 600;
   text-transform: capitalize;
+}
+
+.inner-pages .property-form-group h4 {
+    padding-left: 15px;
+    margin-bottom: 10px;
+    margin-top: 15px;
 }
 
 .inner-pages .property-form-group p input {

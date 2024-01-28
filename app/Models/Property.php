@@ -80,9 +80,14 @@ class Property extends Model
         return $this->hasMany(PropertyPhoto::class);
     }
 
+    public function property_floor_plans()
+    {
+        return $this->hasMany(PropertyFloorPlans::class);
+    }
+
     public function property_videos()
     {
-        return $this->hasMany(PropertyPhoto::class);
+        return $this->hasMany(PropertyVideo::class);
     }
 
     public function property_mortgage_details()

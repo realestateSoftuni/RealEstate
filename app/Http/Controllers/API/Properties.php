@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Property;
 use App\Models\PropertyFeature;
+use App\Models\PropertyFloorPlans;
 use App\Models\PropertyPhoto;
 use App\Models\PropertyVideo;
 use Illuminate\Http\Request;
@@ -37,12 +38,10 @@ class Properties extends Controller
                 'rooms'=>'required',
                 'status'=>'required',
                 'images.*' => 'mimes:jpg,jpeg,png,gif|max:2048',
-                'videos.*' => 'mimes:mp4,avi,mov,mkv,wmv,flv,webm',
-                'videos' => 'array|max:1',
+                'video' => 'url',
             ]);
         } catch (ValidationException $e) {
             $errors = $e->validator->errors()->getMessages();
-            var_dump($errors);
 
             // Modify error messages to remove .0 suffix
             $formattedErrors = [];
@@ -116,8 +115,16 @@ class Properties extends Controller
             }
         }
 
+        if ($request->has('video')) {
+            $video = new PropertyVideo;
+            $video->video_url = $request->video;
+            $video->property_id = $propertyId;
+            $video->save();
+        }
+
         if ($request->has('images')) {
             foreach ($request->images as $image) {
+                //dd($image);
                 $uploadedFile = new UploadedFile(
                     $image->getPathname(),
                     $image->getClientOriginalName(),
@@ -125,9 +132,10 @@ class Properties extends Controller
                     null,
                     true
                     );
+                $folder = 'images/property/';
 
                     // Store image
-                    $photoURL = $this->storeImage($uploadedFile, $propertyId);
+                    $photoURL = $this->storeImage($uploadedFile, $propertyId, $folder);
 
                     // Save image information to the database
                     $propertyImage = new PropertyPhoto;
@@ -138,44 +146,69 @@ class Properties extends Controller
             }
         }
 
-        if ($request->has('videos')) {
-            foreach ($request->videos as $video) {
+        if ($request->has('floorPlans')) {
+            foreach ($request->floorPlans as $plan) {
                 $uploadedFile = new UploadedFile(
-                    $video->getPathname(),
-                    $video->getClientOriginalName(),
-                    $video->getClientMimeType(),
+                    $plan->getPathname(),
+                    $plan->getClientOriginalName(),
+                    $plan->getClientMimeType(),
                     null,
                     true
                 );
+                $folder = 'floorPlans/property/';
 
-                // Validate and store image
-                $videoURL = $this->storeVideo($uploadedFile, $propertyId);
+                // Store image
+                $photoURL = $this->storeImage($uploadedFile, $propertyId, $folder);
 
                 // Save image information to the database
-                $propertyVideo = new PropertyVideo;
-                $propertyVideo->video_url = $videoURL;
-                $propertyVideo->property_id = $propertyId;
-                $propertyVideo->save();
+                $propertyPlan = new PropertyFloorPlans;
+                $propertyPlan->image_url = $photoURL;
+                $propertyPlan->property_id = $propertyId;
+                $propertyPlan->save();
 
             }
         }
-    }
 
-    private function storeVideo($video, $propertyId)
+//        if ($request->has('videos')) {
+//            var_dump("in video");
+//            var_dump($request);
+//            foreach ($request->videos as $video) {
+//                $uploadedFile = new UploadedFile(
+//                    "blabla",
+//                    $video->getClientOriginalName(),
+//                    $video->getClientMimeType(),
+//                    null,
+//                    true
+//                );
+//
+//                // Validate and store image
+//                $videoURL = $this->storeVideo($uploadedFile, $propertyId);
+//
+//                // Save image information to the database
+//                $propertyVideo = new PropertyVideo;
+//                $propertyVideo->video_url = $videoURL;
+//                $propertyVideo->property_id = $propertyId;
+//                $propertyVideo->save();
+//
+//            }
+//        }
+    }
+//
+//    private function storeVideo($video, $propertyId)
+//    {
+//        // Validate and store the image in the 'public' disk
+//        $videoPath = $video->store('videos/property/' . $propertyId, 'public');
+//
+//        // Generate the full URL for the stored image
+//        $videoUrl = Storage::disk('public')->url($videoPath);
+//
+//        return $videoUrl;
+//    }
+
+    private function storeImage($image, $propertyId, $imageFolder)
     {
         // Validate and store the image in the 'public' disk
-        $videoPath = $video->store('videos/property/' . $propertyId, 'public');
-
-        // Generate the full URL for the stored image
-        $videoUrl = Storage::disk('public')->url($videoPath);
-
-        return $videoUrl;
-    }
-
-    private function storeImage($image, $propertyId)
-    {
-        // Validate and store the image in the 'public' disk
-        $imagePath = $image->store('images/property/' . $propertyId, 'public');
+        $imagePath = $image->store($imageFolder . $propertyId, 'public');
 
         // Generate the full URL for the stored image
         $imageUrl = Storage::disk('public')->url($imagePath);

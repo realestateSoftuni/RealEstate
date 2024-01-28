@@ -44,16 +44,13 @@ function AddEditProperty() {
     const [success, setSuccess] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [parentImages, setParentImages] = useState([]);
-    const [parentVideos, setParentVideos] = useState([]);
     const [parentFloorPlans, setParentFloorPlans] = useState([]);
+    const [propertyVideo, setPropertyVideo] = useState('');
 
     const handleFilesChange = (acceptedFiles, fileType) => {
         switch (fileType) {
             case ('image'):
                 setParentImages(acceptedFiles);
-                break;
-            case ('video'):
-                setParentVideos(acceptedFiles);
                 break;
             case ('floorPlans'):
                 setParentFloorPlans(acceptedFiles);
@@ -70,7 +67,7 @@ function AddEditProperty() {
         setSuccess(''); // Reset success message on new submission
         setIsLoading(true);
         values.images = parentImages;
-        values.videos = parentVideos;
+        values.video = propertyVideo;
         values.floorPlans = parentFloorPlans;
 
         try {
@@ -120,22 +117,17 @@ function AddEditProperty() {
     const imageMimes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
     const imageNum = 10;
     const imageTitle = 'Click here or drop images to upload (max 10 images)';
-    const videoMimes = ['video/mp4','video/avi','video/mov','video/mkv','video/wmv','video/flv','video/webm'];
-    const videoNum = 1
-    const videoTitle = 'Click here or drop video to upload (no more than 1 video file)';
     const floorNum = 3
     const plansTitle = 'Click here or drop floor plans images to upload (max 3 images)';
 
     function checkboxHandler(e, values) {
         if (e.target.checked) {
             values['features'].push(e.target.name)
-            console.log(values)
         } else {
             let index = values['features'].indexOf(e.target.name);
             if (index !== -1) {
                 values['features'].splice(index, 1);
             }
-            console.log(values)
         }
     }
 
@@ -161,11 +153,9 @@ function AddEditProperty() {
                         <div className="row">
                             <h4>Property Video</h4>
                             <div className="col-md-12">
-                                <DropzoneComponent onFilesChange={handleFilesChange}
-                                                   fileType='video'
-                                                   fileMimes={videoMimes}
-                                                   fileNumber={videoNum}
-                                                   title={videoTitle}/>
+                                <p>
+                                    <input className='text-input' onChange={(e) => setPropertyVideo(e.target.value)} name='video' type='text' placeholder='Enter your video URL'/>
+                                </p>
                                 {renderError('videos')}
                             </div>
 
@@ -176,7 +166,7 @@ function AddEditProperty() {
                             <h4>Property Floor Plans</h4>
                             <div className="col-md-12">
                                 <DropzoneComponent onFilesChange={handleFilesChange}
-                                                   fileType='image'
+                                                   fileType='floorPlans'
                                                    fileMimes={imageMimes}
                                                    fileNumber={floorNum}
                                                    title={plansTitle}/>
