@@ -15,7 +15,7 @@ function Footer(){
                                 <p>Unlocking Dreams, Opening Doors – Your Key to Exceptional Real Estate Experiences with
                                     Home-Estate. Elevate Your Living, Invest in Your Future – Home-Estate, Where Every Property
                                     Tells a Unique Story.</p>
-                            </div>
+                               </div>
                             <div className="contactus">
                                 <ul>
                                     <li>

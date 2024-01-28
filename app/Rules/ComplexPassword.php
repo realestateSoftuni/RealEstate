@@ -27,6 +27,6 @@ class ComplexPassword implements Rule
 
     public function message()
     {
-        return 'The :attribute must include at least ' . implode(', ', $this->errors);
+        return 'The :attribute must include at least ' . implode(' and ', $this->errors);
     }
 }
