@@ -2,7 +2,7 @@ import UserLayout from "../components/UserLayout/UserLayout.jsx";
 import React, { useState } from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { MyCheckbox, MyField, MyTextarea, MyTextInput } from "../utils/fields.jsx";
+import { MyField, MyTextarea, MyTextInput } from "../utils/fields.jsx";
 import { addPropertyValidations } from "../utils/validations.js";
 import {useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
@@ -71,7 +71,6 @@ function AddEditProperty() {
         values.floorPlans = parentFloorPlans;
 
         try {
-            console.log(values)
             const response = await axios.post(`${window.Laravel.apiUrl}/api/add_property`, values, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
