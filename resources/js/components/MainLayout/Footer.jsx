@@ -1,5 +1,6 @@
 /*jshint esversion: 6 */
 import logo from '../../../assets/FullLogo_Transparent_NoBuffer.png'
+import {Link} from "react-router-dom";
 
 function Footer(){
     return (
@@ -44,19 +45,17 @@ function Footer(){
                                 <h3>Navigation</h3>
                                 <div className="nav-footer">
                                     <ul>
-                                        <li><a href="">Home One</a></li>
-                                        <li><a href="">Properties Right</a></li>
-                                        <li><a href="">Properties List</a></li>
-                                        <li><a href="">Property Details</a></li>
-                                        <li className="no-mgb"><a href="">Agents Listing</a></li>
+                                        <li><Link to="/about-us">About Us</Link></li>
+                                        <li><Link to="/blog">Blog</Link></li>
+                                        <li><Link to="/contact-us">Contact</Link></li>
                                     </ul>
-                                    <ul className="nav-right">
-                                        <li><a href="">Agents Details</a></li>
-                                        <li><a href="">About Us</a></li>
-                                        <li><a href="">Blog Default</a></li>
-                                        <li><a href="">Blog Details</a></li>
-                                        <li className="no-mgb"><a href="">Contact Us</a></li>
-                                    </ul>
+                                    {/*<ul className="nav-right">*/}
+                                    {/*    <li><a href="">Agents Details</a></li>*/}
+                                    {/*    <li><a href="">About Us</a></li>*/}
+                                    {/*    <li><a href="">Blog Default</a></li>*/}
+                                    {/*    <li><a href="">Blog Details</a></li>*/}
+                                    {/*    <li className="no-mgb"><a href="">Contact Us</a></li>*/}
+                                    {/*</ul>*/}
                                 </div>
                             </div>
                         </div>
