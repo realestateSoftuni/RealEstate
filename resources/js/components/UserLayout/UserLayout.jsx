@@ -4,6 +4,7 @@ import logo from "../../../assets/FullLogo_Transparent_NoBuffer.png";
 import {Link} from "react-router-dom";
 //import { initialData } from '../../utils/initialValues.js';
 import {useState} from "react";
+import {initialData} from "@/utils/initialValues.js";
 
 const LayoutAll = ({ children }) => {
     const[userMenuOpen, setUserMenuOpen] = useState(false)

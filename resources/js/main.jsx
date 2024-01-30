@@ -8,10 +8,9 @@ import NotFound404 from "./components/NotFound404.jsx";
 import Register from "./components/Register.jsx";
 import EmailVerify from "./components/EmailVerify.jsx";
 
-//import AddEditProperty from "./components/AddEditProperty.jsx";
+import AddEditProperty from "./components/AddEditProperty.jsx";
 import FAQs from "./components/FAQs.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
-import LogIn from "./components/LogIn.jsx";
 import ChangePassword from "./components/ChangePassword.jsx";
 import ProfileDetails from "./components/ProfileDetails.jsx";
 import EditProfile from "./components/EditProfile.jsx";
@@ -21,7 +20,9 @@ import Contact from "./components/Contact.jsx";
 import Blog from "./components/Blog.jsx";
 import FirstBlogArticle from "./components/FirstBlogArticle.jsx";
 import SecondBlogArticle from "./components/SecondBlogArticle.jsx";
-//import AboutUs from "./components/AboutUs.jsx"
+import UserProperties from "./components/UserProperties.jsx";
+import SignInComponent from "./components/SignInComponent.jsx";
+import AboutUs from "./components/AboutUs.jsx"
 
 
 import "../../public/favicon.ico"
@@ -55,8 +56,7 @@ import '../../public/css/default.css';
 import 'react-modal-video/scss/modal-video.scss';
 import '../../public/css/dashbord-mobile-menu.css';
 import '../../public/css/swiper.min.css'
-//import UserProperties from "./components/UserProperties.jsx";
-import SignInComponent from "./components/SignInComponent.jsx";
+import LoginView from "@/components/LoginView.jsx";
 
 
 
@@ -71,7 +71,6 @@ function Main() {
             <div id="wrapper">
                 {/*< InfoSideBar />*/}
                 <Routes>
-                    {/*<Route path="/about-us" element={<AboutUs/>}/>*/}
                     {/*<Route path="/process" element={<Process/>}/>*/}
                     <Route path="/faqs" element={<FAQs/>}/>
                     <Route path="/" element={<HomePage/>}/>
@@ -82,17 +81,17 @@ function Main() {
                     <Route path="/signin" element={<SignInComponent />} />
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/verify/:token" element={<EmailVerify />}/>
-                    {/*<Route path="/about-us" element={<AboutUs/>}/>*/}
+                    <Route path="/about-us" element={<AboutUs/>}/>
                     <Route path="*" element={<NotFound404 />} />
                     <Route path='/change-password' element={<ChangePassword/>} />
                     <Route path='/profile-details' element={<ProfileDetails/>} />
                     <Route path='/edit-profile' element={<EditProfile/>} />
                     <Route path='/contact-us' element={<Contact/>}/>
-                    {/*<Route path='/add-property' element={<AddEditProperty/> } />*/}
-                    {/*<Route path='/edit-property' element={<AddEditProperty action={'edit'}/>} />*/}
-                    {/*<Route path='/favorite-properties' element={<UserProperties collection={'favorites'}/> } />*/}
-                    {/*<Route path='/my-properties' element={<UserProperties collection='my-properties'/> } />*/}
-
+                    <Route path='/login' element={<LoginView/>}/>
+                    <Route path='/add-property' element={<AddEditProperty/> } />
+                    <Route path='/edit-property' element={<AddEditProperty action={'edit'}/>} />
+                    <Route path='/favorite-properties' element={<UserProperties collection={'favorites'}/> } />
+                    <Route path='/my-properties' element={<UserProperties collection='my-properties'/> } />
                 </Routes>
             </div>
         </div>
