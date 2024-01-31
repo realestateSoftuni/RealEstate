@@ -10,6 +10,7 @@ use App\Models\PropertyPhoto;
 use App\Models\PropertyVideo;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -19,7 +20,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', true);
 
 
-class Properties extends Controller
+class PropertiesController extends Controller
 {
     public function add_property(Request $request)
     {
@@ -187,5 +188,22 @@ class Properties extends Controller
         $imageUrl = Storage::disk('public')->url($imagePath);
 
         return $imageUrl;
+    }
+
+    public function getAllProperties()
+    {
+        $properties = Property::orderBy('created_at', 'desc')->get();
+        return response()->json($properties);
+    }
+
+    public function show($id)
+    {
+        $property = Property::find($id);
+
+        if (!$property) {
+            return response()->json(['error' => 'Property not found'], 404);
+        }
+
+        return Response::json($property);
     }
 }

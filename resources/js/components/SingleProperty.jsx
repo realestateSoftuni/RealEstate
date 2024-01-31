@@ -4,8 +4,10 @@ import pic2 from "../../assets/SF.jpg";
 import video_pic from "../../assets/video3.png"
 import location from "../../assets/location_pic.png"
 import ModalVideo from 'react-modal-video';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import LayoutAll from "./MainLayout/LayoutAll.jsx";
+import {useNavigate, useParams} from "react-router-dom";
+import axios from "axios";
 
 function SingleProperty(){
     const settings = {
@@ -19,6 +21,28 @@ function SingleProperty(){
     };
     const [isOpen, setOpen] = useState(false);
 
+    const [property, setProperty] = useState({});
+    const { propertyId } = useParams();
+    const navigate = useNavigate();
+    const priceArea = (property.price / property.square_feet).toFixed(0)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${window.Laravel.apiUrl}/api/properties/${propertyId}`);
+                setProperty(response.data);
+            } catch (err) {
+                navigate('/*');
+                console.log(err);
+            }
+        };
+
+        fetchData();
+
+        // Ensure that you pass propertyId as a dependency to the useEffect hook
+    }, [propertyId]);
+
+
     return(
         <LayoutAll>
             <section className="single-proper blog details">
@@ -31,10 +55,10 @@ function SingleProperty(){
                                         <div className="pro-wrapper">
                                             <div className="detail-wrapper-body">
                                                 <div className="listing-title-bar">
-                                                    <h3>Luxury Villa House <span className="mrg-l-5 category-tag">For Sale</span></h3>
+                                                    <h3>{property.title}<span className="mrg-l-5 category-tag">{property.status === 'sale' ? 'For Sale' : 'For Rent'}</span></h3>
                                                     <div className="mt-0">
                                                         <a href="#listing-location" className="listing-address">
-                                                            <i className="fa fa-map-marker pr-2 ti-location-pin mrg-r-5"></i>77 - Central Park South, NYC
+                                                            <i className="fa fa-map-marker pr-2 ti-location-pin mrg-r-5"></i>{property.country}, {property.city}
                                                         </a>
                                                     </div>
                                                 </div>
@@ -42,10 +66,10 @@ function SingleProperty(){
                                             <div className="single detail-wrapper mr-2">
                                                 <div className="detail-wrapper-body">
                                                     <div className="listing-title-bar">
-                                                        <h4>$ 230,000</h4>
+                                                        <h4>$ {Number(property.price).toLocaleString('en-US')}</h4>
                                                         <div className="mt-0">
                                                             <a href="#listing-location" className="listing-address">
-                                                                <p>$ 1,200 / sq ft</p>
+                                                                <p>$ {Number(priceArea).toLocaleString('en-US')} / sq ft</p>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -75,9 +99,7 @@ function SingleProperty(){
                                     </div>
                                     <div className="blog-info details mb-30">
                                         <h5 className="mb-4">Description</h5>
-                                        <p className="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit, alias fuga aliquam quod tempora a nisi esse magnam nulla quas! Error praesentium, vero dolorum laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit.</p>
-                                        <p className="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit, alias fuga aliquam quod tempora a nisi esse magnam nulla quas! Error praesentium, vero dolorum laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit.</p>
-                                        <p className="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit, alias fuga aliquam quod tempora a nisi esse magnam nulla quas! Error praesentium, vero dolorum laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum rerum beatae consequatur, totam fugit.</p>
+                                        <p className="mb-3">{property.description}</p>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +112,7 @@ function SingleProperty(){
                                     </li>
                                     <li>
                                         <span className="font-weight-bold mr-1">Property Type:</span>
-                                        <span className="det">House</span>
+                                        <span className="det">{property.property_type}</span>
                                     </li>
                                     <li>
                                         <span className="font-weight-bold mr-1">Property status:</span>
@@ -98,19 +120,19 @@ function SingleProperty(){
                                     </li>
                                     <li>
                                         <span className="font-weight-bold mr-1">Property Price:</span>
-                                        <span className="det">$230,000</span>
+                                        <span className="det">${Number(property.price).toLocaleString('en-US')}</span>
                                     </li>
                                     <li>
                                         <span className="font-weight-bold mr-1">Rooms:</span>
-                                        <span className="det">6</span>
+                                        <span className="det">{property.rooms}</span>
                                     </li>
                                     <li>
                                         <span className="font-weight-bold mr-1">Bedrooms:</span>
-                                        <span className="det">7</span>
+                                        <span className="det">{property.bedrooms}</span>
                                     </li>
                                     <li>
                                         <span className="font-weight-bold mr-1">Bath:</span>
-                                        <span className="det">4</span>
+                                        <span className="det">{property.bathrooms}</span>
                                     </li>
                                     <li>
                                         <span className="font-weight-bold mr-1">Garages:</span>
@@ -118,7 +140,7 @@ function SingleProperty(){
                                     </li>
                                     <li>
                                         <span className="font-weight-bold mr-1">Year Built:</span>
-                                        <span className="det">10/6/2020</span>
+                                        <span className="det">{property.build}</span>
                                     </li>
                                 </ul>
                                 <h5 className="mt-5">Amenities</h5>

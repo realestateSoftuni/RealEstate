@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\API\Properties;
+use App\Http\Controllers\API\PropertiesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +24,9 @@ Route::get('verify/{token}', [AuthController::class,'verify']);
 
 Route::post('/create_user', [AuthController::class, 'create_user'])->name('create_user');
 
-Route::post('/add_property', [Properties::class, 'add_property'])->name('add_property');
+Route::post('/add_property', [PropertiesController::class, 'add_property'])->name('add_property');
+
+Route::get('/all-properties', [PropertiesController::class, 'getAllProperties']);
+
+Route::get('/properties/{id}', [PropertiesController::class, 'show']);
+
