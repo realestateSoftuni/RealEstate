@@ -20,21 +20,24 @@ function SingleProperty(){
         className: 'inner-slider-div'
     };
     const [isOpen, setOpen] = useState(false);
-
     const [property, setProperty] = useState({});
+    const [images, setImages] = useState([]);
+    const [plans, setPlans] = useState([]);
+    const [videoId, setVideoId] =useState();
+    const [features, setFeatures] = useState([]);
     const { propertyId } = useParams();
     const navigate = useNavigate();
     const priceArea = (property.price / property.square_feet).toFixed(0)
-    // const images = property.property_photos;
-    let videoId = '';
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`${window.Laravel.apiUrl}/api/properties/${propertyId}`);
                 setProperty(response.data);
-                videoId = extractVideoId(response.data.property_videos[0].video_url)
-                console.log(videoId)
+                setVideoId(extractVideoId(response.data.property_videos[0].video_url));
+                setImages(response.data.property_photos);
+                setFeatures(response.data.property_features);
+                setPlans(response.data.property_floor_plans);
             } catch (err) {
                 navigate('/*');
                 console.log(err);
@@ -72,7 +75,7 @@ function SingleProperty(){
                                             <div className="single detail-wrapper mr-2">
                                                 <div className="detail-wrapper-body">
                                                     <div className="listing-title-bar">
-                                                        <h4>$ {Number(property.price).toLocaleString('en-US')}</h4>
+                                                        <h4 className='price'>$ {Number(property.price).toLocaleString('en-US')}</h4>
                                                         <div className="mt-0">
                                                             <a href="#listing-location" className="listing-address">
                                                                 <p>$ {Number(priceArea).toLocaleString('en-US')} / sq ft</p>
@@ -86,12 +89,12 @@ function SingleProperty(){
                                     <div id="listingDetailsSlider" className="carousel listing-details-sliders slide mb-30">
                                         <h5 className="mb-4">Gallery</h5>
                                         <div className="carousel-inner">
-                                            {/*<Slider {...settings}>*/}
-                                            {/*    {images.map((img) => <div key={img.id} >*/}
-                                            {/*        <img className='property-img' src={img.photo_url} />*/}
-                                            {/*    </div>*/}
-                                            {/*    )}*/}
-                                            {/*</Slider>*/}
+                                            <Slider {...settings}>
+                                                {images.map((img) => <div key={img.id} >
+                                                    <img className='property-img' src={img.photo_url} />
+                                                </div>
+                                                )}
+                                            </Slider>
                                         </div>
                                     </div>
                                     <div className="blog-info details mb-30">
@@ -142,22 +145,22 @@ function SingleProperty(){
                                 </ul>
                                 <h5 className="mt-5">Amenities</h5>
                                 <ul className="homes-list clearfix">
-                                    {/*{(property.property_features).map((feature) =>*/}
-                                    {/*    <li>*/}
-                                    {/*        <i className="fa fa-check-square" aria-hidden="true"></i>*/}
-                                    {/*        <span>{feature.feature_name}</span>*/}
-                                    {/*    </li>*/}
-                                    {/*)}*/}
+                                    {(features).map((feature) =>
+                                        <li>
+                                            <i className="fa fa-check-square" aria-hidden="true"></i>
+                                            <span>{feature.feature_name}</span>
+                                        </li>
+                                    )}
                                 </ul>
                             </div>
                             <div className="floor-plan property wprt-image-video w50 pro">
                                 <h5>Floor Plans</h5>
-                                {/*<Slider {...settings}>*/}
-                                {/*    /!*{(property.property_floorPlans).map((img) => <div key={img.id} >*!/*/}
-                                {/*    /!*        <img className='property-img' src={img.photo_url} />*!/*/}
-                                {/*    /!*    </div>*!/*/}
-                                {/*    /!*)}*!/*/}
-                                {/*</Slider>*/}
+                                <Slider {...settings}>
+                                    {(plans).map((plan) => <div key={plan.id} >
+                                            <img className='property-img' src={plan.image_url} />
+                                        </div>
+                                    )}
+                                </Slider>
                             </div>
                             <div className="property wprt-image-video w50 pro">
                                 <h5>Property Video</h5>
@@ -220,16 +223,16 @@ function SingleProperty(){
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="main-search-field-2">
-                                        <div className="widget-boxed popular mt-5">
-                                            <div className="widget-boxed-header">
-                                                <h4>Specials of the day</h4>
-                                            </div>
-                                            <div className="widget-boxed-body">
-                                                <div className="banner"><img src="images/single-property/banner.jpg" alt=""/></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {/*<div className="main-search-field-2">*/}
+                                    {/*    <div className="widget-boxed popular mt-5">*/}
+                                    {/*        <div className="widget-boxed-header">*/}
+                                    {/*            <h4>Specials of the day</h4>*/}
+                                    {/*        </div>*/}
+                                    {/*        <div className="widget-boxed-body">*/}
+                                    {/*            <div className="banner"><img src="images/single-property/banner.jpg" alt=""/></div>*/}
+                                    {/*        </div>*/}
+                                    {/*    </div>*/}
+                                    {/*</div>*/}
                                 </div>
                             </div>
                         </aside>

@@ -22308,6 +22308,10 @@ form label.error {
     text-transform: capitalize;
 }
 
+h4.price {
+    min-width: max-content;
+}
+
 .inner-pages .property-form-group label, .inner-pages .property-form-group h4 {
     color: #333;
     display: inline-block;
