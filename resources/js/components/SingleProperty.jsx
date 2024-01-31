@@ -25,22 +25,28 @@ function SingleProperty(){
     const { propertyId } = useParams();
     const navigate = useNavigate();
     const priceArea = (property.price / property.square_feet).toFixed(0)
+    // const images = property.property_photos;
+    let videoId = '';
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`${window.Laravel.apiUrl}/api/properties/${propertyId}`);
                 setProperty(response.data);
+                videoId = extractVideoId(response.data.property_videos[0].video_url)
+                console.log(videoId)
             } catch (err) {
                 navigate('/*');
                 console.log(err);
             }
         };
-
         fetchData();
-
-        // Ensure that you pass propertyId as a dependency to the useEffect hook
     }, [propertyId]);
+
+    function extractVideoId(url) {
+        const searchParams = new URLSearchParams(new URL(url).search);
+        return searchParams.get("v");
+    }
 
 
     return(
@@ -80,21 +86,12 @@ function SingleProperty(){
                                     <div id="listingDetailsSlider" className="carousel listing-details-sliders slide mb-30">
                                         <h5 className="mb-4">Gallery</h5>
                                         <div className="carousel-inner">
-                                            <Slider {...settings}>
-                                                <div>
-                                                    <img className='property-img' src={pic} />
-                                                </div>
-                                                <div>
-                                                    <img className='property-img' src={pic2} />
-                                                </div>
-                                                <div>
-                                                    <img className='property-img' src={pic} />
-                                                </div>
-                                                <div>
-                                                    <img className='property-img' src={pic2} />
-                                                </div>
-                                            </Slider>
-
+                                            {/*<Slider {...settings}>*/}
+                                            {/*    {images.map((img) => <div key={img.id} >*/}
+                                            {/*        <img className='property-img' src={img.photo_url} />*/}
+                                            {/*    </div>*/}
+                                            {/*    )}*/}
+                                            {/*</Slider>*/}
                                         </div>
                                     </div>
                                     <div className="blog-info details mb-30">
@@ -108,19 +105,19 @@ function SingleProperty(){
                                 <ul className="homes-list clearfix">
                                     <li>
                                         <span className="font-weight-bold mr-1">Property ID:</span>
-                                        <span className="det">V254680</span>
+                                        <span className="det">{property.id}</span>
                                     </li>
                                     <li>
                                         <span className="font-weight-bold mr-1">Property Type:</span>
                                         <span className="det">{property.property_type}</span>
                                     </li>
                                     <li>
-                                        <span className="font-weight-bold mr-1">Property status:</span>
-                                        <span className="det">For Sale</span>
+                                        <span className="font-weight-bold mr-1">Property area:</span>
+                                        <span className="det">{Number(property.square_feet).toLocaleString('en-US')} Sq ft </span>
                                     </li>
                                     <li>
-                                        <span className="font-weight-bold mr-1">Property Price:</span>
-                                        <span className="det">${Number(property.price).toLocaleString('en-US')}</span>
+                                        <span className="font-weight-bold mr-1">Floor:</span>
+                                        <span className="det">{property.floor}</span>
                                     </li>
                                     <li>
                                         <span className="font-weight-bold mr-1">Rooms:</span>
@@ -131,12 +128,12 @@ function SingleProperty(){
                                         <span className="det">{property.bedrooms}</span>
                                     </li>
                                     <li>
-                                        <span className="font-weight-bold mr-1">Bath:</span>
+                                        <span className="font-weight-bold mr-1">Bathrooms:</span>
                                         <span className="det">{property.bathrooms}</span>
                                     </li>
                                     <li>
-                                        <span className="font-weight-bold mr-1">Garages:</span>
-                                        <span className="det">2</span>
+                                        <span className="font-weight-bold mr-1">Construction:</span>
+                                        <span className="det">{property.construction}</span>
                                     </li>
                                     <li>
                                         <span className="font-weight-bold mr-1">Year Built:</span>
@@ -145,47 +142,22 @@ function SingleProperty(){
                                 </ul>
                                 <h5 className="mt-5">Amenities</h5>
                                 <ul className="homes-list clearfix">
-                                    <li>
-                                        <i className="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Air Cond</span>
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Balcony</span>
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Internet</span>
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Dishwasher</span>
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Bedding</span>
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Cable TV</span>
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Parking</span>
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Pool</span>
-                                    </li>
-                                    <li>
-                                        <i className="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Fridge</span>
-                                    </li>
+                                    {/*{(property.property_features).map((feature) =>*/}
+                                    {/*    <li>*/}
+                                    {/*        <i className="fa fa-check-square" aria-hidden="true"></i>*/}
+                                    {/*        <span>{feature.feature_name}</span>*/}
+                                    {/*    </li>*/}
+                                    {/*)}*/}
                                 </ul>
                             </div>
                             <div className="floor-plan property wprt-image-video w50 pro">
                                 <h5>Floor Plans</h5>
-                                <img alt="image" src="images/bg/floor-plan-1.png"/>
+                                {/*<Slider {...settings}>*/}
+                                {/*    /!*{(property.property_floorPlans).map((img) => <div key={img.id} >*!/*/}
+                                {/*    /!*        <img className='property-img' src={img.photo_url} />*!/*/}
+                                {/*    /!*    </div>*!/*/}
+                                {/*    /!*)}*!/*/}
+                                {/*</Slider>*/}
                             </div>
                             <div className="property wprt-image-video w50 pro">
                                 <h5>Property Video</h5>
@@ -194,7 +166,7 @@ function SingleProperty(){
                                         channel="youtube"
                                         youtube={{ mute: 0, autoplay: 0 }}
                                         isOpen={isOpen}
-                                        videoId="14semTlwyUY"
+                                        videoId={videoId}
                                         onClose={() => setOpen(false)}
                                     />
                                     <img alt="image" src={video_pic}/>
@@ -222,19 +194,18 @@ function SingleProperty(){
                                 <div className="sidebar">
                                     <div className="widget-boxed mt-33 mt-5">
                                         <div className="widget-boxed-header">
-                                            <h4>Agent Information</h4>
+                                            <h4>Seller Information</h4>
                                         </div>
                                         <div className="widget-boxed-body">
                                             <div className="sidebar-widget author-widget2">
                                                 <div className="author-box clearfix">
-                                                    <img src="images/testimonials/ts-1.jpg" alt="author-image" className="author__img"/>
-                                                        <h4 className="author__title">Lisa Clark</h4>
-                                                        <p className="author__meta">Agent of Property</p>
+                                                    {/*<img src="images/testimonials/ts-1.jpg" alt="author-image" className="author__img"/>*/}
+                                                    {property.name && <h4 className="author__title">{property.name}</h4>}
                                                 </div>
                                                 <ul className="author__contact">
-                                                    <li><span className="la la-map-marker"><i className="fa fa-map-marker"></i></span>302 Av Park, New York</li>
-                                                    <li><span className="la la-phone"><i className="fa fa-phone" aria-hidden="true"></i></span><a href="#">(234) 0200 17813</a></li>
-                                                    <li><span className="la la-envelope-o"><i className="fa fa-envelope" aria-hidden="true"></i></span><a href="#">lisa@gmail.com</a></li>
+                                                    {/*<li><span className="la la-map-marker"><i className="fa fa-map-marker"></i></span>302 Av Park, New York</li>*/}
+                                                    {property.phone && <li><span className="la la-phone"><i className="fa fa-phone" aria-hidden="true"></i></span><a href="#">{property.phone}</a></li>}
+                                                    <li><span className="la la-envelope-o"><i className="fa fa-envelope" aria-hidden="true"></i></span><a href="#">{property.email}</a></li>
                                                 </ul>
                                                 <div className="agent-contact-form-sidebar">
                                                     <h4>Request Inquiry</h4>
