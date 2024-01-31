@@ -1,4 +1,6 @@
+
 import LayoutAll from "../components/MainLayout/LayoutAll.jsx";
+
 
 
 function AboutUs() {
@@ -22,6 +24,7 @@ function AboutUs() {
                                 </div>
                                 <div className="pftext">
                                     <p> Welcome to Home-Estate, where we turn dreams of home ownership into reality.
+
                                         I'm Richard Burnet, the proud manager of this exceptional team, and it's my pleasure
                                         to introduce you to the heart and soul of our real estate family.</p>
 
@@ -29,6 +32,7 @@ function AboutUs() {
                                         manager,
                                         I want to personally assure you that our commitment to excellence is at the
                                         forefront of everything we do.
+
 
                                         Having spent 10 years in the real estate industry, I've witnessed the transformative
                                         power of finding the perfect home or making a smart investment. It's not just about
@@ -69,6 +73,7 @@ function AboutUs() {
                             <article className="col-lg-4 col-md-6 col-xs-12 serv" data-aos="fade-up">
                                 <div className="serv-flex">
                                     <div className="art-1 img-13">
+
                                         <img src="/images/icons/icon-4.svg" alt="" />
                                         <h3>Wide Renge Of Properties</h3>
                                     </div>
@@ -91,6 +96,7 @@ function AboutUs() {
                                         <p className="text-center">Trusted by thousands, our commitment to reliability and
                                             integrity has earned us a strong reputation in the community. With a track record
                                             of satisfied clients and enduring relationships, we take pride in being a trusted
+
                                             partner for your needs.</p>
                                     </div>
                                 </div>
@@ -98,7 +104,7 @@ function AboutUs() {
                             <article className="col-lg-4 col-md-6 col-xs-12 serv mb-0 pt" data-aos="fade-up">
                                 <div className="serv-flex arrow">
                                     <div className="art-1 img-15">
-                                        <img src="/images/icons/icon-6.svg" alt="" />
+                                        <img src="/images/icons/i-7.svg" alt=""/>
                                         <h3>Financing made easy</h3>
                                     </div>
                                     <div className="service-text-p">
@@ -235,6 +241,7 @@ function AboutUs() {
                         </div>
                         <div className="owl-carousel style2 owl-loaded owl-drag">
                             <div className="owl-stage">
+
                                 <div className="owl-item"><img src="images/partners/11.jpg" alt="" /></div>
                                 <div className="owl-item"><img src="images/partners/12.jpg" alt="" /></div>
                                 <div className="owl-item"><img src="images/partners/13.jpg" alt="" /></div>

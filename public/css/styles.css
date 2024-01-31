@@ -1947,9 +1947,11 @@ section.recently.portfolio {
 }
 
 .recently .button-effect .fa-video:before {
-    content: "\f03d";
-    font-family: FontAwesome;
-    color: #000;
+  content: "\f03d";
+  font-family: FontAwesome;
+  color: initial;
+  padding-left: 0.5rem;
+
 }
 
 .recently .button-effect .fa-photo:before {
@@ -4433,24 +4435,29 @@ div.partners {
 }
 
 .partners .style2 img {
-    width: 100%;
-    opacity: 0.5;
-    background: transparent;
-    cursor: pointer;
-    -webkit-transition: all .5s ease;
-    transition: all .5s ease;
+
+  width: 100%;
+  opacity: 1;
+  padding-left: 15px;
+  background: transparent;
+  cursor: pointer;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+
 }
 
 /*-----------------------------------*/
 /*------ 14. SECTION COUNTER UP -----*/
 /*-----------------------------------*/
 section.counterup {
-    padding: 6rem 0;
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0.8))), url(../images/bg/different-color-apartments-near-each-other-with-clear-sky.jpg) no-repeat center center;
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../images/bg/different-color-apartments-near-each-other-with-clear-sky.jpg) no-repeat center center;
-    background-attachment: fixed;
-    color: #fff;
-    text-align: center;
+
+  padding: 6rem 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.8)), to(rgba(255, 255, 255, 0.8))), url(../images/bg/modern-business-building-scenery-touching-sky.jpg) no-repeat center center;
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../images/bg/modern-business-building-scenery-touching-sky.jpg) no-repeat center center;
+  background-attachment: fixed;
+  color: #fff;
+  text-align: center;
+
 }
 
 .counterup .section-title {
@@ -5255,8 +5262,9 @@ element.style {
 }
 
 .homepage-2 .btn.btn-yellow:hover {
-    background: #fff !important;
-    color: #687389;
+  background: #fff !important;
+  color: #b0793b;
+
 }
 
 .homepage-2 .info-help:before {
@@ -7080,8 +7088,8 @@ a.button,
 .homepage-5 .rld-banner-tab .nav-item a:hover,
 .homepage-5 .rld-banner-tab .nav-item a:focus,
 .homepage-5 .rld-banner-tab .nav-item a.active {
-    background: #3e4452;
-    color: #fff;
+  background: #b0793b;
+  color: #fff;
 }
 
 .homepage-5 .btn-yellow {
@@ -40085,11 +40093,11 @@ a.button {
 .inner-pages.hp-6.full .parallax-searchs .form-group .nice-select:hover,
 .inner-pages.hp-6.full .dropdown-filter span::after,
 .inner-pages.hp-6.full .btn.btn-yellow:hover {
-    color: #FF385C;
+  color: #b0793b;
 }
 
 .inner-pages.hp-6.full .btn.btn-yellow {
-    background: #FF385C;
+  background: #b0793b;
 }
 
 .inner-pages.hp-6.full .nice-select.wide {
@@ -45140,9 +45148,10 @@ header.payment-card-header .pull-right img {
     height: 30vh;
 }
 
-.inner-pages .about .headings {
-    background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat center center;
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/3d-rendering-business-meeting-working-room-office-building.jpg) no-repeat bottom;
+
+.inner-pages.about .headings {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 27, 34, 0.6)), to(rgba(18, 27, 34, 0.6))), url(../images/bg/low.jpg) no-repeat center center;
+  background: linear-gradient(rgba(18, 27, 34, 0.6), rgba(18, 27, 34, 0.6)), url(../images/bg/low.jpg) no-repeat center center;
 }
 
 .inner-pages .headings h1 {
@@ -45253,9 +45262,10 @@ header.payment-card-header .pull-right img {
     padding-bottom: 0rem;
 }
 
-.inner-pages .about h2 span {
-    font-weight: 600;
-    color: #b0793b;
+
+.inner-pages.about .sec-title h2 span {
+  font-weight: 600;
+  color: #b0793b;
 }
 
 .inner-pages .about .sec-title h2 span::before {

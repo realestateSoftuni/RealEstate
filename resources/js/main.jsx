@@ -11,6 +11,11 @@ import EmailVerify from "./components/EmailVerify.jsx";
 import AddEditProperty from "./components/AddEditProperty.jsx";
 import FAQs from "./components/FAQs.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
+import SignInComponent from "./components/SignInComponent.jsx";
+import AboutUs from "./components/AboutUs.jsx";
+import Listing from "./components/ListingPage/Listing.jsx";
+import LogIn from "./components/LogIn.jsx";
+
 import ChangePassword from "./components/ChangePassword.jsx";
 import ProfileDetails from "./components/ProfileDetails.jsx";
 import EditProfile from "./components/EditProfile.jsx";
@@ -20,9 +25,7 @@ import Contact from "./components/Contact.jsx";
 import Blog from "./components/Blog.jsx";
 import FirstBlogArticle from "./components/FirstBlogArticle.jsx";
 import SecondBlogArticle from "./components/SecondBlogArticle.jsx";
-import UserProperties from "./components/UserProperties.jsx";
-import SignInComponent from "./components/SignInComponent.jsx";
-import AboutUs from "./components/AboutUs.jsx"
+
 
 
 import "../../public/favicon.ico"
@@ -56,8 +59,7 @@ import '../../public/css/default.css';
 import 'react-modal-video/scss/modal-video.scss';
 import '../../public/css/dashbord-mobile-menu.css';
 import '../../public/css/swiper.min.css'
-import LoginView from "@/components/LoginView.jsx";
-
+//import UserProperties from "./components/UserProperties.jsx";
 
 
 
@@ -71,6 +73,10 @@ function Main() {
             <div id="wrapper">
                 {/*< InfoSideBar />*/}
                 <Routes>
+
+                    <Route path='/for-sale' element={<Listing collection='for-sale'/> } />
+                    <Route path='/for-rent' element={<Listing collection='for-rent'/> } />
+
                     {/*<Route path="/process" element={<Process/>}/>*/}
                     <Route path="/faqs" element={<FAQs/>}/>
                     <Route path="/" element={<HomePage/>}/>

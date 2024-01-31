@@ -38,11 +38,19 @@ function HeaderBar(){
                                 <ul id="responsive">
                                     <li><a href="#">Listing</a>
                                         <ul>
-                                            <li><a href="#">Sale</a></li>
-                                            <li><a href="#">Rent</a></li>
+
+                                            <li><Link to='/for-sale'>For Sale</Link></li>
+                                            <li><Link to='/for-rent'>For Rent</Link></li>
                                         </ul>
                                     </li>
-                                    <li><Link to='/about-us'>About Us</Link>
+                                    <li>
+                                        <Link to='/about-us'>About Us</Link>
+                                    </li>
+                                    <li>
+                                        <Link to={'/property'}>Property</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/blog">Blog</Link>
                                     </li>
                                     <li><Link to={'/property'}>Property</Link></li>
                                     <li><Link to="/blog">Blog</Link>
