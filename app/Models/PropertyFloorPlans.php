@@ -6,26 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class PropertyFeature extends Model
+class PropertyFloorPlans extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'feature_name',
-        'update_count',
+        'image_url',
+        'update_count'
     ];
 
-    public function properties()
+    public function property()
     {
         return $this->belongsTo(Property::class);
     }
 
     protected static function booted()
     {
-        static::saving(function ($propertyFeature) {
+        static::saving(function ($plan) {
             // Increment 'update_count' when any field other than 'update_count' is being updated
-            if ($propertyFeature->isDirty() && !$propertyFeature->isDirty('update_count')) {
-                $propertyFeature->update_count += 1;
+            if ($plan->isDirty() && !$plan->isDirty('update_count')) {
+                $plan->update_count += 1;
             }
         });
     }

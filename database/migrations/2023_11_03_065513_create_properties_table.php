@@ -11,29 +11,42 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->string('address')->unique(); // Assuming addresses are unique
-            $table->unsignedBigInteger('location_id');
-            $table->unsignedBigInteger('agent_id')->nullable();
-            $table->unsignedBigInteger('property_energy_rating_id')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->enum('status', [Property::STATUS_RENT, Property::STATUS_SALE]);
+            $table->text('title');
+            $table->text('description')->nullable();
+            $table->enum('property_type', [Property::TYPE_APARTMENT, Property::TYPE_HOUSE, Property::TYPE_LOT, Property::TYPE_COMMERCIAL, Property::TYPE_GARAGE]);
+            $table->integer('rooms');
             $table->decimal('price', 15, 2); // Assuming 15 digits in total and 2 after the decimal
-            $table->integer('bedrooms');
             $table->decimal('square_feet', 15, 2);
-            $table->text('description');
-            $table->enum('status', [Property::STATUS_AVAILABLE, Property::STATUS_RENTED, Property::STATUS_SOLD])->default(Property::STATUS_AVAILABLE);
-            $table->enum('property_type', [Property::TYPE_APARTMENT, Property::TYPE_HOUSE, Property::TYPE_LAND]);
-            $table->date('date_listed');
+            $table->year('build')->nullable();
+            $table->string('country');
+            $table->string('state')->nullable();
+            $table->string('city');
+            $table->string('address')->nullable();
+            $table->decimal('latitude', 9, 6)->nullable();
+            $table->decimal('longitude', 9, 6)->nullable();
+            $table->integer('floor')->nullable();
+            $table->enum('construction', [Property::CONSTRUCTION_BRICK, Property::CONSTRUCTION_GANGED, Property::CONSTRUCTION_PREFABRICATED, Property::CONSTRUCTION_PANEL])->nullable();
+            $table->integer('bedrooms')->nullable();
+            $table->integer('bathrooms')->nullable();
+            $table->enum('heating', [Property::HEATING_CENTRAL, Property::HEATING_GAS, Property::HEATING_AIR_CONDITIONING])->nullable();
+            $table->string('name');
+            $table->string('username');
+            $table->string('email');
+            $table->string('phone')->nullable();
+
+//            $table->date();
             $table->integer('update_count')->default(0);
             $table->softDeletes();
             $table->timestamps();
 
             // Foreign keys
-            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
-            $table->foreign('property_energy_rating_id')->references('id')->on('property_energy_ratings')->onDelete('cascade');
-            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('set null');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             // Indexes
-            $table->index('location_id');
-            $table->index('agent_id');
+            $table->index('city');
+            $table->index('user_id');
             $table->index('price');
         });
     }

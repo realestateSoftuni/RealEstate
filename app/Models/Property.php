@@ -10,35 +10,59 @@ class Property extends Model
 {
     use HasFactory, SoftDeletes;
 
-    const STATUS_AVAILABLE = 'available';
-    const STATUS_SOLD = 'sold';
-    const STATUS_RENTED = 'rented';
+    const STATUS_SALE = 'Sale';
+    const STATUS_RENT = 'Rent';
 
-    const TYPE_HOUSE = 'house';
-    const TYPE_APARTMENT = 'apartment';
-    const TYPE_LAND = 'land';
+    const TYPE_HOUSE = 'House';
+    const TYPE_APARTMENT = 'Apartment';
+    const TYPE_COMMERCIAL = 'Commercial';
+    const TYPE_LOT = 'Lot';
+    const TYPE_GARAGE = 'Garage';
+
+    const CONSTRUCTION_BRICK = 'Brick';
+    const CONSTRUCTION_GANGED = 'Ganged Wall Form';
+    const CONSTRUCTION_PREFABRICATED = 'Prefabricated';
+    const CONSTRUCTION_PANEL = 'Panel-build';
+
+    const HEATING_GAS = 'Gas';
+    const HEATING_AIR_CONDITIONING = 'Air Conditioning';
+    const HEATING_CENTRAL = 'Central heating';
 
     protected $fillable = [
-        'address',
-        'location_id',
-        'price',
-        'bedrooms',
-        'square_feet',
+        'title',
         'description',
         'status',
         'property_type',
-        'date_listed',
-        'update_count'
+        'rooms',
+        'price',
+        'square_feet',
+        'build',
+        'address',
+        'city',
+        'state',
+        'country',
+        'latitude',
+        'longitude',
+        'floor',
+        'construction',
+        'bedrooms',
+        'bathrooms',
+        'heating',
+        'name',
+        'username',
+        'email',
+        'phone',
+        'update_count',
     ];
+//
+//    public function location()
+//    {
+//        return $this->belongsTo(Location::class);
+//    }
 
-    public function location()
+    public function user()
     {
-        return $this->belongsTo(Location::class);
-    }
-
-    public function agent()
-    {
-        return $this->belongsTo(Agent::class);
+        return $this->belongsTo(User::class);
     }
 
     public function property_features()  // Adjusted the relationship to many-to-many
@@ -54,6 +78,16 @@ class Property extends Model
     public function property_photos()
     {
         return $this->hasMany(PropertyPhoto::class);
+    }
+
+    public function property_floor_plans()
+    {
+        return $this->hasMany(PropertyFloorPlans::class);
+    }
+
+    public function property_videos()
+    {
+        return $this->hasMany(PropertyVideo::class);
     }
 
     public function property_mortgage_details()

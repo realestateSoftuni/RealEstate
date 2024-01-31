@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\API\Properties;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('verify/{token}', [AuthController::class,'verify']);
 
 Route::post('/create_user', [AuthController::class, 'create_user'])->name('create_user');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+Route::post('/add_property', [Properties::class, 'add_property'])->name('add_property');
