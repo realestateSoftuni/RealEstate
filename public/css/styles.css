@@ -27962,6 +27962,16 @@ section.portfolio {
     color: #FF385C;
 }
 
+.loading-container p{
+    font-size: large;
+    margin-top: 25px;
+}
+
+.loading-container {
+    text-align: center;
+    margin: 30px;
+}
+
 .portfolio .homes-content .homes-list li i {
     font-size: 1rem;
     margin-right: 5px;
