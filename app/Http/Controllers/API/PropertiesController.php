@@ -190,10 +190,10 @@ class PropertiesController extends Controller
         return $imageUrl;
     }
 
-    public function getAllProperties()
+    public function getAllProperties($status)
     {
-        $properties = Property::orderBy('created_at', 'desc')->get();
-        return response()->json($properties);
+        $properties = Property::with('property_photos', 'property_videos') -> where('status', $status)->get();
+        return Response::json($properties);
     }
 
     public function show($id)

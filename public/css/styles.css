@@ -27762,6 +27762,11 @@ section.portfolio {
 .homes-img {
     position: relative;
     overflow: hidden;
+    height: 250px;
+}
+
+.img-responsive {
+    height: 100%;
 }
 
 .homes-tag.featured {
@@ -27892,14 +27897,13 @@ section.portfolio {
     font-size: 1.2rem;
     font-weight: 600;
     color: #444;
-    margin-bottom: 3px;
+    height: 45px;
 }
 
 .portfolio .homes-content h3 a {
     font-size: 1.2rem;
     font-weight: 600;
     color: #444;
-    margin-bottom: 3px;
     text-decoration: none;
     -webkit-transition: all .3s ease;
     transition: all .3s ease;

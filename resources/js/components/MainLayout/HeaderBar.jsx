@@ -38,9 +38,8 @@ function HeaderBar(){
                                 <ul id="responsive">
                                     <li><a href="#">Listing</a>
                                         <ul>
-
-                                            <li><Link to='/for-sale'>For Sale</Link></li>
-                                            <li><Link to='/for-rent'>For Rent</Link></li>
+                                            <li><Link to='/for-sale' state= {{ action: 'Sale'}}>For Sale</Link></li>
+                                            <li><Link to='/for-rent' state= {{ action: 'Rent'}}>For Rent</Link></li>
                                         </ul>
                                     </li>
                                     <li>

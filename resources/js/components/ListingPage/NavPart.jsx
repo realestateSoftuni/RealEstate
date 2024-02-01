@@ -3,7 +3,7 @@ function NavPart() {
         <nav aria-label="..." className="pt-3">
             <ul className="pagination grid-3">
                 <li className="page-item disabled">
-                    <a className="page-link" href="#" tabindex="-1">Previous</a>
+                    <a className="page-link" href="#" tabIndex="-1">Previous</a>
                 </li>
                 <li className="page-item active">
                     <a className="page-link" href="#">1 <span className="sr-only">(current)</span></a>

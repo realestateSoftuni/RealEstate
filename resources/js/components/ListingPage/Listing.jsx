@@ -6,10 +6,14 @@ import PropertiesInListing from "./PropertiesInListing.jsx";
 import NavPart from "./NavPart.jsx";
 import LayoutAll from "../MainLayout/LayoutAll.jsx";
 import AdvancedSearch from "../SearchBar/AdvancedSearch.jsx";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {useLocation, useNavigate} from "react-router-dom";
 
 function Listing(collection) {
     // 'collection' give us info to filter what the client is searching for ('Sale' or 'Rent' values)
-    console.log(collection);
+    const location = useLocation()
+    const currentAction = location.state.action
 
     return (
 
@@ -19,8 +23,8 @@ function Listing(collection) {
                 <section className="properties-list featured portfolio blog">
                     <div className="container">
                         <AdvancedSearch/>
-                        <SearchResult/>
-                        <PropertiesInListing/>
+                        {/*<SearchResult/>*/}
+                        <PropertiesInListing state={{action: {currentAction}}}/>
                         <NavPart/>
                     </div>
                 </section>

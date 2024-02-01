@@ -1,6 +1,5 @@
 import Slider from "react-slick";
-import pic from "../../assets/LA.jpg";
-import pic2 from "../../assets/SF.jpg";
+import { extractVideoId } from "../utils/functions.js";
 import video_pic from "../../assets/video3.png"
 import location from "../../assets/location_pic.png"
 import ModalVideo from 'react-modal-video';
@@ -46,10 +45,7 @@ function SingleProperty(){
         fetchData();
     }, [propertyId]);
 
-    function extractVideoId(url) {
-        const searchParams = new URLSearchParams(new URL(url).search);
-        return searchParams.get("v");
-    }
+
 
 
     return(
