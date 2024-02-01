@@ -76,7 +76,6 @@ function AddEditProperty() {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            console.log(response);
             setSuccess(response.data.message || 'Your property has been added successfully'); // Set success message
             setIsLoading(false);
 

@@ -1504,7 +1504,7 @@ module.exports = !$assign || _dereq_(35)(function () {
 } : $assign;
 
 },{"119":119,"35":35,"47":47,"78":78,"81":81,"82":82}],71:[function(_dereq_,module,exports){
-// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
+// 19.1.2.2 / 15.2.3.5 Object.create(O [, PropertiesController])
 var anObject = _dereq_(7);
 var dPs = _dereq_(73);
 var enumBugKeys = _dereq_(31);
@@ -4071,12 +4071,12 @@ $export($export.S + $export.F, 'Object', { assign: _dereq_(70) });
 
 },{"33":33,"70":70}],191:[function(_dereq_,module,exports){
 var $export = _dereq_(33);
-// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
+// 19.1.2.2 / 15.2.3.5 Object.create(O [, PropertiesController])
 $export($export.S, 'Object', { create: _dereq_(71) });
 
 },{"33":33,"71":71}],192:[function(_dereq_,module,exports){
 var $export = _dereq_(33);
-// 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
+// 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, PropertiesController)
 $export($export.S + $export.F * !_dereq_(29), 'Object', { defineProperties: _dereq_(73) });
 
 },{"29":29,"33":33,"73":73}],193:[function(_dereq_,module,exports){
@@ -5447,11 +5447,11 @@ $export($export.S + $export.F * !USE_NATIVE, 'Symbol', {
 });
 
 $export($export.S + $export.F * !USE_NATIVE, 'Object', {
-  // 19.1.2.2 Object.create(O [, Properties])
+  // 19.1.2.2 Object.create(O [, PropertiesController])
   create: $create,
   // 19.1.2.4 Object.defineProperty(O, P, Attributes)
   defineProperty: $defineProperty,
-  // 19.1.2.3 Object.defineProperties(O, Properties)
+  // 19.1.2.3 Object.defineProperties(O, PropertiesController)
   defineProperties: $defineProperties,
   // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
   getOwnPropertyDescriptor: $getOwnPropertyDescriptor,

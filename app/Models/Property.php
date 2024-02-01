@@ -67,7 +67,7 @@ class Property extends Model
 
     public function property_features()  // Adjusted the relationship to many-to-many
     {
-        return $this->belongsToMany(PropertyFeature::class);
+        return $this->hasMany(PropertyFeature::class);
     }
 
     public function property_reviews()

@@ -11,10 +11,10 @@ Version      : 1.2
 
 1. Typography
 2. Section Headings
-3. Section Recently Properties
+3. Section Recently PropertiesController
 4. Section Welcome
 5. Section Property Services
-6. Section Featured Properties
+6. Section Featured PropertiesController
 7. Section Popular Places
 8. Section Popular Places 2
 9. Section Agents
@@ -33,14 +33,14 @@ Version      : 1.2
 22.Section Home 7 Video
 23.Section Info Sidebar Home 13
 24.Section Banner Slider Home 13
-25.Section Featured Properties Home 13
+25.Section Featured PropertiesController Home 13
 26.Section Banner Slider Home 14
 27.Section Typed Image Home 15
 28.Section Info Home 15
-29.Section Featured Properties Home 15
+29.Section Featured PropertiesController Home 15
 30.Section Info Help Home 15
 31.Section Visited Cities Home 15
-32.Section Recently Properties Home 16
+32.Section Recently PropertiesController Home 16
 33.Seccion Parallax Home 17
 34.Seccion Info Help Home 17
 35.Seccion Agents Home 17
@@ -53,9 +53,9 @@ Version      : 1.2
 42.Seccion Header Video Home 20
 43.Seccion Home 23 Image
 44.Seccion Header Image Home 24
-45.Inner Page Properties List
-46.Inner Page Properties List Right Sidebar
-47.Inner Page Properties Grid
+45.Inner Page PropertiesController List
+46.Inner Page PropertiesController List Right Sidebar
+47.Inner Page PropertiesController Grid
 48.Inner Page Property Map
 49.Inner Page Property Top Map
 50.Inner Page Property Details
@@ -22316,6 +22316,10 @@ form label.error {
     text-transform: capitalize;
 }
 
+h4.price {
+    min-width: max-content;
+}
+
 .inner-pages .property-form-group label, .inner-pages .property-form-group h4 {
     color: #333;
     display: inline-block;
@@ -25048,10 +25052,10 @@ Version      : 1.2
 
 1. Typography
 2. Section Headings
-3. Section Recently Properties
+3. Section Recently PropertiesController
 4. Section Welcome
 5. Section Property Services
-6. Section Featured Properties
+6. Section Featured PropertiesController
 7. Section Popular Places
 8. Section Popular Places 2
 9. Section Agents
@@ -25070,14 +25074,14 @@ Version      : 1.2
 22.Section Home 7 Video
 23.Section Info Sidebar Home 13
 24.Section Banner Slider Home 13
-25.Section Featured Properties Home 13
+25.Section Featured PropertiesController Home 13
 26.Section Banner Slider Home 14
 27.Section Typed Image Home 15
 28.Section Info Home 15
-29.Section Featured Properties Home 15
+29.Section Featured PropertiesController Home 15
 30.Section Info Help Home 15
 31.Section Visited Cities Home 15
-32.Section Recently Properties Home 16
+32.Section Recently PropertiesController Home 16
 33.Seccion Parallax Home 17
 34.Seccion Info Help Home 17
 35.Seccion Agents Home 17
@@ -25090,9 +25094,9 @@ Version      : 1.2
 42.Seccion Header Video Home 20
 43.Seccion Home 23 Image
 44.Seccion Header Image Home 24
-45.Inner Page Properties List
-46.Inner Page Properties List Right Sidebar
-47.Inner Page Properties Grid
+45.Inner Page PropertiesController List
+46.Inner Page PropertiesController List Right Sidebar
+47.Inner Page PropertiesController Grid
 48.Inner Page Property Map
 49.Inner Page Property Top Map
 50.Inner Page Property Details

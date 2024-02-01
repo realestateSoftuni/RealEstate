@@ -83,7 +83,7 @@ function Main() {
                     <Route path='/blog' element={<Blog/>} />
                     <Route path='/navigating-the-real-estate-market' element={<FirstBlogArticle/>} />
                     <Route path='/embracing-the-future' element={<SecondBlogArticle/>} />
-                    <Route path="/property" element={<SingleProperty/>}/>
+                    <Route path="/property/:propertyId" element={<SingleProperty/>}/>
                     <Route path="/signin" element={<SignInComponent />} />
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/verify/:token" element={<EmailVerify />}/>
