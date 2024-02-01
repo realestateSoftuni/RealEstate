@@ -26,7 +26,7 @@ Route::post('/create_user', [AuthController::class, 'create_user'])->name('creat
 
 Route::post('/add_property', [PropertiesController::class, 'add_property'])->name('add_property');
 
-Route::get('/all-properties', [PropertiesController::class, 'getAllProperties']);
+Route::get('/all-properties/{status}', [PropertiesController::class, 'getAllProperties']);
 
 Route::get('/properties/{id}', [PropertiesController::class, 'show']);
 

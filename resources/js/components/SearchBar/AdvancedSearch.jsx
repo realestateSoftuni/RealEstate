@@ -211,20 +211,20 @@ function AdvancedSearch(typeProperty) {
                             <div className="col-lg-3 col-md-6 col-sm-12 py-1 pr-30 d-none d-lg-none d-xl-flex">
                                 <div className="checkboxes one-in-row margin-bottom-10 ch-1">
                                     {Object.keys(checkboxOptions).slice(0,halfOptions).map((box, i) =>
-                                        <>
-                                            <input key={box} onChange={checkBoxHandler} id={`check-${i+2}`} type="checkbox" name={box}/>
+                                        <div key={box}>
+                                            <input onChange={checkBoxHandler} id={`check-${i+2}`} type="checkbox" name={box}/>
                                             <label htmlFor={`check-${i+2}`}>{box}</label>
-                                        </>
+                                        </div>
                                     )}
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-6 col-sm-12 py-1 pr-30 d-none d-lg-none d-xl-flex">
                                 <div className="checkboxes one-in-row margin-bottom-10 ch-2">
                                     {Object.keys(checkboxOptions).slice(halfOptions, halfOptions*2+1).map((box, i) =>
-                                        <>
+                                        <div key={box}>
                                             <input key={box} onChange={checkBoxHandler} id={`check-${i+2+halfOptions}`} type="checkbox" name={box}/>
                                             <label htmlFor={`check-${i+2+halfOptions}`}>{box}</label>
-                                        </>
+                                        </div>
                                     )}
                                 </div>
                             </div>
