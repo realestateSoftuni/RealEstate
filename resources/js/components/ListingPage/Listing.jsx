@@ -13,7 +13,7 @@ function Listing() {
     return (
         <LayoutAll>
             <div className="inner-pages st-1 agents hp-6 full hd-white">
-                <TopMapsComponent/>
+                {/*<TopMapsComponent/>*/}
                 <section className="properties-list featured portfolio blog">
                     <div className="container">
                         <AdvancedSearch/>

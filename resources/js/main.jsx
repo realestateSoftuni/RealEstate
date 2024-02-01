@@ -93,7 +93,7 @@ function Main() {
                     <Route path='/profile-details' element={<ProfileDetails/>} />
                     <Route path='/edit-profile' element={<EditProfile/>} />
                     <Route path='/contact-us' element={<Contact/>}/>
-                    <Route path='/login' element={<LoginView/>}/>
+                    {/*<Route path='/login' element={<LoginView/>}/>*/}
                     <Route path='/add-property' element={<AddEditProperty/> } />
                     <Route path='/edit-property' element={<AddEditProperty action={'edit'}/>} />
                     <Route path='/favorite-properties' element={<UserProperties collection={'favorites'}/> } />
