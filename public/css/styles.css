@@ -44471,10 +44471,6 @@ body.dashboard-bd {
     border-radius: 5px;
 }
 
-.my-properties table tbody tr td .actions .edit {
-    float: left;
-}
-
 .my-properties table tbody tr td .inner figure {
     margin-bottom: 16px;
     color: #333;
@@ -44490,11 +44486,10 @@ body.dashboard-bd {
 }
 
 .my-properties table tbody tr td.actions {
-    text-align: right;
+    text-align: center;
 }
 
 .my-properties table tbody tr td.actions .edit {
-    float: left;
     color: #987654;
 }
 

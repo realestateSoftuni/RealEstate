@@ -1,18 +1,50 @@
 import UserLayout from "../components/UserLayout/UserLayout.jsx";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import loader from "../../assets/loader.gif";
 
 const initialData = { title: 'Apartment 1', description: 'test', status: 'Rent', yard: true}
 
 
-const deleteHandler = (collection) => {
+const deleteHandler = async (collection, propertyId) => {
     if (collection === 'my-properties') {
-        console.log("Deleted from 'My properties' collection")
+        try {
+            const response = await axios.delete(`${window.Laravel.apiUrl}/api/delete_property/${propertyId}`);
+            console.log(`Property with id: ${propertyId} has been deleted from 'My properties' collection`)
+        } catch (err) {
+            console.log(err);
+        }
     } else if (collection === 'favorites') {
-        console.log("Deleted from 'Favorite properties' collection")
+        console.log(`Property with id: ${propertyId} has been deleted from 'Favorite properties' collection`)
     }
 }
 
 function UserProperties(props) {
+    const[propertiesList, setPropertiesList] = useState({});
+    const userId = '1';
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchData = async (collection, userId) => {
+            try {
+                const response = await axios.get(`${window.Laravel.apiUrl}/api/${collection}/${userId}`);
+                setPropertiesList(response.data);
+            } catch (err) {
+                navigate('/');
+                console.log(err);
+            }
+        };
+        fetchData(props.collection, userId);
+    }, [userId]);
+
+    if (!propertiesList.length) {
+        return (
+            <div className='loading-container'>
+                <img src={loader}/>
+                <p>Loading . . . </p>
+            </div>)
+    }
 
     return(
         <UserLayout>
@@ -22,195 +54,47 @@ function UserProperties(props) {
                     <tr>
                         <th className="pl-2">My Properties</th>
                         <th className="p-0"></th>
-                        <th>Date Added</th>
-                        <th>Views</th>
+                        <th>Year</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td className="image myelist">
-                            <a href="single-property-1.html"><img alt="my-properties-3" src="images/feature-properties/fp-1.jpg" className="img-fluid"/></a>
-                        </td>
-                        <td>
-                            <div className="inner">
-                                <a href="single-property-1.html"><h2>Luxury Villa House</h2></a>
-                                <figure><i className="lni-map-marker"></i> Est St, 77 - Central Park South, NYC</figure>
-                                <ul className="starts text-left mb-0">
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="ml-3">(6 Reviews)</li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>08.14.2020</td>
-                        <td>163</td>
-                        <td className="actions">
-                            {props.collection === 'my-properties' && <Link to='/edit-property' state= {{ action: 'edit', initialData }} className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
-                            <button onClick={() => deleteHandler(props.collection)} className='delete-property'><i className="far fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="image">
-                            <a href="single-property-1.html"><img alt="my-properties-3" src="images/feature-properties/fp-2.jpg" className="img-fluid"/></a>
-                        </td>
-                        <td>
-                            <div className="inner">
-                                <a href="single-property-1.html"><h2>Luxury Villa House</h2></a>
-                                <figure><i className="lni-map-marker"></i> Est St, 77 - Central Park South, NYC</figure>
-                                <ul className="starts text-left mb-0">
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star-o"></i>
-                                    </li>
-                                    <li className="ml-3">(6 Reviews)</li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>08.14.2020</td>
-                        <td>202</td>
-                        <td className="actions">
-                            {props.collection === 'my-properties' && <Link to='/edit-property' state= {{ action: 'edit', initialData }} className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
-                            <button onClick={() => deleteHandler(props.collection)} className='delete-property'><i className="far fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="image">
-                            <a href="single-property-1.html"><img alt="my-properties-3" src="images/feature-properties/fp-3.jpg" className="img-fluid"/></a>
-                        </td>
-                        <td>
-                            <div className="inner">
-                                <a href="single-property-1.html"><h2>Luxury Villa House</h2></a>
-                                <figure><i className="lni-map-marker"></i> Est St, 77 - Central Park South, NYC</figure>
-                                <ul className="starts text-left mb-0">
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="ml-3">(6 Reviews)</li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>08.14.2020</td>
-                        <td>412</td>
-                        <td className="actions">
-                            {props.collection === 'my-properties' && <Link to="#" className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
-                            <button onClick={() => deleteHandler(props.collection)} className='delete-property'><i className="far fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="image">
-                            <a href="single-property-1.html"><img alt="my-properties-3" src="images/feature-properties/fp-4.jpg" className="img-fluid"/></a>
-                        </td>
-                        <td>
-                            <div className="inner">
-                                <a href="single-property-1.html"><h2>Luxury Villa House</h2></a>
-                                <figure><i className="lni-map-marker"></i> Est St, 77 - Central Park South, NYC</figure>
-                                <ul className="starts text-left mb-0">
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star-o"></i>
-                                    </li>
-                                    <li className="ml-3">(6 Reviews)</li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>08.14.2020</td>
-                        <td>675</td>
-                        <td className="actions">
-                            {props.collection === 'my-properties' && <Link to="#" className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
-                            <button onClick={() => deleteHandler(props.collection)} className='delete-property'><i className="far fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="image">
-                            <a href="single-property-1.html"><img alt="my-properties-3" src="images/feature-properties/fp-5.jpg" className="img-fluid"/></a>
-                        </td>
-                        <td>
-                            <div className="inner">
-                                <a href="single-property-1.html"><h2>Luxury Villa House</h2></a>
-                                <figure><i className="lni-map-marker"></i> Est St, 77 - Central Park South, NYC</figure>
-                                <ul className="starts text-left mb-0">
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="ml-3">(6 Reviews)</li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>08.14.2020</td>
-                        <td>325</td>
-                        <td className="actions">
-                            {props.collection === 'my-properties' && <Link to="#" className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
-                            <button onClick={() => deleteHandler(props.collection)} className='delete-property'><i className="far fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="image">
-                            <a href="single-property-1.html"><img alt="my-properties-3" src="images/feature-properties/fp-6.jpg" className="img-fluid"/></a>
-                        </td>
-                        <td>
-                            <div className="inner">
-                                <a href="single-property-1.html"><h2>Luxury Villa House</h2></a>
-                                <figure><i className="lni-map-marker"></i> Est St, 77 - Central Park South, NYC</figure>
-                                <ul className="starts text-left mb-0">
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="mb-0"><i className="fa fa-star-o"></i>
-                                    </li>
-                                    <li className="ml-3">(6 Reviews)</li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>08.14.2020</td>
-                        <td>247</td>
-                        <td className="actions">
-                            {props.collection === 'my-properties' && <Link to="#" className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
-                            <button onClick={() => deleteHandler(props.collection)} className='delete-property'><i className="far fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
+                    {propertiesList.map((property) =>
+                        <tr key={property.id}>
+                            <td className="image myelist">
+                                <Link to={`/property/ ${property.id}`}><img alt="my-properties-3" src={property.property_photos[0].photo_url} className="img-fluid"/></Link>
+                            </td>
+                            <td>
+                                <div className="inner">
+                                    <Link to={`/property/ ${property.id}`}><h2>{property.title}</h2></Link>
+                                    <figure><i className="lni-map-marker"></i> {property.country}, {property.city}</figure>
+                                    {/*<ul className="starts text-left mb-0">*/}
+                                    {/*    <li className="mb-0"><i className="fa fa-star"></i>*/}
+                                    {/*    </li>*/}
+                                    {/*    <li className="mb-0"><i className="fa fa-star"></i>*/}
+                                    {/*    </li>*/}
+                                    {/*    <li className="mb-0"><i className="fa fa-star"></i>*/}
+                                    {/*    </li>*/}
+                                    {/*    <li className="mb-0"><i className="fa fa-star"></i>*/}
+                                    {/*    </li>*/}
+                                    {/*    <li className="mb-0"><i className="fa fa-star"></i>*/}
+                                    {/*    </li>*/}
+                                    {/*    <li className="ml-3">(6 Reviews)</li>*/}
+                                    {/*</ul>*/}
+                                </div>
+                            </td>
+                            <td>{property.build}</td>
+                            <td>{property.status === 'Rent' ? 'For Rent' : 'For Sale'}</td>
+                            <td className="actions">
+                                {props.collection === 'my-properties' && <Link to='/edit-property' state= {{ action: 'edit', initialData }} className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
+                                <button onClick={() => deleteHandler(props.collection, property.id)} className='delete-property'><i className="far fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    )}
                     </tbody>
                 </table>
-                <div className="pagination-container">
+                {propertiesList.length > 10 && <div className="pagination-container">
                     <nav>
                         <ul className="pagination">
                             <li className="page-item"><a className="btn btn-common" href="#"><i className="lni-chevron-left"></i> Previous </a></li>
@@ -220,7 +104,7 @@ function UserProperties(props) {
                             <li className="page-item"><a className="btn btn-common" href="#"> Next <i className="lni-chevron-right"></i></a></li>
                         </ul>
                     </nav>
-                </div>
+                </div>}
             </div>
         </UserLayout>
     );

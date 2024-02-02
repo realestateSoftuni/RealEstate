@@ -26,9 +26,12 @@ Route::post('/create_user', [AuthController::class, 'create_user'])->name('creat
 
 Route::post('/add_property', [PropertiesController::class, 'add_property'])->name('add_property');
 
-Route::get('/all-properties/{status}', [PropertiesController::class, 'getAllProperties']);
+Route::get('/all-properties/{status}', [PropertiesController::class, 'get_all_properties']);
 
-Route::get('/recent-properties/{status}/{count}', [PropertiesController::class, 'getRecentProperties']);
+Route::get('/recent-properties/{status}/{count}', [PropertiesController::class, 'get_recent_properties']);
 
-Route::get('/properties/{id}', [PropertiesController::class, 'show']);
+Route::get('/properties/{id}', [PropertiesController::class, 'get_property']);
 
+Route::get('/my-properties/{user_id}', [PropertiesController::class, 'get_user_properties']);
+
+Route::delete('/delete_property/{property_id}', [PropertiesController::class, 'delete_my_property']);

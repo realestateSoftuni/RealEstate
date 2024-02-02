@@ -190,13 +190,23 @@ class PropertiesController extends Controller
         return $imageUrl;
     }
 
-    public function getAllProperties($status)
+    public function get_all_properties($status)
     {
         $properties = Property::with('property_photos') -> where('status', $status)->get();
         return Response::json($properties);
     }
 
-    public function getRecentProperties($status, $count)
+    public function get_user_properties($user_id)
+    {
+        $properties = Property::with('property_photos')
+            ->where('user_id', $user_id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return Response::json($properties);
+    }
+
+    public function get_recent_properties($status, $count)
     {
         $properties = Property::with('property_photos')
             ->where('status', $status)
@@ -207,7 +217,7 @@ class PropertiesController extends Controller
         return Response::json($properties);
     }
 
-    public function show($id)
+    public function get_property($id)
     {
         $property = Property::with(['property_features', 'property_photos', 'property_videos', 'property_floor_plans'])->find($id);
 
@@ -216,5 +226,25 @@ class PropertiesController extends Controller
         }
 
         return Response::json($property);
+    }
+
+    public function delete_my_property($property_id)
+    {
+        $property = Property::find($property_id);
+
+        if (!$property) {
+            return response()->json(['error' => 'Property not found'], 404);
+        }
+
+        // Delete related records first
+        $property->property_photos()->delete();
+        $property->property_videos()->delete();
+        $property->property_features()->delete();
+        $property->property_floor_plans()->delete();
+
+        // Then delete the property record
+        $property->delete();
+
+        return response()->json(['message' => 'Property deleted successfully']);
     }
 }
