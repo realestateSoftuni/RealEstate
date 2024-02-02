@@ -7,14 +7,13 @@ import AOS from 'aos'
 import NotFound404 from "./components/NotFound404.jsx";
 import Register from "./components/Register.jsx";
 import EmailVerify from "./components/EmailVerify.jsx";
-
+import UserProperties from "./components/UserProperties.jsx";
 import AddEditProperty from "./components/AddEditProperty.jsx";
 import FAQs from "./components/FAQs.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
 import SignInComponent from "./components/SignInComponent.jsx";
 import AboutUs from "./components/AboutUs.jsx";
 import Listing from "./components/ListingPage/Listing.jsx";
-import LoginView from "./components/LoginView.jsx";
 
 import ChangePassword from "./components/ChangePassword.jsx";
 import ProfileDetails from "./components/ProfileDetails.jsx";
@@ -59,7 +58,7 @@ import '../../public/css/default.css';
 import 'react-modal-video/scss/modal-video.scss';
 import '../../public/css/dashbord-mobile-menu.css';
 import '../../public/css/swiper.min.css'
-import UserProperties from "./components/UserProperties.jsx";
+
 
 
 
@@ -93,7 +92,6 @@ function Main() {
                     <Route path='/profile-details' element={<ProfileDetails/>} />
                     <Route path='/edit-profile' element={<EditProfile/>} />
                     <Route path='/contact-us' element={<Contact/>}/>
-                    <Route path='/login' element={<LoginView/>}/>
                     <Route path='/add-property' element={<AddEditProperty/> } />
                     <Route path='/edit-property' element={<AddEditProperty action={'edit'}/>} />
                     <Route path='/favorite-properties' element={<UserProperties collection={'favorites'}/> } />

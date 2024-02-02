@@ -2,6 +2,9 @@ import pic from '../../../assets/LA.jpg'
 import SliderSection from "./SliderSection.jsx";
 
 function SaleProperties() {
+    const count = 16;
+    const status = 'Sale'
+
     return (
         <section className="featured portfolio home18 bg-white-3">
             <div className="container-fluid">
@@ -9,7 +12,7 @@ function SaleProperties() {
                     <h3>Recent properties</h3>
                     <h2>FOR SALE</h2>
                 </div>
-                <SliderSection pic={pic} />
+                <SliderSection status={status} count={count} />
             </div>
         </section>
     );
