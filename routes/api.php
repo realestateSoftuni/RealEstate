@@ -28,5 +28,7 @@ Route::post('/add_property', [PropertiesController::class, 'add_property'])->nam
 
 Route::get('/all-properties/{status}', [PropertiesController::class, 'getAllProperties']);
 
+Route::get('/recent-properties/{status}/{count}', [PropertiesController::class, 'getRecentProperties']);
+
 Route::get('/properties/{id}', [PropertiesController::class, 'show']);
 

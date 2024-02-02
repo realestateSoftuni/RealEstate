@@ -1,8 +1,15 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import loader from "../../../assets/loader.gif";
+import {Link} from "react-router-dom";
 
-function SliderSection(pic) {
+function SliderSection(props) {
+    const {status, count} = props;
+
+
     const settings = {
         dots: true,
         infinite: false,
@@ -38,554 +45,79 @@ function SliderSection(pic) {
             }
         ]
     };
+    const[propertiesList, setPropertiesList]=useState({});
+
+    useEffect(() => {
+        console.log(status, count)
+        const fetchData = async (status, count) => {
+            try {
+                const response = await axios.get(`${window.Laravel.apiUrl}/api/recent-properties/${status}/${count}`);
+                setPropertiesList(response.data);
+                console.log(response.data)
+            } catch (err) {
+                // navigate('/');
+                console.log(err);
+            }
+        };
+        fetchData(status, count);
+    }, [status, count]);
+
+    if (!propertiesList.length) {
+        return (
+            <div className='loading-container'>
+                <img src={loader}/>
+                <p>Loading . . . </p>
+            </div>)
+    }
+
     return (
             <Slider {...settings}>
-                <div className="agents-grid" data-aos="fade-up" data-aos-delay="150">
-                    <div className="landscapes">
-                        <div className="project-single">
-                            <div className="project-inner project-head">
-                                <div className="homes">
-                                    <a href="#" className="homes-img">
-                                        <div className="homes-tag button alt featured">Featured</div>
-                                        <div className="homes-tag button alt sale">For Sale</div>
-                                        <div className="homes-price">$9,000/mo</div>
-                                        <img src={pic.pic} alt="home-1" className="img-responsive"/>
-                                    </a>
+                {propertiesList.map((property) =>
+                    <div key={property.id} className="agents-grid" data-aos="fade-up" data-aos-delay="150">
+                        <div className="landscapes">
+                            <div className="project-single">
+                                <div className="project-inner project-head">
+                                    <div className="homes">
+                                        <a href="#" className="homes-img">
+                                            <div className="homes-tag button alt featured">Featured</div>
+                                            <div className="homes-tag button alt sale">{property.status === 'Rent' ? 'For Rent' : 'For Sale'}</div>
+                                            <div className="homes-price"> $ {Number(property.price).toLocaleString('en-US')}
+                                                {property.status === 'Rent' ? ' /month' : ''}
+                                            </div>
+                                            <img src={property.property_photos[0].photo_url} alt="home-1" className="img-responsive"/>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="homes-content">
-                                <h3><a href="#">Real House Luxury Villa</a></h3>
-                                <p className="homes-address mb-3">
-                                    <a href="#">
-                                        <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <ul className="homes-list clearfix pb-0">
-                                    <li className="the-icons">
-                                        <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
+                                <div className="homes-content">
+                                    <h3><Link to={`/property/ ${property.id}`}>{property.title}</Link></h3>
+                                    <p className="homes-address mb-3">
+                                        <Link to={`/property/ ${property.id}`}>
+                                            <i className="fa fa-map-marker"></i><span>{property.country}, {property.city}</span>
+                                        </Link>
+                                    </p>
+                                    <ul className="homes-list clearfix pb-0">
+                                        <li className="the-icons">
+                                            <i className="flaticon-bed mr-2" aria-hidden="true"></i>
+                                            <span>{property.bedrooms} Bedrooms</span>
+                                        </li>
+                                        <li className="the-icons">
+                                            <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                            <span>{property.bathrooms} Bathrooms</span>
+                                        </li>
+                                        <li className="the-icons">
+                                            <i className="flaticon-square mr-2" aria-hidden="true"></i>
+                                            <span>{Number(property.square_feet).toLocaleString('en-US')} sq ft</span>
+                                        </li>
+                                        <li className="the-icons">
+                                            <i className="flaticon-calendario mr-2" aria-hidden="true"></i>
+                                            <span>{property.build} Year</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="agents-grid" data-aos="fade-up" data-aos-delay="150">
-                    <div className="landscapes">
-                        <div className="project-single">
-                            <div className="project-inner project-head">
-                                <div className="homes">
-                                    <a href="#" className="homes-img">
-                                        <div className="homes-tag button alt featured">Featured</div>
-                                        <div className="homes-tag button alt sale">For Sale</div>
-                                        <div className="homes-price">$9,000/mo</div>
-                                        <img src={pic.pic} alt="home-1" className="img-responsive"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="homes-content">
-                                <h3><a href="#">Real House Luxury Villa</a></h3>
-                                <p className="homes-address mb-3">
-                                    <a href="#">
-                                        <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <ul className="homes-list clearfix pb-0">
-                                    <li className="the-icons">
-                                        <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="agents-grid" data-aos="fade-up" data-aos-delay="150">
-                    <div className="landscapes">
-                        <div className="project-single">
-                            <div className="project-inner project-head">
-                                <div className="homes">
-                                    <a href="#" className="homes-img">
-                                        <div className="homes-tag button alt featured">Featured</div>
-                                        <div className="homes-tag button alt sale">For Sale</div>
-                                        <div className="homes-price">$9,000/mo</div>
-                                        <img src={pic.pic} alt="home-1" className="img-responsive"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="homes-content">
-                                <h3><a href="#">Real House Luxury Villa</a></h3>
-                                <p className="homes-address mb-3">
-                                    <a href="#">
-                                        <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <ul className="homes-list clearfix pb-0">
-                                    <li className="the-icons">
-                                        <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="agents-grid" data-aos="fade-up" data-aos-delay="150">
-                    <div className="landscapes">
-                        <div className="project-single">
-                            <div className="project-inner project-head">
-                                <div className="homes">
-                                    <a href="#" className="homes-img">
-                                        <div className="homes-tag button alt featured">Featured</div>
-                                        <div className="homes-tag button alt sale">For Sale</div>
-                                        <div className="homes-price">$9,000/mo</div>
-                                        <img src={pic.pic} alt="home-1" className="img-responsive"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="homes-content">
-                                <h3><a href="#">Real House Luxury Villa</a></h3>
-                                <p className="homes-address mb-3">
-                                    <a href="#">
-                                        <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <ul className="homes-list clearfix pb-0">
-                                    <li className="the-icons">
-                                        <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="agents-grid" data-aos="fade-up" data-aos-delay="150">
-                    <div className="landscapes">
-                        <div className="project-single">
-                            <div className="project-inner project-head">
-                                <div className="homes">
-                                    <a href="#" className="homes-img">
-                                        <div className="homes-tag button alt featured">Featured</div>
-                                        <div className="homes-tag button alt sale">For Sale</div>
-                                        <div className="homes-price">$9,000/mo</div>
-                                        <img src={pic.pic} alt="home-1" className="img-responsive"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="homes-content">
-                                <h3><a href="#">Real House Luxury Villa</a></h3>
-                                <p className="homes-address mb-3">
-                                    <a href="#">
-                                        <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <ul className="homes-list clearfix pb-0">
-                                    <li className="the-icons">
-                                        <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="agents-grid" data-aos="fade-up" data-aos-delay="150">
-                    <div className="landscapes">
-                        <div className="project-single">
-                            <div className="project-inner project-head">
-                                <div className="homes">
-                                    <a href="#" className="homes-img">
-                                        <div className="homes-tag button alt featured">Featured</div>
-                                        <div className="homes-tag button alt sale">For Sale</div>
-                                        <div className="homes-price">$9,000/mo</div>
-                                        <img src={pic.pic} alt="home-1" className="img-responsive"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="homes-content">
-                                <h3><a href="#">Real House Luxury Villa</a></h3>
-                                <p className="homes-address mb-3">
-                                    <a href="#">
-                                        <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <ul className="homes-list clearfix pb-0">
-                                    <li className="the-icons">
-                                        <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="agents-grid" data-aos="fade-up" data-aos-delay="150">
-                    <div className="landscapes">
-                        <div className="project-single">
-                            <div className="project-inner project-head">
-                                <div className="homes">
-                                    <a href="#" className="homes-img">
-                                        <div className="homes-tag button alt featured">Featured</div>
-                                        <div className="homes-tag button alt sale">For Sale</div>
-                                        <div className="homes-price">$9,000/mo</div>
-                                        <img src={pic.pic} alt="home-1" className="img-responsive"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="homes-content">
-                                <h3><a href="#">Real House Luxury Villa</a></h3>
-                                <p className="homes-address mb-3">
-                                    <a href="#">
-                                        <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <ul className="homes-list clearfix pb-0">
-                                    <li className="the-icons">
-                                        <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="agents-grid" data-aos="fade-up" data-aos-delay="150">
-                    <div className="landscapes">
-                        <div className="project-single">
-                            <div className="project-inner project-head">
-                                <div className="homes">
-                                    <a href="#" className="homes-img">
-                                        <div className="homes-tag button alt featured">Featured</div>
-                                        <div className="homes-tag button alt sale">For Sale</div>
-                                        <div className="homes-price">$9,000/mo</div>
-                                        <img src={pic.pic} alt="home-1" className="img-responsive"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="homes-content">
-                                <h3><a href="#">Real House Luxury Villa</a></h3>
-                                <p className="homes-address mb-3">
-                                    <a href="#">
-                                        <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <ul className="homes-list clearfix pb-0">
-                                    <li className="the-icons">
-                                        <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="agents-grid" data-aos="fade-up" data-aos-delay="150">
-                    <div className="landscapes">
-                        <div className="project-single">
-                            <div className="project-inner project-head">
-                                <div className="homes">
-                                    <a href="#" className="homes-img">
-                                        <div className="homes-tag button alt featured">Featured</div>
-                                        <div className="homes-tag button alt sale">For Sale</div>
-                                        <div className="homes-price">$9,000/mo</div>
-                                        <img src={pic.pic} alt="home-1" className="img-responsive"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="homes-content">
-                                <h3><a href="#">Real House Luxury Villa</a></h3>
-                                <p className="homes-address mb-3">
-                                    <a href="#">
-                                        <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <ul className="homes-list clearfix pb-0">
-                                    <li className="the-icons">
-                                        <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="agents-grid" data-aos="fade-up" data-aos-delay="150">
-                    <div className="landscapes">
-                        <div className="project-single">
-                            <div className="project-inner project-head">
-                                <div className="homes">
-                                    <a href="#" className="homes-img">
-                                        <div className="homes-tag button alt featured">Featured</div>
-                                        <div className="homes-tag button alt sale">For Sale</div>
-                                        <div className="homes-price">$9,000/mo</div>
-                                        <img src={pic.pic} alt="home-1" className="img-responsive"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="homes-content">
-                                <h3><a href="#">Real House Luxury Villa</a></h3>
-                                <p className="homes-address mb-3">
-                                    <a href="#">
-                                        <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <ul className="homes-list clearfix pb-0">
-                                    <li className="the-icons">
-                                        <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="agents-grid" data-aos="fade-up" data-aos-delay="150">
-                    <div className="landscapes">
-                        <div className="project-single">
-                            <div className="project-inner project-head">
-                                <div className="homes">
-                                    <a href="#" className="homes-img">
-                                        <div className="homes-tag button alt featured">Featured</div>
-                                        <div className="homes-tag button alt sale">For Sale</div>
-                                        <div className="homes-price">$9,000/mo</div>
-                                        <img src={pic.pic} alt="home-1" className="img-responsive"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="homes-content">
-                                <h3><a href="#">Real House Luxury Villa</a></h3>
-                                <p className="homes-address mb-3">
-                                    <a href="#">
-                                        <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <ul className="homes-list clearfix pb-0">
-                                    <li className="the-icons">
-                                        <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="agents-grid" data-aos="fade-up" data-aos-delay="150">
-                    <div className="landscapes">
-                        <div className="project-single">
-                            <div className="project-inner project-head">
-                                <div className="homes">
-                                    <a href="#" className="homes-img">
-                                        <div className="homes-tag button alt featured">Featured</div>
-                                        <div className="homes-tag button alt sale">For Sale</div>
-                                        <div className="homes-price">$9,000/mo</div>
-                                        <img src={pic.pic} alt="home-1" className="img-responsive"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="homes-content">
-                                <h3><a href="#">Real House Luxury Villa</a></h3>
-                                <p className="homes-address mb-3">
-                                    <a href="#">
-                                        <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <ul className="homes-list clearfix pb-0">
-                                    <li className="the-icons">
-                                        <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="agents-grid" data-aos="fade-up" data-aos-delay="150">
-                    <div className="landscapes">
-                        <div className="project-single">
-                            <div className="project-inner project-head">
-                                <div className="homes">
-                                    <a href="#" className="homes-img">
-                                        <div className="homes-tag button alt featured">Featured</div>
-                                        <div className="homes-tag button alt sale">For Sale</div>
-                                        <div className="homes-price">$9,000/mo</div>
-                                        <img src={pic.pic} alt="home-1" className="img-responsive"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="homes-content">
-                                <h3><a href="#">Real House Luxury Villa</a></h3>
-                                <p className="homes-address mb-3">
-                                    <a href="#">
-                                        <i className="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <ul className="homes-list clearfix pb-0">
-                                    <li className="the-icons">
-                                        <i className="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li className="the-icons">
-                                        <i className="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                )}
             </Slider>
     );
 }

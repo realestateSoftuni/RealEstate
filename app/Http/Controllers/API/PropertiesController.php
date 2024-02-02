@@ -192,7 +192,18 @@ class PropertiesController extends Controller
 
     public function getAllProperties($status)
     {
-        $properties = Property::with('property_photos', 'property_videos') -> where('status', $status)->get();
+        $properties = Property::with('property_photos') -> where('status', $status)->get();
+        return Response::json($properties);
+    }
+
+    public function getRecentProperties($status, $count)
+    {
+        $properties = Property::with('property_photos')
+            ->where('status', $status)
+            ->orderBy('created_at', 'desc')
+            ->take($count)
+            ->get();
+
         return Response::json($properties);
     }
 
