@@ -32,3 +32,5 @@ Route::get('/recent-properties/{status}/{count}', [PropertiesController::class, 
 
 Route::get('/properties/{id}', [PropertiesController::class, 'show']);
 
+Route::get('/my-properties/{user_id}', [PropertiesController::class, 'get_user_properties']);
+
