@@ -7,11 +7,16 @@ import loader from "../../assets/loader.gif";
 const initialData = { title: 'Apartment 1', description: 'test', status: 'Rent', yard: true}
 
 
-const deleteHandler = (collection, propertyId) => {
+const deleteHandler = async (collection, propertyId) => {
     if (collection === 'my-properties') {
-        console.log(`Property with id: ${propertyId} has been deleted from 'My properties' collection`)
+        try {
+            const response = await axios.delete(`${window.Laravel.apiUrl}/api/delete_property/${propertyId}`);
+            console.log(`Property with id: ${propertyId} has been deleted from 'My properties' collection`)
+        } catch (err) {
+            console.log(err);
+        }
     } else if (collection === 'favorites') {
-        console.log("Deleted from 'Favorite properties' collection")
+        console.log(`Property with id: ${propertyId} has been deleted from 'Favorite properties' collection`)
     }
 }
 
@@ -25,7 +30,6 @@ function UserProperties(props) {
             try {
                 const response = await axios.get(`${window.Laravel.apiUrl}/api/${collection}/${userId}`);
                 setPropertiesList(response.data);
-                console.log(response.data)
             } catch (err) {
                 navigate('/');
                 console.log(err);
@@ -51,7 +55,7 @@ function UserProperties(props) {
                         <th className="pl-2">My Properties</th>
                         <th className="p-0"></th>
                         <th>Year</th>
-                        <th>Views</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -81,7 +85,7 @@ function UserProperties(props) {
                                 </div>
                             </td>
                             <td>{property.build}</td>
-                            <td>163</td>
+                            <td>{property.status === 'Rent' ? 'For Rent' : 'For Sale'}</td>
                             <td className="actions">
                                 {props.collection === 'my-properties' && <Link to='/edit-property' state= {{ action: 'edit', initialData }} className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
                                 <button onClick={() => deleteHandler(props.collection, property.id)} className='delete-property'><i className="far fa-trash-alt"></i></button>
