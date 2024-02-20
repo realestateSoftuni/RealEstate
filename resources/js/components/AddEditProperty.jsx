@@ -116,12 +116,13 @@ function AddEditProperty() {
     const plansTitle = 'Click here or drop floor plans images to upload (max 3 images)';
 
     function checkboxHandler(e, values) {
+        console.log(e)
         if (e.target.checked) {
-            values['features'].push(e.target.name)
+            values['property_features'].push(e.target.name)
         } else {
-            let index = values['features'].indexOf(e.target.name);
+            let index = values['property_features'].indexOf(e.target.name);
             if (index !== -1) {
-                values['features'].splice(index, 1);
+                values['property_features'].splice(index, 1);
             }
         }
     }
@@ -680,7 +681,7 @@ function AddEditProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <div className="filter-tags-wrap">
-                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-k" type="checkbox" name="Window Covering"/>
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-k" type="checkbox" name="Window Covering" defaultChecked={!!initialData.property_features["Window Covering"]}/>
                                                 <label htmlFor="check-k">Window Covering</label>
                                             </div>
                                             {/*<MyCheckbox*/}
@@ -695,7 +696,7 @@ function AddEditProperty() {
                                     <li className="fl-wrap filter-tags clearfix">
                                         <div className="checkboxes float-left">
                                             <div className="filter-tags-wrap">
-                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-l" type="checkbox" name="TV Cable & WIFI"/>
+                                                <input onClick={(e) => {checkboxHandler(e, values)}} id="check-l" type="checkbox" name="TV Cable & WIFI"defaultChecked={!!initialData.property_features["TV Cable & WIFI"]}/>
                                                 <label htmlFor="check-l">TV Cable & WIFI</label>
                                             </div>
                                             {/*<MyCheckbox*/}

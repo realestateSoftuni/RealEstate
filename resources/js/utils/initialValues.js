@@ -30,7 +30,7 @@ export const initialData = {
     bedrooms: 'Bedrooms',
     bathrooms: 'Bathrooms',
     heating: 'Heating',
-    features: [],
+    property_features: [],
     images: [],
     video: '',
     floorPlans: [],

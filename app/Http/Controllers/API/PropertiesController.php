@@ -225,6 +225,10 @@ class PropertiesController extends Controller
             return response()->json(['error' => 'Property not found'], 404);
         }
 
+        $property->property_features->transform(function ($feature) {
+            return $feature->feature_name;
+        });
+
         return Response::json($property);
     }
 

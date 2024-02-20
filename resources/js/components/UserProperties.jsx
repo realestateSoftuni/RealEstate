@@ -100,7 +100,7 @@ function UserProperties(props) {
                             <td>{property.build}</td>
                             <td>{property.status === 'Rent' ? 'For Rent' : 'For Sale'}</td>
                             <td className="actions">
-                                {props.collection === 'my-properties' && <Link to='/my-properties' className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
+                                {props.collection === 'my-properties' && <button onClick={() => editHandler(property.id)} className="edit edit-property"><i className="lni-pencil"></i>Edit</button>}
                                 <button onClick={() => deleteHandler(props.collection, property.id)} className='delete-property'><i className="far fa-trash-alt"></i></button>
                             </td>
                         </tr>
