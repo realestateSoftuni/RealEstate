@@ -28,15 +28,7 @@ function UserNavigation(){
                                 </div>
                                 <nav id="navigation" className="style-1">
                                     <ul id="responsive">
-                                        <li><a href="#">Home</a>
-                                            <ul>
-                                                <li><a href="#">Home Map</a></li>
-                                                <li><a href="#">Home Image</a></li>
-                                                <li><a href="#">Home Video</a></li>
-                                                <li><a href="#">Home Slider</a></li>
-                                                <li><a href="#">Home Styles</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><Link to="/">Home</Link></li>
                                         <li><Link to="/about-us">About us</Link></li>
                                         <li><Link to="/property">Property</Link></li>
                                         <li><Link to="/blog">Blog</Link></li>

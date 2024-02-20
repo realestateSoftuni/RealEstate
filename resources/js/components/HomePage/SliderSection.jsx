@@ -78,20 +78,20 @@ function SliderSection(props) {
                             <div className="project-single">
                                 <div className="project-inner project-head">
                                     <div className="homes">
-                                        <a href="#" className="homes-img">
-                                            <div className="homes-tag button alt featured">Featured</div>
+                                        <Link to={`/property/${property.id}`} className="homes-img">
+                                            <div className="homes-tag button alt featured">{property.property_type}</div>
                                             <div className="homes-tag button alt sale">{property.status === 'Rent' ? 'For Rent' : 'For Sale'}</div>
                                             <div className="homes-price"> $ {Number(property.price).toLocaleString('en-US')}
                                                 {property.status === 'Rent' ? ' /month' : ''}
                                             </div>
                                             <img src={property.property_photos[0].photo_url} alt="home-1" className="img-responsive"/>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className="homes-content">
-                                    <h3><Link to={`/property/ ${property.id}`}>{property.title}</Link></h3>
+                                    <h3><Link to={`/property/${property.id}`}>{property.title}</Link></h3>
                                     <p className="homes-address mb-3">
-                                        <Link to={`/property/ ${property.id}`}>
+                                        <Link to={`/property/${property.id}`}>
                                             <i className="fa fa-map-marker"></i><span>{property.country}, {property.city}</span>
                                         </Link>
                                     </p>

@@ -78,10 +78,7 @@ function AddEditProperty() {
             });
             setSuccess(response.data.message || 'Your property has been added successfully'); // Set success message
             setIsLoading(false);
-
-            setTimeout(() => { // Redirect after 3 seconds
-                navigate('/my-properties');
-            }, 3000);
+            navigate('/my-properties');
         } catch (error) {
             console.error('Error during adding property:', error);
             setIsLoading(false);
@@ -132,6 +129,7 @@ function AddEditProperty() {
     return(
         <UserLayout>
             <div className="col-lg-9 col-md-12 col-xs-12 royal-add-property-area section_100 pl-0 user-dash2">
+                {console.log(location.state)}
                 <div className="single-add-property">
                     <h3>property Media</h3>
                     <div className="property-form-group">
@@ -217,7 +215,7 @@ function AddEditProperty() {
                                     type="textarea"
                                     placeholder="Describe about your property"
                                     className='text-input'
-                                    value={values.description}
+                                    value={values.description || ''}
                                 />
                                 {renderError('description')}
                             </div>

@@ -7,6 +7,7 @@ import React, {useEffect, useState} from "react";
 import LayoutAll from "./MainLayout/LayoutAll.jsx";
 import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
+import loader from "../../assets/loader.gif";
 
 function SingleProperty(){
     const settings = {
@@ -44,7 +45,13 @@ function SingleProperty(){
         };
         fetchData();
     }, [propertyId]);
-
+    if (property === {}) {
+        return (
+            <div className='loading-container'>
+                <img src={loader}/>
+                <p>Loading . . . </p>
+            </div>)
+    }
 
 
 
@@ -60,7 +67,7 @@ function SingleProperty(){
                                         <div className="pro-wrapper">
                                             <div className="detail-wrapper-body">
                                                 <div className="listing-title-bar">
-                                                    <h3>{property.title}<span className="mrg-l-5 category-tag">{property.status === 'sale' ? 'For Sale' : 'For Rent'}</span></h3>
+                                                    <h3>{property.title}<span className="mrg-l-5 category-tag">{property.status === 'Sale' ? 'For Sale' : 'For Rent'}</span></h3>
                                                     <div className="mt-0">
                                                         <a href="#listing-location" className="listing-address">
                                                             <i className="fa fa-map-marker pr-2 ti-location-pin mrg-r-5"></i>{property.country}, {property.city}

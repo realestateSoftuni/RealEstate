@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import loader from "../../assets/loader.gif";
 
-const initialData = { title: 'Apartment 1', description: 'test', status: 'Rent', yard: true}
+// const initialData = { title: 'Apartment 1', description: 'test', status: 'Rent', yard: true}
 
 
 const deleteHandler = async (collection, propertyId) => {
@@ -22,6 +22,7 @@ const deleteHandler = async (collection, propertyId) => {
 
 function UserProperties(props) {
     const[propertiesList, setPropertiesList] = useState({});
+    const[initialData, setInitialData] = useState({});
     const userId = '1';
     const navigate = useNavigate();
 
@@ -37,6 +38,18 @@ function UserProperties(props) {
         };
         fetchData(props.collection, userId);
     }, [userId]);
+
+    const editHandler = async(propertyId) => {
+        try {
+            const response = await axios.get(`${window.Laravel.apiUrl}/api/properties/${propertyId}`);
+            setInitialData(response.data);
+            navigate('/edit-property', {state: { action: 'edit', initialData: response.data }})
+            console.log(response.data)
+        } catch (err) {
+            navigate('/*');
+            console.log(err);
+        }
+    }
 
     if (!propertiesList.length) {
         return (
@@ -63,11 +76,11 @@ function UserProperties(props) {
                     {propertiesList.map((property) =>
                         <tr key={property.id}>
                             <td className="image myelist">
-                                <Link to={`/property/ ${property.id}`}><img alt="my-properties-3" src={property.property_photos[0].photo_url} className="img-fluid"/></Link>
+                                <Link to={`/property/${property.id}`}><img alt="my-properties-3" src={property.property_photos[0].photo_url} className="img-fluid"/></Link>
                             </td>
                             <td>
                                 <div className="inner">
-                                    <Link to={`/property/ ${property.id}`}><h2>{property.title}</h2></Link>
+                                    <Link to={`/property/${property.id}`}><h2>{property.title}</h2></Link>
                                     <figure><i className="lni-map-marker"></i> {property.country}, {property.city}</figure>
                                     {/*<ul className="starts text-left mb-0">*/}
                                     {/*    <li className="mb-0"><i className="fa fa-star"></i>*/}
@@ -87,7 +100,7 @@ function UserProperties(props) {
                             <td>{property.build}</td>
                             <td>{property.status === 'Rent' ? 'For Rent' : 'For Sale'}</td>
                             <td className="actions">
-                                {props.collection === 'my-properties' && <Link to='/edit-property' state= {{ action: 'edit', initialData }} className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
+                                {props.collection === 'my-properties' && <Link to='/my-properties' className="edit edit-property"><i className="lni-pencil"></i>Edit</Link>}
                                 <button onClick={() => deleteHandler(props.collection, property.id)} className='delete-property'><i className="far fa-trash-alt"></i></button>
                             </td>
                         </tr>

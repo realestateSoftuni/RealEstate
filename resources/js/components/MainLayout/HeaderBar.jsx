@@ -63,7 +63,7 @@ function HeaderBar(){
 
                         <div className={`header-user-menu user-menu add ${isProfileClicked ? 'active' : ''}`} onClick={profileHandler}>
                             <div className="header-user-name">
-                                <span><img src="images/testimonials/ts-1.jpg" alt=""/></span>Hi, Mary!
+                                Hi, Mary!
                             </div>
                             <ul>
                                 <li><a href="/edit-profile"> Edit profile</a></li>
@@ -74,7 +74,7 @@ function HeaderBar(){
                                 <li><a href="#">Log Out</a></li>
                             </ul>
                         </div>
-                        <SignInComponent/>
+                        {/*<SignInComponent/>*/}
                         <div className={`header-user-menu user-menu add d-none d-lg-none d-xl-flex ${isLanguageClicked ? 'active' : ''}`} onClick={languageHandler}>
                             <div className="lang-wrap">
                                 <div className="show-lang"><span><i className="fas fa-globe-americas"></i><strong>ENG</strong></span><i className="fa fa-caret-down arrlan"></i></div>
