@@ -65,7 +65,7 @@ class Property extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function property_features()  // Adjusted the relationship to many-to-many
+    public function features()  // Adjusted the relationship to many-to-many
     {
         return $this->hasMany(PropertyFeature::class);
     }
@@ -75,19 +75,19 @@ class Property extends Model
         return $this->hasMany(PropertyReview::class);
     }
 
-    public function property_photos()
+    public function photos()
     {
         return $this->hasMany(PropertyPhoto::class);
     }
 
-    public function property_floor_plans()
+    public function floor_plans()
     {
         return $this->hasMany(PropertyFloorPlans::class);
     }
 
-    public function property_videos()
+    public function video()
     {
-        return $this->hasMany(PropertyVideo::class);
+        return $this->hasOne(PropertyVideo::class);
     }
 
     public function property_mortgage_details()

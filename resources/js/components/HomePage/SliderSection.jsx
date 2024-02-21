@@ -84,7 +84,7 @@ function SliderSection(props) {
                                             <div className="homes-price"> $ {Number(property.price).toLocaleString('en-US')}
                                                 {property.status === 'Rent' ? ' /month' : ''}
                                             </div>
-                                            <img src={property.property_photos[0].photo_url} alt="home-1" className="img-responsive"/>
+                                            {property.photos.length > 0 && <img src={property.photos[0].photo_url} alt="home-1" className="img-responsive"/>}
                                         </Link>
                                     </div>
                                 </div>

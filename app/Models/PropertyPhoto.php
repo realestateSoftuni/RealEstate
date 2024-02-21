@@ -12,6 +12,7 @@ class PropertyPhoto extends Model
 
     protected $fillable = [
         'photo_url',
+        'name',
         'update_count'
     ];
 

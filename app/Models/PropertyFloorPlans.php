@@ -12,6 +12,7 @@ class PropertyFloorPlans extends Model
 
     protected $fillable = [
         'image_url',
+        'name',
         'update_count'
     ];
 

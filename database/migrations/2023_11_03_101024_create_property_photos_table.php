@@ -12,6 +12,7 @@ class CreatePropertyPhotosTable extends Migration
             $table->id();
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('photo_url');
+            $table->string('name');
             $table->integer('update_count')->default(0);
             $table->timestamps();
             $table->softDeletes();

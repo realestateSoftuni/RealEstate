@@ -76,7 +76,10 @@ function UserProperties(props) {
                     {propertiesList.map((property) =>
                         <tr key={property.id}>
                             <td className="image myelist">
-                                <Link to={`/property/${property.id}`}><img alt="my-properties-3" src={property.property_photos[0].photo_url} className="img-fluid"/></Link>
+                                <Link to={`/property/${property.id}`}>
+                                    {property.photos.length > 0 &&
+                                        <img alt="my-properties-3" src={property.photos[0].photo_url} className="img-fluid"/>}
+                                </Link>
                             </td>
                             <td>
                                 <div className="inner">

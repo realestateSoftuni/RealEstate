@@ -48,7 +48,7 @@ class PropertiesController extends Controller
                     'required',
                     Rule::notIn(['Status']),
                 ],
-                'images.*' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                'photos.*' => 'mimes:jpg,jpeg,png,gif|max:2048',
                 'video' => 'nullable|url',
             ]);
         } catch (ValidationException $e) {
@@ -110,14 +110,13 @@ class PropertiesController extends Controller
 
         $propertyId = $property->id;
 
-        // Assuming $request->features is an array of feature names for the property
-        if ($request->has('features') && is_array($request->features)) {
+        if ($request->has('features')) {
             // Iterate through each feature and create an entry in the properties_features table
-            foreach ($request->features as $featureName) {
-                $feature = new PropertyFeature;
-                $feature->feature_name = $featureName;
-                $feature->property_id = $propertyId;
-                $feature->save();
+            foreach ($request->features as $feature) {
+                $newFeature = new PropertyFeature;
+                $newFeature->feature_name = $feature;
+                $newFeature->property_id = $propertyId;
+                $newFeature->save();
             }
         }
 
@@ -130,13 +129,12 @@ class PropertiesController extends Controller
             }
         }
 
-        if ($request->has('images')) {
-            foreach ($request->images as $image) {
-                //dd($image);
+        if ($request->has('photos')) {
+            foreach ($request->photos as $photo) {
                 $uploadedFile = new UploadedFile(
-                    $image->getPathname(),
-                    $image->getClientOriginalName(),
-                    $image->getClientMimeType(),
+                    $photo->getPathname(),
+                    $photo->getClientOriginalName(),
+                    $photo->getClientMimeType(),
                     null,
                     true
                     );
@@ -148,14 +146,15 @@ class PropertiesController extends Controller
                 // Save image information to the database
                 $propertyImage = new PropertyPhoto;
                 $propertyImage->photo_url = $photoURL;
+                $propertyImage->name = $photo->getClientOriginalName();
                 $propertyImage->property_id = $propertyId;
                 $propertyImage->save();
 
             }
         }
 
-        if ($request->has('floorPlans')) {
-            foreach ($request->floorPlans as $plan) {
+        if ($request->has('floor_plans')) {
+            foreach ($request->floor_plans as $plan) {
                 $uploadedFile = new UploadedFile(
                     $plan->getPathname(),
                     $plan->getClientOriginalName(),
@@ -171,6 +170,7 @@ class PropertiesController extends Controller
                 // Save image information to the database
                 $propertyPlan = new PropertyFloorPlans;
                 $propertyPlan->image_url = $photoURL;
+                $propertyPlan->name = $plan->getClientOriginalName();
                 $propertyPlan->property_id = $propertyId;
                 $propertyPlan->save();
 
@@ -192,13 +192,13 @@ class PropertiesController extends Controller
 
     public function get_all_properties($status)
     {
-        $properties = Property::with('property_photos') -> where('status', $status)->get();
+        $properties = Property::with('photos') -> where('status', $status)->get();
         return Response::json($properties);
     }
 
     public function get_user_properties($user_id)
     {
-        $properties = Property::with('property_photos')
+        $properties = Property::with('photos')
             ->where('user_id', $user_id)
             ->orderBy('created_at', 'desc')
             ->get();
@@ -208,7 +208,7 @@ class PropertiesController extends Controller
 
     public function get_recent_properties($status, $count)
     {
-        $properties = Property::with('property_photos')
+        $properties = Property::with('photos')
             ->where('status', $status)
             ->orderBy('created_at', 'desc')
             ->take($count)
@@ -219,15 +219,19 @@ class PropertiesController extends Controller
 
     public function get_property($id)
     {
-        $property = Property::with(['property_features', 'property_photos', 'property_videos', 'property_floor_plans'])->find($id);
+        $property = Property::with(['features', 'photos', 'video', 'floor_plans'])->find($id);
 
         if (!$property) {
             return response()->json(['error' => 'Property not found'], 404);
         }
 
-        $property->property_features->transform(function ($feature) {
+        $property->features->transform(function ($feature) {
             return $feature->feature_name;
         });
+
+        $videoUrl = $property->video->video_url;
+        unset($property['video']);
+        $property['video'] = $videoUrl;
 
         return Response::json($property);
     }
@@ -241,10 +245,10 @@ class PropertiesController extends Controller
         }
 
         // Delete related records first
-        $property->property_photos()->delete();
-        $property->property_videos()->delete();
-        $property->property_features()->delete();
-        $property->property_floor_plans()->delete();
+        $property->photos()->delete();
+        $property->video()->delete();
+        $property->features()->delete();
+        $property->floor_plans()->delete();
 
         // Then delete the property record
         $property->delete();

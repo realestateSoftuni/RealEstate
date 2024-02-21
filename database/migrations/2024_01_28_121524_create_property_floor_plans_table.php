@@ -12,6 +12,7 @@ class CreatePropertyFloorPlansTable extends Migration
             $table->id();
             $table->foreignId('property_id')->constrained()->onDelete('cascade');
             $table->string('image_url');
+            $table->string('name');
             $table->integer('update_count')->default(0);
             $table->timestamps();
             $table->softDeletes();

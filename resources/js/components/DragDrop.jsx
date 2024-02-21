@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import { useDropzone } from 'react-dropzone';
 
 function DropzoneComponent(props) {
-    const { onFilesChange, fileType } = props;
+    const { onFilesChange, fileType, initialFiles } = props;
 
     const onDrop = useCallback((acceptedFiles, fileRejections) => {
         setFiles(acceptedFiles);
@@ -34,7 +34,11 @@ function DropzoneComponent(props) {
     const [files, setFiles] = useState(acceptedFiles)
 
     useEffect(() => {
+        initialFiles.forEach(f => {
+            acceptedFiles.push(f)
+        });
         setFiles(acceptedFiles)
+        console.log(acceptedFiles)
     }, [acceptedFiles]);
 
     const deleteImg = (filePath) => {
